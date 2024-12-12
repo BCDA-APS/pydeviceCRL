@@ -1,0 +1,8 @@
+#!/bin/bash
+
+SELECTION=$1
+
+export EPICS_HOST_ARCH=rhel9-x86_64
+
+# Use startup script from XXX template IOC (pass selection to script)
+perl /net/s100dserv/xorApps/epics/synApps_6_3/ioc/100idPy/iocBoot/ioc100idPyFilter/softioc/100idPyFilter.pl ${SELECTION}

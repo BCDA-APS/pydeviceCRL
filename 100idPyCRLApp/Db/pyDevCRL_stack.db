@@ -1,0 +1,75 @@
+record(dfanout, "$(P)$(SYSID):$(OE):stack$(M)_dfanout"){
+	field(DOL, "$(P)$(SYSID):$(OE):lens_decode.$(DECODE) CP")
+	field(OMSL, "closed_loop")
+	field(OUTA, "$(P)$(SYSID):$(OE):stack$(M) PP")
+}
+
+record(bo, "$(P)$(SYSID):$(OE):stack$(M)"){
+	field(DESC, "$(NUMLENS), $(RADIUS), $(LOC), $(MAT), $(THICKERR)")
+	field(ZNAM, "Out")
+	field(ONAM, "In")
+	field(DISV, "1")
+}
+
+record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_calc"){
+	field(INPA, "$(P)$(SYSID):$(OE):stack$(M) CP")
+	field(B, "$(INVAL)")
+	field(C, "$(OUTVAL)")
+	field(CALC, "A?B:C")
+	field(OUT, "$(OUT)")
+}
+
+record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_RBV_calc"){
+	field(INPA, "$(INP) CP")
+	field(B, "$(INRBVVAL)")
+	field(CALC, "A==B?1:0")
+	field(OUT, "$(P)$(SYSID):$(OE):stack$(M)_RBV PP")
+}
+
+record(bi, "$(P)$(SYSID):$(OE):stack$(M)_RBV"){
+	field(DESC, "$(NUMLENS), $(RADIUS), $(LOC), $(MAT), $(THICKERR)")
+	field(ZNAM, "Out")
+	field(ONAM, "In")
+}
+
+record(dfanout, "$(P)$(SYSID):$(OE):stack$(M)_RBV_dfanout"){
+	field(OMSL, "closed_loop")
+	field(DOL, "$(P)$(SYSID):$(OE):stack$(M)_RBV CP")
+	field(OUTA, "$(P)$(SYSID):$(OE):lens_RBV_encode.$(ENCODE) PP")
+}
+
+record(ao, "$(P)$(SYSID):$(OE):stack$(M)_NumLens"){
+	field(DESC, "Number of lens in stack")
+	field(VAL, "$(NUMLENS)")
+}
+
+record(ao, "$(P)$(SYSID):$(OE):stack$(M)_LensRadius"){
+	field(DESC, "Lens radii")
+	field(PREC, "6")
+	field(VAL, "$(RADIUS)")
+}
+
+record(ao, "$(P)$(SYSID):$(OE):stack$(M)_Location"){
+	field(DESC, "Stack Location, + US, - DS from center")
+	field(EGU, "stack_thick")
+	field(PREC, "3")
+	field(VAL, "$(LOC)")
+}
+
+record(stringout, "$(P)$(SYSID):$(OE):stack$(M)_Material"){
+	field(DESC, "Lens Material")
+	field(VAL, "$(MAT)")
+}
+
+record(ao, "$(P)$(SYSID):$(OE):stack$(M)_ThickErr"){
+	field(DESC, "RMS Thickness Error")
+	field(PREC, "6")
+	field(VAL, "$(THICKERR)")
+}
+
+record(dfanout, "$(P)$(SYSID):$(OE):stack$(M)_BW_dfanout"){
+	field(OMSL, "closed_loop")
+	field(DOL, "$(P)$(SYSID):$(OE):stack$(M) CP")
+	field(OUTA, "$(P)$(SYSID):$(OE):lens_encode.$(ENCODE)")
+	field(FLNK, "$(P)$(SYSID):$(OE):lens_encode.PROC CA")
+}

@@ -1,0 +1,11 @@
+record(ao,"$(P)$(MONOE)") {
+	field(DESC,"Mono Energy test PV")
+	field(PREC, "4")
+	field(EGU, "keV")
+}
+
+record(ao,"$(P)$(IDENERGY)") {
+	field(DESC,"ID Energy test PV")
+	field(PREC, "4")
+	field(EGU, "keV")
+}

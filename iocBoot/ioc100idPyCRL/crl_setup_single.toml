@@ -1,0 +1,37 @@
+# This is a TOML document
+
+title = "CRL static setup"
+
+# Set up beam properties -- these may only need to be set up at creation of IOC
+# however energy can be changed after boot-time
+# energy	 - energy in keV 
+# L_und      - Undulator length in m
+# sigmaH_e   - Sigma electron source size in H direction in m
+# sigmaV_e   - Sigma electron source size in V direction in m
+# sigmaHp_e  - Sigma electron divergence in H direction in rad
+# sigmaVp_e  - Sigma electron divergence in V direction in rad
+[beam]
+energy = 15
+L_und = 4.7
+sigmaH_e = 14.8e-6
+sigmaV_e = 3.7e-6
+sigmaHp_e = 2.8e-6
+sigmaVp_e = 1.5e-6
+
+# Set up beamline properties -- these may only need to be set up at creation of IOC
+# d_StoL1	- Source-to-CRL1 distance, in m
+# d_Stof	- Source-to-sample distance, in m
+[beamline]
+d_StoL1 = 51.9
+d_Stof = 66.2
+
+# Set up crl properties -- these are properties common to the stacks
+# stacks	- Number of sets of lenses
+# stack_d	- Stack thickness in mMinimum thickness at the apex in m
+# d_min 	- Minimum thickness at the apex in m
+[crl]
+stacks = 10
+stack_d = 0.050
+d_min = 0.00003 
+
+

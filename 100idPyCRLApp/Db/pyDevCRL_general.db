@@ -1,0 +1,139 @@
+# Select the source field for the energy
+record(bo, "$(P)$(SYSID):EnergySelect") {
+  field(DESC, "energy selection")
+  field(DTYP, "Soft Channel")
+  field(ZNAM, "Mono")
+  field(ONAM, "Local")
+  field(VAL, "1")
+  field(FLNK, "$(P)$(SYSID):EnergyCalc")
+}
+
+# The local energy
+record(ao, "$(P)$(SYSID):EnergyLocal") {
+  field(DESC, "local energy")
+  field(VAL,  "12.398")
+  field(PREC, "4")
+  field(EGU, "keV")
+  field(FLNK, "$(P)$(SYSID):EnergyCalc")
+}
+
+# The beamline energy
+record(ao, "$(P)$(SYSID):EnergyBeamline") {
+  field(DESC, "beamline energy")
+  field(DOL,  "$(KEV) CP")
+  field(OMSL, "closed_loop")
+  field(PREC, "4")
+  field(EGU, "keV")
+  field(FLNK, "$(P)$(SYSID):EnergyCalc")
+}
+
+# Calculate the energy to be used
+#record(calcout, "$(P)$(SYSID):EnergyCalc"){
+record(calc, "$(P)$(SYSID):EnergyCalc"){
+  field(DESC, "Energy select calc")
+  field(SCAN, "Passive")
+  field(INPA, "$(P)$(SYSID):EnergySelect.RVAL")
+  field(INPB, "$(P)$(SYSID):EnergyBeamline")
+  field(INPC, "$(P)$(SYSID):EnergyLocal")
+  field(CALC, "(A==0)?B:C")
+#  field(OUT, "$(P)$(SYSID):energy PP")
+  field(PREC, "4")
+  field(SCAN, "Passive")
+}
+
+record(ao, "$(P)$(SYSID):energy"){
+	field(EGU, "keV")
+#    field(DOL,  "$(KEV) CP")
+    field(DOL,  "$(P)$(SYSID):EnergyCalc CP")
+    field(OMSL, "closed_loop")
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).updateE(VAL)")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+}
+
+record(ai, "$(P)$(SYSID):energy_RBV"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('updated_E')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "5")
+}
+
+record(ao, "$(P)$(SYSID):focalSize"){
+	field(EGU, "m")
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).updateFsize(VAL)")
+}
+
+record(bo, "$(P)$(SYSID):recalc_enable"){
+	field(DESC, "Lookup table calc enable")
+	field(SCAN, "Passive")
+	field(ZNAM, "Disabled")
+	field(ONAM, "Enabled")
+}
+
+# Not sure this would work -- how to get a PV to simply trigger code?
+record(bo, "$(P)$(SYSID):recalc_table"){
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).construct_lookup_table()")
+#	field(FLNK, "$(P)$(SYSID):refind_config.PROC CA")
+	field(SDIS, "$(P)$(SYSID):recalc_enable")
+	field(DISV, "0")
+}
+
+# Not sure this would work -- how to get a PV to simply trigger code?
+record(bo, "$(P)$(SYSID):refind_config"){
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).find_config()")
+}
+
+record(bo, "$(P)$(SYSID):thickerr_flag"){
+	field(DTYP, "pydev")
+	field(ZNAM, "Off")
+	field(ONAM, "On")
+	field(OUT, "@$(OBJ).setThickerrFlag(VAL)")
+    field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+}
+
+record(bi, "$(P)$(SYSID):thickerr_flag_RBV"){
+	field(DTYP, "pydev")
+    field(INP,  "@pydev.iointr('updated_thickerr_Flag')")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P)$(SYSID):fSize_actual"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_fSize')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "5")
+}
+
+record(longout, "$(P)$(SYSID):previewIndex") {
+  field(DTYP, "pydev")
+  field(OUT, "@$(OBJ).getPreviewFocalSize(VAL)")
+}
+
+record(ai, "$(P)$(SYSID):fSize_preview"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_preview')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+}
+
+record(bo, "$(P)$(SYSID):verbosity"){
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).updateVerbosity(VAL)")
+	field(ZNAM, "Off")
+	field(ONAM, "On")
+	
+}
+
+record(waveform, "$(P)$(SYSID):fSizes"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_lookupTable')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(FTVL, "DOUBLE")
+  field(NELM, "$(ELEM)")
+}
+
+

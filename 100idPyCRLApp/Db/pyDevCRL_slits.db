@@ -1,0 +1,35 @@
+record(ao, "$(P)$(SYSID):$(OE):slitSize_H"){
+	field(EGU, "m")
+    field(DOL,  "$(SLITH) CP")
+    field(OMSL, "closed_loop")
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).updateSlitSize(VAL, '$(OE)', 'hor')")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+	field(PREC, "6")
+}
+
+record(ai, "$(P)$(SYSID):$(OE):slitSize_H_RBV"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('updated_slitSize_$(OE)_hor')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(EGU, "m")
+}
+
+record(ao, "$(P)$(SYSID):$(OE):slitSize_V"){
+	field(EGU, "m")
+    field(DOL,  "$(SLITV) CP")
+    field(OMSL, "closed_loop")
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).updateSlitSize(VAL, '$(OE)', 'vert')")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+	field(PREC, "6")
+}
+
+record(ai, "$(P)$(SYSID):$(OE):slitSize_V_RBV"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('updated_slitSize_$(OE)_vert')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(EGU, "m")
+}

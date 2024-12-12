@@ -1,0 +1,6 @@
+# Activate python environment containing modules used by IOC
+eval "$(conda shell.bash hook)"
+conda activate /net/s100dserv/xorApps/epics/synApps_6_3/support/PyDevice-env/transfocators
+
+# Put python library in path
+export LD_LIBRARY_PATH=/net/s100dserv/xorApps/epics/synApps_6_3/support/PyDevice-env/transfocators/lib/:$LD_LIBRARY_PATH
