@@ -6,16 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>542</width>
-    <height>513</height>
+    <width>484</width>
+    <height>676</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,6,6,1">
+    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,6,0,3,0,3,6,1">
      <item>
       <widget class="caFrame" name="caframe_8">
        <property name="sizePolicy">
@@ -79,7 +79,7 @@
           <property name="font">
            <font>
             <family>Verdana</family>
-            <pointsize>18</pointsize>
+            <pointsize>13</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -127,6 +127,216 @@
         <string notr="true">pydev_transfocator_inset_2x.ui</string>
        </property>
       </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,3,1">
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
+        <number>2</number>
+       </property>
+       <item>
+        <spacer name="horizontalSpacer_11">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="caLabel" name="calabel_4">
+         <property name="text">
+          <string>Transfocator #1 Lenses</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_12">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,3,1">
+       <property name="bottomMargin">
+        <number>2</number>
+       </property>
+       <item>
+        <spacer name="horizontalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="caInclude" name="cainclude_3">
+         <property name="macro">
+          <string>P=$(P),CRL=$(CRL):1,M=01;P=$(P),CRL=$(CRL):1,M=02;P=$(P),CRL=$(CRL):1,M=03;P=$(P),CRL=$(CRL):1,M=04;P=$(P),CRL=$(CRL):1,M=05;P=$(P),CRL=$(CRL):1,M=06;P=$(P),CRL=$(CRL):1,M=07;P=$(P),CRL=$(CRL):1,M=08;P=$(P),CRL=$(CRL):1,M=09;P=$(P),CRL=$(CRL):1,M=10</string>
+         </property>
+         <property name="filename" stdset="0">
+          <string notr="true">pydev_transfocator_lens_readback.ui</string>
+         </property>
+         <property name="stacking">
+          <enum>caInclude::Column</enum>
+         </property>
+         <property name="numberOfItems" stdset="0">
+          <number>10</number>
+         </property>
+         <property name="adjustSizeToContents" stdset="0">
+          <bool>false</bool>
+         </property>
+         <property name="frameColor">
+          <color alpha="0">
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,3,1">
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
+        <number>2</number>
+       </property>
+       <item>
+        <spacer name="horizontalSpacer_13">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="caLabel" name="calabel_5">
+         <property name="text">
+          <string>Transfocator #2 Lenses</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_14">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,3,1">
+       <property name="bottomMargin">
+        <number>2</number>
+       </property>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="caInclude" name="cainclude_4">
+         <property name="macro">
+          <string>P=$(P),CRL=$(CRL):2,M=01;P=$(P),CRL=$(CRL):2,M=02;P=$(P),CRL=$(CRL):2,M=03;P=$(P),CRL=$(CRL):2,M=04;P=$(P),CRL=$(CRL):2,M=05;P=$(P),CRL=$(CRL):2,M=06;P=$(P),CRL=$(CRL):2,M=07;P=$(P),CRL=$(CRL):2,M=08;P=$(P),CRL=$(CRL):2,M=09;P=$(P),CRL=$(CRL):2,M=10</string>
+         </property>
+         <property name="filename" stdset="0">
+          <string notr="true">pydev_transfocator_lens_readback.ui</string>
+         </property>
+         <property name="stacking">
+          <enum>caInclude::Column</enum>
+         </property>
+         <property name="numberOfItems" stdset="0">
+          <number>10</number>
+         </property>
+         <property name="adjustSizeToContents" stdset="0">
+          <bool>false</bool>
+         </property>
+         <property name="frameColor">
+          <color alpha="0">
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </item>
      <item>
       <widget class="caInclude" name="cainclude_2">
@@ -285,6 +495,7 @@
     </layout>
    </item>
   </layout>
+  <zorder>horizontalSpacer_13</zorder>
  </widget>
  <customwidgets>
   <customwidget>

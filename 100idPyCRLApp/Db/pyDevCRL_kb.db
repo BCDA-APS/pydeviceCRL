@@ -1,0 +1,53 @@
+record(ai, "$(P)$(SYSID):KBH_p"){
+  field(DESC, "KB Hor object distance")
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('updated_KBH_p')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(EGU, "m")
+}
+
+record(ai, "$(P)$(SYSID):KBV_p"){
+  field(DESC, "KB Vert object distance")
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('updated_KBV_p')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(EGU, "m")
+}
+
+record(ai, "$(P)$(SYSID):KB_q1"){
+  field(DTYP, "pydev")
+  field(DESC, "CRL1 image distance")
+  field(INP,  "@pydev.iointr('updated_KB_q1')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(EGU, "m")
+}
+
+record(waveform, "$(P)$(SYSID):KBH_p_list"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_KBH_p_list')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(FTVL, "DOUBLE")
+  field(NELM, "$(ELEM)")
+}
+
+record(waveform, "$(P)$(SYSID):KBV_p_list"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_KBV_p_list')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(FTVL, "DOUBLE")
+  field(NELM, "$(ELEM)")
+}
+
+record(waveform, "$(P)$(SYSID):q1_list"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_q1_list')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(FTVL, "DOUBLE")
+  field(NELM, "$(ELEM)")
+}

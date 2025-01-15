@@ -717,7 +717,9 @@ def calc_kb_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
     invF_list_sort_indices = {'1': L1_invF_list_sort_indices, '2': None}
     invF_list_sorted = {'1': L1_invF_list_sorted, '2': None}
 
-    return FWHM_atsample_list, invF_list_sort_indices, invF_list_sorted
+
+	# Including KBH_p_list, KBV_p_list, and q1_list in output so p_h, p_v, and q1 can be looked up
+    return FWHM_atsample_list, invF_list_sort_indices, invF_list_sorted, KBH_p_list, KBV_p_list, q1_list
 
 
 def calc_2xCRL_focus(index1, index2, L1_radii, L1_materials, L2_radii, L2_materials, energy_keV, wl, numlens, 

@@ -166,6 +166,12 @@ class focusingSystem():
         else:
             self.index = {'1':0}
         
+        # KB systems need extra output info object distances for each mirror
+        # and the image distances of the CRL
+        if self.sysTyp is SYSTEM_TYPE.CRLandKB
+            self.KB_ol = {'KBH_p_list': [],
+                            'KBV_p_list': [],
+                            'q1_list': []}
                 
         self.lookupTable = []
         
@@ -490,15 +496,18 @@ class focusingSystem():
                                                    verbose = self.verbose)
             self.index1to2_sorted = arr_d
         elif self.sysType == SYSTEM_TYPE.CRLandKB:
-            arr_a, dict_b, dict_c = calc_kb_lu_table(self.num_configs, 
-                                                   self.radii['1'], self.mat['1'], 
-                                                   self.energy, self.wl,
-                                                   self.lens_count['1'], self.lens_loc['1'], 
-                                                   self.beam, self.bl, self.crl,
-                                                   self.kb, self.slits, 
-                                                   self.thickerr['1'], 
-                                                   flag_HE = self.thickerr_flag,
-                                                   verbose = self.verbose)
+            arr_a, dict_b, dict_c, KBH_p_list, KBV_p_list, q1_list = calc_kb_lu_table(self.num_configs, 
+                                                                                       self.radii['1'], self.mat['1'], 
+                                                                                       self.energy, self.wl,
+                                                                                       self.lens_count['1'], self.lens_loc['1'], 
+                                                                                       self.beam, self.bl, self.crl,
+                                                                                       self.kb, self.slits, 
+                                                                                       self.thickerr['1'], 
+                                                                                       flag_HE = self.thickerr_flag,
+                                                                                       verbose = self.verbose)
+            self.KB_ol = {'KBH_p_list': KBH_p_list, 'KBV_p_list': KBV_p_list,
+                          'q1_list': q1_list}
+
             
         self.lookupTable = arr_a
         self.sorted_invF_index = dict_b
@@ -516,7 +525,12 @@ class focusingSystem():
             self.setFocalSizeActual(offTable = True)
         else:
             self.setFocalSizeActual(offTable = False)
-        self.updateFocalSizeRBVs()       
+        self.updateFocalSizeRBVs()
+
+        if self.sysType == SYSTEM_TYPE.CRLandKB:
+            self.updateKBWaveforms()
+            self.updateKBdistanceRBVs()
+       
 
     def updateEnergyRBV(self):
         '''
@@ -585,7 +599,12 @@ class focusingSystem():
 
         self.updateLensConfigPV()
         self.updateLensRBV()
-        self.updateFocalSizeRBVs()    
+        self.updateFocalSizeRBVs()  
+        
+        # KB system need to "publish" p_h, p_v, and q1 
+        if self.sysType == SYSTEM_TYPE.CRLandKB:
+            self.updateKBdistanceRBVs()
+  
 
     def updateFsize(self, focalSize):
         '''
@@ -637,7 +656,10 @@ class focusingSystem():
         self.updateLensConfigPV()
         self.updateLensRBV()
         self.updateFocalSizeRBVs()     
-
+        
+        # KB system need to "publish" p_h, p_v, and q1 
+        if self.sysType == SYSTEM_TYPE.CRLandKB:
+            self.updateKBdistanceRBVs()
 
     def setFocalSizeActual(self, offTable = False):
         '''
@@ -700,6 +722,26 @@ class focusingSystem():
         if self.verbose: print(f'Setting actual focal size to {self.focalSize_actual}')
         pydev.iointr('new_fSize', self.focalSize_actual)
  
+    def updateKBdistanceRBVs(self):
+        '''
+        Description:
+            Updated image/object distance readback PVs for KB system
+        '''
+        kbh_p = self.KB_ol['KBH_p_list'][self.indexSorted['1']]
+        kbv_p = self.KB_ol['KBV_p_list'][self.indexSorted['1']]
+        q1 = self.KB_ol['q1_list'][self.indexSorted['1']]   
+
+        if self.verbose: 
+            print(f'New object distance for horizontal KB:  {kbh_p}')
+            print(f'New object distance for vertical KB:  {kbv_p}')
+            print(f'New image distance for CRL 1:  {q1}')
+
+        pydev.iointr('KBH_p_list', kbh_p)
+        pydev.iointr('KBV_p_list', kbv_p)
+        pydev.iointr('q1_list', q1)
+
+        
+        
     def getPreviewFocalSize(self, sortedIndex):
         '''
         Description:
@@ -764,6 +806,14 @@ class focusingSystem():
         '''
         pydev.iointr('new_lookupTable', self.lookupTable.tolist())
 
+    def updateKBWaveforms(self):
+        '''
+        Description:
+                Puts object/image distances lists for KB system into waveform PVs
+        '''
+        pydev.iointr('new_KBH_p_list', self.KB_ol['KBH_p_list'].tolist())
+        pydev.iointr('new_KBV_p_list', self.KB_ol['KBV_p_list'].tolist())
+        pydev.iointr('new_q1_list', self.KB_ol['q1_list'].tolist())
 
     def updateVerbosity(self, verbosity):
         '''

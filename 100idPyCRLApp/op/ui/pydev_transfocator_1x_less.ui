@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>542</width>
-    <height>401</height>
+    <height>477</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,6,1">
+    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,10,1">
      <item>
       <widget class="caFrame" name="caframe_8">
        <property name="sizePolicy">
@@ -79,7 +79,7 @@
           <property name="font">
            <font>
             <family>Verdana</family>
-            <pointsize>25</pointsize>
+            <pointsize>18</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -118,7 +118,7 @@
         <string>P=$(P),CRL=$(CRL)</string>
        </property>
        <property name="filename" stdset="0">
-        <string notr="true">pydev_transfocator_inset_1x.ui</string>
+        <string notr="true">pydev_transfocator_inset_1x_less.ui</string>
        </property>
       </widget>
      </item>

@@ -42,7 +42,7 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Transfocator #1</string>
+          <string>Transfocator #1 Slits</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -439,7 +439,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Transfocator #2</string>
+        <string>Transfocator #2 Slits</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
