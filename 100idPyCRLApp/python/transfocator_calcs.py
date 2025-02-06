@@ -343,6 +343,8 @@ def calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens,
                 equivalent 1/f for each configuration (sorted by increasing value)
             L1_invF_list_sort_indices : numpy array of float
                 sorted indices for L1_invF_list_sorted
+            L1_index_n                : float
+                Total number of combinations for CRL1
                 
     '''
 
@@ -362,8 +364,8 @@ def calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens,
     sigmaHp = beam['sigmaHp']
     sigmaVp = beam['sigmaVp']
 
-    d_StoL1 = bl['d_StoL1']
-    d_Stof = bl['d_Stof']
+    d_StoL1 = bl['d_StoL1']+bl['L1_offset']
+    d_Stof = bl['d_Stof']+bl['f_offset']
 
     d_min = crl['d_min']
 
@@ -525,9 +527,9 @@ def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials
     '''
 
 
-    d_StoL2 = bl['d_StoL2']
-    d_StoL1 = bl['d_StoL1']
-    d_Stof = bl['d_Stof']
+    d_StoL2 = bl['d_StoL2']+bl['L2_offset']
+    d_StoL1 = bl['d_StoL1']+bl['L1_offset']
+    d_Stof = bl['d_Stof']+bl['f_offset']
 
     data_dict = calc_tf1_data(num_configs, L1_radii, L1_materials, energy_keV, wl, numlens['1'], 
                      L1_lens_loc, beam, bl, crl['1'], slits['1']['hor'], slits['1']['vert'], 
@@ -657,10 +659,13 @@ def calc_kb_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
         FWHM_atsample           : focal size in meters
         invF_list_sort_indices  :
         invF_list_sorted        :
+        KBH_p_list              :
+        KBV_p_list              :
+        q1_list                 :
     '''
 
-    d_StoL1 = bl['d_StoL1']
-    d_Stof = bl['d_Stof']
+    d_StoL1 = bl['d_StoL1']+bl['L1_offset']
+    d_Stof = bl['d_Stof']+bl['f_offset']
 
     KBH_q = kb['KBH_q']
     KBH_L = kb['KBH_L']
@@ -718,7 +723,7 @@ def calc_kb_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
     invF_list_sorted = {'1': L1_invF_list_sorted, '2': None}
 
 
-	# Including KBH_p_list, KBV_p_list, and q1_list in output so p_h, p_v, and q1 can be looked up
+    # Including KBH_p_list, KBV_p_list, and q1_list in output so p_h, p_v, and q1 can be looked up
     return FWHM_atsample_list, invF_list_sort_indices, invF_list_sorted, KBH_p_list, KBV_p_list, q1_list
 
 
@@ -759,9 +764,9 @@ def calc_2xCRL_focus(index1, index2, L1_radii, L1_materials, L2_radii, L2_materi
     sigmaHp = beam['sigmaHp']
     sigmaVp = beam['sigmaVp']
 
-    d_StoL2 = bl['d_StoL2']
-    d_StoL1 = bl['d_StoL1']
-    d_Stof = bl['d_Stof']
+    d_StoL2 = bl['d_StoL2']+bl['L2_offset']
+    d_StoL1 = bl['d_StoL1']+bl['L1_offset']
+    d_Stof = bl['d_Stof']+bl['f_offset']
 
         
     L1_D        = np.asarray([lookup_diameter(rad) for rad in L1_radii])    # CRL1 diameters for each stack

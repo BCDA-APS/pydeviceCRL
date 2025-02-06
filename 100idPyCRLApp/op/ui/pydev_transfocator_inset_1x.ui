@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>526</width>
-    <height>285</height>
+    <height>412</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="2,1,1,1,1,1,1,1">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="2,1,1,1,1,1,1,1,1,1,1,1">
      <property name="spacing">
       <number>1</number>
      </property>
@@ -540,7 +540,7 @@
           <enum>caLineEdit::User</enum>
          </property>
          <property name="formatType">
-          <enum>caLineEdit::compact</enum>
+          <enum>caLineEdit::exponential</enum>
          </property>
         </widget>
        </item>
@@ -1149,6 +1149,654 @@
           <enum>caLineEdit::decimal</enum>
          </property>
         </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="2,2,1,5">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="caLabel" name="calabel_34">
+         <property name="text">
+          <string>CRL z-offset</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="fontScaleMode">
+          <enum>ESimpleLabel::WidthAndHeight</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLineEdit" name="caLineEdit_28">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):1:oePositionOffset_RBV</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>10</red>
+           <green>0</green>
+           <blue>184</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+         <property name="precision">
+          <number>6</number>
+         </property>
+         <property name="precisionMode">
+          <enum>caLineEdit::Channel</enum>
+         </property>
+         <property name="fontScaleMode" stdset="0">
+          <enum>caLineEdit::None</enum>
+         </property>
+         <property name="formatType">
+          <enum>caLineEdit::decimal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLineEdit" name="caLineEdit_29">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):1:oePositionOffset_RBV.EGU</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>10</red>
+           <green>0</green>
+           <blue>184</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+         <property name="precision">
+          <number>0</number>
+         </property>
+         <property name="precisionMode">
+          <enum>caLineEdit::User</enum>
+         </property>
+         <property name="fontScaleMode" stdset="0">
+          <enum>caLineEdit::None</enum>
+         </property>
+         <property name="formatType">
+          <enum>caLineEdit::decimal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLineEdit" name="caLineEdit_30">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):1:oePositionOffset.DOL</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>10</red>
+           <green>0</green>
+           <blue>184</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+         <property name="precision">
+          <number>0</number>
+         </property>
+         <property name="precisionMode">
+          <enum>caLineEdit::User</enum>
+         </property>
+         <property name="fontScaleMode" stdset="0">
+          <enum>caLineEdit::None</enum>
+         </property>
+         <property name="formatType">
+          <enum>caLineEdit::decimal</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="2,2,1,5">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="caLabel" name="calabel_37">
+         <property name="text">
+          <string>CRL z</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="fontScaleMode">
+          <enum>ESimpleLabel::WidthAndHeight</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLineEdit" name="caLineEdit_36">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):1:oePosition_RBV</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>10</red>
+           <green>0</green>
+           <blue>184</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+         <property name="precision">
+          <number>6</number>
+         </property>
+         <property name="precisionMode">
+          <enum>caLineEdit::Channel</enum>
+         </property>
+         <property name="fontScaleMode" stdset="0">
+          <enum>caLineEdit::None</enum>
+         </property>
+         <property name="formatType">
+          <enum>caLineEdit::decimal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLineEdit" name="caLineEdit_37">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):1:oePosition_RBV.EGU</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>10</red>
+           <green>0</green>
+           <blue>184</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+         <property name="precision">
+          <number>0</number>
+         </property>
+         <property name="precisionMode">
+          <enum>caLineEdit::User</enum>
+         </property>
+         <property name="fontScaleMode" stdset="0">
+          <enum>caLineEdit::None</enum>
+         </property>
+         <property name="formatType">
+          <enum>caLineEdit::decimal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="2,2,1,5">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="caLabel" name="calabel_35">
+         <property name="text">
+          <string>Sample z-offset</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="fontScaleMode">
+          <enum>ESimpleLabel::WidthAndHeight</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLineEdit" name="caLineEdit_31">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):samplePositionOffset_RBV</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>10</red>
+           <green>0</green>
+           <blue>184</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+         <property name="precision">
+          <number>6</number>
+         </property>
+         <property name="precisionMode">
+          <enum>caLineEdit::Channel</enum>
+         </property>
+         <property name="fontScaleMode" stdset="0">
+          <enum>caLineEdit::None</enum>
+         </property>
+         <property name="formatType">
+          <enum>caLineEdit::decimal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLineEdit" name="caLineEdit_32">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):samplePositionOffset_RBV.EGU</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>10</red>
+           <green>0</green>
+           <blue>184</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+         <property name="precision">
+          <number>0</number>
+         </property>
+         <property name="precisionMode">
+          <enum>caLineEdit::User</enum>
+         </property>
+         <property name="fontScaleMode" stdset="0">
+          <enum>caLineEdit::None</enum>
+         </property>
+         <property name="formatType">
+          <enum>caLineEdit::decimal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLineEdit" name="caLineEdit_33">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):samplePositionOffset.DOL</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>10</red>
+           <green>0</green>
+           <blue>184</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+         <property name="precision">
+          <number>0</number>
+         </property>
+         <property name="precisionMode">
+          <enum>caLineEdit::User</enum>
+         </property>
+         <property name="fontScaleMode" stdset="0">
+          <enum>caLineEdit::None</enum>
+         </property>
+         <property name="formatType">
+          <enum>caLineEdit::decimal</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="2,2,1,5">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="caLabel" name="calabel_36">
+         <property name="text">
+          <string>Sample z</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="fontScaleMode">
+          <enum>ESimpleLabel::WidthAndHeight</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLineEdit" name="caLineEdit_34">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):samplePosition_RBV</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>10</red>
+           <green>0</green>
+           <blue>184</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+         <property name="precision">
+          <number>6</number>
+         </property>
+         <property name="precisionMode">
+          <enum>caLineEdit::Channel</enum>
+         </property>
+         <property name="fontScaleMode" stdset="0">
+          <enum>caLineEdit::None</enum>
+         </property>
+         <property name="formatType">
+          <enum>caLineEdit::decimal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLineEdit" name="caLineEdit_35">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):samplePosition_RBV.EGU</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>10</red>
+           <green>0</green>
+           <blue>184</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+         <property name="precision">
+          <number>0</number>
+         </property>
+         <property name="precisionMode">
+          <enum>caLineEdit::User</enum>
+         </property>
+         <property name="fontScaleMode" stdset="0">
+          <enum>caLineEdit::None</enum>
+         </property>
+         <property name="formatType">
+          <enum>caLineEdit::decimal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </item>

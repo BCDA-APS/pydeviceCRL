@@ -13,6 +13,7 @@ NLENS_MACRO = 'NUMLENS'
 RADIUS_MACRO = 'RADIUS'
 LOC_MACRO = 'LOC'
 THICKERR_MACRO = 'THICKERR'
+DIM_MACRO = 'DIM'
 
 '''
 Config variables
@@ -168,7 +169,7 @@ class focusingSystem():
         
         # KB systems need extra output info object distances for each mirror
         # and the image distances of the CRL
-        if self.sysTyp is SYSTEM_TYPE.CRLandKB
+        if self.sysType is SYSTEM_TYPE.CRLandKB:
             self.KB_ol = {'KBH_p_list': [],
                             'KBV_p_list': [],
                             'q1_list': []}
@@ -228,9 +229,12 @@ class focusingSystem():
         '''            
         
         self.bl['d_StoL1'] = beamline_properties['d_StoL1']
+        self.bl['L1_offset']=0
         self.bl['d_Stof'] = beamline_properties['d_Stof']
+        self.bl['f_offset']=0
         if self.sysType is SYSTEM_TYPE.doubleCRL: 
             self.bl['d_StoL2'] = beamline_properties['d_StoL2']
+            self.bl['L2_offset']=0
 #       if self.sysType is singleCRLandKB # KB doesn't have location???
 #           self.bl['d_StoKB'] = beamline_properties['d_StoKB']
             
@@ -334,6 +338,7 @@ class focusingSystem():
                 lens_properties[macros[5]].append(xx[5])
                 lens_properties[macros[6]].append(xx[6])
                 lens_properties[macros[7]].append(xx[7])
+                lens_properties[macros[8]].append(xx[8])
             except:
                 raise RuntimeError(f"Number of lenses ({self.total_stacks}) doesn't match substitution file")
         
@@ -388,6 +393,16 @@ class focusingSystem():
             print('Location of lenses read in.\n')
         else:
             raise RuntimeError(f"Location macro ({LOC_MACRO}) not found in substituion file")
+
+
+        # get dimensionality of each lens from lens properties dictionary-list
+        print('Getting lens\' dimensionality...')
+        if DIM_MACRO in macros:
+            self.lens_dim = lens_properties[DIM_MACRO]
+            print('Location of lenses read in.\n')
+        else:
+            raise RuntimeError(f"Dimensionality macro ({DIM_MACRO}) not found in substituion file")
+
 
         # get thicknesses errprfrom lens properties dictionary-list
         print('Getting lens thickness error...')
@@ -621,6 +636,33 @@ class focusingSystem():
         if self.verbose: print(f'Setting focal size to {self.focalSize}')
         self.find_config()
 
+    def updateZpos(self, zOffset, elem):
+        '''
+        Description
+            User has updated the position of an optical element or the sample
+            beamline parameters are updated
+            
+        Parameters
+            zOffset: float
+                distance from local zero for the element
+            elem: string
+                Label of element 
+        '''
+        print('Shifting element')
+        if self.verbose: print(f'Shifting {elem} position by {zOffset}')
+        if elem == '1':
+            self.bl['L1_offset']=float(zOffset)
+            self.updateGeneralRBV('new_1_Offset',zOffset)  
+            self.updateGeneralRBV('new_1_pos',float(zOffset)+self.bl['d_StoL1'])  
+        elif elem == '2':
+            self.bl['L2_offset']=float(zOffset)
+            self.updateGeneralRBV('new_2_Offset',zOffset)  
+            self.updateGeneralRBV('new_2_pos',float(zOffset)+self.bl['d_StoL2'])  
+        elif elem == 'sam':
+            self.bl['f_offset']=float(zOffset)
+            self.updateGeneralRBV('new_samPosOffset',zOffset)  
+            self.updateGeneralRBV('new_samPos',float(zOffset)+self.bl['d_Stof'])  
+                    
     def find_config(self):
         ''' 
         Description:
@@ -814,6 +856,20 @@ class focusingSystem():
         pydev.iointr('new_KBH_p_list', self.KB_ol['KBH_p_list'].tolist())
         pydev.iointr('new_KBV_p_list', self.KB_ol['KBV_p_list'].tolist())
         pydev.iointr('new_q1_list', self.KB_ol['q1_list'].tolist())
+
+    def updateGeneralRBV(self, interrupt_str, val):
+        '''
+        Description:
+            Puts value to PV
+            
+        Parameters:
+            interrupt_str   : string
+                pydev interrupt label that PV is watching
+            val             : scalar
+                value to put into PV
+        '''
+        pydev.iointr(interrupt_str, val)
+
 
     def updateVerbosity(self, verbosity):
         '''

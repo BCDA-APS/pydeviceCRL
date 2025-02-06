@@ -29,11 +29,14 @@ dbLoadRecords("$(TOP)/100idPyCRLApp/Db/iocAdminSoft_aliases.db","P=$(PREFIX)")
 # PyDevice Transfocator 
 
 # Single transfocator system
-#!< cmds/pydeviceCRL_single.cmd
+#< cmds/pydeviceCRL_single.cmd
+< cmds/pydeviceCRL_single_4ID.cmd
 
 # Double transfocator system 
-< cmds/pydeviceCRL_double.cmd
+#!< cmds/pydeviceCRL_double.cmd
 
+# KB + Single transfocator system
+#!< cmds/pydeviceCRL_kb.cmd
 
 ###############################################################################
 

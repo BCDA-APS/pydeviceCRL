@@ -96,3 +96,32 @@ record(longin, "$(P)$(SYSID):$(OE):sortedIndex_RBV") {
   field(INP,  "@pydev.iointr('new_index_$(OE)')")
   field(SCAN, "I/O Intr")
 }
+
+record(ao, "$(P)$(SYSID):$(OE):oePositionOffset"){ 
+  field(DESC, "OE position offset from local zero")
+  field(PREC, "6")
+  field(EGU, "m")
+  field(DOL,  "$(OEPOS) CP")
+  field(OMSL, "closed_loop")
+  field(DTYP, "pydev")
+  field(OUT, "@$(OBJ).updateZpos(VAL, '$(OE)')")
+  field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+}
+
+record(ai, "$(P)$(SYSID):$(OE):oePositionOffset_RBV"){ 
+  field(DESC, "OE position offset from local zero")
+  field(EGU, "m")
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_$(OE)_Offset')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+}
+
+record(ai, "$(P)$(SYSID):$(OE):oePosition_RBV"){ 
+  field(DESC, "OE position relative to source")
+  field(EGU, "m")
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_$(OE)_pos')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+}

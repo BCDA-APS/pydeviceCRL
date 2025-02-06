@@ -136,4 +136,31 @@ record(waveform, "$(P)$(SYSID):fSizes"){
   field(NELM, "$(ELEM)")
 }
 
+record(ao, "$(P)$(SYSID):samplePositionOffset"){ 
+  field(DESC, "Sample position offset from local zero")
+  field(PREC, "6")
+  field(EGU, "m")
+  field(DOL,  "$(SAMPOS) CP")
+  field(OMSL, "closed_loop")
+  field(DTYP, "pydev")
+  field(OUT, "@$(OBJ).updateZpos(VAL, 'sam')")
+  field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+}
 
+record(ai, "$(P)$(SYSID):samplePositionOffset_RBV"){ 
+  field(DESC, "Sample position offset from local zero")
+  field(EGU, "m")
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_samPosOffset')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+}
+
+record(ai, "$(P)$(SYSID):samplePosition_RBV"){ 
+  field(DESC, "Sample position relative to source")
+  field(EGU, "m")
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_samPos')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+}

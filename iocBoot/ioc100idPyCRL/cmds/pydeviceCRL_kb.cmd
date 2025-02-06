@@ -1,18 +1,22 @@
 ################################################################################
 # PyDevice Support for Transfocator
 ################################################################################
+
+################################################################################
+# Local Definitions
+
 epicsEnvSet("PY_OBJECT", "CRL")
 epicsEnvSet("SYS_ID", "CRL")
+epicsEnvSet("SUBS_FILE", "substitutions/pyDevCRL_stacks_single.substitutions")
+epicsEnvSet("TOML_FILE", "toml/crl_setup_kb.toml")
 
 # Set CRL numbers
 epicsEnvSet("_STACKS1","10")  # Number of stacks
 epicsEnvSet("_CONFIGS","1024")  # Possible configurations: 2^(min(stacks1, stacks2)) 
 
+# Creating beam energy PVs for testing
 epicsEnvSet("MONOE","testMonoE") # for testing -- replace with real mono energy PV 
 epicsEnvSet("IDENERGY","testIDE") # for testing -- replace with real ID energy PV 
-# Next two lines set up some testing tools for energy and slits
-dbLoadRecords("${TOP}/db/energyTestTools.db","P=$(PREFIX), MONOE=$(MONOE), IDENERGY=$(IDENERGY)")
-dbLoadRecords("${TOP}/db/slitTestTools.db","P=$(PREFIX), SLITH=testSSH1, SLITV=testSSV1")
 
 # Setting slit PVs
 epicsEnvSet('_SLIT1H',"$(PREFIX)testSSH1")	# Horizontal size of slit PV before CRL 1 (testing)
@@ -20,24 +24,25 @@ epicsEnvSet('_SLIT1V',"$(PREFIX)testSSV1")	# Vertical size of slit PV before CRL
 #epicsEnvSet('_SLIT1H',"")	# Horizontal size of slit PV before CRL 1
 #epicsEnvSet('_SLIT1V',"")	# Vertical size of slit PV before CRL 1
 
-#epicsEnvSet('_SLIT2H',"$(PREFIX)testSSH2")	# Horizontal size of slit PV before CRL 2 (testing)
-#epicsEnvSet('_SLIT2V',"$(PREFIX)testSSV2")	# Vertical size of slit PV before CRL 2 (testing)
-#epicsEnvSet('_SLIT2H',"")	# Horizontal size of slit PV before CRL 2
-#epicsEnvSet('_SLIT2V',"")	# Vertical size of slit PV before CRL 2
-
 #epicsEnvSet('_SLITKBH',"$(PREFIX)testSSHKB")	# Horizontal size of slit PV before KB (testing)
 #epicsEnvSet('_SLITKBV',"$(PREFIX)testSSVKB")	# Vertical size of slit PV before KB (testing)
 #epicsEnvSet('_SLITKBH',"")	# Horizontal size of slit PV before KB
 #epicsEnvSet('_SLITKBV',"")	# Vertical size of slit PV before KB
 
-
 # Setting Mono energy PV
-epicsEnvSet("BLE","$(PREFIX)$(MONOE)")	# Beam energy PV at CRL (testing)
+epicsEnvSet("BLE","$(PREFIX)$(MONOE)")	# Beam energy PV at CRL (testing uses MONOE defined earlier)
+#epicsEnvSet("BLE","")
 
+################################################################################
+# Load DBs and python code
+
+# Next two lines set up some testing tools for energy and slits
+dbLoadRecords("${TOP}/db/energyTestTools.db","P=$(PREFIX), MONOE=$(MONOE), IDENERGY=$(IDENERGY)")
+dbLoadRecords("${TOP}/db/slitTestTools.db","P=$(PREFIX), SLITH=testSSH1, SLITV=testSSV1")
 
 # CRL DBs and defining substitution file to get stack properties
-dbLoadTemplate("substitutions/pyDevCRL_stacks_single.substitutions","P=$(PREFIX),SYSID=$(SYS_ID)")
-pydev("stack_subFile = 'substitutions/pyDevCRL_stacks_single.substitutions'")
+dbLoadTemplate("$(SUBS_FILE)","P=$(PREFIX),SYSID=$(SYS_ID)")
+pydev("stack_subFile = '$(SUBS_FILE)'")
 
 # Add elements
 dbLoadRecords("${TOP}/db/pyDevCRL_elem.db","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(PY_OBJECT),OE=1,ELEM=$(_CONFIGS)")
@@ -53,7 +58,7 @@ dbLoadRecords("${TOP}/db/pyDevCRL_slits.db","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(P
 pydev("from pyCRL_system import focusingSystem")
 
 # Create Transfocator object
-pydev("$(PY_OBJECT) = focusingSystem(crl_setup = 'crl_setup_single.toml')")
+pydev("$(PY_OBJECT) = focusingSystem(crl_setup = 'crl_setup_kb.toml')")
 
 # DB file for system controls
 dbLoadRecords("${TOP}/db/pyDevCRL_general.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), KEV=$(BLE), ELEM=$(_CONFIGS)")
@@ -61,6 +66,8 @@ dbLoadRecords("${TOP}/db/pyDevCRL_general.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ
 dbLoadRecords("${TOP}/db/pyDevCRL_kb.db","P=$(PREFIX), SYSID=$(SYS_ID), ELEM=$(_CONFIGS)")
 
 ################################################################################
+# Initial setting of some PVs
+
 # Verboseness turned on for debugging -- set to 0 to turn off
 doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):verbosity','1')")
 
