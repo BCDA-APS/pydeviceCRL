@@ -328,9 +328,9 @@ def calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens,
     Returns:
         Dictionary with the following keys
             q1_list                   : numpy array of float
-                image position for each configuration relative to element center
+                image position relative to source for each configuration 
             dq1_list                  : numpy array of float
-                image position for each configuration measured from source
+                image position relative to sample for each configuration
             aperL1H_list              : numpy array of float
                 absorption H aperture of transfocator 1 for all configurations
             aperL1V_list              : numpy array of float
@@ -460,9 +460,16 @@ def calc_1x_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
         flag_HE         : Flag to include thickness error in calculation
         verbose         : Flag to print messages to IOC console
     Returns:
-        FWHM_atsample           : focal size in meters
-        invF_list_sort_indices  : elements are n-bit config for CRL1, sorted by increasing equivalent 1/f
-        invF_list_sorted        : List of equivalent 1/f in m^-1 for CRL1, sorted by increasing value
+        Dictionary with the following keys
+ 
+			FWHM_atsample           : focal size in meters
+			invF_list_sort_indices  : elements are n-bit config for CRL1, sorted by increasing equivalent 1/f
+			invF_list_sorted        : List of equivalent 1/f in m^-1 for CRL1, sorted by increasing value
+			q_list                 : numpy array of float
+									CRL image position relative to source for each configuration 
+			dq_list                : numpy array of float
+									CRL image position relative to sample for each configuration
+
     '''    
     data_dict = calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens, 
                      lens_loc, beam, bl, crl['1'], slit_H, slit_V, thickerr, 
@@ -484,7 +491,8 @@ def calc_1x_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
     invF_list_sort_indices = {'1': L1_invF_list_sort_indices, '2': None}
     invF_list_sorted = {'1': L1_invF_list_sorted, '2': None}
 
-    return FWHM_atsample_list, invF_list_sort_indices, invF_list_sorted
+    return {'FWHM_atsample_list':FWHM_atsample_list, 'invF_list_sort_indices': invF_list_sort_indices,
+            'invF_list_sorted': invF_list_sorted, 'q_list':q1_list, 'dq_list':dq1_list }
 
 
 def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials, 
@@ -516,14 +524,20 @@ def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials
         flag_HE         : Flag to include thickness error in calculation
         verbose         : Flag to print messages to IOC console
     Returns:
-        FWHM_atsample           : focal size in meters
-        invF_list_sort_indices  : dictionary (L1, L2) for n-bit configs for each 
-                                  CRL, sorted by increasing equivalent 1/f
-        invF_list_sorted        : dictionary (L1, L2) for equivalent 1/f in m^-1 
-                                  for each CRL, sorted by increasing value
-        invf2_indices           : each element is the CRL2 n-bit configuration 
-                                  and each index is the sorted index for CRL1, 
-                                  e.g. 
+        Dictionary with the following keys
+			FWHM_atsample           : focal size in meters
+			invF_list_sort_indices  : dictionary (L1, L2) for n-bit configs for each 
+									CRL, sorted by increasing equivalent 1/f
+			invF_list_sorted        : dictionary (L1, L2) for equivalent 1/f in m^-1 
+									for each CRL, sorted by increasing value
+			invf2_indices           : each element is the CRL2 n-bit configuration 
+									and each index is the sorted index for CRL1, 
+									e.g. 
+			q_list                 : numpy array of float
+									CRL #2 image position relative to source for each configuration 
+			dq_list                : numpy array of float
+									CRL #2 image position relative to sample for each configuration
+                          
     '''
 
 
@@ -628,7 +642,9 @@ def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials
     invF_list_sort_indices = {'1': L1_invF_list_sort_indices, '2': L2_invF_list_sort_indices}
     invF_list_sorted = {'1': L1_invF_list_sorted, '2': L2_invF_list_sorted}
 
-    return FWHM_atsample_list, invF_list_sort_indices, invF_list_sorted, invf2_indices
+    return {'FWHM_atsample_list': FWHM_atsample_list, 'invF_list_sort_indices': invF_list_sort_indices,
+            'invF_list_sorted': invF_list_sorted, 'invf2_indices': invf2_indices,
+            'q_list': q2_list, 'dq_list': dq2_list }
 
 
 
@@ -656,12 +672,18 @@ def calc_kb_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
         flag_HE         : Flag to include thickness error in calculation
         verbose         : Flag to print messages to IOC console
     Returns:
-        FWHM_atsample           : focal size in meters
-        invF_list_sort_indices  :
-        invF_list_sorted        :
-        KBH_p_list              :
-        KBV_p_list              :
-        q1_list                 :
+        Dictionary with the following keys
+			FWHM_atsample           : focal size in meters
+			invF_list_sort_indices  : elements are n-bit config for CRL1, sorted by increasing equivalent 1/f
+			invF_list_sorted        : List of equivalent 1/f in m^-1 for CRL1, sorted by increasing value
+			KBH_p_list              : numpy array of float
+									horizontal KB object distance list (relative to CRL image point)
+			KBV_p_list              : numpy array of float
+									vertical KB object distance list (relative to CRL image point)
+			q_list                 : numpy array of float
+									CRL image position relative to source for each configuration 
+			dq_list                : numpy array of float
+									CRL image position relative to sample for each configuration
     '''
 
     d_StoL1 = bl['d_StoL1']+bl['L1_offset']
@@ -723,8 +745,10 @@ def calc_kb_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
     invF_list_sorted = {'1': L1_invF_list_sorted, '2': None}
 
 
-    # Including KBH_p_list, KBV_p_list, and q1_list in output so p_h, p_v, and q1 can be looked up
-    return FWHM_atsample_list, invF_list_sort_indices, invF_list_sorted, KBH_p_list, KBV_p_list, q1_list
+    # Including KBH_p_list, KBV_p_list, q1_list, and dq1_list in output so p_h, p_v, q1 and dq1 can be looked up
+    return {'FWHM_atsample_list':FWHM_atsample_list, 'invF_list_sort_indices': invF_list_sort_indices,
+            'invF_list_sorted': invF_list_sorted, 'KBH_p_list': KBH_p_list, 
+            'KBV_p_list': KBV_p_list, 'q_list':q1_list, 'dq_list':dq1_list }
 
 
 def calc_2xCRL_focus(index1, index2, L1_radii, L1_materials, L2_radii, L2_materials, energy_keV, wl, numlens, 

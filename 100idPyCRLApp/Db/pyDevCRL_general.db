@@ -164,3 +164,39 @@ record(ai, "$(P)$(SYSID):samplePosition_RBV"){
   field(SCAN, "I/O Intr")
   field(PREC, "6")
 }
+
+record(ai, "$(P)$(SYSID):q"){
+  field(DTYP, "pydev")
+  field(DESC, "Last CRL image distance")
+  field(INP,  "@pydev.iointr('new_q')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(EGU, "m")
+}
+
+record(ai, "$(P)$(SYSID):dq"){
+  field(DTYP, "pydev")
+  field(DESC, "Last CRL image distance to sample")
+  field(INP,  "@pydev.iointr('new_dq')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(EGU, "m")
+}
+
+record(waveform, "$(P)$(SYSID):q_list"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_q_list')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(FTVL, "DOUBLE")
+  field(NELM, "$(ELEM)")
+}
+
+record(waveform, "$(P)$(SYSID):dq_list"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_dq_list')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+  field(FTVL, "DOUBLE")
+  field(NELM, "$(ELEM)")
+}

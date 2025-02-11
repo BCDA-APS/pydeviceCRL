@@ -16,15 +16,6 @@ record(ai, "$(P)$(SYSID):KBV_p"){
   field(EGU, "m")
 }
 
-record(ai, "$(P)$(SYSID):KB_q1"){
-  field(DTYP, "pydev")
-  field(DESC, "CRL1 image distance")
-  field(INP,  "@pydev.iointr('updated_KB_q1')")
-  field(SCAN, "I/O Intr")
-  field(PREC, "6")
-  field(EGU, "m")
-}
-
 record(waveform, "$(P)$(SYSID):KBH_p_list"){
   field(DTYP, "pydev")
   field(INP,  "@pydev.iointr('new_KBH_p_list')")
@@ -43,11 +34,3 @@ record(waveform, "$(P)$(SYSID):KBV_p_list"){
   field(NELM, "$(ELEM)")
 }
 
-record(waveform, "$(P)$(SYSID):q1_list"){
-  field(DTYP, "pydev")
-  field(INP,  "@pydev.iointr('new_q1_list')")
-  field(SCAN, "I/O Intr")
-  field(PREC, "6")
-  field(FTVL, "DOUBLE")
-  field(NELM, "$(ELEM)")
-}

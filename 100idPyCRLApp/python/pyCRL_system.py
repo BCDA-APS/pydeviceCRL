@@ -168,13 +168,13 @@ class focusingSystem():
             self.index = {'1':0}
         
         # KB systems need extra output info object distances for each mirror
-        # and the image distances of the CRL
         if self.sysType is SYSTEM_TYPE.CRLandKB:
             self.KB_ol = {'KBH_p_list': [],
-                            'KBV_p_list': [],
-                            'q1_list': []}
+                            'KBV_p_list': []}
                 
         self.lookupTable = []
+        self.q_list = []
+        self.dq_list = []
         
         self.thickerr_flag = True
 
@@ -487,46 +487,44 @@ class focusingSystem():
     
 
         if self.sysType == SYSTEM_TYPE.singleCRL:
-            arr_a, dict_b, dict_c = calc_1x_lu_table(self.num_configs, 
-                                                   self.radii['1'], self.mat['1'], 
-                                                   self.energy, self.wl,
-                                                   self.lens_count['1'], self.lens_loc['1'], 
-                                                   self.beam, self.bl, self.crl, 
-                                                   self.slits['1']['hor'], self.slits['1']['vert'],
-                                                   self.thickerr['1'], 
-                                                   flag_HE = self.thickerr_flag,
-                                                   verbose = self.verbose)
+            results_dict = calc_1x_lu_table(self.num_configs, self.radii['1'], self.mat['1'], 
+                                           self.energy, self.wl, self.lens_count['1'], 
+                                           self.lens_loc['1'], self.beam, self.bl, 
+                                           self.crl, self.slits['1']['hor'], 
+                                           self.slits['1']['vert'], self.thickerr['1'], 
+                                           flag_HE = self.thickerr_flag, verbose = self.verbose)
+                                                   
+                                                   
         elif self.sysType == SYSTEM_TYPE.doubleCRL: 
-            arr_a, dict_b, dict_c, arr_d = calc_2x_lu_table(self.num_configs, 
-                                                   self.radii['1'], self.mat['1'], 
-                                                   self.radii['2'], self.mat['2'], 
-                                                   self.energy, self.wl,
-                                                   self.lens_count, self.lens_loc['1'],
-                                                   self.lens_loc['2'], 
-                                                   self.beam, self.bl, self.crl, 
-                                                   self.slits,
-                                                   self.thickerr['1'], 
-                                                   self.thickerr['2'], 
-                                                   flag_HE = self.thickerr_flag,
-                                                   verbose = self.verbose)
-            self.index1to2_sorted = arr_d
+            results_dict = calc_2x_lu_table(self.num_configs, self.radii['1'], 
+                                            self.mat['1'], self.radii['2'], 
+                                            self.mat['2'], self.energy, self.wl,
+                                            self.lens_count, self.lens_loc['1'],
+                                            self.lens_loc['2'], self.beam, self.bl,
+                                            self.crl, self.slits, self.thickerr['1'], 
+                                            self.thickerr['2'], flag_HE = self.thickerr_flag,
+                                            verbose = self.verbose)
+                                                   
+            self.index1to2_sorted = results_dict['invf2_indices']
+            
         elif self.sysType == SYSTEM_TYPE.CRLandKB:
-            arr_a, dict_b, dict_c, KBH_p_list, KBV_p_list, q1_list = calc_kb_lu_table(self.num_configs, 
-                                                                                       self.radii['1'], self.mat['1'], 
-                                                                                       self.energy, self.wl,
-                                                                                       self.lens_count['1'], self.lens_loc['1'], 
-                                                                                       self.beam, self.bl, self.crl,
-                                                                                       self.kb, self.slits, 
-                                                                                       self.thickerr['1'], 
-                                                                                       flag_HE = self.thickerr_flag,
-                                                                                       verbose = self.verbose)
-            self.KB_ol = {'KBH_p_list': KBH_p_list, 'KBV_p_list': KBV_p_list,
-                          'q1_list': q1_list}
+            results_dict = calc_kb_lu_table(self.num_configs, self.radii['1'],
+                                            self.mat['1'], self.energy, self.wl,
+                                            self.lens_count['1'], self.lens_loc['1'], 
+                                            self.beam, self.bl, self.crl, self.kb, 
+                                            self.slits, self.thickerr['1'], 
+                                            flag_HE = self.thickerr_flag,
+                                            verbose = self.verbose)
+
+            self.KB_ol = {'KBH_p_list': results_dict['KBH_p_list'], 
+                          'KBV_p_list': results_dict['KBV_p_list']}
 
             
-        self.lookupTable = arr_a
-        self.sorted_invF_index = dict_b
-        self.sorted_invF = dict_c                                                            
+        self.lookupTable = results_dict['FWHM_atsample_list']
+        self.sorted_invF_index = results_dict['invF_list_sort_indices']
+        self.sorted_invF = results_dict['invF_list_sorted']                                                          
+        self.q_list = results_dict['q_list']
+        self.dq_list = results_dict['dq_list']
                                                                     
         self.updateEnergyRBV()
         self.updateSlitSizeRBV(self.elements, 'hor')
@@ -764,6 +762,20 @@ class focusingSystem():
         if self.verbose: print(f'Setting actual focal size to {self.focalSize_actual}')
         pydev.iointr('new_fSize', self.focalSize_actual)
  
+    def updateQdistances(self):
+        #TODO does '1' need to be '2' or 'kb' for other systems?
+        q = self.q_list[self.indexSorted['1']]   
+        dq = self.dq_list[self.indexSorted['1']]   
+    
+        if self.verbose: 
+            print(f'New image distance for last CRL:  {q}')
+            print(f'New image distance to sample from last CRL:  {dq}')
+
+        pydev.iointr('new_q', q)
+        pydev.iointr('new_dq', dq)
+
+
+
     def updateKBdistanceRBVs(self):
         '''
         Description:
@@ -771,16 +783,13 @@ class focusingSystem():
         '''
         kbh_p = self.KB_ol['KBH_p_list'][self.indexSorted['1']]
         kbv_p = self.KB_ol['KBV_p_list'][self.indexSorted['1']]
-        q1 = self.KB_ol['q1_list'][self.indexSorted['1']]   
 
         if self.verbose: 
             print(f'New object distance for horizontal KB:  {kbh_p}')
             print(f'New object distance for vertical KB:  {kbv_p}')
-            print(f'New image distance for CRL 1:  {q1}')
 
         pydev.iointr('KBH_p_list', kbh_p)
         pydev.iointr('KBV_p_list', kbv_p)
-        pydev.iointr('q1_list', q1)
 
         
         
@@ -848,6 +857,15 @@ class focusingSystem():
         '''
         pydev.iointr('new_lookupTable', self.lookupTable.tolist())
 
+    def updateQWaveforms(self):
+        '''
+        Description:
+                Puts object distances lists into waveform PVs
+        '''
+        pydev.iointr('new_q_list', self.q_list.tolist())
+        pydev.iointr('new_dq_list', self.dq_list.tolist())
+
+
     def updateKBWaveforms(self):
         '''
         Description:
@@ -855,7 +873,6 @@ class focusingSystem():
         '''
         pydev.iointr('new_KBH_p_list', self.KB_ol['KBH_p_list'].tolist())
         pydev.iointr('new_KBV_p_list', self.KB_ol['KBV_p_list'].tolist())
-        pydev.iointr('new_q1_list', self.KB_ol['q1_list'].tolist())
 
     def updateGeneralRBV(self, interrupt_str, val):
         '''
