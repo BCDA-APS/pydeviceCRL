@@ -6,16 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>914</width>
-    <height>1058</height>
+    <width>953</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3">
+  <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="1,6,2,3,3,1">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="1,12,3,1">
      <property name="margin">
       <number>6</number>
      </property>
@@ -82,7 +82,7 @@
           <property name="font">
            <font>
             <family>Verdana</family>
-            <pointsize>24</pointsize>
+            <pointsize>21</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -116,19 +116,39 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="3,2">
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1">
        <item>
-        <widget class="caInclude" name="cainclude_2">
-         <property name="macro">
-          <string>P=$(P),CRL=$(CRL)</string>
+        <layout class="QVBoxLayout" name="verticalLayout_3" stretch="3,2">
+         <property name="leftMargin">
+          <number>0</number>
          </property>
-         <property name="filename" stdset="0">
-          <string notr="true">pydev_transfocator_inset_1x.ui</string>
+         <property name="rightMargin">
+          <number>0</number>
          </property>
-        </widget>
+         <item>
+          <widget class="caInclude" name="cainclude_2">
+           <property name="macro">
+            <string>P=$(P),CRL=$(CRL)</string>
+           </property>
+           <property name="filename" stdset="0">
+            <string notr="true">pydev_transfocator_inset_1x_control.ui</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="caInclude" name="cainclude_3">
+           <property name="macro">
+            <string>P=$(P),CRL=$(CRL)</string>
+           </property>
+           <property name="filename" stdset="0">
+            <string notr="true">pydev_transfocator_inset_1x_offset_readbacks.ui</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0">
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,1">
          <property name="margin">
           <number>6</number>
          </property>
@@ -616,6 +636,16 @@
            </item>
           </layout>
          </item>
+         <item>
+          <widget class="caInclude" name="cainclude_4">
+           <property name="macro">
+            <string>P=$(P),CRL=$(CRL)</string>
+           </property>
+           <property name="filename" stdset="0">
+            <string notr="true">pydev_transfocator_inset_1x_slit_readbacks.ui</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
       </layout>
@@ -647,53 +677,7 @@
       </widget>
      </item>
      <item>
-      <widget class="caCartesianPlot" name="cacartesianplot">
-       <property name="TitleX">
-        <string notr="true">Config Index</string>
-       </property>
-       <property name="TitleY">
-        <string notr="true">Focal Size (m)</string>
-       </property>
-       <property name="channels_1" stdset="0">
-        <string>; $(P)$(CRL):fSizes</string>
-       </property>
-       <property name="color_1">
-        <color>
-         <red>0</red>
-         <green>0</green>
-         <blue>255</blue>
-        </color>
-       </property>
-       <property name="YAxisType" stdset="0">
-        <enum>caCartesianPlot::log10</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="caCartesianPlot" name="cacartesianplot_2">
-       <property name="TitleX">
-        <string notr="true">Config Index</string>
-       </property>
-       <property name="TitleY">
-        <string notr="true">Inv Focal length (1/m)</string>
-       </property>
-       <property name="channels_1" stdset="0">
-        <string>;$(P)$(CRL):1:invF</string>
-       </property>
-       <property name="color_1">
-        <color>
-         <red>0</red>
-         <green>0</green>
-         <blue>255</blue>
-        </color>
-       </property>
-       <property name="YAxisType" stdset="0">
-        <enum>caCartesianPlot::log10</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,1,2,1,2,1,2,1,1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,1,2,1,2,1,2,1,2,1,2">
        <item>
         <widget class="caRelatedDisplay" name="carelateddisplay_52">
          <property name="label">
@@ -717,7 +701,7 @@
           <string>Alternate UI</string>
          </property>
          <property name="files">
-          <string>pydev_transfocator_help.ui</string>
+          <string>pydev_transfocator_1x_help.ui</string>
          </property>
          <property name="args">
           <string>P=$(P),F=$(F),N=$(N)</string>
@@ -793,7 +777,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="caRelatedDisplay" name="carelateddisplay_50">
+        <widget class="caRelatedDisplay" name="carelateddisplay_51">
          <property name="label">
           <string notr="true">-Testing screen</string>
          </property>
@@ -819,6 +803,55 @@
          </property>
          <property name="args">
           <string>P=$(P),CRL=$(CRL),SLITH=testSSH1,SLITV=testSSV1,SLIT2H=testSSH2,SLIT2V=testSSV2,MONOE=testMonoE,IDENERGY=testIDE,OEPOS1=testCRL1z,SAMPOS=testSAMz</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+         <property name="removeParent" stdset="0">
+          <string>false</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_50">
+         <property name="label">
+          <string notr="true">-Plots</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>53</red>
+           <green>132</green>
+           <blue>0</blue>
+          </color>
+         </property>
+         <property name="labels">
+          <string>Alternate UI</string>
+         </property>
+         <property name="files">
+          <string>pydev_transfocator_1x_plots.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P),CRL=$(CRL)</string>
          </property>
          <property name="stackingMode" stdset="0">
           <enum>caRowColMenu::Menu</enum>
@@ -970,11 +1003,6 @@
    <class>caLineEdit</class>
    <extends>QLineEdit</extends>
    <header>caLineEdit</header>
-  </customwidget>
-  <customwidget>
-   <class>caCartesianPlot</class>
-   <extends>QFrame</extends>
-   <header>caCartesianPlot</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>915</width>
-    <height>549</height>
+    <width>998</width>
+    <height>541</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="1,8,1">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="1,10,1">
      <property name="margin">
       <number>6</number>
      </property>
@@ -82,7 +82,7 @@
           <property name="font">
            <font>
             <family>Verdana</family>
-            <pointsize>28</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -116,9 +116,9 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="4,2">
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="4,4">
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <layout class="QVBoxLayout" name="verticalLayout_4" stretch="3,1,1">
          <property name="margin">
           <number>5</number>
          </property>
@@ -128,29 +128,71 @@
             <string>P=$(P),CRL=$(CRL)</string>
            </property>
            <property name="filename" stdset="0">
-            <string notr="true">pydev_transfocator_inset_1x_less.ui</string>
+            <string notr="true">pydev_transfocator_inset_1x_control.ui</string>
            </property>
           </widget>
          </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="4,1">
-         <property name="margin">
-          <number>6</number>
-         </property>
          <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
+          <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="2,6,2">
+           <property name="topMargin">
+            <number>2</number>
            </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
+           <property name="bottomMargin">
+            <number>2</number>
            </property>
-          </spacer>
+           <item>
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="caInclude" name="cainclude_4">
+             <property name="macro">
+              <string>P=$(P),CRL=$(CRL):1,M=01;P=$(P),CRL=$(CRL):1,M=02;P=$(P),CRL=$(CRL):1,M=03;P=$(P),CRL=$(CRL):1,M=04;P=$(P),CRL=$(CRL):1,M=05;P=$(P),CRL=$(CRL):1,M=06;P=$(P),CRL=$(CRL):1,M=07;P=$(P),CRL=$(CRL):1,M=08;P=$(P),CRL=$(CRL):1,M=09;P=$(P),CRL=$(CRL):1,M=10</string>
+             </property>
+             <property name="filename" stdset="0">
+              <string notr="true">pydev_transfocator_lens_readback.ui</string>
+             </property>
+             <property name="stacking">
+              <enum>caInclude::Column</enum>
+             </property>
+             <property name="numberOfItems" stdset="0">
+              <number>10</number>
+             </property>
+             <property name="adjustSizeToContents" stdset="0">
+              <bool>false</bool>
+             </property>
+             <property name="frameColor">
+              <color alpha="0">
+               <red>200</red>
+               <green>200</green>
+               <blue>200</blue>
+              </color>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </item>
          <item>
           <layout class="QGridLayout" name="gridLayout_4" rowstretch="1,1" columnstretch="0,2,3">
@@ -263,10 +305,37 @@
          </item>
         </layout>
        </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="4,0">
+         <property name="margin">
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="caInclude" name="cainclude">
+           <property name="macro">
+            <string>P=$(P),CRL=$(CRL)</string>
+           </property>
+           <property name="filename" stdset="0">
+            <string notr="true">pydev_transfocator_inset_1x_slit_readbacks.ui</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="caInclude" name="cainclude_3">
+           <property name="macro">
+            <string>P=$(P),CRL=$(CRL)</string>
+           </property>
+           <property name="filename" stdset="0">
+            <string notr="true">pydev_transfocator_inset_1x_offset_readbacks.ui</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,1,2,3,1,1,1,1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,1,2,1,2,1,2,1,2,2">
        <item>
         <widget class="caRelatedDisplay" name="carelateddisplay_52">
          <property name="label">
@@ -290,7 +359,7 @@
           <string>Alternate UI</string>
          </property>
          <property name="files">
-          <string>pydev_transfocator_help.ui</string>
+          <string>pydev_transfocator_1x_help.ui</string>
          </property>
          <property name="args">
           <string>P=$(P),F=$(F),N=$(N)</string>
@@ -343,6 +412,55 @@
          </property>
          <property name="args">
           <string>P=$(P),CRL=$(CRL):1</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+         <property name="removeParent" stdset="0">
+          <string>false</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_50">
+         <property name="label">
+          <string notr="true">-Plots</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>53</red>
+           <green>132</green>
+           <blue>0</blue>
+          </color>
+         </property>
+         <property name="labels">
+          <string>Alternate UI</string>
+         </property>
+         <property name="files">
+          <string>pydev_transfocator_1x_plots.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P),CRL=$(CRL)</string>
          </property>
          <property name="stackingMode" stdset="0">
           <enum>caRowColMenu::Menu</enum>

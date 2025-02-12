@@ -540,6 +540,9 @@ class focusingSystem():
             self.setFocalSizeActual(offTable = False)
         self.updateFocalSizeRBVs()
 
+        self.updateQWaveforms()
+        self.updateQdistances()
+        
         if self.sysType == SYSTEM_TYPE.CRLandKB:
             self.updateKBWaveforms()
             self.updateKBdistanceRBVs()
@@ -613,6 +616,9 @@ class focusingSystem():
         self.updateLensConfigPV()
         self.updateLensRBV()
         self.updateFocalSizeRBVs()  
+ 
+        self.updateQWaveforms()
+        self.updateQdistances()
         
         # KB system need to "publish" p_h, p_v, and q1 
         if self.sysType == SYSTEM_TYPE.CRLandKB:
@@ -696,6 +702,9 @@ class focusingSystem():
         self.updateLensConfigPV()
         self.updateLensRBV()
         self.updateFocalSizeRBVs()     
+
+        self.updateQWaveforms()
+        self.updateQdistances()
         
         # KB system need to "publish" p_h, p_v, and q1 
         if self.sysType == SYSTEM_TYPE.CRLandKB:
