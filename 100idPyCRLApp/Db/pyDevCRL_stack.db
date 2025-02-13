@@ -1,9 +1,3 @@
-record(dfanout, "$(P)$(SYSID):$(OE):stack$(M)_dfanout"){
-	field(DOL, "$(P)$(SYSID):$(OE):lens_decode.$(DECODE) CP")
-	field(OMSL, "closed_loop")
-	field(OUTA, "$(P)$(SYSID):$(OE):stack$(M) PP")
-}
-
 record(bo, "$(P)$(SYSID):$(OE):stack$(M)"){
 	field(DESC, "$(NUMLENS), $(RADIUS), $(LOC), $(MAT), $(THICKERR)")
 	field(ZNAM, "Out")
@@ -15,13 +9,32 @@ record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_calc"){
 	field(INPA, "$(P)$(SYSID):$(OE):stack$(M) CP")
 	field(B, "$(INVAL)")
 	field(C, "$(OUTVAL)")
-	field(CALC, "A?B:C")
-	field(OUT, "$(OUT)")
+	field(CALC, "A?27:23")
+	field(OUT, "$(P)$(SYSID):$(OE):stack$(M)_move.SELN")
+	field(FLNK, "$(P)$(SYSID):$(OE):stack$(M)_move.PROC CA")
 }
 
+record(sseq, "$(P)$(SYSID):$(OE):stack$(M)_move"){
+	field(SELM, "Mask")
+	field(DO1, "2")
+	field(LNK1, "$(MOT):homingMethod PP")
+	field(DO2, "1")
+	field(LNK2, "$(MOT).CNEN PP")
+	field(DO3, "1")
+	field(LNK3, "$(MOT).HOMR")
+	field(WAIT3, "Wait")
+	field(DO4, "1")
+	field(LNK4, "$(MOT).HOMF")
+	field(WAIT4, "Wait")
+	field(DO5, "0")
+	field(LNK5, "$(MOT).CNEN" PP")
+}
+
+#TODO sort logic of using subs file to pass all required info
 record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_RBV_calc"){
-	field(INPA, "$(INP) CP")
-	field(B, "$(INRBVVAL)")
+	field(INPA, "$(MOT).HLS CP")
+	field(INPB, "$(MOT).LLS CP")
+	field(C, "$(INRBVVAL)")
 	field(CALC, "A==B?1:0")
 	field(OUT, "$(P)$(SYSID):$(OE):stack$(M)_RBV PP")
 }

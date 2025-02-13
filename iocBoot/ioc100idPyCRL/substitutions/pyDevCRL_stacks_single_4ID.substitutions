@@ -8,14 +8,14 @@
 
 file "$(TOP)/db/pyDevCRL_stack.db" {
   pattern
-  {OE, M,		NUMLENS,	RADIUS,		MAT,	LOC,	DIM, 	THICKERR,	OUT,										INP,								INVAL,	OUTVAL,	INRBVVAL,	DECODE,	ENCODE,	MASK  }
-  {1, "01",   1, 			0.001,		"Be",	4.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack01_RBV PP",	"100idPyCRL:CRL4ID:1:stack01 CP",   	1,		0,		1,			"B",	"A", 	"A"	}	
-  {1, "02",   1, 			0.0005,		"Be",	3.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack02_RBV PP",	"100idPyCRL:CRL4ID:1:stack02 CP",   	1,		0,		1,			"C",	"B", 	"B"	}	
-  {1, "03",   1, 			0.0002,		"Be",	2.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack03_RBV PP",	"100idPyCRL:CRL4ID:1:stack03 CP",   	1,		0,		1,			"D",	"C", 	"C"	}	
-  {1, "04",   2, 			0.0002,		"Be",	1.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack04_RBV PP",	"100idPyCRL:CRL4ID:1:stack04 CP",   	1,		0,		1,			"E",	"D", 	"D"	}	
-  {1, "05",   4, 			0.0002,		"Be",	0.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack05_RBV PP",	"100idPyCRL:CRL4ID:1:stack05 CP",   	1,		0,		1,			"F",	"E", 	"E"	}	
-  {1, "06",   8, 			0.0002,		"Be",	-0.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack06_RBV PP",	"100idPyCRL:CRL4ID:1:stack06 CP",   	1,		0,		1,			"G",	"F", 	"F"	}	
-  {1, "07",   8, 			0.0001,		"Be",	-1.5,	"2D",		1.4e-6,		"100idPyCRL:CRL4ID:1:stack07_RBV PP",	"100idPyCRL:CRL4ID:1:stack07 CP",   	1,		0,		1,			"H",	"G", 	"G"	}	
-  {1, "08",   16, 			0.0001,		"Be",	-2.5	"2D",		2.0e-6,		"100idPyCRL:CRL4ID:1:stack08_RBV PP",	"100idPyCRL:CRL4ID:1:stack08 CP",   	1,		0,		1,			"I",	"H", 	"H"	}	
+  {OE, M,		NUMLENS,	RADIUS,		MAT,	LOC,	DIM, 	THICKERR,	MOT,										INP,								INVAL,	OUTVAL,	INRBVVAL,	ENCODE,	MASK  }
+  {1, "01",   1, 			0.001,		"Be",	4.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack01_RBV PP",	"100idPyCRL:CRL4ID:1:stack01 CP",   	1,		0,		1,			"A", 	"A"	}	
+  {1, "02",   1, 			0.0005,		"Be",	3.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack02_RBV PP",	"100idPyCRL:CRL4ID:1:stack02 CP",   	1,		0,		1,			"B", 	"B"	}	
+  {1, "03",   1, 			0.0002,		"Be",	2.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack03_RBV PP",	"100idPyCRL:CRL4ID:1:stack03 CP",   	1,		0,		1,			"C", 	"C"	}	
+  {1, "04",   2, 			0.0002,		"Be",	1.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack04_RBV PP",	"100idPyCRL:CRL4ID:1:stack04 CP",   	1,		0,		1,			"D", 	"D"	}	
+  {1, "05",   4, 			0.0002,		"Be",	0.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack05_RBV PP",	"100idPyCRL:CRL4ID:1:stack05 CP",   	1,		0,		1,			"E", 	"E"	}	
+  {1, "06",   8, 			0.0002,		"Be",	-0.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack06_RBV PP",	"100idPyCRL:CRL4ID:1:stack06 CP",   	1,		0,		1,			"F", 	"F"	}	
+  {1, "07",   8, 			0.0001,		"Be",	-1.5,	"2D",		1.4e-6,		"100idPyCRL:CRL4ID:1:stack07_RBV PP",	"100idPyCRL:CRL4ID:1:stack07 CP",   	1,		0,		1,			"G", 	"G"	}	
+  {1, "08",   16, 			0.0001,		"Be",	-2.5	"2D",		2.0e-6,		"100idPyCRL:CRL4ID:1:stack08_RBV PP",	"100idPyCRL:CRL4ID:1:stack08 CP",   	1,		0,		1,			"H", 	"H"	}	
 }
   
