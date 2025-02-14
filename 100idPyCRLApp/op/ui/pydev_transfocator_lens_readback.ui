@@ -278,7 +278,10 @@ border-radius: 2px;
      </color>
     </property>
     <property name="visibility">
-     <enum>caGraphics::IfNotZero</enum>
+     <enum>caGraphics::Calc</enum>
+    </property>
+    <property name="visibilityCalc">
+     <string notr="true">A==1</string>
     </property>
     <property name="channel" stdset="0">
      <string notr="true">$(P)$(CRL):stack$(M)_RBV</string>

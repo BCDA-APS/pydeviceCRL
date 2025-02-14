@@ -1,0 +1,2 @@
+$(P)$(SYSID):EnergyLocal.VAL
+$(P)$(SYSID):EnergySelect.VAL

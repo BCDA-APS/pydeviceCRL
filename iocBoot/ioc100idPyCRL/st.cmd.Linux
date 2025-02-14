@@ -39,6 +39,11 @@ dbLoadRecords("$(TOP)/100idPyCRLApp/Db/iocAdminSoft_aliases.db","P=$(PREFIX)")
 #!< cmds/pydeviceCRL_kb.cmd
 
 ###############################################################################
+# Simulated motors
+
+iocshLoad("iocsh/motorSim.iocsh", "PREFIX=$(PREFIX), INSTANCE=motorSim, SUB=substitutions/motorSim.substitutions, DLLM=0, LOW_LIM=0, DHLM=25, HIGH_LIM=2500")
+
+###############################################################################
 
 
 

@@ -606,7 +606,7 @@
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
              <property name="channel" stdset="0">
-              <string notr="true">$(P)$CRL):1:interLensDelay</string>
+              <string notr="true">$(P)$(CRL):1:interLensDelay</string>
              </property>
              <property name="background">
               <color>

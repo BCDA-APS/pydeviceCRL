@@ -27,22 +27,38 @@ record(sseq, "$(P)$(SYSID):$(OE):stack$(M)_move"){
 	field(LNK4, "$(MOT).HOMF")
 	field(WAIT4, "Wait")
 	field(DO5, "0")
-	field(LNK5, "$(MOT).CNEN" PP")
+	field(LNK5, "$(MOT).CNEN PP")
+	field(FLNK, "$(P)$(SYSID):$(OE):stack$(M)_RBV_calc.PROC CA")
 }
 
 #TODO sort logic of using subs file to pass all required info
-record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_RBV_calc"){
+record(scalcout, "$(P)$(SYSID):$(OE):stack$(M)_RBV_calc"){
 	field(INPA, "$(MOT).HLS CP")
 	field(INPB, "$(MOT).LLS CP")
-	field(C, "$(INRBVVAL)")
-	field(CALC, "A==B?1:0")
+	field(CC, "$(INLM)")
+	field(CALC, "A==B?2+B:(CC=='LO'?B:A)")
 	field(OUT, "$(P)$(SYSID):$(OE):stack$(M)_RBV PP")
 }
 
-record(bi, "$(P)$(SYSID):$(OE):stack$(M)_RBV"){
-	field(DESC, "$(NUMLENS), $(RADIUS), $(LOC), $(MAT), $(THICKERR)")
-	field(ZNAM, "Out")
-	field(ONAM, "In")
+record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_matchCalc") {
+	field(INPA, "$(P)$(SYSID):$(OE):stack$(M)")
+	field(INPB, "$(P)$(SYSID):$(OE):stack$(M)_RBV CP")
+	field(CALC, "A==B?1:0")
+	field(OUT, "$(P)$(SYSID):$(OE):stack$(M)_match PP")
+}
+
+record(bi, "$(P)$(SYSID):$(OE):stack$(M)_match"){
+	field(DESC, "Does control match RBV")
+	field(ZNAM, "Mismatch")
+	field(ONAM, "Match")
+}
+
+record(mbbi, "$(P)$(SYSID):$(OE):stack$(M)_RBV"){
+	field(DESC, "Position of stack")
+	field(ZRST, "Out")
+	field(ONST, "In")
+	field(TWST, "Both out")
+	field(THST, "Both in")
 }
 
 record(dfanout, "$(P)$(SYSID):$(OE):stack$(M)_RBV_dfanout"){

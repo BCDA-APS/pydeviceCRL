@@ -2,7 +2,7 @@ record(longin, "$(P)$(SYSID):$(OE):lenses") {
   field(DTYP, "pydev")
   field(INP,  "@pydev.iointr('new_lenses_$(OE)')")
   field(SCAN, "I/O Intr")
-  field(FLNK, "$(P)$(SYSID):$(OE):lens_decode.PROC CA")
+  field(FLNK, "$(P)$(SYSID):$(OE):lens_decode.PROC PP")
 }
 
 record(transform, "$(P)$(SYSID):$(OE):lens_decode"){
@@ -19,6 +19,7 @@ record(transform, "$(P)$(SYSID):$(OE):lens_decode"){
 	field(CLCK, "(A >> 9) % 2")
 #	field(CLCL, "(A >> 10) % 2")
 #	field(CLCM, "(A >> 11) % 2")
+	field(FLNK, "$(P)$(SYSID):$(OE):lensSetSeq.PROC PP")
 }
 
 record(ao, "$(P)$(SYSID):$(OE):interLensDelay"){

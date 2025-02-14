@@ -671,11 +671,58 @@
       </item>
      </layout>
     </widget>
+    <widget class="caRelatedDisplay" name="carelateddisplay_53">
+     <property name="geometry">
+      <rect>
+       <x>670</x>
+       <y>170</y>
+       <width>101</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="label">
+      <string notr="true">- Sim Motors</string>
+     </property>
+     <property name="foreground">
+      <color>
+       <red>228</red>
+       <green>228</green>
+       <blue>228</blue>
+      </color>
+     </property>
+     <property name="background">
+      <color>
+       <red>53</red>
+       <green>132</green>
+       <blue>0</blue>
+      </color>
+     </property>
+     <property name="labels">
+      <string>Alternate UI</string>
+     </property>
+     <property name="files">
+      <string>motor10x1.ui</string>
+     </property>
+     <property name="args">
+      <string>P=$(P),M1=m1,M2=m2,M3=m3,M4=m4,M5=m5,M6=m6,M7=m7,M8=m8,M9=m9,M10=m10</string>
+     </property>
+     <property name="stackingMode" stdset="0">
+      <enum>caRowColMenu::Menu</enum>
+     </property>
+     <property name="removeParent" stdset="0">
+      <string>false</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>caRelatedDisplay</class>
+   <extends>QWidget</extends>
+   <header>caRelatedDisplay</header>
+  </customwidget>
   <customwidget>
    <class>caTextEntry</class>
    <extends>caLineEdit</extends>
