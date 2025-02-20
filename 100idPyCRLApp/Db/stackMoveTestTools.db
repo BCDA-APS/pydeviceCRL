@@ -1,0 +1,13 @@
+record(sseq, "$(MOT):GotoNegLim"){
+#	field(DO1, "1")
+#	field(LNK1, "$(MOT).TWR")
+	field(DOL2, "$(MOT).LLM")
+	field(LNK2, "$(MOT).VAL PP")
+}
+
+record(sseq, "$(MOT):GotoPosLim"){
+#	field(DO1, "1")
+#	field(LNK1, "$(MOT).TWF")
+	field(DOL2, "$(MOT).HLM")
+	field(LNK2, "$(MOT).VAL PP")
+}

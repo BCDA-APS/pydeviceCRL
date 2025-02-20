@@ -8,14 +8,59 @@
 
 file "$(TOP)/db/pyDevCRL_stack.db" {
   pattern
-  {OE, M,		NUMLENS,	RADIUS,		MAT,	LOC,	DIM, 	THICKERR,	MOT,										INVAL,	OUTVAL,	INLM,	ENCODE,	MASK  }
-  {1, "01",   1, 			0.001,		"Be",	4.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack01_RBV PP",   	1,		0,		"LO",			"A", 	"A"	}	
-  {1, "02",   1, 			0.0005,		"Be",	3.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack02_RBV PP",   	1,		0,		"LO",			"B", 	"B"	}	
-  {1, "03",   1, 			0.0002,		"Be",	2.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack03_RBV PP",   	1,		0,		"LO",			"C", 	"C"	}	
-  {1, "04",   2, 			0.0002,		"Be",	1.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack04_RBV PP",   	1,		0,		"LO",			"D", 	"D"	}	
-  {1, "05",   4, 			0.0002,		"Be",	0.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack05_RBV PP",   	1,		0,		"LO",			"E", 	"E"	}	
-  {1, "06",   8, 			0.0002,		"Be",	-0.5,	"2D",		1e-6,		"100idPyCRL:CRL4ID:1:stack06_RBV PP",   	1,		0,		"LO",			"F", 	"F"	}	
-  {1, "07",   8, 			0.0001,		"Be",	-1.5,	"2D",		1.4e-6,		"100idPyCRL:CRL4ID:1:stack07_RBV PP",   	1,		0,		"LO",			"G", 	"G"	}	
-  {1, "08",   16, 			0.0001,		"Be",	-2.5	"2D",		2.0e-6,		"100idPyCRL:CRL4ID:1:stack08_RBV PP",   	1,		0,		"LO",			"H", 	"H"	}	
+  {OE, M,		NUMLENS,	RADIUS,		MAT,	LOC,	DIM, 	THICKERR,	INVAL,	OUTVAL,	ENCODE,	MASK  }
+  {1, "01",   1, 			0.001,		"Be",	4.5,	"2D",		1e-6,		1,		0,	"A", 	"A"	}	
+  {1, "02",   1, 			0.0005,		"Be",	3.5,	"2D",		1e-6,		1,		0,	"B", 	"B"	}	
+  {1, "03",   1, 			0.0002,		"Be",	2.5,	"2D",		1e-6,		1,		0,	"C", 	"C"	}	
+  {1, "04",   2, 			0.0002,		"Be",	1.5,	"2D",		1e-6,		1,		0,	"D", 	"D"	}	
+  {1, "05",   4, 			0.0002,		"Be",	0.5,	"2D",		1e-6,		1,		0,	"E", 	"E"	}	
+  {1, "06",   8, 			0.0002,		"Be",	-0.5,	"2D",		1e-6,		1,		0,	"F", 	"F"	}	
+  {1, "07",   8, 			0.0001,		"Be",	-1.5,	"2D",		1.4e-6,		1,		0,	"G", 	"G"	}	
+  {1, "08",   16, 			0.0001,		"Be",	-2.5	"2D",		2.0e-6,		1,		0,	"H", 	"H"	}	
 }
-  
+
+
+# For ACS controlled motors, can on-the-fly reset homing method to either limit 
+#file "$(TOP)/db/pyDevCRL_stack_move.db" {
+#  pattern
+#  {OE, M,	MOT,				INMOVE, 				OUTMOVE, 				INLM,	}
+#  {1, "01", "100idPyCRL:m1",   	"100idPyCRL:m1.HOMR",	"100idPyCRL:m1.HOMF",	"LO",	}	
+#  {1, "02", "100idPyCRL:m2",   	"100idPyCRL:m2.HOMR",	"100idPyCRL:m2.HOMF",	"LO",	}	
+#  {1, "03", "100idPyCRL:m3",   	"100idPyCRL:m3.HOMR",	"100idPyCRL:m3.HOMF",	"LO",	}	
+#  {1, "04", "100idPyCRL:m4",   	"100idPyCRL:m4.HOMR",	"100idPyCRL:m4.HOMF",	"LO",	}	
+#  {1, "05", "100idPyCRL:m5",   	"100idPyCRL:m5.HOMR",	"100idPyCRL:m5.HOMF",	"LO",	}	
+#  {1, "06", "100idPyCRL:m6",   	"100idPyCRL:m6.HOMR",	"100idPyCRL:m6.HOMF",	"LO",	}	
+#  {1, "07", "100idPyCRL:m7",   	"100idPyCRL:m7.HOMR",	"100idPyCRL:m7.HOMF",	"LO",	}	
+#  {1, "08", "100idPyCRL:m8",   	"100idPyCRL:m8.HOMR",	"100idPyCRL:m8.HOMF",	"LO",	}	
+#}  
+
+
+# For simulated motors, need to be able to move from limit to limit
+file "$(TOP)/db/stackMoveTestTools.db" {
+  pattern
+  {MOT			  }
+  {"100idPyCRL:m1"}	
+  {"100idPyCRL:m2"}	
+  {"100idPyCRL:m3"}	
+  {"100idPyCRL:m4"}	
+  {"100idPyCRL:m5"}	
+  {"100idPyCRL:m6"}	
+  {"100idPyCRL:m7"}	
+  {"100idPyCRL:m8"}	
+}
+
+# For simulated motors, need to use Goto(Neg/Pos)Lim for INMOVE, OUTMOVE as simulated 
+# motor homing only stops when at home position -- can't alter after boot up 
+file "$(TOP)/db/pyDevCRL_stack_move.db" {
+  pattern
+  {OE, M,	MOT,				INMOVE, 								OUTMOVE, 									INLM,	}
+  {1, "01", "100idPyCRL:m1",   	"100idPyCRL:m1:GotoNegLim.PROC CA",		"100idPyCRL:m1:GotoPosLim.PROC CA",			"LO",	}	
+  {1, "02", "100idPyCRL:m2",   	"100idPyCRL:m2:GotoNegLim.PROC CA",		"100idPyCRL:m2:GotoPosLim.PROC CA",			"LO",	}	
+  {1, "03", "100idPyCRL:m3",   	"100idPyCRL:m3:GotoNegLim.PROC CA",		"100idPyCRL:m3:GotoPosLim.PROC CA",			"LO",	}	
+  {1, "04", "100idPyCRL:m4",   	"100idPyCRL:m4:GotoNegLim.PROC CA",		"100idPyCRL:m4:GotoPosLim.PROC CA",			"LO",	}	
+  {1, "05", "100idPyCRL:m5",   	"100idPyCRL:m5:GotoNegLim.PROC CA",		"100idPyCRL:m5:GotoPosLim.PROC CA",			"LO",	}	
+  {1, "06", "100idPyCRL:m6",   	"100idPyCRL:m6:GotoNegLim.PROC CA",		"100idPyCRL:m6:GotoPosLim.PROC CA",			"LO",	}	
+  {1, "07", "100idPyCRL:m7",   	"100idPyCRL:m7:GotoNegLim.PROC CA",		"100idPyCRL:m7:GotoPosLim.PROC CA",			"LO",	}	
+  {1, "08", "100idPyCRL:m8",   	"100idPyCRL:m8:GotoNegLim.PROC CA",		"100idPyCRL:m8:GotoPosLim.PROC CA",			"LO",	}	
+}  
+

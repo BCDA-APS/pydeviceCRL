@@ -1,0 +1,41 @@
+record(sseq, "$(P)$(SYSID):$(OE):stack$(M)_move"){
+	field(SELM, "Mask")
+	field(DO1, "2")
+	field(LNK1, "$(MOT):homingMethod PP")
+	field(DO2, "1")
+	field(LNK2, "$(MOT).CNEN PP")
+	field(DO3, "1")
+	field(LNK3, "$(OUTMOVE)") 
+	field(WAIT3, "Wait")
+	field(DO4, "1")
+	field(LNK4, "$(INMOVE)") 
+	field(WAIT4, "Wait")
+	field(DO5, "0")
+	field(LNK5, "$(MOT).CNEN PP")
+	field(FLNK, "$(P)$(SYSID):$(OE):stack$(M)_RBV_calc.PROC CA")
+}
+
+record(scalcout, "$(P)$(SYSID):$(OE):stack$(M)_RBV_calc"){
+	field(INPA, "$(MOT).HLS CP")
+	field(INPB, "$(MOT).LLS CP")
+	field(CC, "$(INLM)")
+	field(CALC, "A==B?INT(2+B):(CC=='LO'?INT(B):INT(A))")
+#	field(OUT, "$(P)$(SYSID):$(OE):stack$(M)_RBV PP")
+#	field(FLNK, "$(P)$(SYSID):$(OE):stack$(M)_matchCalc.PROC CA")
+}
+
+record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_matchCalc") {
+	field(INPA, "$(P)$(SYSID):$(OE):stack$(M)")
+	field(INPB, "$(P)$(SYSID):$(OE):stack$(M)_RBV")
+	field(INPC, "$(MOT).DMOV CP")
+	field(CALC, "C==1?(A==B?1:0):1")
+	field(OUT, "$(P)$(SYSID):$(OE):stack$(M)_match PP")
+#	field(SDIS, "$(MOT).DMOV")
+#	field(DISV, "0")
+}
+
+record(bi, "$(P)$(SYSID):$(OE):stack$(M)_match"){
+	field(DESC, "Does control match RBV")
+	field(ZNAM, "Mismatch")
+	field(ONAM, "Match")
+}

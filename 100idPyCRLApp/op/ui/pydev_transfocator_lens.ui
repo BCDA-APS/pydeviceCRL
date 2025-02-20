@@ -216,7 +216,7 @@ border-radius: 2px;
     <property name="geometry">
      <rect>
       <x>11</x>
-      <y>26</y>
+      <y>27</y>
       <width>20</width>
       <height>20</height>
      </rect>
@@ -294,7 +294,7 @@ border-radius: 2px;
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>2</y>
       <width>40</width>
       <height>28</height>
      </rect>
@@ -381,11 +381,106 @@ border-radius: 2px;
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
+   <widget class="caGraphics" name="caRectangle_2">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>48</y>
+      <width>12</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="foreground">
+     <color>
+      <red>0</red>
+      <green>216</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="linestyle" stdset="0">
+     <enum>caGraphics::Solid</enum>
+    </property>
+    <property name="fillstyle" stdset="0">
+     <enum>caGraphics::Outline</enum>
+    </property>
+    <property name="lineSize">
+     <number>2</number>
+    </property>
+    <property name="lineColor">
+     <color>
+      <red>255</red>
+      <green>255</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="visibility">
+     <enum>caGraphics::Calc</enum>
+    </property>
+    <property name="visibilityCalc">
+     <string notr="true">A&gt;1</string>
+    </property>
+    <property name="channel" stdset="0">
+     <string notr="true">$(P)$(CRL):stack$(M)_RBV</string>
+    </property>
+    <property name="form">
+     <enum>caGraphics::Rectangle</enum>
+    </property>
+   </widget>
+   <widget class="caGraphics" name="caRectangle_3">
+    <property name="geometry">
+     <rect>
+      <x>1</x>
+      <y>1</y>
+      <width>41</width>
+      <height>86</height>
+     </rect>
+    </property>
+    <property name="foreground">
+     <color>
+      <red>0</red>
+      <green>216</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="linestyle" stdset="0">
+     <enum>caGraphics::Solid</enum>
+    </property>
+    <property name="fillstyle" stdset="0">
+     <enum>caGraphics::Outline</enum>
+    </property>
+    <property name="lineSize">
+     <number>2</number>
+    </property>
+    <property name="lineColor">
+     <color>
+      <red>255</red>
+      <green>0</green>
+      <blue>0</blue>
+     </color>
+    </property>
+    <property name="visibility">
+     <enum>caGraphics::IfZero</enum>
+    </property>
+    <property name="visibilityCalc">
+     <string notr="true"/>
+    </property>
+    <property name="channel" stdset="0">
+     <string notr="true">$(P)$(CRL):stack$(M)_match</string>
+    </property>
+    <property name="channelB">
+     <string notr="true"/>
+    </property>
+    <property name="form">
+     <enum>caGraphics::Rectangle</enum>
+    </property>
+   </widget>
    <zorder>caLabel_0</zorder>
    <zorder>caRectangle_0</zorder>
    <zorder>caRectangle_1</zorder>
    <zorder>caChoice_0</zorder>
    <zorder>line</zorder>
+   <zorder>caRectangle_2</zorder>
+   <zorder>caRectangle_3</zorder>
   </widget>
  </widget>
  <customwidgets>

@@ -9,51 +9,13 @@ record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_calc"){
 	field(INPA, "$(P)$(SYSID):$(OE):stack$(M) CP")
 	field(B, "$(INVAL)")
 	field(C, "$(OUTVAL)")
-	field(CALC, "A?27:23")
+	field(CALC, "A==B?27:23")
 	field(OUT, "$(P)$(SYSID):$(OE):stack$(M)_move.SELN")
 	field(FLNK, "$(P)$(SYSID):$(OE):stack$(M)_move.PROC CA")
 }
 
-record(sseq, "$(P)$(SYSID):$(OE):stack$(M)_move"){
-	field(SELM, "Mask")
-	field(DO1, "2")
-	field(LNK1, "$(MOT):homingMethod PP")
-	field(DO2, "1")
-	field(LNK2, "$(MOT).CNEN PP")
-	field(DO3, "1")
-	field(LNK3, "$(MOT).HOMR")
-	field(WAIT3, "Wait")
-	field(DO4, "1")
-	field(LNK4, "$(MOT).HOMF")
-	field(WAIT4, "Wait")
-	field(DO5, "0")
-	field(LNK5, "$(MOT).CNEN PP")
-	field(FLNK, "$(P)$(SYSID):$(OE):stack$(M)_RBV_calc.PROC CA")
-}
-
-#TODO sort logic of using subs file to pass all required info
-record(scalcout, "$(P)$(SYSID):$(OE):stack$(M)_RBV_calc"){
-	field(INPA, "$(MOT).HLS CP")
-	field(INPB, "$(MOT).LLS CP")
-	field(CC, "$(INLM)")
-	field(CALC, "A==B?2+B:(CC=='LO'?B:A)")
-	field(OUT, "$(P)$(SYSID):$(OE):stack$(M)_RBV PP")
-}
-
-record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_matchCalc") {
-	field(INPA, "$(P)$(SYSID):$(OE):stack$(M)")
-	field(INPB, "$(P)$(SYSID):$(OE):stack$(M)_RBV CP")
-	field(CALC, "A==B?1:0")
-	field(OUT, "$(P)$(SYSID):$(OE):stack$(M)_match PP")
-}
-
-record(bi, "$(P)$(SYSID):$(OE):stack$(M)_match"){
-	field(DESC, "Does control match RBV")
-	field(ZNAM, "Mismatch")
-	field(ONAM, "Match")
-}
-
 record(mbbi, "$(P)$(SYSID):$(OE):stack$(M)_RBV"){
+	field(INP, "$(P)$(SYSID):$(OE):stack$(M)_RBV_calc.VAL CP")
 	field(DESC, "Position of stack")
 	field(ZRST, "Out")
 	field(ONST, "In")

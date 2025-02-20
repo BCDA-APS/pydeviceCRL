@@ -1,0 +1,2 @@
+file sseqRecord_settings.req P=$(P)$(SYSID):$(OE):,S=stack$(M)_move
+file scalcout_settings.req P=$(P)$(SYSID):$(OE):stack$(M)_RBV_calc
