@@ -113,7 +113,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,4,4,4,4,4,8,2,8,2">
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,3,3,3,3,3,10,10,4,4">
        <item>
         <widget class="QLabel" name="label_6">
          <property name="text">
@@ -127,7 +127,7 @@
        <item>
         <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>Number of Lenses</string>
+          <string># of Lenses</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -175,19 +175,9 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>HW control PV</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QLabel" name="label_10">
          <property name="text">
-          <string>Control IN value</string>
+          <string>In Move PV</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -197,7 +187,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>HW readback PV</string>
+          <string>Out Move PV</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -207,7 +197,17 @@
        <item>
         <widget class="QLabel" name="label_9">
          <property name="text">
-          <string>Readback IN value</string>
+          <string>In Limit</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Tools</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>

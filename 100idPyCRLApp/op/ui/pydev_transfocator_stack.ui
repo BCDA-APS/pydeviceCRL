@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1443</width>
-    <height>48</height>
+    <height>34</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <number>1</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_15" stretch="1,4,4,4,4,4,8,2,8,2">
+    <layout class="QHBoxLayout" name="horizontalLayout_15" stretch="1,3,3,3,3,3,10,10,4,4">
      <item>
       <widget class="caLabel" name="calabel_32">
        <property name="text">
@@ -308,59 +308,6 @@
       </widget>
      </item>
      <item>
-      <widget class="caLineEdit" name="caLineEdit_23">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="channel" stdset="0">
-        <string notr="true">$(P)$(CRL):stack$(M)_calc.OUT</string>
-       </property>
-       <property name="foreground">
-        <color>
-         <red>10</red>
-         <green>0</green>
-         <blue>184</blue>
-        </color>
-       </property>
-       <property name="background">
-        <color>
-         <red>200</red>
-         <green>200</green>
-         <blue>200</blue>
-        </color>
-       </property>
-       <property name="colorMode">
-        <enum>caLineEdit::Static</enum>
-       </property>
-       <property name="precision">
-        <number>6</number>
-       </property>
-       <property name="precisionMode">
-        <enum>caLineEdit::Channel</enum>
-       </property>
-       <property name="fontScaleMode" stdset="0">
-        <enum>caLineEdit::None</enum>
-       </property>
-       <property name="formatType">
-        <enum>caLineEdit::decimal</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="caLineEdit" name="caLineEdit_24">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -380,7 +327,7 @@
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="channel" stdset="0">
-        <string notr="true">$(P)$(CRL):stack$(M)_calc.B</string>
+        <string notr="true">$(P)$(CRL):stack$(M)_move.LNK4</string>
        </property>
        <property name="foreground">
         <color>
@@ -433,7 +380,7 @@
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="channel" stdset="0">
-        <string notr="true">$(P)$(CRL):stack$(M)_RBV_calc.INPA</string>
+        <string notr="true">$(P)$(CRL):stack$(M)_move.LNK3</string>
        </property>
        <property name="foreground">
         <color>
@@ -486,7 +433,7 @@
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="channel" stdset="0">
-        <string notr="true">$(P)$(CRL):stack$(M)_RBV_calc.B</string>
+        <string notr="true">$(P)$(CRL):stack$(M)_RBV_calc.CC</string>
        </property>
        <property name="foreground">
         <color>
@@ -519,11 +466,52 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="caRelatedDisplay" name="carelateddisplay">
+       <property name="label">
+        <string notr="true">-$(M)</string>
+       </property>
+       <property name="foreground">
+        <color>
+         <red>228</red>
+         <green>228</green>
+         <blue>228</blue>
+        </color>
+       </property>
+       <property name="background">
+        <color>
+         <red>53</red>
+         <green>132</green>
+         <blue>0</blue>
+        </color>
+       </property>
+       <property name="labels">
+        <string>Move Calc;Move Sequence;RBV Calc;Match Calc</string>
+       </property>
+       <property name="files">
+        <string>yyCalcoutRecord_full.ui;yySseq_full.ui;yysCalcoutRecord_full.ui;yyCalcoutRecord_full.ui</string>
+       </property>
+       <property name="args">
+        <string>P=$(P)$(CRL):,C=stack$(M)_calc;P=$(P)$(CRL):,S=stack$(M)_move;P=$(P)$(CRL):,C=stack$(M)_RBV_calc;P=$(P)$(CRL):,C=stack$(M)_matchCalc</string>
+       </property>
+       <property name="stackingMode" stdset="0">
+        <enum>caRowColMenu::Menu</enum>
+       </property>
+       <property name="removeParent" stdset="0">
+        <string>false</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>caRelatedDisplay</class>
+   <extends>QWidget</extends>
+   <header>caRelatedDisplay</header>
+  </customwidget>
   <customwidget>
    <class>caLabel</class>
    <extends>QLabel</extends>
