@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>889</width>
-    <height>326</height>
+    <width>796</width>
+    <height>410</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -122,7 +122,7 @@
       <x>0</x>
       <y>40</y>
       <width>871</width>
-      <height>301</height>
+      <height>351</height>
      </rect>
     </property>
     <widget class="QWidget" name="gridLayoutWidget_2">
@@ -131,43 +131,14 @@
        <x>120</x>
        <y>10</y>
        <width>531</width>
-       <height>221</height>
+       <height>274</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,1,1,1,1,1" columnstretch="2,1,1">
+     <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,1,1,1,1,1,0,0,0" columnstretch="2,1,1">
       <property name="margin">
        <number>5</number>
       </property>
-      <item row="1" column="1">
-       <widget class="caTextEntry" name="catextentry_20">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="channel" stdset="0">
-         <string notr="true">$(P)$(SLIT1V).VAL</string>
-        </property>
-        <property name="background">
-         <color>
-          <red>115</red>
-          <green>223</green>
-          <blue>255</blue>
-         </color>
-        </property>
-        <property name="colorMode">
-         <enum>caLineEdit::Static</enum>
-        </property>
-        <property name="precision">
-         <number>3</number>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="2">
+      <item row="8" column="2">
        <widget class="caLineEdit" name="caLineEdit_31">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -214,21 +185,37 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="caLabel" name="calabel_27">
-        <property name="text">
-         <string>Slit #2 Hor Size (m)</string>
+      <item row="2" column="1">
+       <widget class="caTextEntry" name="catextentry_22">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
-        <property name="fontScaleMode">
-         <enum>ESimpleLabel::WidthAndHeight</enum>
+        <property name="channel" stdset="0">
+         <string notr="true">$(P)$(SLIT2H).VAL</string>
+        </property>
+        <property name="background">
+         <color>
+          <red>115</red>
+          <green>223</green>
+          <blue>255</blue>
+         </color>
+        </property>
+        <property name="colorMode">
+         <enum>caLineEdit::Static</enum>
+        </property>
+        <property name="precision">
+         <number>3</number>
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
-       <widget class="caLineEdit" name="caLineEdit_33">
+      <item row="2" column="2">
+       <widget class="caLineEdit" name="caLineEdit_34">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -247,7 +234,7 @@
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="channel" stdset="0">
-         <string notr="true">$(P)$(SLIT1H).VAL</string>
+         <string notr="true">$(P)$(SLIT2H).VAL</string>
         </property>
         <property name="foreground">
          <color>
@@ -278,6 +265,370 @@
        <widget class="caLabel" name="calabel_26">
         <property name="text">
          <string>Slit #1 Hor Size (m)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="fontScaleMode">
+         <enum>ESimpleLabel::WidthAndHeight</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
+       <widget class="caLineEdit" name="caLineEdit_37">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="channel" stdset="0">
+         <string notr="true">$(P)$(SAMPOS).VAL</string>
+        </property>
+        <property name="foreground">
+         <color>
+          <red>10</red>
+          <green>0</green>
+          <blue>184</blue>
+         </color>
+        </property>
+        <property name="background">
+         <color>
+          <red>200</red>
+          <green>200</green>
+          <blue>200</blue>
+         </color>
+        </property>
+        <property name="colorMode">
+         <enum>caLineEdit::Static</enum>
+        </property>
+        <property name="precision">
+         <number>3</number>
+        </property>
+        <property name="fontScaleMode" stdset="0">
+         <enum>caLineEdit::None</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="caTextEntry" name="catextentry_19">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="channel" stdset="0">
+         <string notr="true">$(P)$(IDENERGY).VAL</string>
+        </property>
+        <property name="background">
+         <color>
+          <red>115</red>
+          <green>223</green>
+          <blue>255</blue>
+         </color>
+        </property>
+        <property name="colorMode">
+         <enum>caLineEdit::Static</enum>
+        </property>
+        <property name="precision">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="caTextEntry" name="catextentry_23">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="channel" stdset="0">
+         <string notr="true">$(P)$(SLIT2V).VAL</string>
+        </property>
+        <property name="background">
+         <color>
+          <red>115</red>
+          <green>223</green>
+          <blue>255</blue>
+         </color>
+        </property>
+        <property name="colorMode">
+         <enum>caLineEdit::Static</enum>
+        </property>
+        <property name="precision">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="caLabel" name="calabel_25">
+        <property name="text">
+         <string>Slit #1 Vert Size (m)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="fontScaleMode">
+         <enum>ESimpleLabel::WidthAndHeight</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="caTextEntry" name="catextentry_21">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="channel" stdset="0">
+         <string notr="true">$(P)$(SLIT1H).VAL</string>
+        </property>
+        <property name="background">
+         <color>
+          <red>115</red>
+          <green>223</green>
+          <blue>255</blue>
+         </color>
+        </property>
+        <property name="colorMode">
+         <enum>caLineEdit::Static</enum>
+        </property>
+        <property name="precision">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="caTextEntry" name="catextentry_18">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="channel" stdset="0">
+         <string notr="true">$(P)$(MONOE).VAL</string>
+        </property>
+        <property name="background">
+         <color>
+          <red>115</red>
+          <green>223</green>
+          <blue>255</blue>
+         </color>
+        </property>
+        <property name="colorMode">
+         <enum>caLineEdit::Static</enum>
+        </property>
+        <property name="precision">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="caLabel" name="calabel_23">
+        <property name="text">
+         <string>Beam Energy (keV)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="fontScaleMode">
+         <enum>ESimpleLabel::WidthAndHeight</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="caTextEntry" name="catextentry_20">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="channel" stdset="0">
+         <string notr="true">$(P)$(SLIT1V).VAL</string>
+        </property>
+        <property name="background">
+         <color>
+          <red>115</red>
+          <green>223</green>
+          <blue>255</blue>
+         </color>
+        </property>
+        <property name="colorMode">
+         <enum>caLineEdit::Static</enum>
+        </property>
+        <property name="precision">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="caLineEdit" name="caLineEdit_36">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="channel" stdset="0">
+         <string notr="true">$(P)$(OEPOS1).VAL</string>
+        </property>
+        <property name="foreground">
+         <color>
+          <red>10</red>
+          <green>0</green>
+          <blue>184</blue>
+         </color>
+        </property>
+        <property name="background">
+         <color>
+          <red>200</red>
+          <green>200</green>
+          <blue>200</blue>
+         </color>
+        </property>
+        <property name="colorMode">
+         <enum>caLineEdit::Static</enum>
+        </property>
+        <property name="precision">
+         <number>3</number>
+        </property>
+        <property name="fontScaleMode" stdset="0">
+         <enum>caLineEdit::None</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="caLineEdit" name="caLineEdit_35">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="channel" stdset="0">
+         <string notr="true">$(P)$(SLIT2V).VAL</string>
+        </property>
+        <property name="foreground">
+         <color>
+          <red>10</red>
+          <green>0</green>
+          <blue>184</blue>
+         </color>
+        </property>
+        <property name="background">
+         <color>
+          <red>200</red>
+          <green>200</green>
+          <blue>200</blue>
+         </color>
+        </property>
+        <property name="colorMode">
+         <enum>caLineEdit::Static</enum>
+        </property>
+        <property name="precision">
+         <number>3</number>
+        </property>
+        <property name="fontScaleMode" stdset="0">
+         <enum>caLineEdit::None</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="caLabel" name="calabel_30">
+        <property name="text">
+         <string>CRL 1 z-offset (m)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="fontScaleMode">
+         <enum>ESimpleLabel::WidthAndHeight</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="caLabel" name="calabel_22">
+        <property name="text">
+         <string>Mono Energy (keV)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="fontScaleMode">
+         <enum>ESimpleLabel::WidthAndHeight</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="caLabel" name="calabel_28">
+        <property name="text">
+         <string>Slit #2 Vert Size (m)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="fontScaleMode">
+         <enum>ESimpleLabel::WidthAndHeight</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="caLabel" name="calabel_29">
+        <property name="text">
+         <string>Sample position offset (m)</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -334,7 +685,125 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="2">
+      <item row="2" column="0">
+       <widget class="caLabel" name="calabel_27">
+        <property name="text">
+         <string>Slit #2 Hor Size (m)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="fontScaleMode">
+         <enum>ESimpleLabel::WidthAndHeight</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="caTextEntry" name="catextentry_25">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="channel" stdset="0">
+         <string notr="true">$(P)$(SAMPOS).VAL</string>
+        </property>
+        <property name="background">
+         <color>
+          <red>115</red>
+          <green>223</green>
+          <blue>255</blue>
+         </color>
+        </property>
+        <property name="colorMode">
+         <enum>caLineEdit::Static</enum>
+        </property>
+        <property name="precision">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="caLineEdit" name="caLineEdit_33">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="channel" stdset="0">
+         <string notr="true">$(P)$(SLIT1H).VAL</string>
+        </property>
+        <property name="foreground">
+         <color>
+          <red>10</red>
+          <green>0</green>
+          <blue>184</blue>
+         </color>
+        </property>
+        <property name="background">
+         <color>
+          <red>200</red>
+          <green>200</green>
+          <blue>200</blue>
+         </color>
+        </property>
+        <property name="colorMode">
+         <enum>caLineEdit::Static</enum>
+        </property>
+        <property name="precision">
+         <number>3</number>
+        </property>
+        <property name="fontScaleMode" stdset="0">
+         <enum>caLineEdit::None</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="caTextEntry" name="catextentry_24">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="channel" stdset="0">
+         <string notr="true">$(P)$(OEPOS1).VAL</string>
+        </property>
+        <property name="background">
+         <color>
+          <red>115</red>
+          <green>223</green>
+          <blue>255</blue>
+         </color>
+        </property>
+        <property name="colorMode">
+         <enum>caLineEdit::Static</enum>
+        </property>
+        <property name="precision">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
        <widget class="caLineEdit" name="caLineEdit_30">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -381,110 +850,10 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
-       <widget class="caTextEntry" name="catextentry_19">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="channel" stdset="0">
-         <string notr="true">$(P)$(IDENERGY).VAL</string>
-        </property>
-        <property name="background">
-         <color>
-          <red>115</red>
-          <green>223</green>
-          <blue>255</blue>
-         </color>
-        </property>
-        <property name="colorMode">
-         <enum>caLineEdit::Static</enum>
-        </property>
-        <property name="precision">
-         <number>3</number>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="caTextEntry" name="catextentry_18">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="channel" stdset="0">
-         <string notr="true">$(P)$(MONOE).VAL</string>
-        </property>
-        <property name="background">
-         <color>
-          <red>115</red>
-          <green>223</green>
-          <blue>255</blue>
-         </color>
-        </property>
-        <property name="colorMode">
-         <enum>caLineEdit::Static</enum>
-        </property>
-        <property name="precision">
-         <number>3</number>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="caLabel" name="calabel_25">
-        <property name="text">
-         <string>Slit #1 Vert Size (m)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="fontScaleMode">
-         <enum>ESimpleLabel::WidthAndHeight</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="caTextEntry" name="catextentry_22">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="channel" stdset="0">
-         <string notr="true">$(P)$(SLIT2H).VAL</string>
-        </property>
-        <property name="background">
-         <color>
-          <red>115</red>
-          <green>223</green>
-          <blue>255</blue>
-         </color>
-        </property>
-        <property name="colorMode">
-         <enum>caLineEdit::Static</enum>
-        </property>
-        <property name="precision">
-         <number>3</number>
-        </property>
-       </widget>
-      </item>
       <item row="5" column="0">
-       <widget class="caLabel" name="calabel_23">
+       <widget class="caLabel" name="calabel_31">
         <property name="text">
-         <string>Beam Energy (keV)</string>
+         <string>CRL 2 z-offset (m)</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -494,8 +863,8 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="caTextEntry" name="catextentry_21">
+      <item row="5" column="1">
+       <widget class="caTextEntry" name="catextentry_26">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -506,7 +875,7 @@
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="channel" stdset="0">
-         <string notr="true">$(P)$(SLIT1H).VAL</string>
+         <string notr="true">$(P)$(OEPOS2).VAL</string>
         </property>
         <property name="background">
          <color>
@@ -523,21 +892,8 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
-       <widget class="caLabel" name="calabel_22">
-        <property name="text">
-         <string>Mono Energy (keV)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="fontScaleMode">
-         <enum>ESimpleLabel::WidthAndHeight</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="caLineEdit" name="caLineEdit_34">
+      <item row="5" column="2">
+       <widget class="caLineEdit" name="caLineEdit_38">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -556,96 +912,7 @@
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="channel" stdset="0">
-         <string notr="true">$(P)$(SLIT2H).VAL</string>
-        </property>
-        <property name="foreground">
-         <color>
-          <red>10</red>
-          <green>0</green>
-          <blue>184</blue>
-         </color>
-        </property>
-        <property name="background">
-         <color>
-          <red>200</red>
-          <green>200</green>
-          <blue>200</blue>
-         </color>
-        </property>
-        <property name="colorMode">
-         <enum>caLineEdit::Static</enum>
-        </property>
-        <property name="precision">
-         <number>3</number>
-        </property>
-        <property name="fontScaleMode" stdset="0">
-         <enum>caLineEdit::None</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="caLabel" name="calabel_28">
-        <property name="text">
-         <string>Slit #2 Vert Size (m)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="fontScaleMode">
-         <enum>ESimpleLabel::WidthAndHeight</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="caTextEntry" name="catextentry_23">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="channel" stdset="0">
-         <string notr="true">$(P)$(SLIT2V).VAL</string>
-        </property>
-        <property name="background">
-         <color>
-          <red>115</red>
-          <green>223</green>
-          <blue>255</blue>
-         </color>
-        </property>
-        <property name="colorMode">
-         <enum>caLineEdit::Static</enum>
-        </property>
-        <property name="precision">
-         <number>3</number>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="caLineEdit" name="caLineEdit_35">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>13</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="channel" stdset="0">
-         <string notr="true">$(P)$(SLIT2V).VAL</string>
+         <string notr="true">$(P)$(OEPOS2).VAL</string>
         </property>
         <property name="foreground">
          <color>
@@ -674,11 +941,58 @@
       </item>
      </layout>
     </widget>
+    <widget class="caRelatedDisplay" name="carelateddisplay_53">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>310</y>
+       <width>101</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="label">
+      <string notr="true">- Sim Motors</string>
+     </property>
+     <property name="foreground">
+      <color>
+       <red>228</red>
+       <green>228</green>
+       <blue>228</blue>
+      </color>
+     </property>
+     <property name="background">
+      <color>
+       <red>53</red>
+       <green>132</green>
+       <blue>0</blue>
+      </color>
+     </property>
+     <property name="labels">
+      <string>CRL1;CRL2</string>
+     </property>
+     <property name="files">
+      <string>motor10x1.ui;motor10x1.ui</string>
+     </property>
+     <property name="args">
+      <string>P=$(P),M1=m1,M2=m2,M3=m3,M4=m4,M5=m5,M6=m6,M7=m7,M8=m8,M9=m9,M10=m10;P=$(P),M1=m11,M2=m12,M3=m13,M4=m14,M5=m15,M6=m16,M7=m17,M8=m18,M9=m19,M10=m20</string>
+     </property>
+     <property name="stackingMode" stdset="0">
+      <enum>caRowColMenu::Menu</enum>
+     </property>
+     <property name="removeParent" stdset="0">
+      <string>false</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>caRelatedDisplay</class>
+   <extends>QWidget</extends>
+   <header>caRelatedDisplay</header>
+  </customwidget>
   <customwidget>
    <class>caTextEntry</class>
    <extends>caLineEdit</extends>

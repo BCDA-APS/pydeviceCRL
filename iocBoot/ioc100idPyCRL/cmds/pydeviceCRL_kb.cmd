@@ -58,7 +58,7 @@ dbLoadRecords("${TOP}/db/pyDevCRL_slits.db","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(P
 pydev("from pyCRL_system import focusingSystem")
 
 # Create Transfocator object
-pydev("$(PY_OBJECT) = focusingSystem(crl_setup = 'crl_setup_kb.toml')")
+pydev("$(PY_OBJECT) = focusingSystem(crl_setup = '$(TOML_FILE)')")
 
 # DB file for system controls
 dbLoadRecords("${TOP}/db/pyDevCRL_general.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), KEV=$(BLE), ELEM=$(_CONFIGS)")

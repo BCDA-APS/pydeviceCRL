@@ -24,13 +24,13 @@ epicsEnvSet('_SLIT1V',"$(PREFIX)testSSV1")	# Vertical size of slit PV before CRL
 #epicsEnvSet('_SLIT1H',"")	# Horizontal size of slit PV before CRL 1
 #epicsEnvSet('_SLIT1V',"")	# Vertical size of slit PV before CRL 1
 
-# Setting CRL Z-translation PVs
+# Setting CRL Z-translation PVs (if z-translation part of CRL system)
 epicsEnvSet('_OEPOS1',"$(PREFIX)testCRL1z")	# Z-motion of CRL 1 (testing)
 #epicsEnvSet('_OEPOS1',"")	# Z-motion of CRL 1
 
 # Setting Sample Z-translation PVs
-epicsEnvSet('_SAMPOS',"$(PREFIX)testSAMz")	# Z-motion of CRL 1 (testing)
-#epicsEnvSet('_SAMPOS',"")	# Z-motion of CRL 1
+epicsEnvSet('_SAMPOS',"$(PREFIX)testSAMz")	# Z-motion of sample (testing or unneeded)
+#epicsEnvSet('_SAMPOS',"")	# Z-motion of sample
 
 # Setting Mono energy PV
 epicsEnvSet("BLE","$(PREFIX)$(MONOE)")	# Beam energy PV at CRL (testing uses MONOE defined earlier)

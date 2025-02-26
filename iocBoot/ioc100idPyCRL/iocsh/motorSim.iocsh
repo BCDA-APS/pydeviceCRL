@@ -32,9 +32,9 @@
 #- ###################################################
 
 # Create simulated motors: ( start card , start axis , low limit, high limit, home posn, # cards, # axes to setup)
-motorSimCreate($(CONTROLLER=0), 0, $(LOW_LIM=-32000), $(HIGH_LIM=32000), $(HOME_POS=0), 1, $(NUM_AXES=12))
+motorSimCreate($(CONTROLLER=0), 0, $(LOW_LIM=-32000), $(HIGH_LIM=32000), $(HOME_POS=0), 1, $(NUM_AXES=20))
 
 # Setup the Asyn layer (portname, low-level driver drvet name, card, number of axes on card)
-drvAsynMotorConfigure("$(INSTANCE)$(CONTROLLER=0)", "$(INSTANCE)", $(CONTROLLER=0), $(NUM_AXES=12))
+drvAsynMotorConfigure("$(INSTANCE)$(CONTROLLER=0)", "$(INSTANCE)", $(CONTROLLER=0), $(NUM_AXES=20))
 
 dbLoadTemplate("$(SUB=$(MOTOR)/iocsh/EXAMPLE_motorSim.substitutions)", "P=$(PREFIX), DTYP='asynMotor', PORT=$(INSTANCE)$(CONTROLLER=0),DHLM=$(DHLM=320.0),DLLM=$(DLLM=-320.0)")

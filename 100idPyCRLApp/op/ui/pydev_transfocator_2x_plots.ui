@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>993</width>
-    <height>1058</height>
+    <width>805</width>
+    <height>1272</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="1,3,3,3,3">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="1,3,3,3,3,3">
      <property name="spacing">
       <number>0</number>
      </property>
@@ -25,7 +25,7 @@
      <item>
       <widget class="caFrame" name="caframe_8">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -85,7 +85,7 @@
           <property name="font">
            <font>
             <family>Verdana</family>
-            <pointsize>25</pointsize>
+            <pointsize>29</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -165,6 +165,29 @@
       </widget>
      </item>
      <item>
+      <widget class="caCartesianPlot" name="cacartesianplot_5">
+       <property name="TitleX">
+        <string notr="true">Config Index</string>
+       </property>
+       <property name="TitleY">
+        <string notr="true">Inv Focal length (1/m)</string>
+       </property>
+       <property name="channels_1" stdset="0">
+        <string>;$(P)$(CRL):2:invF</string>
+       </property>
+       <property name="color_1">
+        <color>
+         <red>0</red>
+         <green>0</green>
+         <blue>255</blue>
+        </color>
+       </property>
+       <property name="YAxisType" stdset="0">
+        <enum>caCartesianPlot::log10</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="caCartesianPlot" name="cacartesianplot_3">
        <property name="TitleX">
         <string notr="true">Config Index</string>
@@ -183,7 +206,7 @@
         </color>
        </property>
        <property name="YAxisType" stdset="0">
-        <enum>caCartesianPlot::log10</enum>
+        <enum>caCartesianPlot::linear</enum>
        </property>
       </widget>
      </item>
@@ -206,7 +229,7 @@
         </color>
        </property>
        <property name="YaxisScaling" stdset="0">
-        <enum>caCartesianPlot::User</enum>
+        <enum>caCartesianPlot::Auto</enum>
        </property>
        <property name="YaxisLimits">
         <string>-1;1</string>
