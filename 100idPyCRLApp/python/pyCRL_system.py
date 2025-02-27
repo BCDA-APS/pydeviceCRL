@@ -723,20 +723,25 @@ class focusingSystem():
         if self.verbose: print(f'Setting actual focal size')
         if not offTable:
             self.focalSize_actual = self.lookupTable[self.indexSorted['1']] 
+            self.q = self.q_list[self.indexSorted['1']]   
+            self.dq = self.dq_list[self.indexSorted['1']]   
         else:
-            self.focalSize_actual = calc_2xCRL_focus(self.index['1'], self.index['2'], 
-                                                     self.radii['1'], self.mat['1'], 
-                                                     self.radii['2'], self.mat['2'], 
-                                                     self.energy, self.wl,
-                                                     self.lens_count, self.lens_loc['1'],
-                                                     self.lens_loc['2'],
-                                                     self.beam, self.bl, self.crl, 
-                                                     self.slits,
-                                                     self.thickerr['1'], 
-                                                     self.thickerr['2'], 
-                                                     flag_HE = self.thickerr_flag,
-                                                     verbose = self.verbose)
-
+            fsize, q2, dq2 = calc_2xCRL_focus(self.index['1'], self.index['2'], 
+                                              self.radii['1'], self.mat['1'], 
+                                              self.radii['2'], self.mat['2'], 
+                                              self.energy, self.wl,
+                                              self.lens_count, self.lens_loc['1'],
+                                              self.lens_loc['2'],
+                                              self.beam, self.bl, self.crl, 
+                                              self.slits,
+                                              self.thickerr['1'], 
+                                              self.thickerr['2'], 
+                                              flag_HE = self.thickerr_flag,
+                                              verbose = self.verbose)
+            self.focalSize_actual = fsize
+            self.q = q2
+            self.dq = dq2
+         
         
     def updateLensConfigPV(self):
         '''
@@ -772,16 +777,13 @@ class focusingSystem():
         pydev.iointr('new_fSize', self.focalSize_actual)
  
     def updateQdistances(self):
-        #TODO does '1' need to be '2' or 'kb' for other systems?
-        q = self.q_list[self.indexSorted['1']]   
-        dq = self.dq_list[self.indexSorted['1']]   
     
         if self.verbose: 
-            print(f'New image distance for last CRL:  {q}')
-            print(f'New image distance to sample from last CRL:  {dq}')
+            print(f'New image distance for last CRL:  {self.q}')
+            print(f'New image distance to sample from last CRL:  {self.dq}')
 
-        pydev.iointr('new_q', q)
-        pydev.iointr('new_dq', dq)
+        pydev.iointr('new_q', self.q)
+        pydev.iointr('new_dq', self.dq)
 
 
 

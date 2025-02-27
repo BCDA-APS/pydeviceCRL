@@ -869,5 +869,5 @@ def calc_2xCRL_focus(index1, index2, L1_radii, L1_materials, L2_radii, L2_materi
     FWHM2V_atsample = (FWHM2V**2 + (aperL2V*dq2/q2)**2)**0.5
     FWHM_atsample   = (FWHM2H_atsample*FWHM2V_atsample)**0.5
 
-    return FWHM_atsample
+    return FWHM_atsample, q2, dq2
     
