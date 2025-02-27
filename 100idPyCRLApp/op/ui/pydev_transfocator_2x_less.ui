@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>484</width>
-    <height>676</height>
+    <height>605</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,6,0,3,0,3,6,1">
+    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,6,1,2,1,2,1">
      <item>
       <widget class="caFrame" name="caframe_8">
        <property name="sizePolicy">
@@ -79,7 +79,7 @@
           <property name="font">
            <font>
             <family>Verdana</family>
-            <pointsize>13</pointsize>
+            <pointsize>21</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -339,22 +339,6 @@
       </layout>
      </item>
      <item>
-      <widget class="caInclude" name="cainclude_2">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="macro">
-        <string>P=$(P),CRL=$(CRL)</string>
-       </property>
-       <property name="filename" stdset="0">
-        <string notr="true">pydev_transfocator_inset_slits_2x.ui</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,2,4,2,2">
        <item>
         <widget class="caRelatedDisplay" name="carelateddisplay_48">
@@ -379,7 +363,7 @@
           <string>Alternate UI</string>
          </property>
          <property name="files">
-          <string>pydev_transfocator_help.ui</string>
+          <string>pydev_transfocator_2x_help.ui</string>
          </property>
          <property name="args">
           <string/>

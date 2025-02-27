@@ -470,7 +470,7 @@
           <string>Alternate UI</string>
          </property>
          <property name="files">
-          <string>pydev_transfocator_help.ui</string>
+          <string>pydev_transfocator_1x_help.ui</string>
          </property>
          <property name="args">
           <string>P=$(P),F=$(F),N=$(N)</string>

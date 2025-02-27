@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QGridLayout" name="gridLayout" rowstretch="1,1,1,1,1,1,1,1,1,1,1,1,0" columnstretch="1,1,1">
+    <layout class="QGridLayout" name="gridLayout" rowstretch="1,1,1,1,1,1,1,1,1,1,1,1" columnstretch="1,1,1">
      <property name="margin">
       <number>1</number>
      </property>
@@ -216,7 +216,7 @@
      <item row="1" column="0">
       <widget class="caLabel" name="calabel_20">
        <property name="text">
-        <string>10-bit</string>
+        <string>Binary</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

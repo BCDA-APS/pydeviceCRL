@@ -306,7 +306,7 @@
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="4,0">
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,2">
          <property name="margin">
           <number>6</number>
          </property>

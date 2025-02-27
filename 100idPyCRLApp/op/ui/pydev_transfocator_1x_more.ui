@@ -148,10 +148,20 @@
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="4,1">
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,4">
          <property name="margin">
           <number>6</number>
          </property>
+         <item>
+          <widget class="caInclude" name="cainclude_4">
+           <property name="macro">
+            <string>P=$(P),CRL=$(CRL)</string>
+           </property>
+           <property name="filename" stdset="0">
+            <string notr="true">pydev_transfocator_inset_1x_slit_readbacks.ui</string>
+           </property>
+          </widget>
+         </item>
          <item>
           <layout class="QGridLayout" name="gridLayout" rowstretch="1,1,1,1,1,1,1,1,1,1,1,1,1,1" columnstretch="1,1" rowminimumheight="1,1,1,1,1,1,1,1,1,1,1,1,1,1">
            <property name="horizontalSpacing">
@@ -182,7 +192,7 @@
            <item row="1" column="0">
             <widget class="caLabel" name="calabel_20">
              <property name="text">
-              <string>10-bit</string>
+              <string>Binary</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -687,16 +697,6 @@
             </spacer>
            </item>
           </layout>
-         </item>
-         <item>
-          <widget class="caInclude" name="cainclude_4">
-           <property name="macro">
-            <string>P=$(P),CRL=$(CRL)</string>
-           </property>
-           <property name="filename" stdset="0">
-            <string notr="true">pydev_transfocator_inset_1x_slit_readbacks.ui</string>
-           </property>
-          </widget>
          </item>
         </layout>
        </item>
