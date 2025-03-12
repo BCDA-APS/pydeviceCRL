@@ -19,15 +19,15 @@ epicsEnvSet("MONOE","testMonoE") # for testing -- replace with real mono energy 
 epicsEnvSet("IDENERGY","testIDE") # for testing -- replace with real ID energy PV 
 
 # Setting slit PVs
-epicsEnvSet('_SLIT1H',"$(PREFIX)testSSH1")	# Horizontal size of slit PV before CRL 1 (testing)
-epicsEnvSet('_SLIT1V',"$(PREFIX)testSSV1")	# Vertical size of slit PV before CRL 1 (testing)
-#epicsEnvSet('_SLIT1H',"")	# Horizontal size of slit PV before CRL 1
-#epicsEnvSet('_SLIT1V',"")	# Vertical size of slit PV before CRL 1
+#epicsEnvSet('_SLIT1H',"$(PREFIX)testSSH1")	# Horizontal size of slit PV before CRL 1 (testing)
+#epicsEnvSet('_SLIT1V',"$(PREFIX)testSSV1")	# Vertical size of slit PV before CRL 1 (testing)
+epicsEnvSet('_SLIT1H',"4idbSoft:Slit1H:size")	# Horizontal size of slit PV before CRL 1
+epicsEnvSet('_SLIT1V',"4idbSoft:Slit1V:size")	# Vertical size of slit PV before CRL 1
 
 # Setting CRL Z-translation PVs (if z-translation part of CRL system)
-epicsEnvSet('_OEPOS1',"$(PREFIX)testCRL1z")	# Z-motion of CRL 1 (testing)
-#epicsEnvSet('_OEPOS1',"")	# Z-motion of CRL 1
-
+#epicsEnvSet('_OEPOS1',"$(PREFIX)testCRL1z")	# Z-motion of CRL 1 (testing)
+epicsEnvSet('_OEPOS1',"4idgSoft:m61")	# Z-motion of CRL 1
+=
 # Setting Sample Z-translation PVs
 epicsEnvSet('_SAMPOS',"$(PREFIX)testSAMz")	# Z-motion of sample (testing or unneeded)
 #epicsEnvSet('_SAMPOS',"")	# Z-motion of sample

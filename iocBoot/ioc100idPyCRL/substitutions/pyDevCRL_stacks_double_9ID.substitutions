@@ -33,27 +33,27 @@ file "$(TOP)/db/pyDevCRL_stack.db" {
 # For ACS controlled motors, can on-the-fly reset homing method to either limit 
 #file "$(TOP)/db/pyDevCRL_stack_move.db" {
 #  pattern
-#  {OE, M,	MOT,				INMOVE, 				OUTMOVE, 				INLM,	}
-#  {1, "01", "100idPyCRL:m1",   	"100idPyCRL:m1.HOMR",	"100idPyCRL:m1.HOMF",	"LO",	}	
-#  {1, "02", "100idPyCRL:m2",   	"100idPyCRL:m2.HOMR",	"100idPyCRL:m2.HOMF",	"LO",	}	
-#  {1, "03", "100idPyCRL:m3",   	"100idPyCRL:m3.HOMR",	"100idPyCRL:m3.HOMF",	"LO",	}	
-#  {1, "04", "100idPyCRL:m4",   	"100idPyCRL:m4.HOMR",	"100idPyCRL:m4.HOMF",	"LO",	}	
-#  {1, "05", "100idPyCRL:m5",   	"100idPyCRL:m5.HOMR",	"100idPyCRL:m5.HOMF",	"LO",	}	
-#  {1, "06", "100idPyCRL:m6",   	"100idPyCRL:m6.HOMR",	"100idPyCRL:m6.HOMF",	"LO",	}	
-#  {1, "07", "100idPyCRL:m7",   	"100idPyCRL:m7.HOMR",	"100idPyCRL:m7.HOMF",	"LO",	}	
-#  {1, "08", "100idPyCRL:m8",   	"100idPyCRL:m8.HOMR",	"100idPyCRL:m8.HOMF",	"LO",	}	
-#  {1, "09", "100idPyCRL:m9",   	"100idPyCRL:m9.HOMR",	"100idPyCRL:m9.HOMF",	"LO",	}	
-##  {1, "10", "100idPyCRL:m10",   	"100idPyCRL:m10.HOMR",	"100idPyCRL:m10.HOMF",	"LO",	}	
-#  {2, "01", "100idPyCRL:m11",   	"100idPyCRL:m11.HOMR",	"100idPyCRL:m11.HOMF",	"LO",	}	
-#  {2, "02", "100idPyCRL:m12",   	"100idPyCRL:m12.HOMR",	"100idPyCRL:m12.HOMF",	"LO",	}	
-#  {2, "03", "100idPyCRL:m13",   	"100idPyCRL:m13.HOMR",	"100idPyCRL:m13.HOMF",	"LO",	}	
-#  {2, "04", "100idPyCRL:m14",   	"100idPyCRL:m14.HOMR",	"100idPyCRL:m14.HOMF",	"LO",	}	
-#  {2, "05", "100idPyCRL:m15",   	"100idPyCRL:m15.HOMR",	"100idPyCRL:m15.HOMF",	"LO",	}	
-#  {2, "06", "100idPyCRL:m16",   	"100idPyCRL:m16.HOMR",	"100idPyCRL:m16.HOMF",	"LO",	}	
-#  {2, "07", "100idPyCRL:m17",   	"100idPyCRL:m17.HOMR",	"100idPyCRL:m17.HOMF",	"LO",	}	
-#  {2, "08", "100idPyCRL:m18",   	"100idPyCRL:m18.HOMR",	"100idPyCRL:m18.HOMF",	"LO",	}	
-#  {2, "09", "100idPyCRL:m19",   	"100idPyCRL:m19.HOMR",	"100idPyCRL:m19.HOMF",	"LO",	}	
-#  {2, "10", "100idPyCRL:m20",   	"100idPyCRL:m20.HOMR",	"100idPyCRL:m20.HOMF",	"LO",	}	
+#  {OE, M,	MOT,				DIST,	INLM,	}
+#  {1, "01", "9idd:TRANS:m5",   25,		"LO",	}	
+#  {1, "02", "9idd:TRANS:m6",   25,		"LO",	}	
+#  {1, "03", "9idd:TRANS:m7",   25,		"LO",	}	
+#  {1, "04", "9idd:TRANS:m8",   25,		"LO",	}	
+#  {1, "05", "9idd:TRANS:m9",   25,		"LO",	}	
+#  {1, "06", "9idd:TRANS:m10",  25,		"LO",	}	
+#  {1, "07", "9idd:TRANS:m11",  25,		"LO",	}	
+#  {1, "08", "9idd:TRANS:m12",  25,		"LO",	}	
+#  {1, "09", "9idd:TRANS:m13",  25,		"LO",	}	
+##  {1, "10", "9idd:TRANS:m10", 25,		"LO",	}	
+#  {2, "01", "9idd:TRANS:m14",  25,		"LO",	}	
+#  {2, "02", "9idd:TRANS:m15",  25,		"LO",	}	
+#  {2, "03", "9idd:TRANS:m16",  25,		"LO",	}	
+#  {2, "04", "9idd:TRANS:m17",  25,		"LO",	}	
+#  {2, "05", "9idd:TRANS:m18",  25,		"LO",	}	
+#  {2, "06", "9idd:TRANS:m19",  25,		"LO",	}	
+#  {2, "07", "9idd:TRANS:m20",  25,		"LO",	}	
+#  {2, "08", "9idd:TRANS:m21",  25,		"LO",	}	
+#  {2, "09", "9idd:TRANS:m22",  25,		"LO",	}	
+#  {2, "10", "9idd:TRANS:m23",  25,		"LO",	}	
 #}  
 
 
@@ -87,25 +87,25 @@ file "$(TOP)/db/stackMoveTestTools.db" {
 # motor homing only stops when at home position -- can't alter after boot up 
 file "$(TOP)/db/pyDevCRL_stack_move.db" {
   pattern
-  {OE, M,	MOT,				INMOVE, 								OUTMOVE, 									INLM,	}
-  {1, "01", "100idPyCRL:m1",   	"100idPyCRL:m1:GotoNegLim.PROC CA",		"100idPyCRL:m1:GotoPosLim.PROC CA",			"LO",	}	
-  {1, "02", "100idPyCRL:m2",   	"100idPyCRL:m2:GotoNegLim.PROC CA",		"100idPyCRL:m2:GotoPosLim.PROC CA",			"LO",	}	
-  {1, "03", "100idPyCRL:m3",   	"100idPyCRL:m3:GotoNegLim.PROC CA",		"100idPyCRL:m3:GotoPosLim.PROC CA",			"LO",	}	
-  {1, "04", "100idPyCRL:m4",   	"100idPyCRL:m4:GotoNegLim.PROC CA",		"100idPyCRL:m4:GotoPosLim.PROC CA",			"LO",	}	
-  {1, "05", "100idPyCRL:m5",   	"100idPyCRL:m5:GotoNegLim.PROC CA",		"100idPyCRL:m5:GotoPosLim.PROC CA",			"LO",	}	
-  {1, "06", "100idPyCRL:m6",   	"100idPyCRL:m6:GotoNegLim.PROC CA",		"100idPyCRL:m6:GotoPosLim.PROC CA",			"LO",	}	
-  {1, "07", "100idPyCRL:m7",   	"100idPyCRL:m7:GotoNegLim.PROC CA",		"100idPyCRL:m7:GotoPosLim.PROC CA",			"LO",	}	
-  {1, "08", "100idPyCRL:m8",   	"100idPyCRL:m8:GotoNegLim.PROC CA",		"100idPyCRL:m8:GotoPosLim.PROC CA",			"LO",	}	
-  {1, "09", "100idPyCRL:m9",   	"100idPyCRL:m9:GotoNegLim.PROC CA",		"100idPyCRL:m9:GotoPosLim.PROC CA",			"LO",	}	
-#  {1, "10", "100idPyCRL:m10",   	"100idPyCRL:m10:GotoNegLim.PROC CA",	"100idPyCRL:m10:GotoPosLim.PROC CA",		"LO",	}	
-  {2, "01", "100idPyCRL:m11",  	"100idPyCRL:m11:GotoNegLim.PROC CA",	"100idPyCRL:m11:GotoPosLim.PROC CA",		"LO",	}	
-  {2, "02", "100idPyCRL:m12",  	"100idPyCRL:m12:GotoNegLim.PROC CA",	"100idPyCRL:m12:GotoPosLim.PROC CA",		"LO",	}	
-  {2, "03", "100idPyCRL:m13",  	"100idPyCRL:m13:GotoNegLim.PROC CA",	"100idPyCRL:m13:GotoPosLim.PROC CA",		"LO",	}	
-  {2, "04", "100idPyCRL:m14",  	"100idPyCRL:m14:GotoNegLim.PROC CA",	"100idPyCRL:m14:GotoPosLim.PROC CA",		"LO",	}	
-  {2, "05", "100idPyCRL:m15",  	"100idPyCRL:m15:GotoNegLim.PROC CA",	"100idPyCRL:m15:GotoPosLim.PROC CA",		"LO",	}	
-  {2, "06", "100idPyCRL:m16",  	"100idPyCRL:m16:GotoNegLim.PROC CA",	"100idPyCRL:m16:GotoPosLim.PROC CA",		"LO",	}	
-  {2, "07", "100idPyCRL:m17",  	"100idPyCRL:m17:GotoNegLim.PROC CA",	"100idPyCRL:m17:GotoPosLim.PROC CA",		"LO",	}	
-  {2, "08", "100idPyCRL:m18",  	"100idPyCRL:m18:GotoNegLim.PROC CA",	"100idPyCRL:m18:GotoPosLim.PROC CA",		"LO",	}	
-  {2, "09", "100idPyCRL:m19",  	"100idPyCRL:m19:GotoNegLim.PROC CA",	"100idPyCRL:m19:GotoPosLim.PROC CA",		"LO",	}	
-  {2, "10", "100idPyCRL:m20", 	"100idPyCRL:m20:GotoNegLim.PROC CA",	"100idPyCRL:m20:GotoPosLim.PROC CA",		"LO",	}	
+  {OE, M,	MOT,				DIST,		INLM,	}
+  {1, "01", "100idPyCRL:m1",   	25,			"LO",	}	
+  {1, "02", "100idPyCRL:m2",   	25,			"LO",	}	
+  {1, "03", "100idPyCRL:m3",   	25,			"LO",	}	
+  {1, "04", "100idPyCRL:m4",   	25,			"LO",	}	
+  {1, "05", "100idPyCRL:m5",   	25,			"LO",	}	
+  {1, "06", "100idPyCRL:m6",   	25,			"LO",	}	
+  {1, "07", "100idPyCRL:m7",   	25,			"LO",	}	
+  {1, "08", "100idPyCRL:m8",   	25,			"LO",	}	
+  {1, "09", "100idPyCRL:m9",   	25,			"LO",	}	
+#  {1, "10", "100idPyCRL:m10",  25,				"LO",	}	
+  {2, "01", "100idPyCRL:m11",  	25,			"LO",	}	
+  {2, "02", "100idPyCRL:m12",  	25,			"LO",	}	
+  {2, "03", "100idPyCRL:m13",  	25,			"LO",	}	
+  {2, "04", "100idPyCRL:m14",  	25,			"LO",	}	
+  {2, "05", "100idPyCRL:m15",  	25,			"LO",	}	
+  {2, "06", "100idPyCRL:m16",  	25,			"LO",	}	
+  {2, "07", "100idPyCRL:m17",  	25,			"LO",	}	
+  {2, "08", "100idPyCRL:m18",  	25,			"LO",	}	
+  {2, "09", "100idPyCRL:m19",  	25,			"LO",	}	
+  {2, "10", "100idPyCRL:m20", 	25,			"LO",	}	
 }  

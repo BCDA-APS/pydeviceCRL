@@ -1,14 +1,18 @@
+record(ai, "$(P)$(SYSID):$(OE):stack$(M)_dist"){
+	field(VAL, "$(DIST=25)")
+	}
+
 record(sseq, "$(P)$(SYSID):$(OE):stack$(M)_move"){
 	field(SELM, "Mask")
-	field(DO1, "2")
-	field(LNK1, "$(MOT):homingMethod PP")
+	field(DOL1, "$(P)$(SYSID):$(OE):stack$(M)_dist PP")
+	field(LNK1, "$(MOT).TWV PP")
 	field(DO2, "1")
 	field(LNK2, "$(MOT).CNEN PP")
 	field(DO3, "1")
-	field(LNK3, "$(OUTMOVE)") 
+	field(LNK3, "$(MOT).TWF") 
 	field(WAIT3, "Wait")
 	field(DO4, "1")
-	field(LNK4, "$(INMOVE)") 
+	field(LNK4, "$(MOT).TWR") 
 	field(WAIT4, "Wait")
 	field(DO5, "0")
 	field(LNK5, "$(MOT).CNEN PP")
