@@ -148,11 +148,22 @@ record(longin, "$(P)$(SYSID):$(OE):sortedIndex_RBV") {
   field(SCAN, "I/O Intr")
 }
 
+record(scalcout, "$(P)$(SYSID):$(OE):oePosOffsetConv"){
+	field(DESC, "Converting OE offset to meters")
+	field(INPA, "$(OEPOS) CP")
+	field(INBB, "$(OEPOS).EGU")
+	field(CC, "m")
+	field(DD, "mm")
+	field(EE, "millimeter")
+	field(FF, "millimeters")
+	field(CALC, "A/(BB=CC?1:((BB=DD|BB=EE|BB=FF)?1000:1000000))")
+}
+
 record(ao, "$(P)$(SYSID):$(OE):oePositionOffset"){ 
   field(DESC, "OE position offset from local zero")
   field(PREC, "6")
   field(EGU, "m")
-  field(DOL,  "$(OEPOS) CP")
+  field(DOL,  "$(P)$(SYSID):$(OE):oePosOffsetConv.VAL CP")
   field(OMSL, "closed_loop")
   field(DTYP, "pydev")
   field(OUT, "@$(OBJ).updateZpos(VAL, '$(OE)')")

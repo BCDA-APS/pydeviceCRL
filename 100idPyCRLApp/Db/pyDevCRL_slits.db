@@ -1,6 +1,17 @@
+record(scalcout, "$(P)$(SYSID):$(OE):slitSizeHConv"){
+	field(DESC, "Converting slit size to meters")
+	field(INPA, "$(SLITH) CP")
+	field(INBB, "$(SLITH).EGU")
+	field(CC, "m")
+	field(DD, "mm")
+	field(EE, "millimeter")
+	field(FF, "millimeters")
+	field(CALC, "A/(BB=CC?1:((BB=DD|BB=EE|BB=FF)?1000:1000000))")
+}
+
 record(ao, "$(P)$(SYSID):$(OE):slitSize_H"){
 	field(EGU, "m")
-    field(DOL,  "$(SLITH) CP")
+    field(DOL,  "$(P)$(SYSID):$(OE):slitSizeHConv.VAL CP")
     field(OMSL, "closed_loop")
 	field(DTYP, "pydev")
 	field(OUT, "@$(OBJ).updateSlitSize(VAL, '$(OE)', 'hor')")
@@ -16,9 +27,20 @@ record(ai, "$(P)$(SYSID):$(OE):slitSize_H_RBV"){
   field(EGU, "m")
 }
 
+record(scalcout, "$(P)$(SYSID):$(OE):slitSizeVConv"){
+	field(DESC, "Converting slit size to meters")
+	field(INPA, "$(SLITV) CP")
+	field(INBB, "$(SLITV).EGU")
+	field(CC, "m")
+	field(DD, "mm")
+	field(EE, "millimeter")
+	field(FF, "millimeters")
+	field(CALC, "A/(BB=CC?1:((BB=DD|BB=EE|BB=FF)?1000:1000000))")
+}
+
 record(ao, "$(P)$(SYSID):$(OE):slitSize_V"){
 	field(EGU, "m")
-    field(DOL,  "$(SLITV) CP")
+    field(DOL,  "$(P)$(SYSID):$(OE):slitSizeVConv.VAL CP")
     field(OMSL, "closed_loop")
 	field(DTYP, "pydev")
 	field(OUT, "@$(OBJ).updateSlitSize(VAL, '$(OE)', 'vert')")

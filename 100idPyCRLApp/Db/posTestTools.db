@@ -1,5 +1,5 @@
 record(ao,"$(P)$(ZELEM)") {
 	field(DESC,"Z-position")
 	field(PREC, "6")
-	field(EGU, "m")
+	field(EGU, "mm")
 }

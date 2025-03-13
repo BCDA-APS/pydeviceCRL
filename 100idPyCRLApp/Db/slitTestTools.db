@@ -1,11 +1,11 @@
 record(ao,"$(P)$(SLITH)") {
 	field(DESC,"Horizontal Slit Size")
 	field(PREC, "6")
-	field(EGU, "m")
+	field(EGU, "um")
 }
 
 record(ao,"$(P)$(SLITV)") {
 	field(DESC,"Vertical Slit Size")
 	field(PREC, "6")
-	field(EGU, "m")
+	field(EGU, "um")
 }

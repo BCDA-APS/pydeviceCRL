@@ -136,11 +136,22 @@ record(waveform, "$(P)$(SYSID):fSizes"){
   field(NELM, "$(ELEM)")
 }
 
+record(scalcout, "$(P)$(SYSID):samPosOffsetConv"){
+	field(DESC, "Converting sample offset to meters")
+	field(INPA, "$(SAMPOS) CP")
+	field(INBB, "$(SAMPOS).EGU")
+	field(CC, "m")
+	field(DD, "mm")
+	field(EE, "millimeter")
+	field(FF, "millimeters")
+	field(CALC, "A/(BB=CC?1:((BB=DD|BB=EE|BB=FF)?1000:1000000))")
+}
+
 record(ao, "$(P)$(SYSID):samplePositionOffset"){ 
   field(DESC, "Sample position offset from local zero")
   field(PREC, "6")
   field(EGU, "m")
-  field(DOL,  "$(SAMPOS) CP")
+  field(DOL,  "$(P)$(SYSID):samPosOffsetConv.VAL CP")
   field(OMSL, "closed_loop")
   field(DTYP, "pydev")
   field(OUT, "@$(OBJ).updateZpos(VAL, 'sam')")
