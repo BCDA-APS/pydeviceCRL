@@ -20,30 +20,30 @@ epicsEnvSet("MONOE","testMonoE") # for testing -- replace with real mono energy 
 epicsEnvSet("IDENERGY","testIDE") # for testing -- replace with real ID energy PV 
 
 # Setting slit PVs
-epicsEnvSet('_SLIT1H',"$(PREFIX)testSSH1")	# Horizontal size of slit PV before CRL 1 (testing)
-epicsEnvSet('_SLIT1V',"$(PREFIX)testSSV1")	# Vertical size of slit PV before CRL 1 (testing)
-#epicsEnvSet('_SLIT1H',"9idd:Slit3Hsize.RBV")	# Horizontal size of slit PV before CRL 1
-#epicsEnvSet('_SLIT1V',"9idd:Slit3Vsize.RBV")	# Vertical size of slit PV before CRL 1
+#epicsEnvSet('_SLIT1H',"$(PREFIX)testSSH1")	# Horizontal size of slit PV before CRL 1 (testing)
+#epicsEnvSet('_SLIT1V',"$(PREFIX)testSSV1")	# Vertical size of slit PV before CRL 1 (testing)
+epicsEnvSet('_SLIT1H',"9idd:Slit3Hsize.RBV")	# Horizontal size of slit PV before CRL 1
+epicsEnvSet('_SLIT1V',"9idd:Slit3Vsize.RBV")	# Vertical size of slit PV before CRL 1
 
-epicsEnvSet('_SLIT2H',"$(PREFIX)testSSH2")	# Horizontal size of slit PV before CRL 2 (testing)
-epicsEnvSet('_SLIT2V',"$(PREFIX)testSSV2")	# Vertical size of slit PV before CRL 2 (testing)
-#epicsEnvSet('_SLIT2H',"9idd:Slit4Hsize.RBV")	# Horizontal size of slit PV before CRL 2
-#epicsEnvSet('_SLIT2V',"9idd:Slit4Vsize.RBV")	# Vertical size of slit PV before CRL 2
+#epicsEnvSet('_SLIT2H',"$(PREFIX)testSSH2")	# Horizontal size of slit PV before CRL 2 (testing)
+#epicsEnvSet('_SLIT2V',"$(PREFIX)testSSV2")	# Vertical size of slit PV before CRL 2 (testing)
+epicsEnvSet('_SLIT2H',"9idd:Slit4Hsize.RBV")	# Horizontal size of slit PV before CRL 2
+epicsEnvSet('_SLIT2V',"9idd:Slit4Vsize.RBV")	# Vertical size of slit PV before CRL 2
 
 # Setting CRL Z-translation PVs. At 9ID only CRL2 translates along beam but creating
 # CRL 1 PV to keep track of beamline position and to keep with CRL element database file
 epicsEnvSet('_OEPOS1',"$(PREFIX)testCRL1z")	# Z-motion of CRL 2 (testing)
 #epicsEnvSet('_OEPOS1',"")	# Z-motion of CRL 2
-epicsEnvSet('_OEPOS2',"$(PREFIX)testCRL2z")	# Z-motion of CRL 2 (testing)
-#epicsEnvSet('_OEPOS2',"9idd:TRANS:m24.RBV")	# Z-motion of CRL 2
+#epicsEnvSet('_OEPOS2',"$(PREFIX)testCRL2z")	# Z-motion of CRL 2 (testing)
+epicsEnvSet('_OEPOS2',"9idd:TRANS:m24.RBV")	# Z-motion of CRL 2
 
 # Setting Sample Z-translation PVs
 epicsEnvSet('_SAMPOS',"$(PREFIX)testSAMz")	# Z-motion of sample(testing or unneeded)
 #epicsEnvSet('_SAMPOS',"")	# Z-motion of CRL 1
 
 # Setting Mono energy PV
-epicsEnvSet("BLE","$(PREFIX)$(MONOE)")	# Beam energy PV at CRL (testing uses MONOE defined earlier)
-#epicsEnvSet("BLE","9ida:BraggERdbkAO")
+#epicsEnvSet("BLE","$(PREFIX)$(MONOE)")	# Beam energy PV at CRL (testing uses MONOE defined earlier)
+epicsEnvSet("BLE","9ida:BraggERdbkAO")
 
 ################################################################################
 # Load DBs and python code

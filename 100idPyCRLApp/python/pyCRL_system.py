@@ -15,6 +15,7 @@ LOC_MACRO = 'LOC'
 THICKERR_MACRO = 'THICKERR'
 DIM_MACRO = 'DIM'
 
+modes = ['flat','round']
 '''
 Config variables
 
@@ -37,8 +38,9 @@ KB properties
         ...     : ...
         ...     : ...
 '''
-DEFAULT_CONFIG = {'beam':{'energy': 15, 'L_und': 4.7, 'sigmaH_e': 14.8e-6,
-                          'sigmaV_e': 3.7e-6, 'sigmaHp_e': 2.8e-6, 'sigmaVp_e': 1.5e-6},
+DEFAULT_CONFIG = {'beam':{'energy': 15, 'L_und': 4.7, 
+                          'round': {'sigmaH_e': 12.296e-6, 'sigmaV_e': 8.263e-6, 'sigmaHp_e': 2.336e-6, 'sigmaVp_e': 3.474e-6},
+                          'flat':  {'sigmaH_e': 14.466e-6, 'sigmaV_e': 3.075e-6, 'sigmaHp_e': 2.749e-6, 'sigmaVp_e': 1.293e-6}},
                   'beamline': {'d_StoL1': 51.9, 'd_StoL2': 62.1, 'd_Stof': 66.2},
                   'crl':[{'stacks': 10, 'stack_d': 50.0e-3, 'd_min': 3.0e-5}],
                   'kb':{'KBH_L': 180.0e-3, 'KBH_q': 380.0e-3, 'KB_theta': 2.5e-3,
@@ -134,6 +136,7 @@ class focusingSystem():
                 
         
         # Setup beam properties
+        self.mode = modes[0]
         self.beam = {}
         self.setupSource(beam)
         
@@ -188,6 +191,9 @@ class focusingSystem():
         sigmaV_e    : Sigma electron source size in V direction in m
         sigmaHp_e   : Sigma electron divergence in H direction in rad
         sigmaVp_e   : Sigma electron divergence in V direction in rad
+        
+        
+        mode        : two values: flat or round
         '''
         
         self.setEnergy(beam_properties['energy'])
@@ -196,7 +202,7 @@ class focusingSystem():
         self.sigmaV_e = beam_properties['sigmaV_e']
         self.sigmaHp_e = beam_properties['sigmaHp_e']
         self.sigmaVp_e = beam_properties['sigmaVp_e']
-        
+                
         self.setupSourceEnergyDependent()
 
     def setEnergy(self, energy):
@@ -209,15 +215,16 @@ class focusingSystem():
             self.wl = 1239.84 / (self.energy_eV * 10**9)    #Wavelength in m
             if self.verbose: print(f'Setting energy to {self.energy} keV')
 
-    def setupSourceEnergyDependent(self):
+    def setupSourceEnergyDependent(self, mode='flat'):
         '''
         Sets various energy dependent source parameters. Called whenever energy 
         is updated
         '''    
-        self.beam['sigmaH'] =  (self.sigmaH_e**2 +  self.wl*self.L_und/2/np.pi/np.pi)**0.5
-        self.beam['sigmaV'] =  (self.sigmaV_e**2 +  self.wl*self.L_und/2/np.pi/np.pi)**0.5
-        self.beam['sigmaHp'] = (self.sigmaHp_e**2 + self.wl/self.L_und/2)**0.5
-        self.beam['sigmaVp'] = (self.sigmaVp_e**2 + self.wl/self.L_und/2)**0.5
+        _mode = (mode == modes[1])
+        self.beam['sigmaH'] =  (self.sigmaH_e[modes[_mode]]**2 +  self.wl*self.L_und/2/np.pi/np.pi)**0.5
+        self.beam['sigmaV'] =  (self.sigmaV_e[modes[_mode]]**2 +  self.wl*self.L_und/2/np.pi/np.pi)**0.5
+        self.beam['sigmaHp'] = (self.sigmaHp_e[modes[_mode]]**2 + self.wl/self.L_und/2)**0.5
+        self.beam['sigmaVp'] = (self.sigmaVp_e[modes[_mode]]**2 + self.wl/self.L_und/2)**0.5
 
     def setupBeamline(self, beamline_properties, num=1):
         '''
@@ -527,6 +534,7 @@ class focusingSystem():
         self.dq_list = results_dict['dq_list']
                                                                     
         self.updateEnergyRBV()
+        self.updateModeRBV()
         self.updateSlitSizeRBV(self.elements, 'hor')
         self.updateSlitSizeRBV(self.elements, 'vert')
 
@@ -547,6 +555,13 @@ class focusingSystem():
             self.updateKBWaveforms()
             self.updateKBdistanceRBVs()
        
+    def updateModeRBV(self):
+        '''
+        Description
+            Updates beam mode readback PV.  To be called after lookup table calculated
+        '''
+        retval = (self.mode == modes[1])
+        pydev.iointr('updated_mode', float(retval))
 
     def updateEnergyRBV(self):
         '''
@@ -840,7 +855,17 @@ class focusingSystem():
         if self.verbose: print(f'Thickness Error Flag RBV set to {self.thickerr_flag}')
         pydev.iointr('updated_thickerr_Flag', self.thickerr_flag)
  
-    
+
+    def updateMode(self, mode):
+        '''
+        Description
+        
+        '''
+        
+        if self.verbose: print(f'Updating beam mode from {self.mode} to {modes[mode]}')
+        self.mode = modes[mode]
+        self.setupSourceEnergyDependent(mode=self.mode)
+        
     def updateE(self, energy):
         '''
         Description:
@@ -858,7 +883,7 @@ class focusingSystem():
             # Update beam properties that are dependent on energy
             self.setupSourceEnergyDependent()
         else:
-            if verbose: print(f'Invalid energy setting: {energy} kev; staying at {self.energy} keV')
+            if self.verbose: print(f'Invalid energy setting: {energy} kev; staying at {self.energy} keV')
        
  
     def updateLookupWaveform(self):

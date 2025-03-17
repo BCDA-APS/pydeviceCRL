@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>463</width>
-    <height>287</height>
+    <width>469</width>
+    <height>305</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout" rowstretch="1,1,1,1,1,1,1,1,1,1,1,1" columnstretch="1,1,1">
      <property name="margin">
       <number>1</number>
@@ -200,19 +200,6 @@
        </property>
       </widget>
      </item>
-     <item row="9" column="0">
-      <widget class="caLabel" name="calabel_34">
-       <property name="text">
-        <string>Verbose Console?</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="fontScaleMode">
-        <enum>ESimpleLabel::WidthAndHeight</enum>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
       <widget class="caLabel" name="calabel_20">
        <property name="text">
@@ -223,62 +210,6 @@
        </property>
        <property name="fontScaleMode">
         <enum>ESimpleLabel::WidthAndHeight</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="1">
-      <widget class="caTextEntry" name="catextentry_16">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="channel" stdset="0">
-        <string notr="true">$(P)$(CRL):1:interLensDelay</string>
-       </property>
-       <property name="background">
-        <color>
-         <red>115</red>
-         <green>223</green>
-         <blue>255</blue>
-        </color>
-       </property>
-       <property name="colorMode">
-        <enum>caLineEdit::Static</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="1">
-      <widget class="caChoice" name="caChoice_1">
-       <property name="channel" stdset="0">
-        <string notr="true">$(P)$(CRL):verbosity</string>
-       </property>
-       <property name="foreground">
-        <color>
-         <red>0</red>
-         <green>0</green>
-         <blue>0</blue>
-        </color>
-       </property>
-       <property name="background">
-        <color>
-         <red>115</red>
-         <green>223</green>
-         <blue>255</blue>
-        </color>
-       </property>
-       <property name="colorMode">
-        <enum>caChoice::Static</enum>
-       </property>
-       <property name="stackingMode" stdset="0">
-        <enum>caChoice::Column</enum>
-       </property>
-       <property name="endBit">
-        <number>1</number>
        </property>
       </widget>
      </item>
@@ -626,19 +557,6 @@
        </property>
       </spacer>
      </item>
-     <item row="7" column="0">
-      <widget class="caLabel" name="calabel_31">
-       <property name="text">
-        <string>Inter-lens delay (s)</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="fontScaleMode">
-        <enum>ESimpleLabel::WidthAndHeight</enum>
-       </property>
-      </widget>
-     </item>
      <item row="11" column="0">
       <widget class="caLabel" name="calabel_35">
        <property name="text">
@@ -652,18 +570,183 @@
        </property>
       </widget>
      </item>
+     <item row="10" column="1">
+      <widget class="caChoice" name="caChoice_1">
+       <property name="channel" stdset="0">
+        <string notr="true">$(P)$(CRL):verbosity</string>
+       </property>
+       <property name="foreground">
+        <color>
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </property>
+       <property name="background">
+        <color>
+         <red>115</red>
+         <green>223</green>
+         <blue>255</blue>
+        </color>
+       </property>
+       <property name="colorMode">
+        <enum>caChoice::Static</enum>
+       </property>
+       <property name="stackingMode" stdset="0">
+        <enum>caChoice::Column</enum>
+       </property>
+       <property name="endBit">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
      <item row="10" column="0">
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
+      <widget class="caLabel" name="calabel_34">
+       <property name="text">
+        <string>Verbose Console?</string>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
-      </spacer>
+       <property name="fontScaleMode">
+        <enum>ESimpleLabel::WidthAndHeight</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="caLabel" name="calabel_31">
+       <property name="text">
+        <string>Inter-lens delay (s)</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="fontScaleMode">
+        <enum>ESimpleLabel::WidthAndHeight</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="caTextEntry" name="catextentry_16">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="channel" stdset="0">
+        <string notr="true">$(P)$(CRL):1:interLensDelay</string>
+       </property>
+       <property name="background">
+        <color>
+         <red>115</red>
+         <green>223</green>
+         <blue>255</blue>
+        </color>
+       </property>
+       <property name="colorMode">
+        <enum>caLineEdit::Static</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="caChoice" name="caChoice_3">
+       <property name="channel" stdset="0">
+        <string notr="true">$(P)$(CRL):beamMode</string>
+       </property>
+       <property name="foreground">
+        <color>
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </property>
+       <property name="background">
+        <color>
+         <red>115</red>
+         <green>223</green>
+         <blue>255</blue>
+        </color>
+       </property>
+       <property name="colorMode">
+        <enum>caChoice::Static</enum>
+       </property>
+       <property name="stackingMode" stdset="0">
+        <enum>caChoice::Column</enum>
+       </property>
+       <property name="endBit">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="caLineEdit" name="caLineEdit_22">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="channel" stdset="0">
+        <string notr="true">$(P)$(CRL):beamMode_RBV</string>
+       </property>
+       <property name="foreground">
+        <color>
+         <red>10</red>
+         <green>0</green>
+         <blue>184</blue>
+        </color>
+       </property>
+       <property name="background">
+        <color>
+         <red>200</red>
+         <green>200</green>
+         <blue>200</blue>
+        </color>
+       </property>
+       <property name="colorMode">
+        <enum>caLineEdit::Static</enum>
+       </property>
+       <property name="precision">
+        <number>3</number>
+       </property>
+       <property name="precisionMode">
+        <enum>caLineEdit::User</enum>
+       </property>
+       <property name="fontScaleMode" stdset="0">
+        <enum>caLineEdit::None</enum>
+       </property>
+       <property name="formatType">
+        <enum>caLineEdit::compact</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="caLabel" name="calabel_36">
+       <property name="text">
+        <string>Beam Mode</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="fontScaleMode">
+        <enum>ESimpleLabel::WidthAndHeight</enum>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

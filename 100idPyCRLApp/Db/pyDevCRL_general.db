@@ -58,6 +58,23 @@ record(ai, "$(P)$(SYSID):energy_RBV"){
   field(PREC, "5")
 }
 
+record(bo, "$(P)$(SYSID):beamMode"){
+	field(ZNAM, "Flat")
+	field(ONAM, "Round")
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).updateMode(VAL)")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+}
+
+record(bi, "$(P)$(SYSID):beamMode_RBV"){
+  field(ZNAM, "Flat")
+  field(ONAM, "Round")
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('updated_mode')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "5")
+}
+
 record(ao, "$(P)$(SYSID):focalSize"){
 	field(EGU, "m")
 	field(DTYP, "pydev")

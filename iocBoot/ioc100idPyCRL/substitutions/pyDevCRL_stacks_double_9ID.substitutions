@@ -1,10 +1,7 @@
 # For testing the OUT PV is set to the supports intermediate RBV PV and in the
 # IN PV is set to the intermediate control PV.  When moving to real hardware:
-# 	OUT 		= control PV for moving lens in/out
-# 	IN 			= readback PV of lens position from the hardware control
 #   INVAL 		= control value for inserting lens
 #	OUTVAL 		= control value for removing lens
-#   INRBVVAL 	= readback value for inserted state
 
 file "$(TOP)/db/pyDevCRL_stack.db" {
   pattern
