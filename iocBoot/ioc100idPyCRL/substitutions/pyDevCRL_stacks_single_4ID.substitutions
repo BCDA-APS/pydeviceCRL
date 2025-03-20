@@ -1,34 +1,43 @@
-# For testing the OUT PV is set to the supports intermediate RBV PV and in the
-# IN PV is set to the intermediate control PV.  When moving to real hardware:
+#	OE			= CRL #
+#	M			= cassette #
+#	NUMLENS		= number of lenses in cassette
+#	RADIUS		= lens radius in m
+#	MAT			= Lens material
+#	LOC			= cassette location relative to CRL center in m; + further downstream, - upstream
+#	DIM			= Type of lens: 2D or 1D_V
+#   THICKERR	= Thickness error in m
 #   INVAL 		= control value for inserting lens
 #	OUTVAL 		= control value for removing lens
 
 file "$(TOP)/db/pyDevCRL_stack.db" {
   pattern
-  {OE, M,		NUMLENS,	RADIUS,		MAT,	LOC,	DIM, 	THICKERR,	INVAL,	OUTVAL,	ENCODE,	MASK  }
-  {1, "01",   1, 			0.001,		"Be",	4.5,	"2D",		1e-6,		1,		0,	"A", 	"A"	}	
-  {1, "02",   1, 			0.0005,		"Be",	3.5,	"2D",		1e-6,		1,		0,	"B", 	"B"	}	
-  {1, "03",   1, 			0.0002,		"Be",	2.5,	"2D",		1e-6,		1,		0,	"C", 	"C"	}	
-  {1, "04",   2, 			0.0002,		"Be",	1.5,	"2D",		1e-6,		1,		0,	"D", 	"D"	}	
-  {1, "05",   4, 			0.0002,		"Be",	0.5,	"2D",		1e-6,		1,		0,	"E", 	"E"	}	
-  {1, "06",   8, 			0.0002,		"Be",	-0.5,	"2D",		1e-6,		1,		0,	"F", 	"F"	}	
-  {1, "07",   8, 			0.0001,		"Be",	-1.5,	"2D",		1.4e-6,		1,		0,	"G", 	"G"	}	
-  {1, "08",   16, 			0.0001,		"Be",	-2.5	"2D",		2.0e-6,		1,		0,	"H", 	"H"	}	
+  {OE, M,		NUMLENS,	RADIUS,		MAT,	LOC,		DIM, 	THICKERR,	INVAL,	OUTVAL,	ENCODE,	MASK  }
+  {1, "01",   1, 			0.001,		"Be",	0.09425, 	"2D",		1e-6,		1,		0,	"A", 	"A"	}	
+  {1, "02",   1, 			0.0005,		"Be",	0.07125, 	"2D",		1e-6,		1,		0,	"B", 	"B"	}	
+  {1, "03",   1, 			0.0002,		"Be",	0.04825, 	"2D",		1e-6,		1,		0,	"C", 	"C"	}	
+  {1, "04",   2, 			0.0002,		"Be",	0.02525, 	"2D",		1e-6,		1,		0,	"D", 	"D"	}	
+  {1, "05",   4, 			0.0002,		"Be",	0.00225, 	"2D",		1e-6,		1,		0,	"E", 	"E"	}	
+  {1, "06",   8, 			0.0002,		"Be",	-0.02425,	"2D",		1e-6,		1,		0,	"F", 	"F"	}	
+  {1, "07",   8, 			0.0001,		"Be",	-0.05125,	"2D",		1.4e-6,		1,		0,	"G", 	"G"	}	
+  {1, "08",   16, 			0.0001,		"Be",	-0.08725	"2D",		2.0e-6,		1,		0,	"H", 	"H"	}	
 }
 
-
-# For ACS controlled motors, can on-the-fly reset homing method to either limit 
+# For ACS controlled motors, using tweak with dist slightly greater than the 
+# limit-limit distance
+#	M			= cassette #
+#	INLM		= Limit switch associated with IN position
+#	DIST		= tweak distance to use (should be greater than limit-limit distance)
 file "$(TOP)/db/pyDevCRL_stack_move.db" {
   pattern
   {OE, M,	MOT,				INLM,	DIST}
-  {1, "01", "4idgSoft:m62",   	"LO",	"15"}	
-  {1, "02", "4idgSoft:m63",   	"LO",	"15"}	
-  {1, "03", "4idgSoft:m64",   	"LO",	"15"}	
-  {1, "04", "4idgSoft:m65",   	"LO",	"15"}	
-  {1, "05", "4idgSoft:m66",   	"LO",	"15"}	
-  {1, "06", "4idgSoft:m67",   	"LO",	"15"}	
-  {1, "07", "4idgSoft:m68",   	"LO",	"15"}	
-  {1, "08", "4idgSoft:m69",   	"LO",	"15"}	
+  {1, "01", "4idgSoft:m69",   	"LO",	"15"}	
+  {1, "02", "4idgSoft:m68",   	"LO",	"15"}	
+  {1, "03", "4idgSoft:m67",   	"LO",	"15"}	
+  {1, "04", "4idgSoft:m66",   	"LO",	"15"}	
+  {1, "05", "4idgSoft:m65",   	"LO",	"15"}	
+  {1, "06", "4idgSoft:m64",   	"LO",	"15"}	
+  {1, "07", "4idgSoft:m63",   	"LO",	"15"}	
+  {1, "08", "4idgSoft:m62",   	"LO",	"15"}	
 }  
 
 

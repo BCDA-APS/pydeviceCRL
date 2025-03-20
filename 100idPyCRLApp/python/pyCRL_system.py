@@ -1,7 +1,7 @@
 import numpy as np
 import tomllib
 import xraylib
-from transfocator_calcs import lookup_diameter, materials_to_deltas, materials_to_linear_attenuation
+from transfocator_calcs import materials_to_deltas, materials_to_linear_attenuation
 from transfocator_calcs import find_levels, get_densities
 from transfocator_calcs import calc_1x_lu_table, calc_2x_lu_table, calc_kb_lu_table
 from transfocator_calcs import calc_2xCRL_focus
@@ -32,7 +32,6 @@ Beamline properties
         d_Stof  : Source-to-focus distance, in m
 CRL properties
         d_min   : Minimum thickness at the apex in m
-        stack_d : Stack thickness in m
         stacks  : number stacks in systems
 KB properties
         ...     : ...
@@ -42,7 +41,7 @@ DEFAULT_CONFIG = {'beam':{'energy': 15, 'L_und': 4.7,
                           'round': {'sigmaH_e': 12.296e-6, 'sigmaV_e': 8.263e-6, 'sigmaHp_e': 2.336e-6, 'sigmaVp_e': 3.474e-6},
                           'flat':  {'sigmaH_e': 14.466e-6, 'sigmaV_e': 3.075e-6, 'sigmaHp_e': 2.749e-6, 'sigmaVp_e': 1.293e-6}},
                   'beamline': {'d_StoL1': 51.9, 'd_StoL2': 62.1, 'd_Stof': 66.2},
-                  'crl':[{'stacks': 10, 'stack_d': 50.0e-3, 'd_min': 3.0e-5}],
+                  'crl':[{'stacks': 10, 'd_min': 3.0e-5}],
                   'kb':{'KBH_L': 180.0e-3, 'KBH_q': 380.0e-3, 'KB_theta': 2.5e-3,
                         'KBV_L': 300.0e-3, 'KBV_q': 640.0e-3, 'KBH_p_limit': 1.0, 
                         'KBV_p_limit': 1.0 }}
@@ -250,12 +249,11 @@ class focusingSystem():
         Looks through crl (list of transforcators) for entries for the following
         
         d_min   : Minimum thickness at the apex in m
-        stack_d : Stack thickness in m
         stacks  : number of stacks in system
         '''
         
         for elem, tf in enumerate(crl):
-            self.crl[str(elem+1)]= {'d_min': tf['d_min'], 'stack_d': tf['stack_d'], 'stacks': tf['stacks']}
+            self.crl[str(elem+1)]= {'d_min': tf['d_min'], 'stacks': tf['stacks']}
         
     
     def setupKB(self, kb):
@@ -283,11 +281,11 @@ class focusingSystem():
         '''
         Initializes slit sizes to 0        
         '''
-        self.slits['1'] = {'hor':0,'vert':0}            
+        self.slits['1'] = {'hor':1,'vert':1}            
         if self.sysType is SYSTEM_TYPE.doubleCRL:
-            self.slits['2'] = {'hor':0,'vert':0}            
+            self.slits['2'] = {'hor':1,'vert':1}            
         if self.sysType is SYSTEM_TYPE.CRLandKB:
-            self.slits['KB'] = {'hor':0,'vert':0}
+            self.slits['KB'] = {'hor':1,'vert':1}
 
         
     def updateSlitSize(self, size, oe, slit):
@@ -396,7 +394,8 @@ class focusingSystem():
         # get location of each lens from lens properties dictionary-list
         print('Getting lens\' locations...')
         if LOC_MACRO in macros:
-            self.lens_locations = np.array([float(l)*self.crl[str(self.oe_num[i])]['stack_d'] for i,l in enumerate(lens_properties[LOC_MACRO])])
+            self.lens_locations = np.array([float(l) for l in lens_properties[LOC_MACRO]])
+#            self.lens_locations = np.array([float(l)*self.crl[str(self.oe_num[i])]['stack_d'] for i,l in enumerate(lens_properties[LOC_MACRO])])
             print('Location of lenses read in.\n')
         else:
             raise RuntimeError(f"Location macro ({LOC_MACRO}) not found in substituion file")

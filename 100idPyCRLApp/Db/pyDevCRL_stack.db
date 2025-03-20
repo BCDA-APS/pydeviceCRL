@@ -29,30 +29,30 @@ record(dfanout, "$(P)$(SYSID):$(OE):stack$(M)_RBV_dfanout"){
 	field(OUTA, "$(P)$(SYSID):$(OE):lens_RBV_encode.$(ENCODE) PP")
 }
 
-record(ao, "$(P)$(SYSID):$(OE):stack$(M)_NumLens"){
+record(ai, "$(P)$(SYSID):$(OE):stack$(M)_NumLens"){
 	field(DESC, "Number of lens in stack")
 	field(VAL, "$(NUMLENS)")
 }
 
-record(ao, "$(P)$(SYSID):$(OE):stack$(M)_LensRadius"){
+record(ai, "$(P)$(SYSID):$(OE):stack$(M)_LensRadius"){
 	field(DESC, "Lens radii")
 	field(PREC, "6")
 	field(VAL, "$(RADIUS)")
 }
 
-record(ao, "$(P)$(SYSID):$(OE):stack$(M)_Location"){
+record(ai, "$(P)$(SYSID):$(OE):stack$(M)_Location"){
 	field(DESC, "Stack Location, + US, - DS from center")
-	field(EGU, "stack_thick")
+	field(EGU, "m")
 	field(PREC, "3")
 	field(VAL, "$(LOC)")
 }
 
-record(stringout, "$(P)$(SYSID):$(OE):stack$(M)_Material"){
+record(stringin, "$(P)$(SYSID):$(OE):stack$(M)_Material"){
 	field(DESC, "Lens Material")
 	field(VAL, "$(MAT)")
 }
 
-record(ao, "$(P)$(SYSID):$(OE):stack$(M)_ThickErr"){
+record(ai, "$(P)$(SYSID):$(OE):stack$(M)_ThickErr"){
 	field(DESC, "RMS Thickness Error")
 	field(PREC, "6")
 	field(VAL, "$(THICKERR)")

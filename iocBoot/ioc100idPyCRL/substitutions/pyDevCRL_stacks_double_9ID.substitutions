@@ -1,34 +1,44 @@
-# For testing the OUT PV is set to the supports intermediate RBV PV and in the
-# IN PV is set to the intermediate control PV.  When moving to real hardware:
+#	OE			= CRL #
+#	M			= cassette #
+#	NUMLENS		= number of lenses in cassette
+#	RADIUS		= lens radius in m
+#	MAT			= Lens material
+#	LOC			= cassette location relative to CRL center in m; + further downstream, - upstream
+#	DIM			= Type of lens: 2D or 1D_V
+#   THICKERR	= Thickness error in m
 #   INVAL 		= control value for inserting lens
 #	OUTVAL 		= control value for removing lens
 
 file "$(TOP)/db/pyDevCRL_stack.db" {
   pattern
-  {OE, M,		NUMLENS,	RADIUS,		MAT,	LOC,	DIM, 	THICKERR,	INVAL,	OUTVAL,	ENCODE,	MASK  }
-  {1, "01",   1, 			0.002,		"Be",	4.5,	"2D",		1e-6,	   	1,		0,		"A", 	"A"	}	
-  {1, "02",   1, 			0.001,		"Be",	3.5,	"2D",		1e-6,	   	1,		0,		"B", 	"B"	}	
-  {1, "03",   1, 			0.0005,		"Be",	2.5,	"2D",		1e-6,	   	1,		0,		"C", 	"C"	}	
-  {1, "04",   1, 			0.0003,		"Be",	1.5,	"2D",		1e-6,	   	1,		0,		"D", 	"D"	}	
-  {1, "05",   1, 			0.0002,		"Be",	0.5,	"2D",		1e-6,	   	1,		0,		"E", 	"E"	}	
-  {1, "06",   1, 			0.0001,		"Be",	-0.5,	"2D",		1e-6,	   	1,		0,		"F", 	"F"	}	
-  {1, "07",   2, 			0.0001,		"Be",	-1.5,	"2D",		1.4e-6,	   	1,		0,		"G", 	"G"	}	
-  {1, "08",   4, 			0.0001,		"Be",	-2.5	"2D",		2.0e-6,	   	1,		0,		"H", 	"H"	}	
-  {1, "09",   8, 			0.0001,		"Be",	-3.5	"2D",		2.8e-6,	   	1,		0,		"I", 	"I"	}	
-  {2, "01",   1, 			0.002,		"Be",	4.5,	"2D",		1e-6,	   	1,		0,		"A", 	"A"	}	
-  {2, "02",   1, 			0.001,		"Be",	3.5,	"2D",		1e-6,	   	1,		0,		"B", 	"B"	}	
-  {2, "03",   1, 			0.0005,		"Be",	2.5,	"2D",		1e-6,	   	1,		0,		"C", 	"C"	}	
-  {2, "04",   1, 			0.0003,		"Be",	1.5,	"2D",		1e-6,	   	1,		0,		"D", 	"D"	}	
-  {2, "05",   1, 			0.0002,		"Be",	0.5,	"2D",		1e-6,	   	1,		0,		"E", 	"E"	}	
-  {2, "06",   1, 			0.0001,		"Be",	-0.5,	"2D",		1e-6,	   	1,		0,		"F", 	"F"	}	
-  {2, "07",   2, 			0.0001,		"Be",	-1.5,	"2D",		1.4e-6,	   	1,		0,		"G", 	"G"	}	
-  {2, "08",   4, 			0.0001,		"Be",	-2.5	"2D",		2.0e-6,	   	1,		0,		"H", 	"H"	}	
-  {2, "09",   8, 			0.0001,		"Be",	-3.5	"2D",		2.8e-6,	   	1,		0,		"I", 	"I"	}	
-  {2, "10",   16,			0.0001,		"Be",	-4.5	"2D",		4e-6,	   	1,		0,		"J", 	"J"	}	
+  {OE, M,		NUMLENS,	RADIUS,		MAT,	LOC,		DIM, 	THICKERR,	INVAL,	OUTVAL,	ENCODE,	MASK  }
+  {1, "01",   1, 			0.002,		"Be",	0.111,		"2D",		1e-6,	   	1,		0,		"A", 	"A"	}	
+  {1, "02",   1, 			0.001,		"Be",	0.082,		"2D",		1e-6,	   	1,		0,		"B", 	"B"	}	
+  {1, "03",   1, 			0.0005,		"Be",	0.053,		"2D",		1e-6,	   	1,		0,		"C", 	"C"	}	
+  {1, "04",   1, 			0.0003,		"Be",	0.0239,		"2D",		1e-6,	   	1,		0,		"D", 	"D"	}	
+  {1, "05",   1, 			0.0002,		"Be",	-0.0051,	"2D",		1e-6,	   	1,		0,		"E", 	"E"	}	
+  {1, "06",   1, 			0.0001,		"Be",	-0.0341,	"2D",		1e-6,	   	1,		0,		"F", 	"F"	}	
+  {1, "07",   2, 			0.0001,		"Be",	-0.0632,	"2D",		1.4e-6,	   	1,		0,		"G", 	"G"	}	
+  {1, "08",   4, 			0.0001,		"Be",	-0.0921,	"2D",		2.0e-6,	   	1,		0,		"H", 	"H"	}	
+  {1, "09",   8, 			0.0001,		"Be",	-0.137, 	"2D",		2.8e-6,	   	1,		0,		"I", 	"I"	}	
+  {2, "01",   1, 			0.002,		"Be",	0.119,		"2D",		1e-6,	   	1,		0,		"A", 	"A"	}	
+  {2, "02",   1, 			0.001,		"Be",	0.0897,		"2D",		1e-6,	   	1,		0,		"B", 	"B"	}	
+  {2, "03",   1, 			0.0005,		"Be",	0.0608,		"2D",		1e-6,	   	1,		0,		"C", 	"C"	}	
+  {2, "04",   1, 			0.0003,		"Be",	0.0317,		"2D",		1e-6,	   	1,		0,		"D", 	"D"	}	
+  {2, "05",   1, 			0.0002,		"Be",	0.0029,		"2D",		1e-6,	   	1,		0,		"E", 	"E"	}	
+  {2, "06",   1, 			0.0001,		"Be",	-0.0261,	"2D",		1e-6,	   	1,		0,		"F", 	"F"	}	
+  {2, "07",   2, 			0.0001,		"Be",	-0.0551,	"2D",		1.4e-6,	   	1,		0,		"G", 	"G"	}	
+  {2, "08",   4, 			0.0001,		"Be",	-0.084,		"2D",		2.0e-6,	   	1,		0,		"H", 	"H"	}	
+  {2, "09",   16, 			0.0001,		"Be",	-0.1302,	"2D",		2.8e-6,	   	1,		0,		"I", 	"I"	}	
+  {2, "10",   8,			0.0001,		"Be",	-0.1782,	"2D",		4e-6,	   	1,		0,		"J", 	"J"	}	
 }
-  
-# For ACS controlled motors, using tweak with dist slightly greater than the l
-# imit-limit distance (10 mm for CRL1, 25 mm for CRL2)
+
+# For ACS controlled motors, using tweak with dist slightly greater than the 
+# limit-limit distance (10 mm for CRL1, 25 mm for CRL2)
+#	M			= cassette #
+#	INLM		= Limit switch associated with IN position
+#	DIST		= tweak distance to use (should be greater than limit-limit distance)
+
 file "$(TOP)/db/pyDevCRL_stack_move.db" {
   pattern
   {OE, M,	MOT,				DIST,	INLM,	}

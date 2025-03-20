@@ -34,11 +34,9 @@ d_Stof = 66.2
 
 # Set up crl properties -- these are properties common to the stacks
 # stacks	- Number of sets of lenses
-# stack_d	- Stack thickness in mMinimum thickness at the apex in m
 # d_min 	- Minimum thickness at the apex in m
 [crl]
 stacks = 10
-stack_d = 0.050
 d_min = 0.00003 
 
 
