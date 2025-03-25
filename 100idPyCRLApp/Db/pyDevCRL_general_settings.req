@@ -1,2 +1,5 @@
 $(P)$(SYSID):EnergyLocal.VAL
 $(P)$(SYSID):EnergySelect.VAL
+$(P)$(SYSID):thickerr_flag
+$(P)$(SYSID):verbosity
+$(P)$(SYSID):beamMode

@@ -43,26 +43,26 @@ file "$(TOP)/db/pyDevCRL_stack.db" {
 file "$(TOP)/db/pyDevCRL_stack_move.db" {
   pattern
   {OE, M,	MOT,				DIST,	INLM,	}
-  {1, "01", "8iddSoft:TRANS:m5",   15,		"LO",	}	
-  {1, "02", "8iddSoft:TRANS:m6",   15,		"LO",	}	
-  {1, "03", "8iddSoft:TRANS:m7",   15,		"LO",	}	
-  {1, "04", "8iddSoft:TRANS:m8",   15,		"LO",	}	
-  {1, "05", "8iddSoft:TRANS:m9",   15,		"LO",	}	
-  {1, "06", "8iddSoft:TRANS:m10",  15,		"LO",	}	
-  {1, "07", "8iddSoft:TRANS:m11",  15,		"LO",	}	
-  {1, "08", "8iddSoft:TRANS:m12",  15,		"LO",	}	
-  {1, "09", "8iddSoft:TRANS:m13",  15,		"LO",	}	
-  {1, "10", "8iddSoft:TRANS:m14",  15,		"LO",	}	
-  {2, "01", "8iddSoft:TRANS:m15",  30,		"LO",	}	
-  {2, "02", "8iddSoft:TRANS:m16",  30,		"LO",	}	
-  {2, "03", "8iddSoft:TRANS:m17",  30,		"LO",	}	
-  {2, "04", "8iddSoft:TRANS:m18",  30,		"LO",	}	
-  {2, "05", "8iddSoft:TRANS:m19",  30,		"LO",	}	
-  {2, "06", "8iddSoft:TRANS:m20",  30,		"LO",	}	
-  {2, "07", "8iddSoft:TRANS:m21",  30,		"LO",	}	
-  {2, "08", "8iddSoft:TRANS:m22",  30,		"LO",	}	
-  {2, "09", "8iddSoft:TRANS:m23",  30,		"LO",	}	
-  {2, "10", "8iddSoft:TRANS:m24",  30,		"LO",	}	
+  {1, "01", "8iddSoft:TRANS:m14",   15,		"LO",	}	
+  {1, "02", "8iddSoft:TRANS:m13",   15,		"LO",	}	
+  {1, "03", "8iddSoft:TRANS:m12",   15,		"LO",	}	
+  {1, "04", "8iddSoft:TRANS:m11",   15,		"LO",	}	
+  {1, "05", "8iddSoft:TRANS:m10",   15,		"LO",	}	
+  {1, "06", "8iddSoft:TRANS:m9",	15,		"LO",	}	
+  {1, "07", "8iddSoft:TRANS:m8",	15,		"LO",	}	
+  {1, "08", "8iddSoft:TRANS:m7",	15,		"LO",	}	
+  {1, "09", "8iddSoft:TRANS:m6",	15,		"LO",	}	
+  {1, "10", "8iddSoft:TRANS:m5",	15,		"LO",	}	
+  {2, "01", "8iddSoft:TRANS:m24",  30,		"LO",	}	
+  {2, "02", "8iddSoft:TRANS:m23",  30,		"LO",	}	
+  {2, "03", "8iddSoft:TRANS:m22",  30,		"LO",	}	
+  {2, "04", "8iddSoft:TRANS:m21",  30,		"LO",	}	
+  {2, "05", "8iddSoft:TRANS:m20",  30,		"LO",	}	
+  {2, "06", "8iddSoft:TRANS:m19",  30,		"LO",	}	
+  {2, "07", "8iddSoft:TRANS:m18",  30,		"LO",	}	
+  {2, "08", "8iddSoft:TRANS:m17",  30,		"LO",	}	
+  {2, "09", "8iddSoft:TRANS:m16",  30,		"LO",	}	
+  {2, "10", "8iddSoft:TRANS:m15",  30,		"LO",	}	
 }  
 
 

@@ -42,26 +42,26 @@ file "$(TOP)/db/pyDevCRL_stack.db" {
 file "$(TOP)/db/pyDevCRL_stack_move.db" {
   pattern
   {OE, M,	MOT,				DIST,	INLM,	}
-  {1, "01", "9idd:TRANS:m5",   15,		"LO",	}	
-  {1, "02", "9idd:TRANS:m6",   15,		"LO",	}	
-  {1, "03", "9idd:TRANS:m7",   15,		"LO",	}	
-  {1, "04", "9idd:TRANS:m8",   15,		"LO",	}	
+  {1, "01", "9idd:TRANS:m13",   15,		"LO",	}	
+  {1, "02", "9idd:TRANS:m12",   15,		"LO",	}	
+  {1, "03", "9idd:TRANS:m11",   15,		"LO",	}	
+  {1, "04", "9idd:TRANS:m10",   15,		"LO",	}	
   {1, "05", "9idd:TRANS:m9",   15,		"LO",	}	
-  {1, "06", "9idd:TRANS:m10",  15,		"LO",	}	
-  {1, "07", "9idd:TRANS:m11",  15,		"LO",	}	
-  {1, "08", "9idd:TRANS:m12",  15,		"LO",	}	
-  {1, "09", "9idd:TRANS:m13",  15,		"LO",	}	
+  {1, "06", "9idd:TRANS:m8",  15,		"LO",	}	
+  {1, "07", "9idd:TRANS:m7",  15,		"LO",	}	
+  {1, "08", "9idd:TRANS:m6",  15,		"LO",	}	
+  {1, "09", "9idd:TRANS:m5",  15,		"LO",	}	
 #  {1, "10", "9idd:TRANS:m10", 25,		"LO",	}	
-  {2, "01", "9idd:TRANS:m14",  30,		"LO",	}	
-  {2, "02", "9idd:TRANS:m15",  30,		"LO",	}	
-  {2, "03", "9idd:TRANS:m16",  30,		"LO",	}	
-  {2, "04", "9idd:TRANS:m17",  30,		"LO",	}	
-  {2, "05", "9idd:TRANS:m18",  30,		"LO",	}	
-  {2, "06", "9idd:TRANS:m19",  30,		"LO",	}	
-  {2, "07", "9idd:TRANS:m20",  30,		"LO",	}	
-  {2, "08", "9idd:TRANS:m21",  30,		"LO",	}	
-  {2, "09", "9idd:TRANS:m22",  30,		"LO",	}	
-  {2, "10", "9idd:TRANS:m23",  30,		"LO",	}	
+  {2, "01", "9idd:TRANS:m23",  30,		"LO",	}	
+  {2, "02", "9idd:TRANS:m22",  30,		"LO",	}	
+  {2, "03", "9idd:TRANS:m21",  30,		"LO",	}	
+  {2, "04", "9idd:TRANS:m20",  30,		"LO",	}	
+  {2, "05", "9idd:TRANS:m19",  30,		"LO",	}	
+  {2, "06", "9idd:TRANS:m18",  30,		"LO",	}	
+  {2, "07", "9idd:TRANS:m17",  30,		"LO",	}	
+  {2, "08", "9idd:TRANS:m16",  30,		"LO",	}	
+  {2, "09", "9idd:TRANS:m15",  30,		"LO",	}	
+  {2, "10", "9idd:TRANS:m14",  30,		"LO",	}	
 }  
 
 

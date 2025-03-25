@@ -637,7 +637,34 @@ class focusingSystem():
         # KB system need to "publish" p_h, p_v, and q1 
         if self.sysType == SYSTEM_TYPE.CRLandKB:
             self.updateKBdistanceRBVs()
-  
+
+    def updateConfig(self, config_BW, oe):
+        '''
+        Description
+            User has manually changed lenses, get focal size and display it
+            along with updated RBVs but don't set the config PV
+            
+        Parameters
+            config_BW: string
+                configuration as binary
+            oe: string
+                Label of optical element 
+        '''
+
+        if self.verbose: print(f'Getting focal size for {oe} set to {config_BW}')
+
+        self.index[oe] = config_BW
+        # Find the configuration in the 1/f sorted list
+        self.indexSorted[oe] = self.sorted_invF_index[oe].tolist().index(self.index[oe])
+
+        if self.sysType == SYSTEM_TYPE.doubleCRL: 
+            self.setFocalSizeActual(offTable = True)
+        else:
+            self.setFocalSizeActual(offTable = False)
+
+        self.updateQdistances()
+        self.updateLensRBV()
+        self.updateFocalSizeRBVs()   
 
     def updateFsize(self, focalSize):
         '''
