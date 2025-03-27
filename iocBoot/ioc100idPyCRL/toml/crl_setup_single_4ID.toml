@@ -27,9 +27,10 @@ sigmaVp_e.flat = 1.293e-6
 
 # Set up beamline properties -- these may only need to be set up at creation of IOC
 # d_StoL1	- Source-to-CRL1 distance, in m
+# 			  includes flange-to-fiducial distance (143.5 mm)
 # d_Stof	- Source-to-sample distance, in m
 [beamline]
-d_StoL1 = 65.2
+d_StoL1 = 65.3435
 d_Stof = 67.2
 
 # Set up crl properties -- these are properties common to the stacks

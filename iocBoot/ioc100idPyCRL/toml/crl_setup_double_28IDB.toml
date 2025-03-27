@@ -1,6 +1,6 @@
 # This is a TOML document
 
-title = "9ID CRL setup"
+title = "28IDB CRL setup"
 
 # Set up beam properties -- these may only need to be set up at creation of IOC
 # however energy can be changed after boot-time and mode can be switched based
@@ -27,24 +27,25 @@ sigmaVp_e.flat = 1.293e-6
 
 # Set up beamline properties -- these may only need to be set up at creation of IOC
 # d_StoL1	- Source-to-CRL1 distance, in m
-# 			  includes flange-to-fiducial distance (192.2 mm)
+# 			  includes flange-to-fiducial distance (264.3 mm)
 # d_StoL2	- Source-to-CRL2 distance, in m
-# 			  includes flange-to-fiducial distance (239.5 mm)
+# 			  includes flange-to-fiducial distance (370.4 mm)
 # d_Stof	- Source-to-sample distance, in m
 [beamline]
-d_StoL1 = 44.592
-d_StoL2 = 51.540
-d_Stof = 55.0
+d_StoL1 = 48.764
+d_StoL2 = 62.970
+d_Stof = 64.5
+
 
 # Set up crl properties -- these are properties common to the stacks
-# stacks	- Number of sets of lenses
+# stacks	- Number of sets of 2-D lenses
 # d_min 	- Minimum thickness at the apex in m
 [crl1]
-stacks = 9
+stacks = 10
 d_min = 0.00003 
 
 [crl2]
-stacks = 10
+stacks = 12
 d_min = 0.00003 
 
 

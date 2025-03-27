@@ -3,7 +3,7 @@
 #	NUMLENS		= number of lenses in cassette
 #	RADIUS		= lens radius in m
 #	MAT			= Lens material
-#	LOC			= cassette location relative to CRL center in m; + further downstream, - upstream
+#	LOC			= cassette location relative to CRL center fiducial in m; + further downstream, - upstream
 #	DIM			= Type of lens: 2D or 1D_V
 #   THICKERR	= Thickness error in m
 #   INVAL 		= control value for inserting lens
