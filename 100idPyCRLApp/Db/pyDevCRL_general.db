@@ -72,7 +72,6 @@ record(bi, "$(P)$(SYSID):beamMode_RBV"){
   field(DTYP, "pydev")
   field(INP,  "@pydev.iointr('updated_mode')")
   field(SCAN, "I/O Intr")
-  field(PREC, "5")
 }
 
 record(ao, "$(P)$(SYSID):focalSize"){

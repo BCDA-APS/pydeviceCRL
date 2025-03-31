@@ -9,7 +9,7 @@ record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_calc"){
 	field(INPA, "$(P)$(SYSID):$(OE):stack$(M) CP")
 	field(B, "$(INVAL)")
 	field(C, "$(OUTVAL)")
-	field(CALC, "A==B?27:23")
+	field(CALC, "A==B?5:3")
 	field(OUT, "$(P)$(SYSID):$(OE):stack$(M)_move.SELN")
 	field(FLNK, "$(P)$(SYSID):$(OE):stack$(M)_move.PROC CA")
 }

@@ -15,7 +15,7 @@ title = "8ID CRL setup"
 # sigmaVp_e  - Sigma electron divergence in V direction in rad
 [beam]
 energy = 15
-L_und = 2.4
+L_und = 4.8
 sigmaH_e.round = 12.296e-6
 sigmaV_e.round = 8.263e-6
 sigmaHp_e.round = 2.336e-6
