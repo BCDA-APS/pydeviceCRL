@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1443</width>
-    <height>34</height>
+    <height>38</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -327,7 +327,7 @@
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="channel" stdset="0">
-        <string notr="true">$(P)$(CRL):stack$(M)_move.LNK4</string>
+        <string notr="true">$(P)$(CRL):stack$(M)_move.LNK3</string>
        </property>
        <property name="foreground">
         <color>
@@ -380,7 +380,7 @@
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="channel" stdset="0">
-        <string notr="true">$(P)$(CRL):stack$(M)_move.LNK3</string>
+        <string notr="true">$(P)$(CRL):stack$(M)_move.LNK2</string>
        </property>
        <property name="foreground">
         <color>

@@ -9,10 +9,10 @@ record(sseq, "$(P)$(SYSID):$(OE):stack$(M)_move"){
 #	field(DO2, "1")
 #	field(LNK2, "$(MOT).CNEN PP")
 	field(DO2, "1")
-	field(LNK2, "$(MOT).TWF") 
+	field(LNK2, "$(MOT).TWF CA") 
 	field(WAIT2, "Wait")
 	field(DO3, "1")
-	field(LNK3, "$(MOT).TWR") 
+	field(LNK3, "$(MOT).TWR CA") 
 	field(WAIT3, "Wait")
 #	field(DO5, "0")
 #	field(LNK5, "$(MOT).CNEN PP")
@@ -42,4 +42,11 @@ record(bi, "$(P)$(SYSID):$(OE):stack$(M)_match"){
 	field(DESC, "Does control match RBV")
 	field(ZNAM, "Mismatch")
 	field(ONAM, "Match")
+}
+
+record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_DMOV") {
+	field(INPA, "$(MOT).DMOV CP")
+	field(CALC, "!A")
+	field(OUT, "$(P)$(SYSID):$(OE):crlBusyCalc.$(MASK)")
+	field(FLNK, "$(P)$(SYSID):$(OE):crlBusyCalc.PROC CA")
 }

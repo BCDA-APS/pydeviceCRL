@@ -26,15 +26,15 @@ epicsEnvSet('_SLIT1V',"$(PREFIX)testSSV1")	# Vertical size of slit PV before CRL
 
 # Setting CRL Z-translation PVs (if z-translation part of CRL system)
 #epicsEnvSet('_OEPOS1',"$(PREFIX)testCRL1z")	# Z-motion of CRL 1 (testing)
-epicsEnvSet('_OEPOS1',"6idbSoft:TRANS:m6")	# Z-motion of CRL 1
+epicsEnvSet('_OEPOS1',"6idbSoft:TRANS:m5")	# Z-motion of CRL 1
 
 # Setting Sample Z-translation PVs
 epicsEnvSet('_SAMPOS',"$(PREFIX)testSAMz")	# Z-motion of sample (testing or unneeded)
 #epicsEnvSet('_SAMPOS',"")	# Z-motion of sample
 
 # Setting Mono energy PV
-epicsEnvSet("BLE","$(PREFIX)$(MONOE)")	# Beam energy PV at CRL (testing uses MONOE defined earlier)
-#epicsEnvSet("BLE","")
+#epicsEnvSet("BLE","$(PREFIX)$(MONOE)")	# Beam energy PV at CRL (testing uses MONOE defined earlier)
+epicsEnvSet("BLE","6ida1:BraggEAO")
 
 ################################################################################
 # Load DBs and python code
@@ -50,8 +50,8 @@ dbLoadTemplate("$(SUBS_FILE)","P=$(PREFIX),SYSID=$(SYS_ID)")
 pydev("stack_subFile = '$(SUBS_FILE)'")
 
 # Add elements
-dbLoadRecords("${TOP}/db/pyDevCRL_elem.db","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(PY_OBJECT),OE=1,ELEM=$(_CONFIGS),OEPOS=$(_OEPOS1)")
-#dbLoadRecords("${TOP}/db/pyDevCRL_elem.db","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(PY_OBJECT),OE=2,ELEM=$(_CONFIGS),OEPOS=$(_OEPOS2)")
+dbLoadRecords("${TOP}/db/pyDevCRL_elem.db","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(PY_OBJECT),OE=1,OEL=A,ELEM=$(_CONFIGS),OEPOS=$(_OEPOS1)")
+#dbLoadRecords("${TOP}/db/pyDevCRL_elem.db","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(PY_OBJECT),OE=2,OEL=B,ELEM=$(_CONFIGS),OEPOS=$(_OEPOS2)")
 
 # Add slits for each element
 # Transforcators are numbered (1, 2); KB has string identifier ('kb') for OE ID

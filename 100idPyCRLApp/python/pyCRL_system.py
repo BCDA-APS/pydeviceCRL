@@ -157,7 +157,6 @@ class focusingSystem():
         # Are these needed at initialization
         
         #TODO -- any generalizations? Yes but how? Need to do by elements?
-        self.energy = 0  # gets value from an ao (incoming beam energy)
         self.focalSize = 0 # get value from an ao (desired focal length)
         self.lenses = 0 # sets integer (2^10) whose binary representation indicates which lenses are in or out
         
@@ -279,7 +278,7 @@ class focusingSystem():
         
     def setupSlits(self):
         '''
-        Initializes slit sizes to 0        
+        Initializes slit sizes to 1 m (very open)        
         '''
         self.slits['1'] = {'hor':1,'vert':1}            
         if self.sysType is SYSTEM_TYPE.doubleCRL:
@@ -638,11 +637,11 @@ class focusingSystem():
         if self.sysType == SYSTEM_TYPE.CRLandKB:
             self.updateKBdistanceRBVs()
 
-    def updateConfig(self, config_BW, oe):
+    def updateConfig(self, config_RBV, oe):
         '''
         Description
-            User has manually changed lenses, get focal size and display it
-            along with updated RBVs but don't set the config PV
+            Readback of lens configuration has changed: get focal size and 
+            display it along with updated RBVs but don't set the config PV
             
         Parameters
             config_BW: string
@@ -651,9 +650,9 @@ class focusingSystem():
                 Label of optical element 
         '''
 
-        if self.verbose: print(f'Getting focal size for {oe} set to {config_BW}')
+        if self.verbose: print(f'Getting focal size for {oe} set to {config_RBV}')
 
-        self.index[oe] = config_BW
+        self.index[oe] = config_RBV
         # Find the configuration in the 1/f sorted list
         self.indexSorted[oe] = self.sorted_invF_index[oe].tolist().index(self.index[oe])
 

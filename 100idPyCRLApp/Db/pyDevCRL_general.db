@@ -78,6 +78,7 @@ record(ao, "$(P)$(SYSID):focalSize"){
 	field(EGU, "m")
 	field(DTYP, "pydev")
 	field(OUT, "@$(OBJ).updateFsize(VAL)")
+    field(FLNK, "$(P)$(SYSID):setSysBusy.PROC PP")
 }
 
 record(bo, "$(P)$(SYSID):recalc_enable"){
@@ -150,6 +151,14 @@ record(waveform, "$(P)$(SYSID):fSizes"){
   field(PREC, "6")
   field(FTVL, "DOUBLE")
   field(NELM, "$(ELEM)")
+}
+
+# For two transfocator systems, lookup table sorted based on first CRL
+record(acalcout, "$(P)$(SYSID):minimizeFsize"){
+  field(INAA, "$(P)$(SYSID):fSizes NPP")
+  field(NELM, "$(ELEM)")
+  field(CALC, "IXMIN(AA)")
+  field(OUT, "$(P)$(SYSID):1:sortedIndex PP")
 }
 
 record(scalcout, "$(P)$(SYSID):samPosOffsetConv"){
@@ -226,4 +235,20 @@ record(waveform, "$(P)$(SYSID):dq_list"){
   field(PREC, "6")
   field(FTVL, "DOUBLE")
   field(NELM, "$(ELEM)")
+}
+
+record(sseq, "$(P)$(SYSID):setSysBusy"){
+	field(DO1, "1")
+	field(LNK1, "$(P)$(SYSID):sysBusy PP")
+}
+
+record(busy, "$(P)$(SYSID):sysBusy"){
+	field(ZNAM, "Done")
+	field(ONAM, "Changing")
+}
+
+record(calcout, "$(P)$(SYSID):sysBusyCalc") {
+  field(DESC, "Each element reports back if done moving")
+  field(CALC, "A | B")
+  field(OUT, "$(P)$(SYSID):sysBusy PP")
 }

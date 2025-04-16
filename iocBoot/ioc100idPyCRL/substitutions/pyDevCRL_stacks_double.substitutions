@@ -65,25 +65,25 @@ file "$(TOP)/db/stackMoveTestTools.db" {
 ## motor homing only stops when at home position -- can't alter after boot up 
 file "$(TOP)/db/pyDevCRL_stack_move.db" {
   pattern
-  {OE, M,	MOT,				DIST,		INLM,	}
-  {1, "01", "100idPyCRL:m1",   	25,			"LO",	}	
-  {1, "02", "100idPyCRL:m2",   	25,			"LO",	}	
-  {1, "03", "100idPyCRL:m3",   	25,			"LO",	}	
-  {1, "04", "100idPyCRL:m4",   	25,			"LO",	}	
-  {1, "05", "100idPyCRL:m5",   	25,			"LO",	}	
-  {1, "06", "100idPyCRL:m6",   	25,			"LO",	}	
-  {1, "07", "100idPyCRL:m7",   	25,			"LO",	}	
-  {1, "08", "100idPyCRL:m8",   	25,			"LO",	}	
-  {1, "09", "100idPyCRL:m9",   	25,			"LO",	}	
-  {1, "10", "100idPyCRL:m10",  25,				"LO",	}	
-  {2, "01", "100idPyCRL:m11",  	25,			"LO",	}	
-  {2, "02", "100idPyCRL:m12",  	25,			"LO",	}	
-  {2, "03", "100idPyCRL:m13",  	25,			"LO",	}	
-  {2, "04", "100idPyCRL:m14",  	25,			"LO",	}	
-  {2, "05", "100idPyCRL:m15",  	25,			"LO",	}	
-  {2, "06", "100idPyCRL:m16",  	25,			"LO",	}	
-  {2, "07", "100idPyCRL:m17",  	25,			"LO",	}	
-  {2, "08", "100idPyCRL:m18",  	25,			"LO",	}	
-  {2, "09", "100idPyCRL:m19",  	25,			"LO",	}	
-  {2, "10", "100idPyCRL:m20", 	25,			"LO",	}	
+  {OE, M,	MOT,				DIST,		INLM,	MASK  }
+  {1, "01", "100idPyCRL:m1",   	25,			"LO",	"A"	}		
+  {1, "02", "100idPyCRL:m2",   	25,			"LO",	"B"	}		
+  {1, "03", "100idPyCRL:m3",   	25,			"LO",	"C"	}		
+  {1, "04", "100idPyCRL:m4",   	25,			"LO",	"D"	}		
+  {1, "05", "100idPyCRL:m5",   	25,			"LO",	"E"	}		
+  {1, "06", "100idPyCRL:m6",   	25,			"LO",	"F"	}		
+  {1, "07", "100idPyCRL:m7",   	25,			"LO",	"G"	}		
+  {1, "08", "100idPyCRL:m8",   	25,			"LO",	"H"	}		
+  {1, "09", "100idPyCRL:m9",   	25,			"LO",	"I"	}		
+  {1, "10", "100idPyCRL:m10",  25,			"LO",	"J"	}		
+  {2, "01", "100idPyCRL:m11",  	25,			"LO",	"A"	}		
+  {2, "02", "100idPyCRL:m12",  	25,			"LO",	"B"	}		
+  {2, "03", "100idPyCRL:m13",  	25,			"LO",	"C"	}		
+  {2, "04", "100idPyCRL:m14",  	25,			"LO",	"D"	}		
+  {2, "05", "100idPyCRL:m15",  	25,			"LO",	"E"	}		
+  {2, "06", "100idPyCRL:m16",  	25,			"LO",	"F"	}		
+  {2, "07", "100idPyCRL:m17",  	25,			"LO",	"G"	}		
+  {2, "08", "100idPyCRL:m18",  	25,			"LO",	"H"	}		
+  {2, "09", "100idPyCRL:m19",  	25,			"LO",	"I"	}		
+  {2, "10", "100idPyCRL:m20", 	25,			"LO",	"J"	}		
 }  

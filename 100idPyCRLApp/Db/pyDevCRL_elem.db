@@ -5,6 +5,29 @@ record(longin, "$(P)$(SYSID):$(OE):lenses") {
   field(FLNK, "$(P)$(SYSID):$(OE):lens_decode.PROC PP")
 }
 
+record(sseq, "$(P)$(SYSID):$(OE):setCrlBusy"){
+	field(DO1, "1")
+	field(LNK1, "$(P)$(SYSID):$(OE):crlBusy PP")
+}
+
+record(calcout, "$(P)$(SYSID):$(OE):crlBusyCalc") {
+  field(DESC, "Each stack reports back if done moving")
+  field(CALC, "A|B|C|D|E|F|G|H|I|J|K|L")
+  field(OUT, "$(P)$(SYSID):$(OE):crlBusy PP")
+}
+
+record(busy, "$(P)$(SYSID):$(OE):crlBusy"){
+	field(ZNAM, "Done")
+	field(ONAM, "Changing")
+}
+
+record(dfanout, "$(P)$(SYSID):$(OE):crlBusyFO"){
+	field(OMSL, "closed_loop")
+	field(DOL, "$(P)$(SYSID):$(OE):crlBusy CP")
+	field(OUTA, "$(P)$(SYSID):sysBusyCalc.$(OEL)")
+	field(FLNK, "$(P)$(SYSID):sysBusyCalc.PROC CA")
+}
+
 record(transform, "$(P)$(SYSID):$(OE):lens_decode"){
 	field(INPA, "$(P)$(SYSID):$(OE):lenses PP")
 	field(CLCB, "A % 2")
@@ -60,6 +83,7 @@ record(seq, "$(P)$(SYSID):$(OE):lensSetSeq"){
 	field(DOL7, "$(P)$(SYSID):$(OE):lens_decode.I")
 	field(DOL8, "$(P)$(SYSID):$(OE):lens_decode.J")
 	field(DOL9, "$(P)$(SYSID):$(OE):lens_decode.K")
+	field(DOA, "0")
 	field(LNK0, "$(P)$(SYSID):$(OE):stack01 PP")
 	field(LNK1, "$(P)$(SYSID):$(OE):stack02 PP")
 	field(LNK2, "$(P)$(SYSID):$(OE):stack03 PP")
@@ -70,6 +94,7 @@ record(seq, "$(P)$(SYSID):$(OE):lensSetSeq"){
 	field(LNK7, "$(P)$(SYSID):$(OE):stack08 PP")
 	field(LNK8, "$(P)$(SYSID):$(OE):stack09 PP")
 	field(LNK9, "$(P)$(SYSID):$(OE):stack10 PP")
+	field(LNKA, "$(P)$(SYSID):$(OE):crlBusy PP")
 }
 
 record(calcout, "$(P)$(SYSID):$(OE):lens_encode"){
@@ -77,23 +102,33 @@ record(calcout, "$(P)$(SYSID):$(OE):lens_encode"){
 	field(CALC, "A+B*2+C*4+D*8+E*16+F*32+G*64+H*128+I*256+J*512")
 } 
 
-record(dfanout, "$(P)$(SYSID):$(OE):lens_encode_sync") {
-	field(DOL, "$(P)$(SYSID):$(OE):lensConfig_BW")
-	field(OUTA, "$(P)$(SYSID):$(OE):sortedIndex PP")
-	field(OMSL, "closed_loop")
-}
+#record(dfanout, "$(P)$(SYSID):$(OE):lens_encode_sync") {
+#	field(DOL, "$(P)$(SYSID):$(OE):lensConfig_BW")
+#	field(OUTA, "$(P)$(SYSID):$(OE):sortedIndex PP")
+#	field(OMSL, "closed_loop")
+#}
 
 record(longout, "$(P)$(SYSID):$(OE):lensConfig_BW") {
+#  field(DTYP, "pydev")
+#  field(OUT, "@$(OBJ).updateConfig(VAL, '$(OE)')")
+}
+
+record(calcout, "$(P)$(SYSID):$(OE):lens_RBV_encode"){
+	field(OUT, "$(P)$(SYSID):$(OE):lensConfig_RBV NPP")
+	field(CALC, "A+B*2+C*4+D*8+E*16+F*32+G*64+H*128+I*256+J*512")
+} 
+
+record(longout, "$(P)$(SYSID):$(OE):lensConfig_RBV") {
   field(DTYP, "pydev")
   field(OUT, "@$(OBJ).updateConfig(VAL, '$(OE)')")
 }
 
-record(calcout, "$(P)$(SYSID):$(OE):lens_RBV_encode"){
-	field(OUT, "$(P)$(SYSID):$(OE):lensConfig_RBV PP")
-	field(CALC, "A+B*2+C*4+D*8+E*16+F*32+G*64+H*128+I*256+J*512")
-} 
-
-record(longin, "$(P)$(SYSID):$(OE):lensConfig_RBV") {
+record(calcout, "$(P)$(SYSID):$(OE):updateCalc") {
+  field(DESC, "Moves complete, update RBVs")
+  field(INPA, "$(P)$(SYSID):sysBusy CP")
+  field(CALC, "!A")
+  field(OUT, "$(P)$(SYSID):$(OE):lensConfig_RBV.PROC CA")
+  field(OOPT, "Transition To Non-zero")
 }
 
 record(waveform, "$(P)$(SYSID):$(OE):configs"){
@@ -140,6 +175,7 @@ record(calcout, "$(P)$(SYSID):$(OE):fSize_twk_dn"){
 record(longout, "$(P)$(SYSID):$(OE):sortedIndex") {
   field(DTYP, "pydev")
   field(OUT, "@$(OBJ).updateIndex(VAL, '$(OE)')")
+  field(FLNK, "$(P)$(SYSID):$(OE):setCrlBusy.PROC PP")
 }
 
 record(longin, "$(P)$(SYSID):$(OE):sortedIndex_RBV") {
@@ -187,3 +223,4 @@ record(ai, "$(P)$(SYSID):$(OE):oePosition_RBV"){
   field(SCAN, "I/O Intr")
   field(PREC, "6")
 }
+

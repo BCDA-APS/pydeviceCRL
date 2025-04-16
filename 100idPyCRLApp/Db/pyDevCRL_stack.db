@@ -23,10 +23,10 @@ record(mbbi, "$(P)$(SYSID):$(OE):stack$(M)_RBV"){
 	field(THST, "Both in")
 }
 
-record(dfanout, "$(P)$(SYSID):$(OE):stack$(M)_RBV_dfanout"){
-	field(OMSL, "closed_loop")
-	field(DOL, "$(P)$(SYSID):$(OE):stack$(M)_RBV CP")
-	field(OUTA, "$(P)$(SYSID):$(OE):lens_RBV_encode.$(ENCODE) PP")
+record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_RBV_dfanout"){
+	field(INPA, "$(P)$(SYSID):$(OE):stack$(M)_RBV CP")
+	field(CALC, "A==1?1:0")
+	field(OUT, "$(P)$(SYSID):$(OE):lens_RBV_encode.$(ENCODE) PP")
 }
 
 record(ai, "$(P)$(SYSID):$(OE):stack$(M)_NumLens"){

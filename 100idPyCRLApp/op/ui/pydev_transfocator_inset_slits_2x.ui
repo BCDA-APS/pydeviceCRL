@@ -207,7 +207,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="channel" stdset="0">
-          <string notr="true">$(P)$(CRL):1:slitSize_H.DOL</string>
+          <string notr="true">$(P)$(CRL):1:slitSizeHConv.INPA</string>
          </property>
          <property name="foreground">
           <color>
@@ -395,7 +395,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="channel" stdset="0">
-          <string notr="true">$(P)$(CRL):1:slitSize_V.DOL</string>
+          <string notr="true">$(P)$(CRL):1:slitSizeVConv.INPA</string>
          </property>
          <property name="foreground">
           <color>
@@ -602,7 +602,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="channel" stdset="0">
-          <string notr="true">$(P)$(CRL):2:slitSize_H.DOL</string>
+          <string notr="true">$(P)$(CRL):2:slitSizeHConv.INPA</string>
          </property>
          <property name="foreground">
           <color>
@@ -790,7 +790,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="channel" stdset="0">
-          <string notr="true">$(P)$(CRL):2:slitSize_V.DOL</string>
+          <string notr="true">$(P)$(CRL):2:slitSizeVConv.INPA</string>
          </property>
          <property name="foreground">
           <color>

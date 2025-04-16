@@ -446,7 +446,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="2,1,2,1,2,1,2,1,2,2">
+      <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="2,1,2,1,2,4,2,2">
        <item>
         <widget class="caRelatedDisplay" name="carelateddisplay_52">
          <property name="label">
@@ -595,52 +595,6 @@
         </spacer>
        </item>
        <item>
-        <widget class="caMessageButton" name="camessagebutton_3">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>SYNC</string>
-         </property>
-         <property name="channel" stdset="0">
-          <string notr="true">$(P)$(CRL):1:lens_encode_sync.PROC</string>
-         </property>
-         <property name="foreground">
-          <color>
-           <red>228</red>
-           <green>228</green>
-           <blue>228</blue>
-          </color>
-         </property>
-         <property name="background">
-          <color>
-           <red>53</red>
-           <green>132</green>
-           <blue>0</blue>
-          </color>
-         </property>
-         <property name="pressMessage">
-          <string notr="true">1</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_6">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
         <widget class="caRelatedDisplay" name="carelateddisplay_48">
          <property name="label">
           <string notr="true">-less</string>
@@ -728,11 +682,6 @@
    <class>caTextEntry</class>
    <extends>caLineEdit</extends>
    <header>caTextEntry</header>
-  </customwidget>
-  <customwidget>
-   <class>caMessageButton</class>
-   <extends>QPushButton</extends>
-   <header>caMessageButton</header>
   </customwidget>
   <customwidget>
    <class>caFrame</class>

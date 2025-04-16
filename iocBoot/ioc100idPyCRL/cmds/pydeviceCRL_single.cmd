@@ -50,8 +50,8 @@ dbLoadTemplate("$(SUBS_FILE)","P=$(PREFIX),SYSID=$(SYS_ID)")
 pydev("stack_subFile = '$(SUBS_FILE)'")
 
 # Add elements
-dbLoadRecords("${TOP}/db/pyDevCRL_elem.db","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(PY_OBJECT),OE=1,ELEM=$(_CONFIGS),OEPOS=$(_OEPOS1)")
-#dbLoadRecords("${TOP}/db/pyDevCRL_elem.db","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(PY_OBJECT),OE=2,ELEM=$(_CONFIGS),OEPOS=$(_OEPOS2)")
+dbLoadRecords("${TOP}/db/pyDevCRL_elem.db","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(PY_OBJECT),OE=1,OEL=A,ELEM=$(_CONFIGS),OEPOS=$(_OEPOS1)")
+#dbLoadRecords("${TOP}/db/pyDevCRL_elem.db","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(PY_OBJECT),OE=2,OEL=B,ELEM=$(_CONFIGS),OEPOS=$(_OEPOS2)")
 
 # Add slits for each element
 # Transforcators are numbered (1, 2); KB has string identifier ('kb') for OE ID
