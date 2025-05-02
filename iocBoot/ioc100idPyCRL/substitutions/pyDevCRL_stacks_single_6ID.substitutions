@@ -20,7 +20,8 @@ file "$(TOP)/db/pyDevCRL_stack.db" {
   {1, "06",   8, 			0.0002,		"Be",	-0.00526,	"2D",		1e-6,	 	1,		0,	"F", 	"F"	}	
   {1, "07",   12, 			0.0002,		"Be",	-0.04147,	"2D",		1.4e-6,	 	1,		0,	"G", 	"G"	}	
   {1, "08",   16, 			0.0002,		"Be",	-0.08510,	"2D",		2.0e-6,	 	1,		0,	"H", 	"H"	}	
-  {1, "09",   32, 			0.0002,		"Be",	-0.12909,	"2D",		2.8e-6,	 	1,		0,	"I", 	"I"	}	
+# 9th cassette is actually 2 cassettes that total 32 lenses -- one at -129.09 mm, the other at -173.16 mm
+  {1, "09",   32, 			0.0002,		"Be",	-0.15113,	"2D",		2.8e-6,	 	1,		0,	"I", 	"I"	}	
 }
    
 # For ACS controlled motors, using tweak with dist slightly greater than the 
@@ -30,18 +31,53 @@ file "$(TOP)/db/pyDevCRL_stack.db" {
 #	DIST		= tweak distance to use (should be greater than limit-limit distance)
 file "$(TOP)/db/pyDevCRL_stack_move.db" {
   pattern
-  {OE, M,	MOT,					INLM,	DIST}
-  {1, "01", "6idbSoft:TRANS:m6",   	"LO",	"15"}	
-  {1, "02", "6idbSoft:TRANS:m7",   	"LO",	"15"}	
-  {1, "03", "6idbSoft:TRANS:m8",   	"LO",	"15"}	
-  {1, "04", "6idbSoft:TRANS:m9",   	"LO",	"15"}	
-  {1, "05", "6idbSoft:TRANS:m10",  	"LO",	"15"}	
-  {1, "06", "6idbSoft:TRANS:m11",  	"LO",	"15"}	
-  {1, "07", "6idbSoft:TRANS:m12",  	"LO",	"15"}	
-  {1, "08", "6idbSoft:TRANS:m13",  	"LO",	"15"}	
-  {1, "09", "6idbSoft:TRANS:m14",  	"LO",	"15"}	
+  {OE, M,	MOT,					INLM,		DIST, MASK}
+  {1, "01", "6idbSoft:TRANS:m15",   	"LO",	"30", "A"	}	
+  {1, "02", "6idbSoft:TRANS:m14",   	"LO",	"30", "B"	}	
+  {1, "03", "6idbSoft:TRANS:m13",   	"LO",	"30", "C"	}	
+  {1, "04", "6idbSoft:TRANS:m12",   	"LO",	"30", "D"	}	
+  {1, "05", "6idbSoft:TRANS:m11",  	"LO",		"30", "E"	}	
+  {1, "06", "6idbSoft:TRANS:m10",  	"LO",		"30", "F"	}	
+  {1, "07", "6idbSoft:TRANS:m9",  	"LO",		"30", "G"	}	
+  {1, "08", "6idbSoft:TRANS:m8",  	"LO",		"30", "H"	}	
 }  
 
+# Some cassettes are split over two stages -- this database seeks to combine
+# motor actions into one
+file "$(TOP)/db/pyDevCRL_2xstack_move.db" {
+  pattern
+  {OE, M,		MOT1,					MOT2,					INLM,	DIST, MASK}
+  {1, "09", 	"6idbSoft:TRANS:m6",	"6idbSoft:TRANS:m7"   	"LO",	"30", "I"}
+}	
+
+## For simulated motors, need to be able to move from limit to limit
+#file "$(TOP)/db/stackMoveTestTools.db" {
+#  pattern
+#  {MOT			  }
+#  {"6idPyCRL:m1"}	
+#  {"6idPyCRL:m2"}	
+#  {"6idPyCRL:m3"}	
+#  {"6idPyCRL:m4"}	
+#  {"6idPyCRL:m5"}	
+#  {"6idPyCRL:m6"}	
+#  {"6idPyCRL:m7"}	
+#  {"6idPyCRL:m8"}	
+#}
+#
+## For simulated motors, need to use Goto(Neg/Pos)Lim for INMOVE, OUTMOVE as simulated 
+## motor homing only stops when at home position -- can't alter after boot up 
+#file "$(TOP)/db/pyDevCRL_stack_move.db" {
+#  pattern
+#  {OE, M,	MOT,					INLM,	}
+#  {1, "01", "6idPyCRL:m1",   		"LO",	}	
+#  {1, "02", "6idPyCRL:m2",   		"LO",	}	
+#  {1, "03", "6idPyCRL:m3",   		"LO",	}	
+#  {1, "04", "6idPyCRL:m4",   		"LO",	}	
+#  {1, "05", "6idPyCRL:m5",   		"LO",	}	
+#  {1, "06", "6idPyCRL:m6",   		"LO",	}	
+#  {1, "07", "6idPyCRL:m7",   		"LO",	}	
+#  {1, "08", "6idPyCRL:m8",   		"LO",	}	
+#}  
 
 ## For simulated motors, need to be able to move from limit to limit
 #file "$(TOP)/db/stackMoveTestTools.db" {

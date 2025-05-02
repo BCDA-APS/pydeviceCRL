@@ -42,17 +42,17 @@ file "$(TOP)/db/pyDevCRL_stack.db" {
 
 #!file "$(TOP)/db/pyDevCRL_stack_move.db" {
 #!  pattern
-#!  {OE, M,	MOT,				DIST,	INLM,		MASK}
+#!  {OE, M,	MOT,				DIST,	INLM,			MASK}
 #!  {1, "01", "8iddSoft:TRANS:m14",   30,		"LO",	"A"	}
 #!  {1, "02", "8iddSoft:TRANS:m13",   30,		"LO",	"B"	}
 #!  {1, "03", "8iddSoft:TRANS:m12",   30,		"LO",	"C"	}
 #!  {1, "04", "8iddSoft:TRANS:m11",   30,		"LO",	"D"	}
 #!  {1, "05", "8iddSoft:TRANS:m10",   30,		"LO",	"E"	}
-#!  {1, "06", "8iddSoft:TRANS:m9",	30,		"LO",	"F"	}
-#!  {1, "07", "8iddSoft:TRANS:m8",	30,		"LO",	"G"	}
-#!  {1, "08", "8iddSoft:TRANS:m7",	30,		"LO",	"H"	}
-#!  {1, "09", "8iddSoft:TRANS:m6",	30,		"LO",	"I"	}
-#!  {1, "10", "8iddSoft:TRANS:m5",	30,		"LO",	"J"	}
+#!  {1, "06", "8iddSoft:TRANS:m9",	30,		"LO",		"F"	}
+#!  {1, "07", "8iddSoft:TRANS:m8",	30,		"LO",		"G"	}
+#!  {1, "08", "8iddSoft:TRANS:m7",	30,		"LO",		"H"	}
+#!  {1, "09", "8iddSoft:TRANS:m6",	30,		"LO",		"I"	}
+#!  {1, "10", "8iddSoft:TRANS:m5",	30,		"LO",		"J"	}
 #!  {2, "01", "8iddSoft:TRANS:m24",  40,		"LO",	"A"	}	
 #!  {2, "02", "8iddSoft:TRANS:m23",  40,		"LO",	"B"	}	
 #!  {2, "03", "8iddSoft:TRANS:m22",  40,		"LO",	"C"	}	

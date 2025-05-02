@@ -42,8 +42,8 @@ epicsEnvSet('_SAMPOS',"$(PREFIX)testSAMz")	# Z-motion of sample (testing)
 #epicsEnvSet('_SAMPOS',"")	# Z-motion of sample
 
 # Setting Mono energy PV
-epicsEnvSet("BLE","$(PREFIX)$(MONOE)")	# Beam energy PV at CRL (testing uses MONOE defined earlier)
-#epicsEnvSet("BLE","")
+#epicsEnvSet("BLE","$(PREFIX)$(MONOE)")	# Beam energy PV at CRL (testing uses MONOE defined earlier)
+epicsEnvSet("BLE","100idPySBL:BraggERdbkAO")
 
 ################################################################################
 # Load DBs and python code

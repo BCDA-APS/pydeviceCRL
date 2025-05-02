@@ -61,11 +61,11 @@ record(scalcout, "$(P)$(SYSID):$(OE):stack$(M)_RBV_calc"){
 }
 
 
-record(calc, "$(P)$(SYSID):$(OE):stack$(M)_DMOV"){
+record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_DMOV"){
 	field(INPA, "$(MOT1).DMOV CP")
 	field(INPB, "$(MOT2).DMOV CP")
 	field(CALC, "!(A and B)")
-	field(OUTA, "$(P)$(SYSID):$(OE):crlBusyCalc.$(MASK)")
+	field(OUT, "$(P)$(SYSID):$(OE):crlBusyCalc.$(MASK)")
 	field(FLNK, "$(P)$(SYSID):$(OE):crlBusyCalc.PROC CA")
 }
 
