@@ -1,0 +1,35 @@
+record(mbbo, "$(P)$(SYSID):system1"){
+	field(ZRST, "$(SYSA)")
+	field(ONST, "$(SYSB)")
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).assignSystem('1', VAL)")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+}
+
+record(mbbi, "$(P)$(SYSID):system1_RBV"){
+	field(ZRST, "$(SYSA)")
+	field(ONST, "$(SYSB)")
+    field(DTYP, "pydev")
+    field(INP,  "@pydev.iointr('updated_system1')")
+    field(SCAN, "I/O Intr")
+}
+
+record(mbbo, "$(P)$(SYSID):system2"){
+	field(ZRST, "$(SYSA)")
+	field(ONST, "$(SYSB)")
+	field(DTYP, "pydev")
+	field(SDIS, "$(P)$(SYSID):singleCRLbo.VAL CP")
+	field(DISV, "1")
+	field(OUT, "@$(OBJ).assignSystem('2', VAL)")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+}
+
+record(mbbi, "$(P)$(SYSID):system2_RBV"){
+	field(ZRST, "$(SYSA)")
+	field(ONST, "$(SYSB)")
+    field(DTYP, "pydev")
+    field(INP,  "@pydev.iointr('updated_system2')")
+ 	field(SDIS, "$(P)$(SYSID):singleCRLbo.VAL CP")
+	field(DISV, "1")
+    field(SCAN, "I/O Intr")
+}

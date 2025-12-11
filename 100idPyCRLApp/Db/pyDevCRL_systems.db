@@ -1,0 +1,26 @@
+record(mbbo, "$(P)$(SYSID):system1"){
+	field(ZRST, "$(SYSA)")
+	field(ONST, "$(SYSB)")
+	field(TWST, "$(SYSC)")
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).assignSystem1(VAL)")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+}
+
+record(mbbo, "$(P)$(SYSID):system1"){
+	field(ZRST, "1x")
+	field(ONST, "2x")
+	field(TWST, "KB")
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).updateSysType(VAL)")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+}
+
+record(mbi, "$(P)$(SYSID):system2"){
+    field(ZRST, "1x")
+	field(ONST, "2x")
+	field(TWST, "KB")
+    field(DTYP, "pydev")
+    field(INP,  "@pydev.iointr('updated_sysType')")
+    field(SCAN, "I/O Intr")
+}

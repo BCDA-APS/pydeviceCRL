@@ -5,8 +5,8 @@
 ################################################################################
 # Local Definitions
 
-epicsEnvSet("PY_OBJECT", "CRL")
-epicsEnvSet("SYS_ID", "CRL")
+epicsEnvSet("PY_OBJECT", "1xCRL")
+epicsEnvSet("SYS_ID", "1x")
 epicsEnvSet("SUBS_FILE", "substitutions/pyDevCRL_stacks_single.substitutions")
 epicsEnvSet("TOML_FILE", "toml/crl_setup_single.toml")
 

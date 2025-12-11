@@ -252,3 +252,32 @@ record(calcout, "$(P)$(SYSID):sysBusyCalc") {
   field(CALC, "A | B")
   field(OUT, "$(P)$(SYSID):sysBusy PP")
 }
+
+# Adding ability to change system type
+record(mbbo, "$(P)$(SYSID):sysType"){
+	field(ZRST, "1x")
+	field(ONST, "2x")
+	field(TWST, "KB")
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).updateSysType(VAL)")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+}
+
+record(mbbi, "$(P)$(SYSID):sysType_RBV"){
+    field(ZRST, "1x")
+	field(ONST, "2x")
+	field(TWST, "KB")
+    field(DTYP, "pydev")
+    field(INP,  "@pydev.iointr('updated_sysType')")
+    field(SCAN, "I/O Intr")
+}
+
+record(calcout, "$(P)$(SYSID):singleCRLboCalc"){
+	field(INPA, "$(P)$(SYSID):sysType_RBV CP")
+	field(CALC, "A==1?0:1")
+	field(OUT, "$(P)$(SYSID):singleCRLbo.VAL PP")
+}
+
+record(bo, "$(P)$(SYSID):singleCRLbo"){
+	field(DESC, "Flag for single CRL")
+}

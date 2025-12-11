@@ -16,6 +16,9 @@ THICKERR_MACRO = 'THICKERR'
 DIM_MACRO = 'DIM'
 
 modes = ['flat','round']
+
+SYSTEM_TYPE_NAMES = {'1x': '1', '2x', '2', 'KB': '3'}
+
 '''
 Config variables
 
@@ -45,7 +48,15 @@ DEFAULT_CONFIG = {'beam':{'energy': 15, 'L_und': 4.7,
                   'kb':{'KBH_L': 180.0e-3, 'KBH_q': 380.0e-3, 'KB_theta': 2.5e-3,
                         'KBV_L': 300.0e-3, 'KBV_q': 640.0e-3, 'KBH_p_limit': 1.0, 
                         'KBV_p_limit': 1.0 }}
-    
+
+def find_key(input_dict, target_value):
+	'''
+	Find key by value in a dictionary	
+	'''
+    key = [k for k, v in input_dict.items() if v == target_value]
+    if key:
+        return key[0]
+   
 def separate_by_oe(property_list, oe_list, desired_oe):
     '''
     Description:
@@ -552,6 +563,32 @@ class focusingSystem():
         if self.sysType == SYSTEM_TYPE.CRLandKB:
             self.updateKBWaveforms()
             self.updateKBdistanceRBVs()
+
+    def updateSysType(self, sysType):
+        self.sysType = SYSTEM_TYPE_NAMES[sysType]
+
+		# set some defaults for element assignments?
+		# or go to previous values?
+		
+		# Other object updates?
+		# TODO
+		# self.redoSetupLookupTable()
+		# self.construct_lookup_table()
+		
+
+        pydev.iointr('updated_sysType', find_key(SYSTEM_TYPE_NAMES, self.sysType))
+        
+    def assignSystem(self, systemNum, oe):        
+        self.elements[int(systemNum)-1] = oe
+          
+		# Other object updates?
+		# self.redoSetupLookupTable()
+		# self.construct_lookup_table()
+  
+        # Set readback       
+        iointr_name = 'updated_system' + systemNum
+        pydev.iointr(iointr_name, self.elements[int(systemNum)-1]))
+
        
     def updateModeRBV(self):
         '''
@@ -692,7 +729,6 @@ class focusingSystem():
             elem: string
                 Label of element 
         '''
-        print('Shifting element')
         if self.verbose: print(f'Shifting {elem} position by {zOffset}')
         if elem == '1':
             self.bl['L1_offset']=float(zOffset)
