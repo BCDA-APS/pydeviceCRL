@@ -1,6 +1,7 @@
 import numpy as np
 import tomllib
 import xraylib
+from collections import Counter
 from transfocator_calcs import materials_to_deltas, materials_to_linear_attenuation
 from transfocator_calcs import find_levels, get_densities
 from transfocator_calcs import calc_1x_lu_table, calc_2x_lu_table, calc_kb_lu_table
@@ -50,9 +51,9 @@ DEFAULT_CONFIG = {'beam':{'energy': 15, 'L_und': 4.7,
                         'KBV_p_limit': 1.0 }}
 
 def find_key(input_dict, target_value):
-	'''
-	Find key by value in a dictionary	
-	'''
+    '''
+    Find key by value in a dictionary   
+    '''
     key = [k for k, v in input_dict.items() if v == target_value]
     if key:
         return key[0]
@@ -78,6 +79,7 @@ def separate_by_oe(property_list, oe_list, desired_oe):
 
 
 class focusingSystem():
+    # TODO: ms update
     def __init__(self, crl_setup = None, beam_config = DEFAULT_CONFIG['beam'],
                  beamline_config = DEFAULT_CONFIG['beamline'],
                  crl_configs = DEFAULT_CONFIG['crl'], 
@@ -107,8 +109,10 @@ class focusingSystem():
 
         self.verbose = True
 
+        # TODO: ms update
         self.elements = []
         self.n_elements = 0
+        # TODO: ms update
         if crl_setup is None:
             beam = beam_config
             beamline = beamline_config
@@ -116,6 +120,7 @@ class focusingSystem():
             kb = kb_config
             self.sysType = sysType
         else:
+            # TODO: ms update
             with open(crl_setup, "rb") as f:
                 config = tomllib.load(f)
             beam = config['beam']
@@ -123,6 +128,7 @@ class focusingSystem():
             #check config for the crl, crl1, crl2, kb and use this to determine system type
             crl = []
 
+            # TODO: ms update
             if "crl" in config:
                 self.n_elements+=1
                 crl.append(config['crl'])
@@ -133,6 +139,7 @@ class focusingSystem():
                     kb = config['kb']
                     self.sysType = SYSTEM_TYPE.CRLandKB
                     self.elements.append('kb')
+            # TODO: ms update
             if "crl1" in config:
                 self.n_elements+=1 
                 crl.append(config['crl1'])
@@ -145,21 +152,25 @@ class focusingSystem():
                     self.elements.append('2')
                 
         
-        # Setup beam properties
+        # TODO: ms update
+       # Setup beam properties
         self.mode = modes[0]
         self.beam = {}
         self.setupSource(beam)
         
+        # TODO: ms update
         # Setup beamline position of elements
         self.bl = {}
         self.setupBeamline(beamline)
 
+        # TODO: ms update
         # Setup element properties
         self.crl = {}
         self.setupCRL(crl)
         if self.sysType is SYSTEM_TYPE.CRLandKB:
             self.setupKB(kb)
 
+        # TODO: ms update
         # Initialize slit sizes to 0
         self.slits = {}
         self.setupSlits()
@@ -172,6 +183,7 @@ class focusingSystem():
         self.lenses = 0 # sets integer (2^10) whose binary representation indicates which lenses are in or out
         
         #---------------------------------------------------------------------->
+        # TODO: ms update
         #initialize dictionary for crl indices of current state
         self.indexSorted = {'1':0, '2':0}
         if self.sysType is SYSTEM_TYPE.doubleCRL:
@@ -179,15 +191,18 @@ class focusingSystem():
         else:
             self.index = {'1':0}
         
+        # TODO: ms update
         # KB systems need extra output info object distances for each mirror
         if self.sysType is SYSTEM_TYPE.CRLandKB:
             self.KB_ol = {'KBH_p_list': [],
                             'KBV_p_list': []}
                 
+        # TODO: ms update
         self.lookupTable = []
         self.q_list = []
         self.dq_list = []
         
+        # TODO: ms update
         self.thickerr_flag = True
 
     def setupSource(self, beam_properties):
@@ -224,6 +239,7 @@ class focusingSystem():
             self.wl = 1239.84 / (self.energy_eV * 10**9)    #Wavelength in m
             if self.verbose: print(f'Setting energy to {self.energy} keV')
 
+    # TODO: ms update
     def setupSourceEnergyDependent(self, mode='flat'):
         '''
         Sets various energy dependent source parameters. Called whenever energy 
@@ -235,6 +251,7 @@ class focusingSystem():
         self.beam['sigmaHp'] = (self.sigmaHp_e[modes[_mode]]**2 + self.wl/self.L_und/2)**0.5
         self.beam['sigmaVp'] = (self.sigmaVp_e[modes[_mode]]**2 + self.wl/self.L_und/2)**0.5
 
+    # TODO: ms update
     def setupBeamline(self, beamline_properties, num=1):
         '''
         Beamline properties can contain entries for the following
@@ -254,6 +271,7 @@ class focusingSystem():
 #       if self.sysType is singleCRLandKB # KB doesn't have location???
 #           self.bl['d_StoKB'] = beamline_properties['d_StoKB']
             
+    # TODO: ms update
     def setupCRL(self, crl):
         '''
         Looks through crl (list of transforcators) for entries for the following
@@ -266,6 +284,7 @@ class focusingSystem():
             self.crl[str(elem+1)]= {'d_min': tf['d_min'], 'stacks': tf['stacks']}
         
     
+    # TODO: ms update
     def setupKB(self, kb):
         '''
         Looks through kb for kb properties
@@ -287,6 +306,7 @@ class focusingSystem():
         self.kb['KBH_p_limit']  = kb['KBH_p_limit']
         self.kb['KBV_p_limit']  = kb['KBV_p_limit']
         
+    # TODO: ms update
     def setupSlits(self):
         '''
         Initializes slit sizes to 1 m (very open)        
@@ -298,6 +318,7 @@ class focusingSystem():
             self.slits['KB'] = {'hor':1,'vert':1}
 
         
+    # TODO: ms update
     def updateSlitSize(self, size, oe, slit):
         '''
         Slit size updates are propagated to CRL object from EPICS.  The beam
@@ -307,6 +328,7 @@ class focusingSystem():
         self.slits[oe][slit] = float(size)
         if self.verbose: print(f"{oe} {slit} slit is set to {self.slits[oe][slit]}")
                              
+    # TODO: ms update
     def updateSlitSizeRBV(self, oe, slit):
         '''
         Update proper slit size
@@ -341,10 +363,11 @@ class focusingSystem():
         
         macros = subsFileContent[2].replace('{','').replace('}','').replace(',','').split()
         lens_properties = {key: [] for key in macros} # dictionary of lists
-        
-        for i in range(self.total_stacks):
+
+        i = 3
+        while subsFilesContent[i] != '}':
             try:
-                xx = subsFileContent[3+i].replace('{','').replace('}','').replace(',','').replace('"','').split()
+                xx = subsFileContent[i].replace('{','').replace('}','').replace(',','').replace('"','').split()
                 lens_properties[macros[0]].append(xx[0])
                 lens_properties[macros[1]].append(xx[1])
                 lens_properties[macros[2]].append(xx[2])
@@ -355,7 +378,8 @@ class focusingSystem():
                 lens_properties[macros[7]].append(xx[7])
                 lens_properties[macros[8]].append(xx[8])
             except:
-                raise RuntimeError(f"Number of lenses ({self.total_stacks}) doesn't match substitution file")
+                raise RuntimeError(f"Substitutions file ({subsFile}) format error")
+            i += 1
         
         self.numlens = []
         self.radius = []
@@ -367,11 +391,15 @@ class focusingSystem():
         # get number of lens for each lens stack from lens properties dictionary-list
         print('Getting OE assignments...')
         if OE_MACRO in macros:
-            self.oe_num = np.array([int(i) for i in lens_properties[OE_MACRO]])
+#            self.oe_num = np.array([int(i) for i in lens_properties[OE_MACRO]])
+            self.oe = lens_properties[OE_MACRO]
             print('OE assignments read in.\n')
         else:
             raise RuntimeError(f"OE assignemnt macro ({OE_MACRO}) not found in substituion file")
-
+		
+        oe_cnt = Counter(oe)
+		self.elements = list(oe_cnt.keys())
+        self.num_stacks = [oe_cnt[elem] for elem in self.elements]
             
         # get number of lens for each lens stack from lens properties dictionary-list
         print('Getting lens counts...')
@@ -428,7 +456,7 @@ class focusingSystem():
         else:
             raise RuntimeError(f"Thickness errors macro ({THICKERR_MACRO}) not found in substituion file")
 
-    def setupLookupTable(self, subs_file, n_stacks):
+    def setupLookupTable(self, subs_file):
         '''
         Description:
         
@@ -445,45 +473,47 @@ class focusingSystem():
         print(80*'#')
         print('Setting up lens control...')
         
-        # convert number of lenses to list
-        self.num_stacks = n_stacks if isinstance(n_stacks, list) else [n_stacks]
-
-        self.total_stacks = sum(self.num_stacks)
         # Since element configs are paired, the lookup table size will be equal
         # to minimum possible configs for one of the system's elements
-        self.num_configs = 2**(min(self.num_stacks))
-
+        # Though shouldn't it be the # of US CRL configs?
         self.parseSubsFile(subs_file)
+        self.num_configs = 2**(min(self.num_stacks))
 
         # Dictionary of config chosen for each element
         self.config = {}
 
         # Dictionary of total possible configs for each element
         self.configs = {}
-        for i, n in enumerate(self.num_stacks): self.configs[str(i+1)] = np.arange(2**n)
+        for i, n in enumerate(self.num_stacks): self.configs[self.elements[i]] = np.arange(2**n)
                 
+        # TODO: ms update
         self.lens_count = {}
         self.lens_count['1'] = separate_by_oe(self.numlens, self.oe_num, 1)
         self.lens_count['2'] = separate_by_oe(self.numlens, self.oe_num, 2)
         print(self.lens_count)
         
         self.radii = {}
+        # TODO: ms update
         self.radii['1'] = separate_by_oe(self.radius, self.oe_num, 1)
         self.radii['2'] = separate_by_oe(self.radius, self.oe_num, 2)
         
         self.mat = {}
+        # TODO: ms update
         self.mat['1'] = separate_by_oe(self.materials, self.oe_num, 1)
         self.mat['2'] = separate_by_oe(self.materials, self.oe_num, 2)
         
         self.lens_loc = {}
+        # TODO: ms update
         self.lens_loc['1']  = separate_by_oe(self.lens_locations, self.oe_num, 1)
         self.lens_loc['2']  = separate_by_oe(self.lens_locations, self.oe_num, 2)
         
         self.thickerr = {}
+        # TODO: ms update
         self.thickerr['1']  = separate_by_oe(self.lens_thickerr, self.oe_num, 1)
         self.thickerr['2']  = separate_by_oe(self.lens_thickerr, self.oe_num, 2)
         
         print('Constructing lookup table...')
+        # TODO: ms update
         self.construct_lookup_table()
         print('Lookup table calculation complete.\n')
         
@@ -501,7 +531,7 @@ class focusingSystem():
             Should be called after beam energy or slits size changes
         '''
     
-
+        # TODO: ms update
         if self.sysType == SYSTEM_TYPE.singleCRL:
             results_dict = calc_1x_lu_table(self.num_configs, self.radii['1'], self.mat['1'], 
                                            self.energy, self.wl, self.lens_count['1'], 
@@ -510,7 +540,7 @@ class focusingSystem():
                                            self.slits['1']['vert'], self.thickerr['1'], 
                                            flag_HE = self.thickerr_flag, verbose = self.verbose)
                                                    
-                                                   
+        # TODO: ms update
         elif self.sysType == SYSTEM_TYPE.doubleCRL: 
             results_dict = calc_2x_lu_table(self.num_configs, self.radii['1'], 
                                             self.mat['1'], self.radii['2'], 
@@ -523,6 +553,7 @@ class focusingSystem():
                                                    
             self.index1to2_sorted = results_dict['invf2_indices']
             
+        # TODO: ms update
         elif self.sysType == SYSTEM_TYPE.CRLandKB:
             results_dict = calc_kb_lu_table(self.num_configs, self.radii['1'],
                                             self.mat['1'], self.energy, self.wl,
@@ -536,54 +567,61 @@ class focusingSystem():
                           'KBV_p_list': results_dict['KBV_p_list']}
 
             
+        # TODO: ms update
         self.lookupTable = results_dict['FWHM_atsample_list']
         self.sorted_invF_index = results_dict['invF_list_sort_indices']
         self.sorted_invF = results_dict['invF_list_sorted']                                                          
         self.q_list = results_dict['q_list']
         self.dq_list = results_dict['dq_list']
                                                                     
+        # TODO: ms update
         self.updateEnergyRBV()
         self.updateModeRBV()
         self.updateSlitSizeRBV(self.elements, 'hor')
         self.updateSlitSizeRBV(self.elements, 'vert')
 
+        # TODO: ms update
         self.updateLookupWaveform()
         self.updateInvFWaveform()
         self.updateLookupConfigs()  
         
+        # TODO: ms update
         if self.sysType == SYSTEM_TYPE.doubleCRL: 
             self.setFocalSizeActual(offTable = True)
         else:
             self.setFocalSizeActual(offTable = False)
         self.updateFocalSizeRBVs()
 
+        # TODO: ms update
         self.updateQWaveforms()
         self.updateQdistances()
         
+        # TODO: ms update
         if self.sysType == SYSTEM_TYPE.CRLandKB:
             self.updateKBWaveforms()
             self.updateKBdistanceRBVs()
 
+    # TODO: ms update
     def updateSysType(self, sysType):
         self.sysType = SYSTEM_TYPE_NAMES[sysType]
 
-		# set some defaults for element assignments?
-		# or go to previous values?
-		
-		# Other object updates?
-		# TODO
-		# self.redoSetupLookupTable()
-		# self.construct_lookup_table()
-		
+        # set some defaults for element assignments?
+        # or go to previous values?
+        
+        # Other object updates?
+        # TODO
+        # self.redoSetupLookupTable()
+        # self.construct_lookup_table()
+        
 
         pydev.iointr('updated_sysType', find_key(SYSTEM_TYPE_NAMES, self.sysType))
         
     def assignSystem(self, systemNum, oe):        
         self.elements[int(systemNum)-1] = oe
           
-		# Other object updates?
-		# self.redoSetupLookupTable()
-		# self.construct_lookup_table()
+        # Other object updates?
+        # self.redoSetupLookupTable()
+        # self.construct_lookup_table()
   
         # Set readback       
         iointr_name = 'updated_system' + systemNum

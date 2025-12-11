@@ -1,6 +1,6 @@
 # This is a TOML document
 
-title = "28IDB CRL setup"
+title = "CRL generic multi-system setup"
 
 # Set up beam properties -- these may only need to be set up at creation of IOC
 # however energy can be changed after boot-time and mode can be switched based
@@ -26,26 +26,38 @@ sigmaHp_e.flat = 2.749e-6
 sigmaVp_e.flat = 1.293e-6
 
 # Set up beamline properties -- these may only need to be set up at creation of IOC
-# d_StoL1	- Source-to-CRL1 distance, in m
-# 			  includes flange-to-fiducial distance (264.3 mm)
-# d_StoL2	- Source-to-CRL2 distance, in m
-# 			  includes flange-to-fiducial distance (370.4 mm)
+# d_StoL	- Source-to-CRL distances, in m
+# 			  includes flange-to-fiducial distance (240.1 mm, 239.7 mm)
 # d_Stof	- Source-to-sample distance, in m
 [beamline]
-d_StoL1 = 48.764
-d_StoL2 = 62.970
-d_Stof = 64.5
+d_StoL = [52.140, 62.340]
+d_Stof = [55.0, 66.2]
 
 
 # Set up crl properties -- these are properties common to the stacks
-# stacks	- Number of sets of 2-D lenses
+# stacks	- Number of sets of lenses
 # d_min 	- Minimum thickness at the apex in m
 [crl1]
 stacks = 10
 d_min = 0.00003 
 
 [crl2]
-stacks = 12
+stacks = 10
 d_min = 0.00003 
 
-
+# KB input block
+# KBH_L		-	KBH length
+# KBH_q		-	KBH q
+# KB_theta 	-	KB mirror angle
+# KBV_L		-	KBV length
+# KBV_q		-	KBV q
+# KBH_p_limit - Minimum p that KBH can achieve, so abs(KBH_p) > KBH_p_min
+# KBV_p_limit - Minimum p that KBV can achieve, so abs(KBV_p) > KBV_p_min
+[kb]
+KBH_L       = 180.0e-3          
+KBH_q       = 380.0e-3          
+KB_theta    = 2.5e-3            
+KBV_L       = 300.0e-3          
+KBV_q       = 640.0e-3          
+KBH_p_limit = 1.0               
+KBV_p_limit = 1.0       

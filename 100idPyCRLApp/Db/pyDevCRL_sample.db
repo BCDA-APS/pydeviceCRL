@@ -1,0 +1,39 @@
+record(scalcout, "$(P)$(SYSID):samPosOffsetConv"){
+	field(DESC, "Converting sample offset to meters")
+	field(INPA, "$(SAMPOS) CP")
+	field(INBB, "$(SAMPOS).EGU")
+	field(CC, "m")
+	field(DD, "mm")
+	field(EE, "millimeter")
+	field(FF, "millimeters")
+	field(CALC, "A/(BB=CC?1:((BB=DD|BB=EE|BB=FF)?1000:1000000))")
+}
+
+record(ao, "$(P)$(SYSID):samplePositionOffset"){ 
+  field(DESC, "Sample position offset from local zero")
+  field(PREC, "6")
+  field(EGU, "m")
+  field(DOL,  "$(P)$(SYSID):samPosOffsetConv.VAL CP")
+  field(OMSL, "closed_loop")
+  field(DTYP, "pydev")
+  field(OUT, "@$(OBJ).updateZpos(VAL, 'sam')")
+  field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+}
+
+record(ai, "$(P)$(SYSID):samplePositionOffset_RBV"){ 
+  field(DESC, "Sample position offset from local zero")
+  field(EGU, "m")
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_samPosOffset')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+}
+
+record(ai, "$(P)$(SYSID):samplePosition_RBV"){ 
+  field(DESC, "Sample position relative to source")
+  field(EGU, "m")
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_samPos')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+}

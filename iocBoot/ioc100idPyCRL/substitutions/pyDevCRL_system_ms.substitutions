@@ -1,0 +1,84 @@
+#	P			= IOC prefix
+#   SYSID		= focusing system identifier
+#   OBJ			= focusing system's python object
+#   OE			= optical element in focusing system
+#	SLITH		= horizontal slit size 
+#	SLITV		= vertical slit size
+#	ZELEM		= simulated z-positioner for optical elements and samples
+#	OEL			= optical element mask
+#	OEPOS		= optical element z-positioner
+#	SAM			= sample station identifier
+#   SAMPOS		= sample z-positioner
+
+################################################################################
+#
+#	slits
+#
+################################################################################
+
+# Simulated motors for slit sizes
+file "$(TOP)/db/slitTestTools.db" {
+  pattern
+  {SLITH, 		SLITV}
+  {"testSSH1",	"testSSV1"	}	
+  {"testSSH2",	"testSSV2"	}	
+  {"testSSHkb",	"testSSVkb"	}	
+}
+ 
+# If slits exist upstream of OE, the replace with associated pseudomotor PV 
+file "$(TOP)/db/pyDevCRL_slits.db" {
+  pattern
+  {OE, 		SLITH, 				SLITV}
+  {"B", 	"$(P)testSSH1",		"$(P)testSSV1"	}	
+  {"C", 	"$(P)testSSH2",		"$(P)TestSSV2"	}	
+  {"KB", 	"$(P)testSSHkb",	"$(P)testSSVkb"	}	
+} 
+
+
+################################################################################
+#
+#	focusing system elements (CRL1, CRL2, etc)
+#
+################################################################################
+
+# Simulated motors for element's z-positions relative to nominal position on
+# beamline
+file "$(TOP)/db/posTestTools.db" {
+  pattern
+  {OE, 	ZELEM}
+  {"B",	"testCRL1z"	}	
+  {"C", "testCRL2z"	}	
+}
+ 
+# Replace OEPOS with real motors if available, otherwise can keep for 
+# adjustments 
+file "$(TOP)/db/pyDevCRL_elem.db" {
+  pattern
+  {OE, 		OEL, 	OEPOS}
+  {"B", 	"A",	"$(P)testCRL1z"	}	
+  {"C", 	"B",	"$(P)testCRL2z"	}	
+}  
+
+################################################################################
+#
+#	Sample stations
+#
+################################################################################
+
+# Test (simulated) motors for sample z position
+file "$(TOP)/db/posTestTools.db" {
+  pattern
+  {SAM, ZELEM}
+  {"1", "testSAMz1"	}	
+  {"2", "testSAMz2"	}	
+  {"3", "testSAMz3"	}	
+}
+
+# Replace with real motors if they exist
+file "$(TOP)/db/pyDevCRL_sample.db" {
+  pattern
+  {SAM, SAMPOS}
+  {"1", "$(P)testSAMz1"	}	
+  {"2", "$(P)testSAMz2"	}	
+  {"3", "$(P)testSAMz3"	}	
+}
