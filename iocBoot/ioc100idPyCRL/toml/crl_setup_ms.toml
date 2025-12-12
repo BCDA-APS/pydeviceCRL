@@ -35,13 +35,17 @@ d_Stof = [55.0, 66.2]
 
 
 # Set up crl properties -- these are properties common to the stacks
+# label		- Label/location of CRL (typically the hutch letter); needs to match subs file
 # stacks	- Number of sets of lenses
 # d_min 	- Minimum thickness at the apex in m
 [crl1]
+label = 'B'
 stacks = 10
 d_min = 0.00003 
 
+
 [crl2]
+label = 'C'
 stacks = 10
 d_min = 0.00003 
 
@@ -61,3 +65,12 @@ KBV_L       = 300.0e-3
 KBV_q       = 640.0e-3          
 KBH_p_limit = 1.0               
 KBV_p_limit = 1.0       
+
+# Initial setup block
+# sysType - 1: single, 2: double, 3: single + KB
+# elems - which CRLS to use in system at start; first element by default
+#
+# To start with double by default: sysType = 2, elems = [0,1] 
+[init]
+sysType = 1
+elems = [0]

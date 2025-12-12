@@ -76,13 +76,9 @@ doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):energy.PROC','1')") # PROC energy read 
 doAfterIocInit("pydev('print($(PY_OBJECT).energy)')")
 doAfterIocInit("pydev('print($(PY_OBJECT).slits)')")
 
-# TODO can call to setupLookupTable be down without _STACKS1, _STACKS2 arguments?
 # Calc lookup table via python; later re-calculations started via EPICS (changes to energy, slits)
 # 	stack_subFile - string holding name/rel. location of substitutions file loaded
 #                     loaded in  dbLoadTemplate
-#   $(_STACKS1)  - number of stacks of lenses in first transfocator
-#   $(_STACKS2)  - number of stacks of lenses in second transfocator
-#doAfterIocInit("pydev('$(PY_OBJECT).setupLookupTable(stack_subFile, [$(_STACKS1),$(_STACKS2)])')") 
 doAfterIocInit("pydev('$(PY_OBJECT).setupLookupTable(stack_subFile)')") 
 
 # Enable lookup table calc PV

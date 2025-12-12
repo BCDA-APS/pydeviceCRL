@@ -220,6 +220,8 @@ record(mbbo, "$(P)$(SYSID):sysType"){
 	field(TWST, "KB")
 	field(DTYP, "pydev")
 	field(OUT, "@$(OBJ).updateSysType(VAL)")
+ 	field(SDIS, "$(P)$(SYSID):sysBusy")
+	field(DISV, "1")
 	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
 }
 
@@ -240,4 +242,6 @@ record(calcout, "$(P)$(SYSID):singleCRLboCalc"){
 
 record(bo, "$(P)$(SYSID):singleCRLbo"){
 	field(DESC, "Flag for single CRL")
+	field(ZNAM, "Double")
+	field(ONAM, "Single")
 }

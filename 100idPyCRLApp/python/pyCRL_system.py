@@ -132,24 +132,23 @@ class focusingSystem():
             if "crl" in config:
                 self.n_elements+=1
                 crl.append(config['crl'])
-                self.sysType = SYSTEM_TYPE.singleCRL
                 self.elements.append('1')
                 if "kb" in config:
                     self.n_elements+=1
                     kb = config['kb']
-                    self.sysType = SYSTEM_TYPE.CRLandKB
                     self.elements.append('kb')
             # TODO: ms update
             if "crl1" in config:
                 self.n_elements+=1 
                 crl.append(config['crl1'])
-                self.sysType = SYSTEM_TYPE.singleCRL
                 self.elements.append('1')
                 if "crl2" in config:
                     self.n_elements+=1
                     crl.append(config['crl2'])
-                    self.sysType = SYSTEM_TYPE.doubleCRL
                     self.elements.append('2')
+            if "init" in config:
+               self.sysType = config['init']['sysType']
+			   self.elements = config['init']['elems']
                 
         
         # TODO: ms update
@@ -176,14 +175,11 @@ class focusingSystem():
         self.setupSlits()
       
         #<----------------------------------------------------------------------          
-        # Are these needed at initialization
-        
-        #TODO -- any generalizations? Yes but how? Need to do by elements?
+        # Are these needed at initialization        
         self.focalSize = 0 # get value from an ao (desired focal length)
         self.lenses = 0 # sets integer (2^10) whose binary representation indicates which lenses are in or out
         
         #---------------------------------------------------------------------->
-        # TODO: ms update
         #initialize dictionary for crl indices of current state
         self.indexSorted = {'1':0, '2':0}
         if self.sysType is SYSTEM_TYPE.doubleCRL:
@@ -191,18 +187,15 @@ class focusingSystem():
         else:
             self.index = {'1':0}
         
-        # TODO: ms update
         # KB systems need extra output info object distances for each mirror
         if self.sysType is SYSTEM_TYPE.CRLandKB:
             self.KB_ol = {'KBH_p_list': [],
                             'KBV_p_list': []}
                 
-        # TODO: ms update
         self.lookupTable = []
         self.q_list = []
         self.dq_list = []
         
-        # TODO: ms update
         self.thickerr_flag = True
 
     def setupSource(self, beam_properties):
@@ -271,7 +264,6 @@ class focusingSystem():
 #       if self.sysType is singleCRLandKB # KB doesn't have location???
 #           self.bl['d_StoKB'] = beamline_properties['d_StoKB']
             
-    # TODO: ms update
     def setupCRL(self, crl):
         '''
         Looks through crl (list of transforcators) for entries for the following
@@ -280,8 +272,8 @@ class focusingSystem():
         stacks  : number of stacks in system
         '''
         
-        for elem, tf in enumerate(crl):
-            self.crl[str(elem+1)]= {'d_min': tf['d_min'], 'stacks': tf['stacks']}
+        for tf in crl:
+            self.crl[tf['label']]= {'d_min': tf['d_min'], 'stacks': tf['stacks']}
         
     
     # TODO: ms update
@@ -486,34 +478,24 @@ class focusingSystem():
         self.configs = {}
         for i, n in enumerate(self.num_stacks): self.configs[self.elements[i]] = np.arange(2**n)
                 
-        # TODO: ms update
         self.lens_count = {}
-        self.lens_count['1'] = separate_by_oe(self.numlens, self.oe_num, 1)
-        self.lens_count['2'] = separate_by_oe(self.numlens, self.oe_num, 2)
-        print(self.lens_count)
-        
         self.radii = {}
-        # TODO: ms update
-        self.radii['1'] = separate_by_oe(self.radius, self.oe_num, 1)
-        self.radii['2'] = separate_by_oe(self.radius, self.oe_num, 2)
-        
         self.mat = {}
-        # TODO: ms update
-        self.mat['1'] = separate_by_oe(self.materials, self.oe_num, 1)
-        self.mat['2'] = separate_by_oe(self.materials, self.oe_num, 2)
-        
         self.lens_loc = {}
-        # TODO: ms update
-        self.lens_loc['1']  = separate_by_oe(self.lens_locations, self.oe_num, 1)
-        self.lens_loc['2']  = separate_by_oe(self.lens_locations, self.oe_num, 2)
-        
         self.thickerr = {}
-        # TODO: ms update
-        self.thickerr['1']  = separate_by_oe(self.lens_thickerr, self.oe_num, 1)
-        self.thickerr['2']  = separate_by_oe(self.lens_thickerr, self.oe_num, 2)
-        
+        for oe in self.oe:
+			self.lens_count[oe] = separate_by_oe(self.numlens, self.oe, oe)
+			self.radii[oe] = separate_by_oe(self.radius, self.oe, oe)
+			self.mat[oe] = separate_by_oe(self.materials, self.oe, oe)
+			self.lens_loc[oe]  = separate_by_oe(self.lens_locations, self.oe, oe)
+			self.thickerr[oe]  = separate_by_oe(self.lens_thickerr, self.oe, oe)
+
+        print(self.lens_count)
+                 
         print('Constructing lookup table...')
-        # TODO: ms update
+        # TODO: ms update -- need to set which OEs to use where....maybe have
+        # an initial setting?
+        # By default setting to 1x, with 1st CRL as active optical element
         self.construct_lookup_table()
         print('Lookup table calculation complete.\n')
         
@@ -531,35 +513,37 @@ class focusingSystem():
             Should be called after beam energy or slits size changes
         '''
     
-        # TODO: ms update
         if self.sysType == SYSTEM_TYPE.singleCRL:
-            results_dict = calc_1x_lu_table(self.num_configs, self.radii['1'], self.mat['1'], 
-                                           self.energy, self.wl, self.lens_count['1'], 
-                                           self.lens_loc['1'], self.beam, self.bl, 
-                                           self.crl, self.slits['1']['hor'], 
-                                           self.slits['1']['vert'], self.thickerr['1'], 
+			elem1 = self.elements[0]
+            results_dict = calc_1x_lu_table(self.configs[elem1], self.radii[elem1], self.mat[elem1], 
+                                           self.energy, self.wl, self.lens_count[elem1], 
+                                           self.lens_loc[elem1], self.beam, self.bl, 
+                                           self.crl, self.slits[elem1]['hor'], 
+                                           self.slits[elem1]['vert'], self.thickerr[elem1], 
                                            flag_HE = self.thickerr_flag, verbose = self.verbose)
                                                    
-        # TODO: ms update
-        elif self.sysType == SYSTEM_TYPE.doubleCRL: 
-            results_dict = calc_2x_lu_table(self.num_configs, self.radii['1'], 
-                                            self.mat['1'], self.radii['2'], 
-                                            self.mat['2'], self.energy, self.wl,
-                                            self.lens_count, self.lens_loc['1'],
-                                            self.lens_loc['2'], self.beam, self.bl,
-                                            self.crl, self.slits, self.thickerr['1'], 
-                                            self.thickerr['2'], flag_HE = self.thickerr_flag,
+        elif self.sysType == SYSTEM_TYPE.doubleCRL:
+			elem1 = self.elements[0]
+			elem2 = self.elements[1]
+ 
+            results_dict = calc_2x_lu_table(self.configs[elem1], self.radii[elem1], 
+                                            self.mat[elem1], self.radii[elem2], 
+                                            self.mat[elem2], self.energy, self.wl,
+                                            self.lens_count, self.lens_loc[elem1],
+                                            self.lens_loc[elem2], self.beam, self.bl,
+                                            self.crl, self.slits, self.thickerr[elem1], 
+                                            self.thickerr[elem2], flag_HE = self.thickerr_flag,
                                             verbose = self.verbose)
                                                    
             self.index1to2_sorted = results_dict['invf2_indices']
             
-        # TODO: ms update
         elif self.sysType == SYSTEM_TYPE.CRLandKB:
-            results_dict = calc_kb_lu_table(self.num_configs, self.radii['1'],
-                                            self.mat['1'], self.energy, self.wl,
-                                            self.lens_count['1'], self.lens_loc['1'], 
+			elem1 = self.elements[0]
+            results_dict = calc_kb_lu_table(self.configs[elem1], self.radii[elem1],
+                                            self.mat[elem1], self.energy, self.wl,
+                                            self.lens_count[elem1], self.lens_loc[elem1], 
                                             self.beam, self.bl, self.crl, self.kb, 
-                                            self.slits, self.thickerr['1'], 
+                                            self.slits, self.thickerr[elem1], 
                                             flag_HE = self.thickerr_flag,
                                             verbose = self.verbose)
 
@@ -567,7 +551,6 @@ class focusingSystem():
                           'KBV_p_list': results_dict['KBV_p_list']}
 
             
-        # TODO: ms update
         self.lookupTable = results_dict['FWHM_atsample_list']
         self.sorted_invF_index = results_dict['invF_list_sort_indices']
         self.sorted_invF = results_dict['invF_list_sorted']                                                          
@@ -619,7 +602,7 @@ class focusingSystem():
     def assignSystem(self, systemNum, oe):        
         self.elements[int(systemNum)-1] = oe
           
-        # Other object updates?
+        # TODO: Other object updates?
         # self.redoSetupLookupTable()
         # self.construct_lookup_table()
   
