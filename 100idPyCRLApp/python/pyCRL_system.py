@@ -45,10 +45,11 @@ DEFAULT_CONFIG = {'beam':{'energy': 15, 'L_und': 4.7,
                           'round': {'sigmaH_e': 12.296e-6, 'sigmaV_e': 8.263e-6, 'sigmaHp_e': 2.336e-6, 'sigmaVp_e': 3.474e-6},
                           'flat':  {'sigmaH_e': 14.466e-6, 'sigmaV_e': 3.075e-6, 'sigmaHp_e': 2.749e-6, 'sigmaVp_e': 1.293e-6}},
                   'beamline': {'d_StoL1': 51.9, 'd_StoL2': 62.1, 'd_Stof': 66.2},
-                  'crl':[{'stacks': 10, 'd_min': 3.0e-5}],
+                  'crl':{'label': ['B'], 'stacks': [10], 'd_min': [3.0e-5]},
                   'kb':{'KBH_L': 180.0e-3, 'KBH_q': 380.0e-3, 'KB_theta': 2.5e-3,
                         'KBV_L': 300.0e-3, 'KBV_q': 640.0e-3, 'KBH_p_limit': 1.0, 
-                        'KBV_p_limit': 1.0 }}
+                        'KBV_p_limit': 1.0 }},
+                  'init':{'sysType': 1, 'initConfig': [0]}
 
 def find_key(input_dict, target_value):
     '''
@@ -83,7 +84,8 @@ class focusingSystem():
     def __init__(self, crl_setup = None, beam_config = DEFAULT_CONFIG['beam'],
                  beamline_config = DEFAULT_CONFIG['beamline'],
                  crl_configs = DEFAULT_CONFIG['crl'], 
-                 kb_config = DEFAULT_CONFIG['kb'], sysType = SYSTEM_TYPE.singleCRL):
+                 kb_config = DEFAULT_CONFIG['kb'], 
+                 init_config = DEFAULT_CONFIG['init']):
 
         '''
         Description:
@@ -109,68 +111,54 @@ class focusingSystem():
 
         self.verbose = True
 
-        # TODO: ms update
         self.elements = []
         self.n_elements = 0
-        # TODO: ms update
         if crl_setup is None:
             beam = beam_config
             beamline = beamline_config
             crl = crl_configs
             kb = kb_config
-            self.sysType = sysType
+            init = init_config
         else:
-            # TODO: ms update
             with open(crl_setup, "rb") as f:
                 config = tomllib.load(f)
             beam = config['beam']
             beamline = config['beamline']
             #check config for the crl, crl1, crl2, kb and use this to determine system type
-            crl = []
+            #toml uses dictionary of lists; need to convert to list of dictionaries
+            crls = config['crl']
+			for i, label in enumerate(crls['label']):
+				self.n_elements += 1
+				self.elements.append(label)
+				crl.append({'label': label, 'stacks':crls['stacks'][i], 'd_min': crls['d_min']})
+            
+            if "kb" in config:
+				self.n_elements+=1
+                kb = config['kb']
+                self.elements.append('KB')
 
-            # TODO: ms update
-            if "crl" in config:
-                self.n_elements+=1
-                crl.append(config['crl'])
-                self.elements.append('1')
-                if "kb" in config:
-                    self.n_elements+=1
-                    kb = config['kb']
-                    self.elements.append('kb')
-            # TODO: ms update
-            if "crl1" in config:
-                self.n_elements+=1 
-                crl.append(config['crl1'])
-                self.elements.append('1')
-                if "crl2" in config:
-                    self.n_elements+=1
-                    crl.append(config['crl2'])
-                    self.elements.append('2')
-            if "init" in config:
-               self.sysType = config['init']['sysType']
-			   self.elements = config['init']['elems']
+            init = config['init']
+
+        self.sysType = init['sysType']
+        self.curr_config = init['initConfig']
                 
-        
-        # TODO: ms update
-       # Setup beam properties
+        # Setup beam properties
         self.mode = modes[0]
         self.beam = {}
         self.setupSource(beam)
         
-        # TODO: ms update
         # Setup beamline position of elements
         self.bl = {}
         self.setupBeamline(beamline)
 
-        # TODO: ms update
-        # Setup element properties
+        # Setup element properties -- converting list of elements to dictionary  
+        # keyed by labels
         self.crl = {}
         self.setupCRL(crl)
         if self.sysType is SYSTEM_TYPE.CRLandKB:
             self.setupKB(kb)
 
-        # TODO: ms update
-        # Initialize slit sizes to 0
+        # Initialize slit sizes to 1 m (wide open)
         self.slits = {}
         self.setupSlits()
       
@@ -232,7 +220,6 @@ class focusingSystem():
             self.wl = 1239.84 / (self.energy_eV * 10**9)    #Wavelength in m
             if self.verbose: print(f'Setting energy to {self.energy} keV')
 
-    # TODO: ms update
     def setupSourceEnergyDependent(self, mode='flat'):
         '''
         Sets various energy dependent source parameters. Called whenever energy 
@@ -244,23 +231,18 @@ class focusingSystem():
         self.beam['sigmaHp'] = (self.sigmaHp_e[modes[_mode]]**2 + self.wl/self.L_und/2)**0.5
         self.beam['sigmaVp'] = (self.sigmaVp_e[modes[_mode]]**2 + self.wl/self.L_und/2)**0.5
 
-    # TODO: ms update
-    def setupBeamline(self, beamline_properties, num=1):
+    def setupBeamline(self, beamline_properties):
         '''
         Beamline properties can contain entries for the following
         
-        d_StoL1 : Source-to-CRL1 distance, in m
-        d_StoL2 : Source-to-CRL2 distance, in m
-        d_Stof  : Source-to-sample distance, in m
+        d_StoL  : Source-to-CRLs distance, in m
+        d_Stof  : Source-to-samples distance, in m
         '''            
-        
-        self.bl['d_StoL1'] = beamline_properties['d_StoL1']
-        self.bl['L1_offset']=0
-        self.bl['d_Stof'] = beamline_properties['d_Stof']
-        self.bl['f_offset']=0
-        if self.sysType is SYSTEM_TYPE.doubleCRL: 
-            self.bl['d_StoL2'] = beamline_properties['d_StoL2']
-            self.bl['L2_offset']=0
+        self.bl['d_StoL'] = beamline_properties['d_StoL'] if isinstance(beamline_properties['d_StoL'], list) else [beamline_properties['d_StoL']]
+        self.bl['L_offset'] = [0]*self.bl['d_StoL']
+        self.bl['d_Stof'] = beamline_properties['d_Stof'] if isinstance(beamline_properties['d_Stof'], list) else [beamline_properties['d_Stof']]
+        self.bl['f_offset'] = [0]*self.bl['d_Stof']
+
 #       if self.sysType is singleCRLandKB # KB doesn't have location???
 #           self.bl['d_StoKB'] = beamline_properties['d_StoKB']
             
@@ -276,7 +258,6 @@ class focusingSystem():
             self.crl[tf['label']]= {'d_min': tf['d_min'], 'stacks': tf['stacks']}
         
     
-    # TODO: ms update
     def setupKB(self, kb):
         '''
         Looks through kb for kb properties
@@ -298,16 +279,13 @@ class focusingSystem():
         self.kb['KBH_p_limit']  = kb['KBH_p_limit']
         self.kb['KBV_p_limit']  = kb['KBV_p_limit']
         
-    # TODO: ms update
     def setupSlits(self):
         '''
-        Initializes slit sizes to 1 m (very open)        
+        Initializes slit sizes to 1 m (very open) 
+        Assumes slits for all optical elements       
         '''
-        self.slits['1'] = {'hor':1,'vert':1}            
-        if self.sysType is SYSTEM_TYPE.doubleCRL:
-            self.slits['2'] = {'hor':1,'vert':1}            
-        if self.sysType is SYSTEM_TYPE.CRLandKB:
-            self.slits['KB'] = {'hor':1,'vert':1}
+		for elem in self.elements:
+			self.slits[elem] = {'hor':1,'vert':1}
 
         
     # TODO: ms update
@@ -738,7 +716,7 @@ class focusingSystem():
         if self.verbose: print(f'Setting focal size to {self.focalSize}')
         self.find_config()
 
-    def updateZpos(self, zOffset, elem):
+    def updateZpos(self, zOffset, elem, etype):
         '''
         Description
             User has updated the position of an optical element or the sample
@@ -751,18 +729,15 @@ class focusingSystem():
                 Label of element 
         '''
         if self.verbose: print(f'Shifting {elem} position by {zOffset}')
-        if elem == '1':
-            self.bl['L1_offset']=float(zOffset)
-            self.updateGeneralRBV('new_1_Offset',zOffset)  
-            self.updateGeneralRBV('new_1_pos',float(zOffset)+self.bl['d_StoL1'])  
-        elif elem == '2':
-            self.bl['L2_offset']=float(zOffset)
-            self.updateGeneralRBV('new_2_Offset',zOffset)  
-            self.updateGeneralRBV('new_2_pos',float(zOffset)+self.bl['d_StoL2'])  
-        elif elem == 'sam':
-            self.bl['f_offset']=float(zOffset)
-            self.updateGeneralRBV('new_samPosOffset',zOffset)  
-            self.updateGeneralRBV('new_samPos',float(zOffset)+self.bl['d_Stof'])  
+		if etype == 'crl':
+            self.bl['L_offset'][elem-1]=float(zOffset)
+            self.updateGeneralRBV(f'new_{elem}_Offset',zOffset)  
+            self.updateGeneralRBV(f'new_{elem}_pos',float(zOffset)+self.bl['d_StoL'][elem-1])  			
+		elif etype == 'sam':
+            self.bl['f_offset'][0]=float(zOffset)
+            self.updateGeneralRBV(f'new_sam{elem}PosOffset',zOffset)  
+            self.updateGeneralRBV(f'new_sam{elem}Pos',float(zOffset)+self.bl['d_Stof'])
+
                     
     def find_config(self):
         ''' 

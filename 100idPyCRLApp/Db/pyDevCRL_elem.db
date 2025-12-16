@@ -202,7 +202,7 @@ record(ao, "$(P)$(SYSID):$(OE):oePositionOffset"){
   field(DOL,  "$(P)$(SYSID):$(OE):oePosOffsetConv.VAL CP")
   field(OMSL, "closed_loop")
   field(DTYP, "pydev")
-  field(OUT, "@$(OBJ).updateZpos(VAL, '$(OE)')")
+  field(OUT, "@$(OBJ).updateZpos(VAL, '$(OE)', 'crl')")
   field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
 }
 
