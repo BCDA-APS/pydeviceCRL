@@ -41,6 +41,22 @@ KB properties
         ...     : ...
         ...     : ...
 '''
+
+DEFAULT_1X_CONFIG = {'sysType': '1x',
+                     'CRLs': [0],
+                     'KBs': [],
+                     'Sample': [0]}
+
+DEFAULT_2X_CONFIG = {'sysType': '2x',
+                     'CRLs': [0,1],
+                     'KBs': [],
+                     'Sample': [1]}
+                     
+DEFAULT_1XKB_CONFIG = {'sysType': 'KB',
+                     'CRLs': [0],
+                     'KBs': [0],
+                     'Sample': [0]}
+                                                               
 DEFAULT_CONFIG = {'beam':{'energy': 15, 'L_und': 4.7, 
                           'round': {'sigmaH_e': 12.296e-6, 'sigmaV_e': 8.263e-6, 'sigmaHp_e': 2.336e-6, 'sigmaVp_e': 3.474e-6},
                           'flat':  {'sigmaH_e': 14.466e-6, 'sigmaV_e': 3.075e-6, 'sigmaHp_e': 2.749e-6, 'sigmaVp_e': 1.293e-6}},
@@ -49,7 +65,7 @@ DEFAULT_CONFIG = {'beam':{'energy': 15, 'L_und': 4.7,
                   'kb':{'KBH_L': 180.0e-3, 'KBH_q': 380.0e-3, 'KB_theta': 2.5e-3,
                         'KBV_L': 300.0e-3, 'KBV_q': 640.0e-3, 'KBH_p_limit': 1.0, 
                         'KBV_p_limit': 1.0 }},
-                  'init':{'sysType': 1, 'initConfig': [0]}
+                  'init':{'initConfig': DEFAULT_1X_CONFIG}
 
 def find_key(input_dict, target_value):
     '''
@@ -103,8 +119,8 @@ class focusingSystem():
                               Default: DEFAULT_CONFIG['crl'] 
            kb_config        : ... 
                               Default: DEFAULT_CONFIG['kb']
-           sysType          : ... 
-                              Default: SYSTEM_TYPE.singleCRL
+           init_config      : initial configuration of elements to be used
+                              Default: DEFAULT_CONFIG['init']
             
        
         '''
@@ -112,6 +128,7 @@ class focusingSystem():
         self.verbose = True
 
         self.elements = []
+        self.toml_elems = []
         self.n_elements = 0
         if crl_setup is None:
             beam = beam_config
@@ -119,29 +136,38 @@ class focusingSystem():
             crl = crl_configs
             kb = kb_config
             init = init_config
+			self.toml_file = 'DEFAULT'
         else:
+			self.toml_file = crl_setup
             with open(crl_setup, "rb") as f:
                 config = tomllib.load(f)
             beam = config['beam']
             beamline = config['beamline']
-            #check config for the crl, crl1, crl2, kb and use this to determine system type
+#TODO updat these comments:            #check config for the crl, crl1, crl2, kb and use this to determine system type
             #toml uses dictionary of lists; need to convert to list of dictionaries
             crls = config['crl']
 			for i, label in enumerate(crls['label']):
 				self.n_elements += 1
-				self.elements.append(label)
+				self.toml_elems.append(label)
 				crl.append({'label': label, 'stacks':crls['stacks'][i], 'd_min': crls['d_min']})
             
             if "kb" in config:
 				self.n_elements+=1
                 kb = config['kb']
-                self.elements.append('KB')
+                self.toml_elems.append('KB')
 
             init = config['init']
 
-        self.sysType = init['sysType']
+        # Create default configs
+        self.single_config = init['initConfig']
+        if len(crl) > 1:
+			self.double_config = DEFAULT_2X_CONFIG
+		if 'KB' in self.toml_elems:
+			self.crlkb_config = DEFAULT_1XKB_CONFIG        
+
         self.curr_config = init['initConfig']
-                
+
+
         # Setup beam properties
         self.mode = modes[0]
         self.beam = {}
@@ -155,7 +181,7 @@ class focusingSystem():
         # keyed by labels
         self.crl = {}
         self.setupCRL(crl)
-        if self.sysType is SYSTEM_TYPE.CRLandKB:
+        if self.curr_config['sysType'] is SYSTEM_TYPE.CRLandKB:
             self.setupKB(kb)
 
         # Initialize slit sizes to 1 m (wide open)
@@ -170,13 +196,13 @@ class focusingSystem():
         #---------------------------------------------------------------------->
         #initialize dictionary for crl indices of current state
         self.indexSorted = {'1':0, '2':0}
-        if self.sysType is SYSTEM_TYPE.doubleCRL:
+        if self.curr_config['sysType'] is SYSTEM_TYPE.doubleCRL:
             self.index = {'1':0,'2':0}
         else:
             self.index = {'1':0}
         
         # KB systems need extra output info object distances for each mirror
-        if self.sysType is SYSTEM_TYPE.CRLandKB:
+        if self.curr_config['sysType'] is SYSTEM_TYPE.CRLandKB:
             self.KB_ol = {'KBH_p_list': [],
                             'KBV_p_list': []}
                 
@@ -284,11 +310,10 @@ class focusingSystem():
         Initializes slit sizes to 1 m (very open) 
         Assumes slits for all optical elements       
         '''
-		for elem in self.elements:
+		for elem in self.toml_elems:
 			self.slits[elem] = {'hor':1,'vert':1}
 
         
-    # TODO: ms update
     def updateSlitSize(self, size, oe, slit):
         '''
         Slit size updates are propagated to CRL object from EPICS.  The beam
@@ -298,7 +323,6 @@ class focusingSystem():
         self.slits[oe][slit] = float(size)
         if self.verbose: print(f"{oe} {slit} slit is set to {self.slits[oe][slit]}")
                              
-    # TODO: ms update
     def updateSlitSizeRBV(self, oe, slit):
         '''
         Update proper slit size
@@ -326,7 +350,7 @@ class focusingSystem():
         try:
             subsFile = open(subs_file,"r")
         except:
-            raise RuntimeError(f"Substiution file ({subsFile}) not found.")
+            raise RuntimeError(f"Substitution file ({subsFile}) not found.")
         # Remove empty lines and comments
         subsFileContent = [line for line in subsFile.readlines() if (line.strip() and not line.startswith('#'))]
         subsFile.close()
@@ -368,8 +392,8 @@ class focusingSystem():
             raise RuntimeError(f"OE assignemnt macro ({OE_MACRO}) not found in substituion file")
 		
         oe_cnt = Counter(oe)
-		self.elements = list(oe_cnt.keys())
-        self.num_stacks = [oe_cnt[elem] for elem in self.elements]
+		self.subs_elems = list(oe_cnt.keys())
+        self.num_stacks = [oe_cnt[elem] for elem in self.subs_elems]
             
         # get number of lens for each lens stack from lens properties dictionary-list
         print('Getting lens counts...')
@@ -425,6 +449,26 @@ class focusingSystem():
             print('Lens thickness errors read in.\n')
         else:
             raise RuntimeError(f"Thickness errors macro ({THICKERR_MACRO}) not found in substituion file")
+            
+		# Consistency check 1 
+		# elements: subs file vs toml file (toml file read in during init)
+		if self.toml_elems == self.subs_elems:
+			self.elements = self.toml_elems
+		else:
+			raise ValueError(f"""
+            Substitution and toml files don't agree on optical elements.
+            toml file ({self.toml_file}) has elements: {self.toml_elems}
+            subs file ({subsFile}) has elements: {self.subs_elems}						
+			""")
+		# Consistency check 2
+		# number of stacks per element
+		toml_stacks = [s['stacks'] for s in self.crl]
+		if self.num_stacks != toml_stacks:
+			raise ValueError(f"""
+			Substitution and toml files don't agree on number of stacks in each CRL:
+            toml file ({self.toml_file}) has {toml_stacks} set of stacks
+            subs file ({subsFile}) has {self.num_stacks} set of stacks			
+			""")
 
     def setupLookupTable(self, subs_file):
         '''
@@ -491,7 +535,7 @@ class focusingSystem():
             Should be called after beam energy or slits size changes
         '''
     
-        if self.sysType == SYSTEM_TYPE.singleCRL:
+        if self.curr_config['sysType'] == SYSTEM_TYPE.singleCRL:
 			elem1 = self.elements[0]
             results_dict = calc_1x_lu_table(self.configs[elem1], self.radii[elem1], self.mat[elem1], 
                                            self.energy, self.wl, self.lens_count[elem1], 
@@ -500,7 +544,7 @@ class focusingSystem():
                                            self.slits[elem1]['vert'], self.thickerr[elem1], 
                                            flag_HE = self.thickerr_flag, verbose = self.verbose)
                                                    
-        elif self.sysType == SYSTEM_TYPE.doubleCRL:
+        elif self.curr_config['sysType'] == SYSTEM_TYPE.doubleCRL:
 			elem1 = self.elements[0]
 			elem2 = self.elements[1]
  
@@ -515,7 +559,7 @@ class focusingSystem():
                                                    
             self.index1to2_sorted = results_dict['invf2_indices']
             
-        elif self.sysType == SYSTEM_TYPE.CRLandKB:
+        elif self.curr_config['sysType'] == SYSTEM_TYPE.CRLandKB:
 			elem1 = self.elements[0]
             results_dict = calc_kb_lu_table(self.configs[elem1], self.radii[elem1],
                                             self.mat[elem1], self.energy, self.wl,
@@ -535,7 +579,6 @@ class focusingSystem():
         self.q_list = results_dict['q_list']
         self.dq_list = results_dict['dq_list']
                                                                     
-        # TODO: ms update
         self.updateEnergyRBV()
         self.updateModeRBV()
         self.updateSlitSizeRBV(self.elements, 'hor')
@@ -547,7 +590,7 @@ class focusingSystem():
         self.updateLookupConfigs()  
         
         # TODO: ms update
-        if self.sysType == SYSTEM_TYPE.doubleCRL: 
+        if self.curr_config['sysType'] == SYSTEM_TYPE.doubleCRL: 
             self.setFocalSizeActual(offTable = True)
         else:
             self.setFocalSizeActual(offTable = False)
@@ -558,16 +601,44 @@ class focusingSystem():
         self.updateQdistances()
         
         # TODO: ms update
-        if self.sysType == SYSTEM_TYPE.CRLandKB:
+        if self.curr_config['sysType'] == SYSTEM_TYPE.CRLandKB:
             self.updateKBWaveforms()
             self.updateKBdistanceRBVs()
 
     # TODO: ms update
     def updateSysType(self, sysType):
-        self.sysType = SYSTEM_TYPE_NAMES[sysType]
+		# Save current configuration
+        if self.curr_config['sysType'] == SYSTEM_TYPE.singleCRL:
+			self.single_config = self.curr_config
+			
+        if self.curr_config['sysType'] == SYSTEM_TYPE.doubleCRL:
+			 self.double_config = self.curr_config
+        
+        if self.curr_config['sysType'] == SYSTEM_TYPE.CRLandKB:
+			 self.crlkb_config = self.curr_config
 
-        # set some defaults for element assignments?
-        # or go to previous values?
+		# Update current system type
+        self.curr_config['sysType'] = SYSTEM_TYPE_NAMES[sysType]
+	
+		# Restore configuration for that system type
+        if sysType == SYSTEM_TYPE.singleCRL:
+			self.curr_config = self.single_config
+			
+        if sysType == SYSTEM_TYPE.doubleCRL:
+			self.curr_config = self.double_config
+        
+        if sysType == SYSTEM_TYPE.CRLandKB:
+			self.curr_config = self.crlkb_config
+        
+        for i, crl in enumerate(self.curr_config['CRLs']):
+        	iointr_name = 'updated_system' + (i+1)
+         	pydev.iointr(iointr_name, crl)
+        
+        # if len(self.curr_config['KB']) > 0
+        #
+        
+        # update sample
+        # 
         
         # Other object updates?
         # TODO
@@ -575,18 +646,17 @@ class focusingSystem():
         # self.construct_lookup_table()
         
 
-        pydev.iointr('updated_sysType', find_key(SYSTEM_TYPE_NAMES, self.sysType))
+        pydev.iointr('updated_sysType', find_key(SYSTEM_TYPE_NAMES, self.curr_config['sysType']))
         
     def assignSystem(self, systemNum, oe):        
-        self.elements[int(systemNum)-1] = oe
-          
+        self.curr_config['CRLs'][systemNum-1] = self.elements.index(oe)   
         # TODO: Other object updates?
         # self.redoSetupLookupTable()
         # self.construct_lookup_table()
   
         # Set readback       
         iointr_name = 'updated_system' + systemNum
-        pydev.iointr(iointr_name, self.elements[int(systemNum)-1]))
+        pydev.iointr(iointr_name, self.curr_config['CRLs'][systemNum-1])
 
        
     def updateModeRBV(self):
@@ -624,7 +694,7 @@ class focusingSystem():
         '''
         
         pydev.iointr('new_configs_1', self.configs['1'].tolist())
-        if self.sysType == SYSTEM_TYPE.doubleCRL:
+        if self.curr_config['sysType'] == SYSTEM_TYPE.doubleCRL:
             pydev.iointr('new_configs_2', self.configs['2'].tolist())
             
 
@@ -650,7 +720,7 @@ class focusingSystem():
         self.indexSorted[oe] = int(sortedIndex)
         if oe == '1':
             self.index['1'] = self.sorted_invF_index['1'][self.indexSorted['1']] 
-            if self.sysType == SYSTEM_TYPE.doubleCRL:
+            if self.curr_config['sysType'] == SYSTEM_TYPE.doubleCRL:
                 self.indexSorted['2'] = self.index1to2_sorted[self.indexSorted['1']]
                 self.index['2'] = self.sorted_invF_index['2'][self.indexSorted['2']]
         elif oe == '2':
@@ -670,7 +740,7 @@ class focusingSystem():
         self.updateQdistances()
         
         # KB system need to "publish" p_h, p_v, and q1 
-        if self.sysType == SYSTEM_TYPE.CRLandKB:
+        if self.curr_config['sysType'] == SYSTEM_TYPE.CRLandKB:
             self.updateKBdistanceRBVs()
 
     def updateConfig(self, config_RBV, oe):
@@ -692,7 +762,7 @@ class focusingSystem():
         # Find the configuration in the 1/f sorted list
         self.indexSorted[oe] = self.sorted_invF_index[oe].tolist().index(self.index[oe])
 
-        if self.sysType == SYSTEM_TYPE.doubleCRL: 
+        if self.curr_config['sysType'] == SYSTEM_TYPE.doubleCRL: 
             self.setFocalSizeActual(offTable = True)
         else:
             self.setFocalSizeActual(offTable = False)
@@ -761,7 +831,7 @@ class focusingSystem():
         self.index['1'] = self.sorted_invF_index['1'][self.indexSorted['1']]
         if self.verbose: print(f"CRL 1 config index found at {self.index['1']}")
         
-        if self.sysType == SYSTEM_TYPE.doubleCRL:
+        if self.curr_config['sysType'] == SYSTEM_TYPE.doubleCRL:
             self.indexSorted['2'] = self.index1to2_sorted[self.indexSorted['1']]
             self.index['2'] = self.sorted_invF_index['2'][self.indexSorted['2']]
             if self.verbose: print(f"CRL 2 config index found at {self.index['2']}")
@@ -779,7 +849,7 @@ class focusingSystem():
         self.updateQdistances()
         
         # KB system need to "publish" p_h, p_v, and q1 
-        if self.sysType == SYSTEM_TYPE.CRLandKB:
+        if self.curr_config['sysType'] == SYSTEM_TYPE.CRLandKB:
             self.updateKBdistanceRBVs()
 
     def setFocalSizeActual(self, offTable = False):
@@ -823,7 +893,7 @@ class focusingSystem():
         if self.verbose: print(f'Setting lens configuration PV for CRL 1')
         self.config['1'] = self.index['1']
         pydev.iointr('new_lenses_1', int(self.config['1']))
-        if self.sysType == SYSTEM_TYPE.doubleCRL:
+        if self.curr_config['sysType'] == SYSTEM_TYPE.doubleCRL:
             if self.verbose: print(f'Setting lens configuration PV for CRL 2')
             self.config['2'] = self.index['2']
             pydev.iointr('new_lenses_2', int(self.config['2']))
@@ -836,7 +906,7 @@ class focusingSystem():
         '''
         if self.verbose: print(f"Setting lens configuration index RBV for CRL 1: {self.indexSorted['1']}")
         pydev.iointr('new_index_1', int(self.indexSorted['1']))
-        if self.sysType == SYSTEM_TYPE.doubleCRL:
+        if self.curr_config['sysType'] == SYSTEM_TYPE.doubleCRL:
             if self.verbose: print(f"Setting lens configuration index RBV for CRL 2: {self.indexSorted['2']}")
             pydev.iointr('new_index_2', int(self.indexSorted['2']))
                     
