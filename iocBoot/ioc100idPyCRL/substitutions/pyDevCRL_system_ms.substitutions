@@ -71,7 +71,7 @@ file "$(TOP)/db/posTestTools.db" {
   {SAM, ZELEM}
   {"1", "testSAMz1"	}	
   {"2", "testSAMz2"	}	
-  {"3", "testSAMz3"	}	
+#  {"3", "testSAMz3"	}	
 }
 
 # Replace with real motors if they exist
@@ -80,5 +80,5 @@ file "$(TOP)/db/pyDevCRL_sample.db" {
   {SAM, SAMPOS}
   {"1", "$(P)testSAMz1"	}	
   {"2", "$(P)testSAMz2"	}	
-  {"3", "$(P)testSAMz3"	}	
+#  {"3", "$(P)testSAMz3"	}	
 }

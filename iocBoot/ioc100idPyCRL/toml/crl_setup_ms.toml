@@ -44,10 +44,9 @@ stacks = [10, 10]
 d_min = [0.00003, 0.00003]
 
 
-#[crl2]
-#label = 'C'
-#stacks = 10
-#d_min = 0.00003 
+# Sample station names
+[sample]
+label = ['C', 'D']
 
 # KB input block
 # KBH_L		-	KBH length
@@ -58,6 +57,7 @@ d_min = [0.00003, 0.00003]
 # KBH_p_limit - Minimum p that KBH can achieve, so abs(KBH_p) > KBH_p_min
 # KBV_p_limit - Minimum p that KBV can achieve, so abs(KBV_p) > KBV_p_min
 [kb]
+label 		= 'KB'
 KBH_L       = 180.0e-3          
 KBH_q       = 380.0e-3          
 KB_theta    = 2.5e-3            
@@ -70,7 +70,8 @@ KBV_p_limit = 1.0
 # sysType - 1: single, 2: double, 3: single + KB
 # initConfig - which CRLS to use in system at start; first element by default
 #
-# To start with double by default: sysType = 2, elems = [0,1] 
+# To start with single by default: sysType = '1x', initConfig set to list of CRLs to use, 
+# 'B' -- B-hutch CRL in this case 
 [init]
-sysType = 1
-initConfig = [0]
+sysType = '1x'
+initConfig = ['B']

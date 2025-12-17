@@ -283,9 +283,11 @@ def find_levels(array, levels, direction='forward'):
 
     return np.array(indices), np.array(values)
 
-def calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens, 
-                  lens_loc, beam, bl, crl, slit_H, slit_V, thickerr, 
-                  flag_HE = False, verbose = False):
+def calc_tf1_data(focusSystem, current_config):
+
+#def calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens, 
+#                  lens_loc, beam, bl, crl, slit_H, slit_V, thickerr, 
+#                  flag_HE = False, verbose = False):
 
     '''
     Description:
@@ -326,7 +328,7 @@ def calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens,
             flag for printing to iocConsole
             
     Returns:
-        Dictionary with the following keys
+        Dictionary with the following keyss
             q1_list                   : numpy array of float
                 image position relative to source for each configuration 
             dq1_list                  : numpy array of float
@@ -348,10 +350,32 @@ def calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens,
                 
     '''
 
+    energy_keV = focusSystem.energy
+    wl = focusSystem.wl
 
+    verbose = focusSystem.verbose
+
+    num_configs = focusSystem.
+
+    bl = focusSystem.beamline
+    beam = focusSystem.beam
+    crls = focusSystem.crl
+
+	radii = focusSystem.     
+	materials = focusSystem.  
+	numlens = focusSystem.
+	lens_loc = focusSystem.
+
+	crl1 = current_config['CRLs'][0]
+
+    slit_H = focusSystem.slits[crl1]['hor']
+    slit_V = focusSystem.slits[crl1]['vert']
+
+	flag_HE = focusSystem.thickerr_flag
+	
     if verbose:
         print(30*'*')
-        print(f'Energy: {energy_keV} keV')
+        print(f'Energy: {fenergy_keV} keV')
         print(f'Hor slit size: {slit_H} m')
         print(f'Ver slit size: {slit_V} m')
         print(30*'*')
@@ -364,10 +388,10 @@ def calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens,
     sigmaHp = beam['sigmaHp']
     sigmaVp = beam['sigmaVp']
 
-    d_StoL1 = bl['d_StoL1']+bl['L1_offset']
-    d_Stof = bl['d_Stof']+bl['f_offset']
+    d_StoL1 = bl['d_StoL'][crl]+bl['L_offset'][crl]
+    d_Stof = bl['d_Stof'][crl]+bl['f_offset'][crl]
 
-    d_min = crl['d_min']
+    d_min = crls[current_config['CRLs'][0]]['d_min']
 
    
     L1_D        = np.asarray([lookup_diameter(rad) for rad in radii])    # CRL1 diameters for each stack
@@ -433,6 +457,7 @@ def calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens,
             'L1_invF_list_sort_indices': L1_invF_list_sort_indices, 
             'L1_invF_list_sorted': L1_invF_list_sorted, 'L1_index_n': L1_index_n}
 
+def calc_1x_lu_table(focusSystem, current_config):
 
 def calc_1x_lu_table(num_configs, radii, materials, energy_keV, wl, numlens, 
                      lens_loc, beam, bl, crl, slit_H, slit_V, thickerr, 
@@ -541,9 +566,9 @@ def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials
     '''
 
 
-    d_StoL2 = bl['d_StoL2']+bl['L2_offset']
-    d_StoL1 = bl['d_StoL1']+bl['L1_offset']
-    d_Stof = bl['d_Stof']+bl['f_offset']
+    d_StoL2 = bl['d_StoL'][1]+bl['L_offset'][1]
+    d_StoL1 = bl['d_StoL'][0]+bl['L_offset'][0]
+    d_Stof = bl['d_Stof'][samSTN]+bl['f_offset'][samSTN]
 
     data_dict = calc_tf1_data(num_configs, L1_radii, L1_materials, energy_keV, wl, numlens['1'], 
                      L1_lens_loc, beam, bl, crl['1'], slits['1']['hor'], slits['1']['vert'], 
@@ -645,6 +670,7 @@ def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials
     return {'FWHM_atsample_list': FWHM_atsample_list, 'invF_list_sort_indices': invF_list_sort_indices,
             'invF_list_sorted': invF_list_sorted, 'invf2_indices': invf2_indices,
             'q_list': q2_list, 'dq_list': dq2_list }
+
 
 
 

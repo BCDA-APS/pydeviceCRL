@@ -1,0 +1,17 @@
+record(mbbo, "$(P)$(SYSID):sample"){
+	field(ZRST, "$(SAMA)")
+	field(ONST, "$(SAMB)")
+	field(TWST, "$(SAMC)")
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).assignSample(VAL)")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
+}
+
+record(mbbi, "$(P)$(SYSID):sample_RBV"){
+	field(ZRST, "$(SAMA)")
+	field(ONST, "$(SAMB)")
+	field(TWST, "$(SAMC)")
+	field(DTYP, "pydev")
+    field(INP,  "@pydev.iointr('updated_sample')")
+    field(SCAN, "I/O Intr")
+}

@@ -47,7 +47,7 @@ pydev("$(PY_OBJECT) = focusingSystem(crl_setup = '$(TOML_FILE)')")
 dbLoadRecords("${TOP}/db/pyDevCRL_general.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), KEV=$(BLE), ELEM=$(_CONFIGS)")
 dbLoadRecords("${TOP}/db/pyDevCRL_2systems.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SYSA=B, SYSB=C")
 # For 28 (3 CRLs):
-# dbLoadRecords("${TOP}/db/pyDevCRL_2systems.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SYSA=B, SYSB=C, SYSC=D")
+# dbLoadRecords("${TOP}/db/pyDevCRL_3systems.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SYSA=B, SYSB=C, SYSC=D")
 
 ################################################################################
 # Initial setting of some PVs
