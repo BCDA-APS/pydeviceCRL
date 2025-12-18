@@ -14,8 +14,7 @@ More information on the PyDevice module can be found here:
 ### Python Environment
 
 Need to create conda environment from which to build and run the IOC (should be kept external to IOC file structure)
-Create a source script for activating the environment (e.g. 100idPyFilter_startup_env)
-
+Create a source script for activating the environment (e.g. 100idPyFilter_startup_env) and add to the iocBoot sub-folder.
 
 ### Startup script changes
  
