@@ -39,14 +39,14 @@ d_Stof = [55.0, 66.2]
 # stacks	- Number of sets of lenses
 # d_min 	- Minimum thickness at the apex in m
 [crl]
-label = ['B', 'C']
+labels = ['B', 'C']
 stacks = [10, 10]
 d_min = [0.00003, 0.00003]
 
 
 # Sample station names
 [sample]
-label = ['C', 'D']
+labels = ['C', 'D']
 
 # KB input block
 # KBH_L		-	KBH length

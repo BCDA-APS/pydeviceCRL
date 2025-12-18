@@ -16,7 +16,7 @@
 #
 ################################################################################
 
-# Simulated motors for slit sizes
+# PVs for simulated slit sizes
 file "$(TOP)/db/slitTestTools.db" {
   pattern
   {SLITH, 		SLITV}
@@ -41,7 +41,7 @@ file "$(TOP)/db/pyDevCRL_slits.db" {
 #
 ################################################################################
 
-# Simulated motors for element's z-positions relative to nominal position on
+# PVs for simulating element's z-positions relative to nominal position on
 # beamline
 file "$(TOP)/db/posTestTools.db" {
   pattern
@@ -65,12 +65,12 @@ file "$(TOP)/db/pyDevCRL_elem.db" {
 #
 ################################################################################
 
-# Test (simulated) motors for sample z position
+# PVs for simulating sample z position
 file "$(TOP)/db/posTestTools.db" {
   pattern
   {SAM, ZELEM}
-  {"1", "testSAMz1"	}	
-  {"2", "testSAMz2"	}	
+  {"C", "testSAMz1"	}	
+  {"D", "testSAMz2"	}	
 #  {"3", "testSAMz3"	}	
 }
 
@@ -78,7 +78,7 @@ file "$(TOP)/db/posTestTools.db" {
 file "$(TOP)/db/pyDevCRL_sample.db" {
   pattern
   {SAM, SAMPOS}
-  {"1", "$(P)testSAMz1"	}	
-  {"2", "$(P)testSAMz2"	}	
+  {"C", "$(P)testSAMz1"	}	
+  {"D", "$(P)testSAMz2"	}	
 #  {"3", "$(P)testSAMz3"	}	
 }

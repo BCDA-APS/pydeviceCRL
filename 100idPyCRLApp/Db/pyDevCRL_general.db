@@ -158,7 +158,7 @@ record(acalcout, "$(P)$(SYSID):minimizeFsize"){
   field(INAA, "$(P)$(SYSID):fSizes NPP")
   field(NELM, "$(ELEM)")
   field(CALC, "IXMIN(AA)")
-  field(OUT, "$(P)$(SYSID):1:sortedIndex PP")
+  field(OUT, "$(P)$(SYSID):$(CRL1):sortedIndex PP")
 }
 
 record(ai, "$(P)$(SYSID):q"){

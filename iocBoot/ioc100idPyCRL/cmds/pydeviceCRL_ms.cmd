@@ -44,7 +44,7 @@ pydev("from pyCRL_system import focusingSystem")
 pydev("$(PY_OBJECT) = focusingSystem(crl_setup = '$(TOML_FILE)')")
 
 # DB file for system controls and sample position(s)
-dbLoadRecords("${TOP}/db/pyDevCRL_general.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), KEV=$(BLE), ELEM=$(_CONFIGS)")
+dbLoadRecords("${TOP}/db/pyDevCRL_general.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), KEV=$(BLE), ELEM=$(_CONFIGS), CRL1=B")
 dbLoadRecords("${TOP}/db/pyDevCRL_2systems.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SYSA=B, SYSB=C")
 # For 28 (3 CRLs):
 # dbLoadRecords("${TOP}/db/pyDevCRL_3systems.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SYSA=B, SYSB=C, SYSC=D")
