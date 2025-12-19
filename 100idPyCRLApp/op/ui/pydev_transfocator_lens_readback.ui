@@ -212,7 +212,7 @@ border-radius: 2px;
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
-   <widget class="caLabel" name="caLabel_0">
+   <widget class="caLabel" name="LensLabel">
     <property name="geometry">
      <rect>
       <x>5</x>
@@ -248,7 +248,7 @@ border-radius: 2px;
      <enum>QFrame::NoFrame</enum>
     </property>
    </widget>
-   <widget class="caGraphics" name="caRectangle_0">
+   <widget class="caGraphics" name="LensIN">
     <property name="geometry">
      <rect>
       <x>11</x>
@@ -329,7 +329,7 @@ border-radius: 2px;
      <enum>caGraphics::Rectangle</enum>
     </property>
    </widget>
-   <widget class="Line" name="line">
+   <widget class="Line" name="Beam">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -348,7 +348,7 @@ border-radius: 2px;
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="caGraphics" name="caRectangle_2">
+   <widget class="caGraphics" name="MovingIndicator">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -393,7 +393,7 @@ border-radius: 2px;
      <enum>caGraphics::Rectangle</enum>
     </property>
    </widget>
-   <widget class="caGraphics" name="caRectangle_3">
+   <widget class="caGraphics" name="ErrorIndicator">
     <property name="geometry">
      <rect>
       <x>0</x>

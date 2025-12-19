@@ -30,10 +30,16 @@ Lens_diameter_dict = {int(col1): col2 for col1, col2 in Lens_diameter_table}
 #in g/cm^3 
 DENSITY = {'Si': 2.33, 'TiO2': 4.23,  'InSb': 5.78} 
 
+#class SYSTEM_TYPE(Enum):
+#    singleCRL = 1
+#    doubleCRL = 2 
+#    CRLandKB = 3
+
 class SYSTEM_TYPE(Enum):
-    singleCRL = 1
-    doubleCRL = 2 
-    CRLandKB = 3
+    singleCRL = '1x'
+    doubleCRL = '2x'
+    CRLandKB = 'KB'
+
     
 def get_densities(materials):
     '''
@@ -462,13 +468,13 @@ def calc_1x_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
     Returns:
         Dictionary with the following keys
  
-			FWHM_atsample           : focal size in meters
-			invF_list_sort_indices  : elements are n-bit config for CRL1, sorted by increasing equivalent 1/f
-			invF_list_sorted        : List of equivalent 1/f in m^-1 for CRL1, sorted by increasing value
-			q_list                 : numpy array of float
-									CRL image position relative to source for each configuration 
-			dq_list                : numpy array of float
-									CRL image position relative to sample for each configuration
+            FWHM_atsample           : focal size in meters
+            invF_list_sort_indices  : elements are n-bit config for CRL1, sorted by increasing equivalent 1/f
+            invF_list_sorted        : List of equivalent 1/f in m^-1 for CRL1, sorted by increasing value
+            q_list                 : numpy array of float
+                                    CRL image position relative to source for each configuration 
+            dq_list                : numpy array of float
+                                    CRL image position relative to sample for each configuration
 
     '''    
     data_dict = calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens, 
@@ -525,18 +531,18 @@ def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials
         verbose         : Flag to print messages to IOC console
     Returns:
         Dictionary with the following keys
-			FWHM_atsample           : focal size in meters
-			invF_list_sort_indices  : dictionary (L1, L2) for n-bit configs for each 
-									CRL, sorted by increasing equivalent 1/f
-			invF_list_sorted        : dictionary (L1, L2) for equivalent 1/f in m^-1 
-									for each CRL, sorted by increasing value
-			invf2_indices           : each element is the CRL2 n-bit configuration 
-									and each index is the sorted index for CRL1, 
-									e.g. 
-			q_list                 : numpy array of float
-									CRL #2 image position relative to source for each configuration 
-			dq_list                : numpy array of float
-									CRL #2 image position relative to sample for each configuration
+            FWHM_atsample           : focal size in meters
+            invF_list_sort_indices  : dictionary (L1, L2) for n-bit configs for each 
+                                    CRL, sorted by increasing equivalent 1/f
+            invF_list_sorted        : dictionary (L1, L2) for equivalent 1/f in m^-1 
+                                    for each CRL, sorted by increasing value
+            invf2_indices           : each element is the CRL2 n-bit configuration 
+                                    and each index is the sorted index for CRL1, 
+                                    e.g. 
+            q_list                 : numpy array of float
+                                    CRL #2 image position relative to source for each configuration 
+            dq_list                : numpy array of float
+                                    CRL #2 image position relative to sample for each configuration
                           
     '''
 
@@ -673,17 +679,17 @@ def calc_kb_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
         verbose         : Flag to print messages to IOC console
     Returns:
         Dictionary with the following keys
-			FWHM_atsample           : focal size in meters
-			invF_list_sort_indices  : elements are n-bit config for CRL1, sorted by increasing equivalent 1/f
-			invF_list_sorted        : List of equivalent 1/f in m^-1 for CRL1, sorted by increasing value
-			KBH_p_list              : numpy array of float
-									horizontal KB object distance list (relative to CRL image point)
-			KBV_p_list              : numpy array of float
-									vertical KB object distance list (relative to CRL image point)
-			q_list                 : numpy array of float
-									CRL image position relative to source for each configuration 
-			dq_list                : numpy array of float
-									CRL image position relative to sample for each configuration
+            FWHM_atsample           : focal size in meters
+            invF_list_sort_indices  : elements are n-bit config for CRL1, sorted by increasing equivalent 1/f
+            invF_list_sorted        : List of equivalent 1/f in m^-1 for CRL1, sorted by increasing value
+            KBH_p_list              : numpy array of float
+                                    horizontal KB object distance list (relative to CRL image point)
+            KBV_p_list              : numpy array of float
+                                    vertical KB object distance list (relative to CRL image point)
+            q_list                 : numpy array of float
+                                    CRL image position relative to source for each configuration 
+            dq_list                : numpy array of float
+                                    CRL image position relative to sample for each configuration
     '''
 
     d_StoL1 = bl['d_StoL1']+bl['L1_offset']

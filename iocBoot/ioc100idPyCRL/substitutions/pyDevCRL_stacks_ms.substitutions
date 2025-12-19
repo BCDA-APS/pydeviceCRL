@@ -32,7 +32,6 @@ file "$(TOP)/db/pyDevCRL_stack.db" {
   {"C", "08",   4, 			0.0001,		"Be",	-0.078,	"2D", 		2.0e-6,	   	1,		0,	"H", 	"H"	}	
   {"C", "09",   8, 			0.0001,		"Be",	-0.118,	"2D", 		2.8e-6,	   	1,		0,	"I", 	"I"	}	
   {"C", "10",   16,			0.0001,		"Be",	-0.158, "2D", 		4e-6,	   	1,		0,	"J", 	"J"	}	
-
 }
   
 ## For simulated motors, need to be able to move from limit to limit
