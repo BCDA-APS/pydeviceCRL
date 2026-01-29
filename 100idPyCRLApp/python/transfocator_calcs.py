@@ -40,6 +40,7 @@ class SYSTEM_TYPE(Enum):
     doubleCRL = '2x'
     CRLandKB = 'KB'
 
+SYSTEM_TYPE_NAMES = {'1x': '1', '2x': '2', 'KB': '3'}
     
 def get_densities(materials):
     '''

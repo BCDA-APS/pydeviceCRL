@@ -16,7 +16,7 @@ record(ao, "$(P)$(SYSID):$(SAM):samplePositionOffset"){
   field(DOL,  "$(P)$(SYSID):$(SAM):samPosOffsetConv.VAL CP")
   field(OMSL, "closed_loop")
   field(DTYP, "pydev")
-  field(OUT, "@$(OBJ).updateZpos(VAL, $(SAM), 'sam')")
+  field(OUT, "@$(OBJ).updateZpos(VAL, '$(SAM)', 'sam')")
   field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
 }
 

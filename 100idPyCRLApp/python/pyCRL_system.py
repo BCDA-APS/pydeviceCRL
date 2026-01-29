@@ -1,12 +1,13 @@
 import numpy as np
 import tomllib
 import xraylib
+import copy
 from collections import Counter
 from transfocator_calcs import materials_to_deltas, materials_to_linear_attenuation
 from transfocator_calcs import find_levels, get_densities
 from transfocator_calcs import calc_1x_lu_table, calc_2x_lu_table, calc_kb_lu_table
 from transfocator_calcs import calc_2xCRL_focus
-from transfocator_calcs import SYSTEM_TYPE
+from transfocator_calcs import SYSTEM_TYPE, SYSTEM_TYPE_NAMES
 
 OE_MACRO = 'OE'
 MAT_MACRO = 'MAT'
@@ -17,8 +18,6 @@ THICKERR_MACRO = 'THICKERR'
 DIM_MACRO = 'DIM'
 
 modes = ['flat','round']
-
-SYSTEM_TYPE_NAMES = {'1x': '1', '2x': '2', 'KB': '3'}
 
 '''
 Config variables
@@ -55,19 +54,33 @@ DEFAULT_CONFIG = {'beam':{'energy': 15, 'L_und': 4.7,
                   'init':{'sysType': '1x', 'initConfig': ['B']}}
 
 DEFAULT_1X_CONFIG = {'sysType': SYSTEM_TYPE.singleCRL,
-                     'CRLs': DEFAULT_CONFIG['crl']['label'][0],
-                     'KBs': None,
+                     'CRLs': [DEFAULT_CONFIG['crl']['label'][0]],
+                     'KBs': [None],
                      'Sample': DEFAULT_CONFIG['sample']['label'][0]}
 
 DEFAULT_2X_CONFIG = {'sysType': SYSTEM_TYPE.doubleCRL,
                      'CRLs': [DEFAULT_CONFIG['crl']['label'][0],DEFAULT_CONFIG['crl']['label'][1]],
-                     'KBs': None,
+                     'KBs': [None],
                      'Sample': DEFAULT_CONFIG['sample']['label'][1]}
                      
 DEFAULT_1XKB_CONFIG = {'sysType': SYSTEM_TYPE.CRLandKB,
-                     'CRLs': DEFAULT_CONFIG['crl']['label'][0],
-                     'KBs': DEFAULT_CONFIG['kb']['label'],
+                     'CRLs': [DEFAULT_CONFIG['crl']['label'][0]],
+                     'KBs': [DEFAULT_CONFIG['kb']['label']],
                      'Sample': DEFAULT_CONFIG['sample']['label'][1]}
+
+sysType_list = list(SYSTEM_TYPE_NAMES.keys())
+
+sysType_dict = {}
+
+for st in sysType_list:
+    match st:
+        case SYSTEM_TYPE.singleCRL.value:
+            sysType_dict[st] = SYSTEM_TYPE.singleCRL
+        case SYSTEM_TYPE.doubleCRL.value:
+            sysType_dict[st] = SYSTEM_TYPE.doubleCRL
+        case SYSTEM_TYPE.CRLandKB.value:
+            sysType_dict[st] = SYSTEM_TYPE.CRLandKB
+    
 
 def find_key(input_dict, target_value):
     '''
@@ -151,7 +164,7 @@ class focusingSystem():
             crl = []
             for i, label in enumerate(crls['labels']):
                 self.toml_crls.append(label)
-                crl.append({'label': label, 'stacks':crls['stacks'][i], 'd_min': crls['d_min']})
+                crl.append({'label': label, 'stacks':crls['stacks'][i], 'd_min': crls['d_min'][i]})
 
             # Add kbs if listed in toml
             if "kb" in config:
@@ -167,11 +180,11 @@ class focusingSystem():
 
 
         # Create default configs
-        self.single_config = DEFAULT_1X_CONFIG
+        self.single_config = copy.deepcopy(DEFAULT_1X_CONFIG)
         if len(crl) > 1:
-            self.double_config = DEFAULT_2X_CONFIG
+            self.double_config = copy.deepcopy(DEFAULT_2X_CONFIG)
         if kb is not None:
-            self.crlkb_config = DEFAULT_1XKB_CONFIG
+            self.crlkb_config = copy.deepcopy(DEFAULT_1XKB_CONFIG)
         
         # Setup beam properties
         self.mode = modes[0]
@@ -182,7 +195,8 @@ class focusingSystem():
         # keyed by labels
         self.crl = {}
         self.setupCRL(crl)
-
+        self.list_of_crls = list(self.crl.keys())
+        
         # KB setup
         # KB systems need extra output info object distances for each mirror
         if kb is not None:
@@ -210,12 +224,12 @@ class focusingSystem():
 
         # System type determined by init entry in config dictionary
         match init['sysType']:
-            case SYSTEM_TYPE.singleCRL:
-                self.curr_config = self.single_config
-            case SYSTEM_TYPE.doubleCRL:
-                self.curr_config = self.double_config
-            case SYSTEM_TYPE.CRLandKB:
-                self.curr_config = self.crlkb_config
+            case SYSTEM_TYPE.singleCRL.value:
+                self.curr_config = copy.deepcopy(self.single_config)
+            case SYSTEM_TYPE.doubleCRL.value:
+                self.curr_config = copy.deepcopy(self.double_config)
+            case SYSTEM_TYPE.CRLandKB.value:
+                self.curr_config = copy.deepcopy(self.crlkb_config)
         self.curr_config['CRLs'] = init['initConfig']
         
         self.updateElements()
@@ -239,7 +253,7 @@ class focusingSystem():
         self.thickerr_flag = True
     
     def updateElements(self):
-        self.elements = [elem for elem in self.curr_config['CRLs'] + [self.curr_config['KBs']] if elem is not None]
+        self.elements = [elem for elem in (self.curr_config['CRLs'] + self.curr_config['KBs']) if elem is not None]
                 
     def setupSource(self, beam_properties):
         '''
@@ -571,19 +585,19 @@ class focusingSystem():
             Updates IOC waveforms and rBS with output of table constructions
             Should be called after beam energy or slits size changes
         '''
-        if self.verbose: print(f"Constructing lookup table for {self.curr_config['sysType']} system")
+        if self.verbose: print(f"Constructing lookup table for {self.curr_config['sysType'].value} system")
         match self.curr_config['sysType']:
             case SYSTEM_TYPE.singleCRL:
 
                 crl = self.curr_config['CRLs'][0]
                 sam = self.curr_config['Sample']
                 
-                bl_subset = {'d_StoL1': bl['d_StoL'][crl],
-                             'L1_offset': bl['L_offset'][crl],
-                             'd_Stof': bl['d_Stof'][sam],
-                             'f_offset': bl['f_offset'][sam]}
-                                
-                results_dict = calc_1x_lu_table(self.configs[crl].size(), self.radii[crl], self.mat[crl], 
+                bl_subset = {'d_StoL1': self.bl['d_StoL'][crl],
+                             'L1_offset': self.bl['L_offset'][crl],
+                             'd_Stof': self.bl['d_Stof'][sam],
+                             'f_offset': self.bl['f_offset'][sam]}
+                                                
+                results_dict = calc_1x_lu_table(self.configs[crl].size, self.radii[crl], self.mat[crl], 
                                            self.energy, self.wl, self.lens_count[crl], 
                                            self.lens_loc[crl], self.beam, bl_subset, 
                                            self.crl[crl], self.slits[crl]['hor'], 
@@ -596,15 +610,15 @@ class focusingSystem():
                 sam = self.curr_config['Sample']
  
 
-                bl_subset = {'d_StoL1': bl['d_StoL'][crl1],
-                             'L1_offset': bl['L_offset'][crl1],
-                             'd_StoL2': bl['d_StoL'][crl2],
-                             'L2_offset': bl['L_offset'][crl2],
-                             'd_Stof': bl['d_Stof'][sam],
-                             'f_offset': bl['f_offset'][sam]}
+                bl_subset = {'d_StoL1': self.bl['d_StoL'][crl1],
+                             'L1_offset': self.bl['L_offset'][crl1],
+                             'd_StoL2': self.bl['d_StoL'][crl2],
+                             'L2_offset': self.bl['L_offset'][crl2],
+                             'd_Stof': self.bl['d_Stof'][sam],
+                             'f_offset': self.bl['f_offset'][sam]}
                     
 
-                results_dict = calc_2x_lu_table(self.configs[crl1].size(), self.radii[crl1], 
+                results_dict = calc_2x_lu_table(self.configs[crl1].size, self.radii[crl1], 
                                             self.mat[crl1], self.radii[crl2], 
                                             self.mat[crl2], self.energy, self.wl,
                                             self.lens_count, self.lens_loc[crl1],
@@ -619,12 +633,12 @@ class focusingSystem():
                 crl = self.curr_config['CRLs'][0]
                 sam = self.curr_config['Sample']
 
-                bl_subset = {'d_StoL1': bl['d_StoL'][crl],
-                             'L1_offset': bl['L_offset'][crl],
-                             'd_Stof': bl['d_Stof'][sam],
-                             'f_offset': bl['f_offset'][sam]}
+                bl_subset = {'d_StoL1': self.bl['d_StoL'][crl],
+                             'L1_offset': self.bl['L_offset'][crl],
+                             'd_Stof': self.bl['d_Stof'][sam],
+                             'f_offset': self.bl['f_offset'][sam]}
 
-                results_dict = calc_kb_lu_table(self.configs[crl].size(), self.radii[crl],
+                results_dict = calc_kb_lu_table(self.configs[crl].size, self.radii[crl],
                                             self.mat[crl], self.energy, self.wl,
                                             self.lens_count[crl], self.lens_loc[crl], 
                                             self.beam, bl_subset, self.crl, self.kb, 
@@ -666,43 +680,70 @@ class focusingSystem():
             self.updateKBdistanceRBVs()
 
     def updateSysType(self, sysType):
+        if self.verbose: print(80*'#')
+
+        
         # Save current configuration
-        match self.curr_config:
-            case {'sysType': SYSTEM_TYPE.singleCRL, **rest}:
-                self.single_config = self.curr_config
-            case {'sysType': SYSTEM_TYPE.doubleCRL, **rest}:
-                self.double_config = self.curr_config
-            case {'sysType': SYSTEM_TYPE.CRLandKB, **rest}:
-                self.crlkb_config = self.curr_config
+        match self.curr_config['sysType']:
+            case SYSTEM_TYPE.singleCRL:
+                self.single_config = copy.deepcopy(self.curr_config)
+                if self.verbose: print('Saving curr config to single config')
+            case SYSTEM_TYPE.doubleCRL:
+                self.double_config = copy.deepcopy(self.curr_config)
+                if self.verbose: print('Saving curr config to double config')
+            case SYSTEM_TYPE.CRLandKB,:
+                self.crlkb_config = copy.deepcopy(self.curr_config)
+                if self.verbose: print('Saving curr config to crl + kb config')
 
         # Update current system type
-        self.curr_config['sysType'] = sysType
-    
-        # Restore configuration for that system type
-        match sysType:
-            case SYSTEM_TYPE.singleCRL:
-                self.curr_config = self.single_config
-            case SYSTEM_TYPE.doubleCRL:
-                self.curr_config = self.double_config
-            case SYSTEM_TYPE.CRLandKB:
-                self.curr_config = self.crlkb_config
+        if self.verbose: print(f'Changing to {sysType_list[sysType]} system')
+        self.curr_config['sysType']  = sysType_dict[sysType_list[sysType]]
         
+        # Restore configuration for that system type
+        match sysType_list[sysType]:
+            case SYSTEM_TYPE.singleCRL.value:
+                self.curr_config = copy.deepcopy(self.single_config)
+                if self.verbose: print('Set to single CRL system')
+            case SYSTEM_TYPE.doubleCRL.value:
+                self.curr_config = copy.deepcopy(self.double_config)
+                if self.verbose: print('Set to double CRL system')
+            case SYSTEM_TYPE.CRLandKB.value:
+                self.curr_config = copy.deepcopy(self.crlkb_config)
+                if self.verbose: print('Set to KB + CRL system')
+            case _:
+                if self.verbose: print('System type not set -- type not recognized')
+             
+
+        if self.verbose: print(f'Updating system type: system RBVs')
         for i, crl in enumerate(self.curr_config['CRLs']):
-            self.updateSystemRBV(i)       
+            if self.verbose: print(f'Setting {i}th system to CRL {crl}')
+            self.updateSystemRBV(i+1)       
         
         # TODO when KB to be fully integrated
 #        if len(self.curr_config['KB']) > 0
 #           kb_iointr_name = ...
 #           pydev.iointr(kb_iointr_name, self.curr_config['KB'])
 
+        if self.verbose: print(f'Updating system type: elements')
         self.updateElements()
         
         # update sample
+        if self.verbose: print(f'Updating system type: sample station')
         pydev.iointr('updated_sample', self.curr_config['Sample'])
-        pydev.iointr('updated_sysType', self.curr_config['sysType'])
+
+        # update system type
+        sysType_rbv = self.curr_config['sysType'].value
+#        sysType_rbv = sysType_list.index(self.curr_config['sysType'].value)
+        if self.verbose: 
+            print(f'Updating sysType readback to {sysType_rbv} which has rval of {sysType_list.index(sysType_rbv)}')
+            print(80*'#')
+        pydev.iointr('updated_sysType', sysType_list.index(sysType_rbv))
         
     def assignSystem(self, systemNum, oe):        
-        self.curr_config['CRLs'][systemNum-1] = oe   
+        if self.verbose: print(f'Setting system {systemNum} to oe {oe}')
+        
+        # TODO does this need actual label is index ok?
+        self.curr_config['CRLs'][int(systemNum)-1] = self.list_of_crls[int(oe)]   
 
         self.updateElements()
 
@@ -711,20 +752,27 @@ class focusingSystem():
 
     def updateSystemRBV(self, systemNum):          
         # Set readback       
-        iointr_name = 'updated_system' + systemNum
-        pydev.iointr(iointr_name, self.curr_config['CRLs'][systemNum-1])
+        iointr_name = 'updated_system' + str(systemNum)
+        if self.verbose: print(f'Using interrupt {iointr_name} for CRL assignment update')
+        pydev.iointr(iointr_name, self.list_of_crls.index(self.curr_config['CRLs'][int(systemNum)-1]))
 
 
     def assignSample(self, sampleSTN):
+        if self.verbose: print(f'Setting sample station to {self.sampleSTNs[int(sampleSTN)]}')
         
-        if sampleSTN not in self.sampleSTNs:
-            raise ValueError(f"""
-            Requested sample station {sampleSTN} is not in toml file ({self.toml_file}) list.
-            Pre-defined sample stations include: {self.sampleSTNS}. Check the sampleSTN DB file
-            to confirm that it is consistent with the TOML file.        
-            """)
-        self.curr_config['Sample'] = sampleSTN   
-  
+#        if sampleSTN not in self.sampleSTNs:
+#            raise ValueError(f"""
+#            Requested sample station {sampleSTN} is not in toml file ({self.toml_file}) list.
+#            Pre-defined sample stations include: {self.sampleSTNS}. Check the sampleSTN DB file
+#            to confirm that it is consistent with the TOML file.        
+#            """)
+#        else:
+#            self.curr_config['Sample'] = sampleSTN   
+#  
+#            # Set readback       
+#            self.updateSampleRBV()
+        self.curr_config['Sample'] = self.sampleSTNs[int(sampleSTN)]   
+
         # Set readback       
         self.updateSampleRBV()
 
@@ -732,7 +780,7 @@ class focusingSystem():
   
         # Set readback       
         iointr_name = 'updated_sample'
-        pydev.iointr(iointr_name, self.curr_config['Sample'])
+        pydev.iointr(iointr_name, self.sampleSTNs.index(self.curr_config['Sample']))
 
        
     def updateModeRBV(self):
@@ -756,10 +804,10 @@ class focusingSystem():
             Puts invF lists into waveform PVs after lookup table calculatione
         '''
         crl1_label = self.curr_config['CRLs'][0]
-        crl2_label = self.curr_config['CRLs'][1]
         pydev.iointr('new_invFind_list_'+crl1_label, self.sorted_invF_index['1'].tolist())
         pydev.iointr('new_invF_list_'+crl1_label, self.sorted_invF['1'].tolist())
         if self.sorted_invF_index['2'] is not None:
+            crl2_label = self.curr_config['CRLs'][1]
             pydev.iointr('new_invFind_list_'+crl2_label, self.sorted_invF_index['2'].tolist())
             pydev.iointr('new_invF_list_'+crl2_label, self.sorted_invF['2'].tolist())
             
@@ -1010,8 +1058,8 @@ class focusingSystem():
     def updateQdistances(self):
     
         if self.verbose: 
-            print(f'New image distance for last CRL:  {self.q}')
-            print(f'New image distance to sample from last CRL:  {self.dq}')
+            print(f'New image distance for last CRL (measured from source):  {self.q}')
+            print(f'New image distance as measured to sample from last CRL:  {self.dq}')
 
         pydev.iointr('new_q', self.q)
         pydev.iointr('new_dq', self.dq)

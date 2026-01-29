@@ -30,7 +30,7 @@ file "$(TOP)/db/pyDevCRL_slits.db" {
   pattern
   {OE, 		SLITH, 				SLITV}
   {"B", 	"$(P)testSSH1",		"$(P)testSSV1"	}	
-  {"C", 	"$(P)testSSH2",		"$(P)TestSSV2"	}	
+  {"C", 	"$(P)testSSH2",		"$(P)testSSV2"	}	
   {"KB", 	"$(P)testSSHkb",	"$(P)testSSVkb"	}	
 } 
 

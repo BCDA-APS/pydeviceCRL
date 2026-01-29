@@ -77,7 +77,7 @@
         <property name="font">
          <font>
           <family>Verdana</family>
-          <pointsize>15</pointsize>
+          <pointsize>14</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -113,7 +113,7 @@
    <item>
     <widget class="caInclude" name="cainclude">
      <property name="macro">
-      <string>P=$(P),CRL=$(CRL)</string>
+      <string>P=$(P),CRL=$(CRL),OE1=$(OE1),OE2=$(OE2)</string>
      </property>
      <property name="filename" stdset="0">
       <string notr="true">pydev_transfocator_inset_control.ui</string>
@@ -367,10 +367,10 @@
         <string>Alternate UI</string>
        </property>
        <property name="files">
-        <string>pydev_transfocator_1x.ui</string>
+        <string>pydev_transfocator.ui</string>
        </property>
        <property name="args">
-        <string>P=$(P),CRL=$(CRL)</string>
+        <string>P=$(P),CRL=$(CRL), OE1=$(OE1), OE2=$(OE2), SAM1=$(SAM1), SAM2=$(SAM2)</string>
        </property>
        <property name="stackingMode" stdset="0">
         <enum>caRowColMenu::Menu</enum>

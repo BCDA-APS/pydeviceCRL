@@ -15,6 +15,8 @@ epicsEnvSet("TOML_FILE", "toml/crl_setup_ms.toml")
 epicsEnvSet("_STACKS1","10")  # Number of stacks
 epicsEnvSet("_STACKS2","10")  # Number of stacks
 epicsEnvSet("_CONFIGS","1024")  # Possible configurations: 2^(stacks1) 
+epicsEnvSet("ELEM_B","1024")  # Possible configurations: 2^(stacks1)
+epicsEnvSet("ELEM_C","1024")  # Possible configurations: 2^(stacks2)
 
 # Creating beam energy PVs for testing
 epicsEnvSet("MONOE","testMonoE") # for testing -- replace with real mono energy PV 
@@ -45,9 +47,12 @@ pydev("$(PY_OBJECT) = focusingSystem(crl_setup = '$(TOML_FILE)')")
 
 # DB file for system controls and sample position(s)
 dbLoadRecords("${TOP}/db/pyDevCRL_general.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), KEV=$(BLE), ELEM=$(_CONFIGS), CRL1=B")
-dbLoadRecords("${TOP}/db/pyDevCRL_2systems.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SYSA=B, SYSB=C")
+dbLoadRecords("${TOP}/db/pyDevCRL_2systems.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SYSA=B, SYSB=C, ELEMA=$(ELEM_B), ELEMB=$(ELEM_C)")
+dbLoadRecords("${TOP}/db/pyDevCRL_2sampleSTN.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SAMA=C, SAMB=D")
+
 # For 28 (3 CRLs):
 # dbLoadRecords("${TOP}/db/pyDevCRL_3systems.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SYSA=B, SYSB=C, SYSC=D")
+# dbLoadRecords("${TOP}/db/pyDevCRL_3sampleSTN.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SAMA=C, SAMB=D, SAMC=E")
 
 ################################################################################
 # Initial setting of some PVs

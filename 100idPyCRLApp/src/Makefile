@@ -567,10 +567,10 @@ endif
     $(PROD_NAME)_LIBS := mw100 $($(PROD_NAME)_LIBS)
   endif
   
-  ifdef GALIL
-    $(DBD_NAME)_DBD += GalilSupport.dbd
-    $(PROD_NAME)_LIBS := GalilSupport $($(PROD_NAME)_LIBS)
-  endif
+#  ifdef GALIL
+#    $(DBD_NAME)_DBD += GalilSupport.dbd
+#    $(PROD_NAME)_LIBS := GalilSupport $($(PROD_NAME)_LIBS)
+#  endif
     
   ifdef XSPRESS3
     $(DBD_NAME)_DBD += xspress3Support.dbd
