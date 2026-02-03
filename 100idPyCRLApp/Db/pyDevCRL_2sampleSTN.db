@@ -3,7 +3,6 @@ record(mbbo, "$(P)$(SYSID):sample"){
 	field(ONST, "$(SAMB)")
 	field(DTYP, "pydev")
 	field(OUT, "@$(OBJ).assignSample(VAL)")
-	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
 }
 
 # Pydevice 1.3.3: can't get it to handle mbbi, so using longin+dfanout --> mbbi
@@ -25,4 +24,5 @@ record(mbbi, "$(P)$(SYSID):sample_RBV"){
 #	field(DTYP, "pydev")
 #    field(INP,  "@pydev.iointr('updated_sample')")
 #    field(SCAN, "I/O Intr")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
 }

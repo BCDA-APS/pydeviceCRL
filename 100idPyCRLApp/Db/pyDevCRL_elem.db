@@ -182,6 +182,7 @@ record(longin, "$(P)$(SYSID):$(OE):sortedIndex_RBV") {
   field(DTYP, "pydev")
   field(INP,  "@pydev.iointr('new_index_$(OE)')")
   field(SCAN, "I/O Intr")
+  field(FLNK, "$(P)$(SYSID):fPower:sortedIndex_RBV_calc.PROC CA")
 }
 
 record(scalcout, "$(P)$(SYSID):$(OE):oePosOffsetConv"){

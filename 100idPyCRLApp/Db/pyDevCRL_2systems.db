@@ -3,7 +3,6 @@ record(mbbo, "$(P)$(SYSID):system1"){
 	field(ONST, "$(SYSB)")
 	field(DTYP, "pydev")
 	field(OUT, "@$(OBJ).assignSystem('1', VAL)")
-	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
 }
 
 # Pydevice 1.3.3: can't get it to handle mbbi, so using longin+dfanout --> mbbi
@@ -24,12 +23,23 @@ record(dfanout, "$(P)$(SYSID):system1_RBV_fo"){
 record(mbbi, "$(P)$(SYSID):system1_RBV"){
 	field(ZRST, "$(SYSA)")
 	field(ONST, "$(SYSB)")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
 }
 
 record(calc, "$(P)$(SYSID):system1_num"){
 	field(DESC, "system1 plus 1")
-#	field(INPA, "$(P)$(SYSID):system1_RBV.RVAL CP")
 	field(CALC, "A+1")
+	field(FLNK, "$(P)$(SYSID):system1_lensConfig.PROC CA")
+}
+
+record(sseq, "$(P)$(SYSID):system1_lensConfig"){
+	field(SELM, "Specified")
+    field(SELL, "$(P)$(SYSID):system1_num")
+    field(DO1, "1")
+    field(LNK1, "$(P)$(SYSID):$(SYSA):lensConfig_RBV.PROC")
+    field(DO2, "1")
+    field(LNK2, "$(P)$(SYSID):$(SYSB):lensConfig_RBV.PROC")
+ 	field(FLNK, "$(P)$(SYSID):fPower:sortedIndex_RBV_calc.PROC CA")
 }
 
 record(mbbo, "$(P)$(SYSID):system2"){
@@ -39,7 +49,6 @@ record(mbbo, "$(P)$(SYSID):system2"){
 	field(SDIS, "$(P)$(SYSID):singleCRLbo.VAL CP")
 	field(DISV, "1")
 	field(OUT, "@$(OBJ).assignSystem('2', VAL)")
-	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
 }
 
 # Pydevice 1.3.3: can't get it to handle mbbi, so using longin+dfanout --> mbbi
@@ -53,24 +62,23 @@ record(dfanout, "$(P)$(SYSID):system2_RBV_fo"){
     field(OMSL, "closed_loop")
 	field(DOL, "$(P)$(SYSID):system2_RBV_long CP")
 	field(OUTA, "$(P)$(SYSID):system2_RBV PP")
+	field(OUTB, "$(P)$(SYSID):system2_num.A")
+	field(FLNK, "$(P)$(SYSID):system2_num.PROC CA")
 }
 
 record(mbbi, "$(P)$(SYSID):system2_RBV"){
 	field(ZRST, "$(SYSA)")
 	field(ONST, "$(SYSB)")
-#    field(DTYP, "pydev")
-#    field(INP,  "@pydev.iointr('updated_system2')")
-#    field(SCAN, "I/O Intr")
+	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
 }
 
 record(calc, "$(P)$(SYSID):system2_num"){
 	field(DESC, "system2 plus 1")
-	field(INPA, "$(P)$(SYSID):system2_RBV.RVAL CP")
 	field(CALC, "A+1")
 }
 
 record(calcout, "$(P)$(SYSID):coarse:fSize_twk_up"){
-	field(INPA, "$(P)$(SYSID):system2_num.VAL")
+	field(INPA, "$(P)$(SYSID):system1_num.VAL")
 	field(INPB, "$(P)$(SYSID):$(SYSA):sortedIndex_RBV")
     field(INPC, "$(P)$(SYSID):$(SYSB):sortedIndex_RBV")
     field(INPD, "$(ELEMA)")
@@ -137,8 +145,8 @@ record(dfanout, "$(P)$(SYSID):fPower:sortedIndex_dfo"){
 
 record(calcout, "$(P)$(SYSID):fPower:sortedIndex_RBV_calc"){
 	field(INPA, "$(P)$(SYSID):system1_num.VAL")
-	field(INPB, "$(P)$(SYSID):$(SYSA):sortedIndex")
-    field(INPC, "$(P)$(SYSID):$(SYSB):sortedIndex")
+	field(INPB, "$(P)$(SYSID):$(SYSA):sortedIndex_RBV")
+    field(INPC, "$(P)$(SYSID):$(SYSB):sortedIndex_RBV")
 	field(CALC, "A=1?B:C")
 	field(OUT, "$(P)$(SYSID):fPower:sortedIndex_RBV PP")
 }
