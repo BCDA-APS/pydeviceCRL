@@ -2,7 +2,29 @@ record(longin, "$(P)$(SYSID):$(OE):lenses") {
   field(DTYP, "pydev")
   field(INP,  "@pydev.iointr('new_lenses_$(OE)')")
   field(SCAN, "I/O Intr")
-  field(FLNK, "$(P)$(SYSID):$(OE):lens_decode.PROC PP")
+  field(MDEL, "-1")
+#  field(FLNK, "$(P)$(SYSID):$(OE):lens_decode.PROC PP")
+  field(FLNK, "$(P)$(SYSID):$(OE):lenses_comp.PROC PP")
+}
+
+#Record to determine if lenses are new
+record(calcout, "$(P)$(SYSID):$(OE):lenses_comp"){
+  field(INPA, "$(P)$(SYSID):$(OE):lensConfig_RBV NPP")
+  field(INPB, "$(P)$(SYSID):$(OE):lenses NPP")
+  field(CALC, "A=B?6:1")
+  field(OUT, "$(P)$(SYSID):$(OE):lenses_seq.SELN")
+  field(FLNK, "$(P)$(SYSID):$(OE):lenses_seq.PROC CA")
+}
+
+#If not new clear system busy, otherwise process lens_decode
+record(sseq, "$(P)$(SYSID):$(OE):lenses_seq"){
+  field(SELM, "Mask")
+  field(DO1, "1")
+  field(LNK1, "$(P)$(SYSID):$(OE):lens_decode.PROC PP")
+  field(DO2, "0")
+  field(LNK2, "$(P)$(SYSID):sysBusyCalc.$(OEL)")
+  field(DO3, "1")
+  field(LNK3, "$(P)$(SYSID):sysBusyCalc.PROC CA")
 }
 
 record(sseq, "$(P)$(SYSID):$(OE):setCrlBusy"){

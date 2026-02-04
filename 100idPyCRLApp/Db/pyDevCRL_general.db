@@ -209,7 +209,7 @@ record(busy, "$(P)$(SYSID):sysBusy"){
 
 record(calcout, "$(P)$(SYSID):sysBusyCalc") {
   field(DESC, "Each element reports back if done moving")
-  field(CALC, "A | B")
+  field(CALC, "A | B | C")
   field(OUT, "$(P)$(SYSID):sysBusy PP")
 }
 
