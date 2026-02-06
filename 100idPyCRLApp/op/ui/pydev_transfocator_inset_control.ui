@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="2,1,0,1,3,0,1,1,1,1,1,0,1,1">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="2,1,0,1,3,0,1,1,1,1,1,0,3">
      <property name="spacing">
       <number>1</number>
      </property>
@@ -961,7 +961,7 @@
           <enum>caLineEdit::User</enum>
          </property>
          <property name="formatType">
-          <enum>caLineEdit::compact</enum>
+          <enum>caLineEdit::engr_notation</enum>
          </property>
         </widget>
        </item>
@@ -1456,27 +1456,14 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="System_and_CRL1_Status" stretch="1,1,1,1">
+      <layout class="QGridLayout" name="gridLayout" rowstretch="1,1,1" columnstretch="1,1,1">
        <property name="topMargin">
         <number>0</number>
        </property>
-       <property name="bottomMargin">
+       <property name="rightMargin">
         <number>0</number>
        </property>
-       <item>
-        <widget class="caLabel" name="calabel_20">
-         <property name="text">
-          <string>System Status</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="fontScaleMode">
-          <enum>ESimpleLabel::WidthAndHeight</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
+       <item row="1" column="0">
         <widget class="caLineEdit" name="caLineEdit_14">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -1526,20 +1513,83 @@
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="caLabel" name="calabel_22">
+       <item row="1" column="2">
+        <widget class="caLineEdit" name="caLineEdit_25">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
          <property name="text">
-          <string>CRL $(OE1) Status</string>
+          <string/>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):$(OE2):crlBusy</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>10</red>
+           <green>0</green>
+           <blue>184</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>200</red>
+           <green>200</green>
+           <blue>200</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+         <property name="precision">
+          <number>3</number>
+         </property>
+         <property name="fontScaleMode" stdset="0">
+          <enum>caLineEdit::None</enum>
+         </property>
+         <property name="formatType">
+          <enum>caLineEdit::string</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="caLabel" name="calabel_24">
+         <property name="text">
+          <string>CRL $(OE2) Status</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
          <property name="fontScaleMode">
           <enum>ESimpleLabel::WidthAndHeight</enum>
          </property>
         </widget>
        </item>
-       <item>
+       <item row="0" column="1">
+        <widget class="caLabel" name="calabel_22">
+         <property name="text">
+          <string>CRL $(OE1) Status</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="fontScaleMode">
+          <enum>ESimpleLabel::WidthAndHeight</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
         <widget class="caLineEdit" name="caLineEdit_17">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -1589,89 +1639,94 @@
          </property>
         </widget>
        </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="CRL2_status" stretch="2,1,1">
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="caLabel" name="calabel_24">
+       <item row="0" column="0">
+        <widget class="caLabel" name="calabel_20">
          <property name="text">
-          <string>CRL $(OE2) Status</string>
+          <string>System Status</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
          <property name="fontScaleMode">
           <enum>ESimpleLabel::WidthAndHeight</enum>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="caLineEdit" name="caLineEdit_25">
+       <item row="2" column="0">
+        <widget class="caMessageButton" name="camessagebutton_6">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="font">
-          <font>
-           <pointsize>13</pointsize>
-          </font>
-         </property>
          <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <string> Clear System Busy</string>
          </property>
          <property name="channel" stdset="0">
-          <string notr="true">$(P)$(CRL):$(OE2):crlBusy</string>
-         </property>
-         <property name="foreground">
-          <color>
-           <red>10</red>
-           <green>0</green>
-           <blue>184</blue>
-          </color>
+          <string notr="true">$(P)$(CRL):sysBusyCalc.PROC</string>
          </property>
          <property name="background">
           <color>
-           <red>200</red>
-           <green>200</green>
-           <blue>200</blue>
+           <red>115</red>
+           <green>223</green>
+           <blue>255</blue>
           </color>
          </property>
-         <property name="colorMode">
-          <enum>caLineEdit::Static</enum>
+         <property name="pressMessage">
+          <string notr="true">1</string>
          </property>
-         <property name="precision">
-          <number>3</number>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="caMessageButton" name="camessagebutton_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-         <property name="fontScaleMode" stdset="0">
-          <enum>caLineEdit::None</enum>
+         <property name="text">
+          <string> Clear CRL Busy</string>
          </property>
-         <property name="formatType">
-          <enum>caLineEdit::string</enum>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):$(OE1):crlBusyCalc.PROC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>115</red>
+           <green>223</green>
+           <blue>255</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="caMessageButton" name="camessagebutton_8">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string> Clear CRL Busy</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P)$(CRL):$(OE2):crlBusyCalc.PROC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>115</red>
+           <green>223</green>
+           <blue>255</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
          </property>
         </widget>
        </item>

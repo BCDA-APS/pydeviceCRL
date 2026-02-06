@@ -3,15 +3,15 @@ record(longin, "$(P)$(SYSID):$(OE):lenses") {
   field(INP,  "@pydev.iointr('new_lenses_$(OE)')")
   field(SCAN, "I/O Intr")
   field(MDEL, "-1")
-#  field(FLNK, "$(P)$(SYSID):$(OE):lens_decode.PROC PP")
-  field(FLNK, "$(P)$(SYSID):$(OE):lenses_comp.PROC PP")
+#  field(FLNK, "$(P)$(SYSID):$(OE):lens_decode.PROC CA")
+  field(FLNK, "$(P)$(SYSID):$(OE):lenses_comp.PROC CA")
 }
 
 #Record to determine if lenses are new
 record(calcout, "$(P)$(SYSID):$(OE):lenses_comp"){
   field(INPA, "$(P)$(SYSID):$(OE):lensConfig_RBV NPP")
   field(INPB, "$(P)$(SYSID):$(OE):lenses NPP")
-  field(CALC, "A=B?6:1")
+  field(CALC, "A=B?12:3")
   field(OUT, "$(P)$(SYSID):$(OE):lenses_seq.SELN")
   field(FLNK, "$(P)$(SYSID):$(OE):lenses_seq.PROC CA")
 }
@@ -19,12 +19,14 @@ record(calcout, "$(P)$(SYSID):$(OE):lenses_comp"){
 #If not new clear system busy, otherwise process lens_decode
 record(sseq, "$(P)$(SYSID):$(OE):lenses_seq"){
   field(SELM, "Mask")
-  field(DO1, "1")
-  field(LNK1, "$(P)$(SYSID):$(OE):lens_decode.PROC PP")
-  field(DO2, "0")
-  field(LNK2, "$(P)$(SYSID):sysBusyCalc.$(OEL)")
-  field(DO3, "1")
-  field(LNK3, "$(P)$(SYSID):sysBusyCalc.PROC CA")
+  field(DOL1, "$(P)$(SYSID):$(OE):lenses")
+  field(LNK1, "$(P)$(SYSID):$(OE):lens_decode.A PP")
+  field(DO2, "1")
+  field(LNK2, "$(P)$(SYSID):$(OE):lens_decode.PROC PP")
+  field(DO3, "0")
+  field(LNK3, "$(P)$(SYSID):sysBusyCalc.$(OEL)")
+  field(DO4, "1")
+  field(LNK4, "$(P)$(SYSID):sysBusyCalc.PROC CA")
 }
 
 record(sseq, "$(P)$(SYSID):$(OE):setCrlBusy"){
@@ -51,7 +53,7 @@ record(dfanout, "$(P)$(SYSID):$(OE):crlBusyFO"){
 }
 
 record(transform, "$(P)$(SYSID):$(OE):lens_decode"){
-	field(INPA, "$(P)$(SYSID):$(OE):lenses PP")
+	field(INPA, "$(P)$(SYSID):$(OE):lenses CP")
 	field(CLCB, "A % 2")
 	field(CLCC, "(A >> 1) % 2")
 	field(CLCD, "(A >> 2) % 2")
@@ -105,7 +107,7 @@ record(seq, "$(P)$(SYSID):$(OE):lensSetSeq"){
 	field(DOL7, "$(P)$(SYSID):$(OE):lens_decode.I")
 	field(DOL8, "$(P)$(SYSID):$(OE):lens_decode.J")
 	field(DOL9, "$(P)$(SYSID):$(OE):lens_decode.K")
-	field(DOA, "0")
+#	field(DOA, "0")
 	field(LNK0, "$(P)$(SYSID):$(OE):stack01 PP")
 	field(LNK1, "$(P)$(SYSID):$(OE):stack02 PP")
 	field(LNK2, "$(P)$(SYSID):$(OE):stack03 PP")
@@ -116,7 +118,7 @@ record(seq, "$(P)$(SYSID):$(OE):lensSetSeq"){
 	field(LNK7, "$(P)$(SYSID):$(OE):stack08 PP")
 	field(LNK8, "$(P)$(SYSID):$(OE):stack09 PP")
 	field(LNK9, "$(P)$(SYSID):$(OE):stack10 PP")
-	field(LNKA, "$(P)$(SYSID):$(OE):crlBusy PP")
+#	field(LNKA, "$(P)$(SYSID):$(OE):crlBusy PP")
 }
 
 record(calcout, "$(P)$(SYSID):$(OE):lens_encode"){
@@ -147,7 +149,8 @@ record(longout, "$(P)$(SYSID):$(OE):lensConfig_RBV") {
 
 record(calcout, "$(P)$(SYSID):$(OE):updateCalc") {
   field(DESC, "Moves complete, update RBVs")
-  field(INPA, "$(P)$(SYSID):sysBusy CP")
+#  field(INPA, "$(P)$(SYSID):sysBusy CP")
+  field(INPA, "$(P)$(SYSID):$(OE):crlBusy CP")
   field(CALC, "!A")
   field(OUT, "$(P)$(SYSID):$(OE):lensConfig_RBV.PROC CA")
   field(OOPT, "Transition To Non-zero")
@@ -197,7 +200,7 @@ record(calcout, "$(P)$(SYSID):$(OE):fSize_twk_dn"){
 record(longout, "$(P)$(SYSID):$(OE):sortedIndex") {
   field(DTYP, "pydev")
   field(OUT, "@$(OBJ).updateIndex(VAL, '$(OE)')")
-  field(FLNK, "$(P)$(SYSID):$(OE):setCrlBusy.PROC PP")
+  field(FLNK, "$(P)$(SYSID):$(OE):setCrlBusy.PROC CA")
 }
 
 record(longin, "$(P)$(SYSID):$(OE):sortedIndex_RBV") {

@@ -2,6 +2,7 @@ import numpy as np
 import tomllib
 import xraylib
 import copy
+import time
 from collections import Counter
 from transfocator_calcs import materials_to_deltas, materials_to_linear_attenuation
 from transfocator_calcs import find_levels, get_densities
@@ -588,7 +589,7 @@ class focusingSystem():
         if self.verbose: print(f"Constructing lookup table for {self.curr_config['sysType'].value} system")
         match self.curr_config['sysType']:
             case SYSTEM_TYPE.singleCRL:
-
+                if self.verbose: print(f"Single crl lookup table calc commencing")
                 crl = self.curr_config['CRLs'][0]
                 sam = self.curr_config['Sample']
                 
@@ -603,13 +604,16 @@ class focusingSystem():
                                            self.crl[crl], self.slits[crl]['hor'], 
                                            self.slits[crl]['vert'], self.thickerr[crl], 
                                            flag_HE = self.thickerr_flag, verbose = self.verbose)
+                if self.verbose: print(f"Single crl lookup table calc complete")
+
 
             case SYSTEM_TYPE.doubleCRL:
+                if self.verbose: print(f"Double crl lookup table calc commencing")
                 crl1 = self.curr_config['CRLs'][0]
                 crl2 = self.curr_config['CRLs'][1]
                 sam = self.curr_config['Sample']
- 
-
+                crls = [crl1, crl2]
+                    
                 bl_subset = {'d_StoL1': self.bl['d_StoL'][crl1],
                              'L1_offset': self.bl['L_offset'][crl1],
                              'd_StoL2': self.bl['d_StoL'][crl2],
@@ -617,8 +621,9 @@ class focusingSystem():
                              'd_Stof': self.bl['d_Stof'][sam],
                              'f_offset': self.bl['f_offset'][sam]}
                     
+                if self.verbose: print(f"Calling calc_2x_lu_table()")
 
-                results_dict = calc_2x_lu_table(self.configs[crl1].size, self.radii[crl1], 
+                results_dict = calc_2x_lu_table(crls, self.configs[crl1].size, self.radii[crl1], 
                                             self.mat[crl1], self.radii[crl2], 
                                             self.mat[crl2], self.energy, self.wl,
                                             self.lens_count, self.lens_loc[crl1],
@@ -626,10 +631,12 @@ class focusingSystem():
                                             self.crl, self.slits, self.thickerr[crl1], 
                                             self.thickerr[crl2], flag_HE = self.thickerr_flag,
                                             verbose = self.verbose)
+                if self.verbose: print(f"Double crl lookup table calc complete")
                 
                 
                 self.index1to2_sorted = results_dict['invf2_indices']           
             case SYSTEM_TYPE.CRLandKB:
+                if self.verbose: print(f"Single crl + KB lookup table calc commencing")
                 crl = self.curr_config['CRLs'][0]
                 sam = self.curr_config['Sample']
 
@@ -649,6 +656,7 @@ class focusingSystem():
 
                 self.KB_ol = {'KBH_p_list': results_dict['KBH_p_list'], 
                             'KBV_p_list': results_dict['KBV_p_list']}
+                if self.verbose: print(f"Single crl + KB lookup table calc complete")
                             
         self.lookupTable = results_dict['FWHM_atsample_list']
         self.sorted_invF_index = results_dict['invF_list_sort_indices']
@@ -1031,7 +1039,7 @@ class focusingSystem():
         Description:
             Updates optical element config PVs for which stacks need to be in/out
         '''
-
+#        time.sleep(0.01) 
         for i, crl_label in enumerate(self.curr_config['CRLs']):
             if self.verbose: print(f'Setting lens configuration PV for CRL {i+1}')
             self.config[crl_label] = self.index[str(i+1)]

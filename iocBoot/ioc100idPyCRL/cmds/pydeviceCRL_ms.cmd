@@ -46,7 +46,7 @@ pydev("from pyCRL_system import focusingSystem")
 pydev("$(PY_OBJECT) = focusingSystem(crl_setup = '$(TOML_FILE)')")
 
 # DB file for system controls and sample position(s)
-dbLoadRecords("${TOP}/db/pyDevCRL_general.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), KEV=$(BLE), ELEM=$(_CONFIGS), CRL1=B")
+dbLoadRecords("${TOP}/db/pyDevCRL_general.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), KEV=$(BLE), ELEM=$(_CONFIGS)")
 dbLoadRecords("${TOP}/db/pyDevCRL_2systems.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SYSA=B, SYSB=C, ELEMA=$(ELEM_B), ELEMB=$(ELEM_C)")
 dbLoadRecords("${TOP}/db/pyDevCRL_2sampleSTN.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SAMA=C, SAMB=D")
 
@@ -88,4 +88,7 @@ doAfterIocInit("pydev('$(PY_OBJECT).setupLookupTable(stack_subFile)')")
 
 # Enable lookup table calc PV
 doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):recalc_enable','1')") # Enable table calc
+
+# Turn on console verbosity for troubleshooting:
+doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):verbosity','1')") # Enable verbosity
 ################################################################################

@@ -502,7 +502,7 @@ def calc_1x_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
             'invF_list_sorted': invF_list_sorted, 'q_list':q1_list, 'dq_list':dq1_list }
 
 
-def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials, 
+def calc_2x_lu_table(crls, num_configs, L1_radii, L1_materials, L2_radii, L2_materials, 
                      energy_keV, wl, numlens, L1_lens_loc, L2_lens_loc, beam, bl, 
                      crl, slits, L1_thickerr, L2_thickerr, 
                      flag_HE = False, verbose = False):
@@ -512,6 +512,7 @@ def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials
         Lookup table calculation for Double CRL system
         
     Parameters:
+        crls            : List of CRL labels in order of use
         num_configs     : number of CRL1 configurations
         L1_radii        : List of lens radii in CRL1
         L1_materials    : List of lens materials in CRL1
@@ -547,15 +548,20 @@ def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials
                           
     '''
 
+    if verbose: print(f"calc_2x_lu_table() called")
 
     d_StoL2 = bl['d_StoL2']+bl['L2_offset']
     d_StoL1 = bl['d_StoL1']+bl['L1_offset']
     d_Stof = bl['d_Stof']+bl['f_offset']
 
-    data_dict = calc_tf1_data(num_configs, L1_radii, L1_materials, energy_keV, wl, numlens['1'], 
-                     L1_lens_loc, beam, bl, crl['1'], slits['1']['hor'], slits['1']['vert'], 
+    if verbose: print(f"calling calc_tf1_data")
+
+    data_dict = calc_tf1_data(num_configs, L1_radii, L1_materials, energy_keV, wl, numlens[crls[0]], 
+                     L1_lens_loc, beam, bl, crl[crls[0]], slits[crls[0]]['hor'], slits[crls[0]]['vert'], 
                      L1_thickerr, 
                      flag_HE = flag_HE, verbose = verbose)
+
+    if verbose: print(f"calc_tf1_data complete")
 
     q1_list = data_dict['q1_list']
     dq1_list = data_dict['dq1_list']
@@ -567,10 +573,12 @@ def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials
     L1_invF_list_sorted = data_dict['L1_invF_list_sorted']
     L1_index_n = data_dict['L1_index_n']
 
+    if verbose: print(f"calc_tf1_data dictionary unpacked")
+
     L2_D        = np.asarray([lookup_diameter(rad) for rad in L2_radii])# CRL2 diameters for each stack
     L2_delta    = materials_to_deltas(L2_materials, energy_keV)             # Delta values for CRL2 stacks
     L2_mu       = materials_to_linear_attenuation(L2_materials, energy_keV) # mu values for CRL2 stacks
-    L2_Feq      = L2_radii/(2*np.asarray(numlens['2'])*L2_delta)+L2_lens_loc                         # CRL2 equivalent f in m for each stack
+    L2_Feq      = L2_radii/(2*np.asarray(numlens[crls[1]])*L2_delta)+L2_lens_loc                         # CRL2 equivalent f in m for each stack
     L2_index_n   = 2**L2_Feq.size                               # Total number of combinations for CRL2
 
 
@@ -614,8 +622,8 @@ def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials
     for i in range(L1_index_n):
         if invf2_indices[i] != -1:
             # absorption aperture is a function of CRL absorption/physical aperture, incident beam size, and physical slits
-            L2_n2mud_list[i] = np.sum(index_to_binary_list(L2_invF_list_sort_indices[invf2_indices[i]], L2_Feq.size)*np.array(L2_mu*numlens['2']*crl['2']['d_min']))
-            L2_n2muR_list[i] = np.sum(index_to_binary_list(L2_invF_list_sort_indices[invf2_indices[i]], L2_Feq.size)*np.array(L2_mu*numlens['2']/L2_radii))
+            L2_n2mud_list[i] = np.sum(index_to_binary_list(L2_invF_list_sort_indices[invf2_indices[i]], L2_Feq.size)*np.array(L2_mu*numlens[crls[1]]*crl[crls[1]]['d_min']))
+            L2_n2muR_list[i] = np.sum(index_to_binary_list(L2_invF_list_sort_indices[invf2_indices[i]], L2_Feq.size)*np.array(L2_mu*numlens[crls[1]]/L2_radii))
             solution = root_scalar(absorptionaperture, args=(L2_n2mud_list[i], sigma2H_list[i], L2_n2muR_list[i]), bracket=[0.0, 2*sigma2H_list[i]], method='bisect')
             aperL2H_list[i] = solution.root*2.0
             solution = root_scalar(absorptionaperture, args=(L2_n2mud_list[i], sigma2V_list[i], L2_n2muR_list[i]), bracket=[0.0, 2*sigma2V_list[i]], method='bisect')
@@ -625,8 +633,8 @@ def calc_2x_lu_table(num_configs, L1_radii, L1_materials, L2_radii, L2_materials
                 diameter2_list[i] = np.inf
             else:
                 diameter2_list[i] = np.min(L2_D[mask])
-            aperL2H_list[i] = min(aperL2H_list[i], diameter2_list[i], slits['2']['hor'])
-            aperL2V_list[i] = min(aperL2V_list[i], diameter2_list[i], slits['2']['vert'])
+            aperL2H_list[i] = min(aperL2H_list[i], diameter2_list[i], slits[crls[1]]['hor'])
+            aperL2V_list[i] = min(aperL2V_list[i], diameter2_list[i], slits[crls[1]]['vert'])
             phase_error_tmp = np.linalg.norm(index_to_binary_list(L2_invF_list_sort_indices[invf2_indices[i]], L2_Feq.size)*np.array(L2_thickerr*L2_delta)*2*np.pi/wl)
             Strehl2_list[i] = np.exp(-phase_error_tmp**2)
     aperL2H_list[nan_positions] = np.nan
@@ -663,6 +671,7 @@ def calc_kb_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
         Lookup table calculation for CRL + KB system
         
     Parameters:
+        crls            : List of CRL labels in order of use
         num_configs     : number of CRL1 configurations
         radii           : List of lens radii in CRL1
         materials       : List of lens materials in CRL1
@@ -708,8 +717,8 @@ def calc_kb_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
 
     KB_theta = kb['KB_theta']
 
-    data_dict = calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens['1'], 
-                     lens_loc, beam, bl, crl, slits['1']['hor'], slits['1']['vert'], thickerr, 
+    data_dict = calc_tf1_data(num_configs, radii, materials, energy_keV, wl, numlens[crls[0]], 
+                     lens_loc, beam, bl, crl, slits[crls[0]]['hor'], slits[crls[0]]['vert'], thickerr, 
                      flag_HE = flag_HE, verbose = verbose)
 
     q1_list = data_dict['q1_list']
@@ -758,7 +767,7 @@ def calc_kb_lu_table(num_configs, radii, materials, energy_keV, wl, numlens,
             'KBV_p_list': KBV_p_list, 'q_list':q1_list, 'dq_list':dq1_list }
 
 
-def calc_2xCRL_focus(index1, index2, L1_radii, L1_materials, L2_radii, L2_materials, energy_keV, wl, numlens, 
+def calc_2xCRL_focus(crls, index1, index2, L1_radii, L1_materials, L2_radii, L2_materials, energy_keV, wl, numlens, 
                       L1_lens_loc, L2_lens_loc, beam, bl, crl, slits, L1_thickerr, L2_thickerr,
                       flag_HE = False, verbose = False):
     '''
@@ -767,6 +776,7 @@ def calc_2xCRL_focus(index1, index2, L1_radii, L1_materials, L2_radii, L2_materi
         table and need to calculate focus for new configuration (index1, index2)
         
     Parameters:
+        crls            : List of CRL labels in order of use in system
         index1          : TF1 n-bit configuration
         index2          : TF2 n-bit configuration
         L1_radii        : List of lens radii in CRL1
@@ -803,12 +813,12 @@ def calc_2xCRL_focus(index1, index2, L1_radii, L1_materials, L2_radii, L2_materi
     L1_D        = np.asarray([lookup_diameter(rad) for rad in L1_radii])    # CRL1 diameters for each stack
     L1_delta    = materials_to_deltas(L1_materials, energy_keV)             # delta values for CRL1 stacks
     L1_mu       = materials_to_linear_attenuation(L1_materials, energy_keV) # mu values for CRL1 stacks
-    L1_Feq      = L1_radii/(2*np.asarray(numlens['1'])*L1_delta) + L1_lens_loc                       # CRL1 equivalent f in m for each stack
+    L1_Feq      = L1_radii/(2*np.asarray(numlens[crls[0]])*L1_delta) + L1_lens_loc                       # CRL1 equivalent f in m for each stack
 
     L2_D        = np.asarray([lookup_diameter(rad) for rad in L2_radii])# CRL2 diameters for each stack
     L2_delta    = materials_to_deltas(L2_materials, energy_keV)             # Delta values for CRL2 stacks
     L2_mu       = materials_to_linear_attenuation(L2_materials, energy_keV) # mu values for CRL2 stacks
-    L2_Feq      = L2_radii/(2*np.asarray(numlens['2'])*L2_delta) + L2_lens_loc                       # CRL2 equivalent f in m for each stack
+    L2_Feq      = L2_radii/(2*np.asarray(numlens[crls[1]])*L2_delta) + L2_lens_loc                       # CRL2 equivalent f in m for each stack
 
     # Calculation block
     L1_invF = np.sum(index_to_binary_list(index1, L1_Feq.size)/L1_Feq)  # f^-1 for CRL1
@@ -818,8 +828,8 @@ def calc_2xCRL_focus(index1, index2, L1_radii, L1_materials, L2_radii, L2_materi
     sigma1V = (sigmaV**2 + (sigmaVp*d_StoL1)**2)**0.5                   # sigma beam size before CRL1
 
     # absorption aperture is a function of CRL absorption/physical aperture, incident beam size, and physical slits
-    L1_n1mud = np.sum(index_to_binary_list(index1, L1_Feq.size)*np.array(L1_mu*numlens['1']*crl['1']['d_min']))
-    L1_n1muR = np.sum(index_to_binary_list(index1, L1_Feq.size)*np.array(L1_mu*numlens['1']/L1_radii))
+    L1_n1mud = np.sum(index_to_binary_list(index1, L1_Feq.size)*np.array(L1_mu*numlens[crls[0]]*crl[crls[0]]['d_min']))
+    L1_n1muR = np.sum(index_to_binary_list(index1, L1_Feq.size)*np.array(L1_mu*numlens[crls[0]]/L1_radii))
     solution = root_scalar(absorptionaperture, args=(L1_n1mud, sigma1H, L1_n1muR), bracket=[0.0, 2*sigma1H], method='bisect')
     aperL1H  = solution.root*2.0
     solution = root_scalar(absorptionaperture, args=(L1_n1mud, sigma1V, L1_n1muR), bracket=[0.0, 2*sigma1V], method='bisect')
@@ -829,8 +839,8 @@ def calc_2xCRL_focus(index1, index2, L1_radii, L1_materials, L2_radii, L2_materi
         diameter1 = np.inf
     else:
         diameter1 = np.min(L1_D[mask])
-    aperL1H = min(aperL1H, diameter1, slits['1']['hor'])
-    aperL1V = min(aperL1V, diameter1, slits['1']['vert'])
+    aperL1H = min(aperL1H, diameter1, slits[crls[0]]['hor'])
+    aperL1V = min(aperL1V, diameter1, slits[crls[0]]['vert'])
     phase_error_tmp1 = np.linalg.norm(index_to_binary_list(index1, L1_Feq.size)*np.array(L1_thickerr*L1_delta)*2*np.pi/wl)
     Strehl1 = np.exp(-phase_error_tmp1**2)
 
@@ -849,8 +859,8 @@ def calc_2xCRL_focus(index1, index2, L1_radii, L1_materials, L2_radii, L2_materi
     q2      = 1/(L2_invF - 1/p2)        # q2 for CRL2 calculated from CRL2 index and p2
     dq2     = q2 - (d_Stof - d_StoL2)   # off focus distance
 
-    L2_n2mud = np.sum(index_to_binary_list(index2, L2_Feq.size)*np.array(L2_mu*numlens['2']*crl['2']['d_min']))
-    L2_n2muR = np.sum(index_to_binary_list(index2, L2_Feq.size)*np.array(L2_mu*numlens['2']/L2_radii))
+    L2_n2mud = np.sum(index_to_binary_list(index2, L2_Feq.size)*np.array(L2_mu*numlens[crls[1]]*crl[crls[1]]['d_min']))
+    L2_n2muR = np.sum(index_to_binary_list(index2, L2_Feq.size)*np.array(L2_mu*numlens[crls[1]]/L2_radii))
     solution = root_scalar(absorptionaperture, args=(L2_n2mud, sigma2H, L2_n2muR), bracket=[0.0, 2*sigma2H], method='bisect')
 
     aperL2H = solution.root*2.0
@@ -861,8 +871,8 @@ def calc_2xCRL_focus(index1, index2, L1_radii, L1_materials, L2_radii, L2_materi
         diameter2 = np.inf
     else:
         diameter2 = np.min(L2_D[mask])
-    aperL2H = min(aperL2H, diameter2, slits['2']['hor'])
-    aperL2V = min(aperL2V, diameter2, slits['2']['vert'])
+    aperL2H = min(aperL2H, diameter2, slits[crls[1]]['hor'])
+    aperL2V = min(aperL2V, diameter2, slits[crls[1]]['vert'])
     phase_error_tmp2 = np.linalg.norm(index_to_binary_list(index2, L2_Feq.size)*np.array(L2_thickerr*L2_delta)*2*np.pi/wl)
     Strehl2 = np.exp(-phase_error_tmp2**2)
 
