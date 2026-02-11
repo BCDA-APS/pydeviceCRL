@@ -1008,16 +1008,17 @@ class focusingSystem():
             crl1 = self.curr_config['CRLs'][0]
             crl2 = self.curr_config['CRLs'][1]
             sam = self.curr_config['Sample']
-
-            bl_subset = {'d_StoL1': bl['d_StoL'][crl1],
-                         'L1_offset': bl['L_offset'][crl1],
-                         'd_StoL2': bl['d_StoL'][crl2],
-                         'L2_offset': bl['L_offset'][crl2],
-                         'd_Stof': bl['d_Stof'][sam],
-                         'f_offset': bl['f_offset'][sam]}
+            crls = [crl1, crl2]
+            
+            bl_subset = {'d_StoL1': self.bl['d_StoL'][crl1],
+                         'L1_offset': self.bl['L_offset'][crl1],
+                         'd_StoL2': self.bl['d_StoL'][crl2],
+                         'L2_offset': self.bl['L_offset'][crl2],
+                         'd_Stof': self.bl['d_Stof'][sam],
+                         'f_offset': self.bl['f_offset'][sam]}
         
             
-            fsize, q2, dq2 = calc_2xCRL_focus(self.index[crl1], self.index[crl2], 
+            fsize, q2, dq2 = calc_2xCRL_focus(crls, self.index['1'], self.index['2'], 
                                               self.radii[crl1], self.mat[crl1], 
                                               self.radii[crl2], self.mat[crl2], 
                                               self.energy, self.wl,
