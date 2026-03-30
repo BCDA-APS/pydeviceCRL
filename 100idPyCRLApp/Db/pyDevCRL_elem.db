@@ -34,9 +34,23 @@ record(sseq, "$(P)$(SYSID):$(OE):setCrlBusy"){
 	field(LNK1, "$(P)$(SYSID):$(OE):crlBusy PP")
 }
 
-record(calcout, "$(P)$(SYSID):$(OE):crlBusyCalc") {
-  field(DESC, "Each stack reports back if done moving")
+record(calcout, "$(P)$(SYSID):$(OE):2DBusyCalc") {
+  field(DESC, "2-d stacks report back if done moving")
   field(CALC, "A|B|C|D|E|F|G|H|I|J|K|L")
+  field(OUT, "$(P)$(SYSID):$(OE):crlBusyCalc.B PP")
+  field(FLNK, "$(P)$(SYSID):$(OE):crlBusyCalc.PROC CA")
+}
+
+record(calcout, "$(P)$(SYSID):$(OE):1DBusyCalc") {
+  field(DESC, "1-d stacks report back if done moving")
+  field(CALC, "A|B|C|D|E|F|G|H|I|J|K|L")
+  field(OUT, "$(P)$(SYSID):$(OE):crlBusyCalc.A PP")
+  field(FLNK, "$(P)$(SYSID):$(OE):crlBusyCalc.PROC CA")
+}
+
+record(calcout, "$(P)$(SYSID):$(OE):crlBusyCalc") {
+  field(DESC, "Combining 1-d and 2-d")
+  field(CALC, "A|B")
   field(OUT, "$(P)$(SYSID):$(OE):crlBusy PP")
 }
 
@@ -108,15 +122,15 @@ record(seq, "$(P)$(SYSID):$(OE):lensSetSeq"){
 	field(DOL8, "$(P)$(SYSID):$(OE):lens_decode.J")
 	field(DOL9, "$(P)$(SYSID):$(OE):lens_decode.K")
 #	field(DOA, "0")
-	field(LNK0, "$(P)$(SYSID):$(OE):stack01 PP")
-	field(LNK1, "$(P)$(SYSID):$(OE):stack02 PP")
-	field(LNK2, "$(P)$(SYSID):$(OE):stack03 PP")
-	field(LNK3, "$(P)$(SYSID):$(OE):stack04 PP")
-	field(LNK4, "$(P)$(SYSID):$(OE):stack05 PP")
-	field(LNK5, "$(P)$(SYSID):$(OE):stack06 PP")
-	field(LNK6, "$(P)$(SYSID):$(OE):stack07 PP")
-	field(LNK7, "$(P)$(SYSID):$(OE):stack08 PP")
-	field(LNK8, "$(P)$(SYSID):$(OE):stack09 PP")
+	field(LNK0, "$(P)$(SYSID):$(OE):stack1 PP")
+	field(LNK1, "$(P)$(SYSID):$(OE):stack2 PP")
+	field(LNK2, "$(P)$(SYSID):$(OE):stack3 PP")
+	field(LNK3, "$(P)$(SYSID):$(OE):stack4 PP")
+	field(LNK4, "$(P)$(SYSID):$(OE):stack5 PP")
+	field(LNK5, "$(P)$(SYSID):$(OE):stack6 PP")
+	field(LNK6, "$(P)$(SYSID):$(OE):stack7 PP")
+	field(LNK7, "$(P)$(SYSID):$(OE):stack8 PP")
+	field(LNK8, "$(P)$(SYSID):$(OE):stack9 PP")
 	field(LNK9, "$(P)$(SYSID):$(OE):stack10 PP")
 #	field(LNKA, "$(P)$(SYSID):$(OE):crlBusy PP")
 }

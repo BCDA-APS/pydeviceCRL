@@ -42,7 +42,7 @@ dbLoadRecords("$(TOP)/100idPyCRLApp/Db/iocAdminSoft_aliases.db","P=$(PREFIX)")
 ###############################################################################
 # Simulated motors
 
-iocshLoad("iocsh/motorSim.iocsh", "PREFIX=$(PREFIX), INSTANCE=motorSim, SUB=substitutions/motorSim.substitutions, NUM_AXES=29, DLLM=0, LOW_LIM=0, DHLM=25, HIGH_LIM=2500")
+iocshLoad("iocsh/motorSim.iocsh", "PREFIX=$(PREFIX), INSTANCE=motorSim, SUB=substitutions/motorSim.substitutions, NUM_AXES=38, DLLM=0, LOW_LIM=0, DHLM=25, HIGH_LIM=2500")
 
 ###############################################################################
 

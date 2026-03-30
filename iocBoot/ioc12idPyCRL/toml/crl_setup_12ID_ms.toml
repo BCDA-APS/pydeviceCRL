@@ -1,0 +1,71 @@
+# This is a TOML document
+
+title = "12ID 2x CRL setup"
+
+# Set up beam properties -- these may only need to be set up at creation of IOC
+# however energy can be changed after boot-time and mode can be switched based
+# on run-cycle?
+# energy	 - energy in keV 
+# L_und      - Undulator length in m
+# Beam modes (flat/low-coupling, round/full-coupling) -- more info
+# here: https://ops.aps.anl.gov/SRparameters/SRparameters.html
+# sigmaH_e   - Sigma electron source size in H direction in m
+# sigmaV_e   - Sigma electron source size in V direction in m
+# sigmaHp_e  - Sigma electron divergence in H direction in rad
+# sigmaVp_e  - Sigma electron divergence in V direction in rad
+[beam]
+energy = 15
+L_und = 2.4
+sigmaH_e.round = 12.296e-6
+sigmaV_e.round = 8.263e-6
+sigmaHp_e.round = 2.336e-6
+sigmaVp_e.round = 3.474e-6
+sigmaH_e.flat = 14.466e-6
+sigmaV_e.flat = 3.075e-6
+sigmaHp_e.flat = 2.749e-6
+sigmaVp_e.flat = 1.293e-6
+
+# Set up beamline properties -- these may only need to be set up at creation of IOC
+# d_StoL	- Source-to-CRL distances, in m
+# 			  includes flange-to-fiducial distance (240.1 mm, 239.7 mm)
+# d_Stof	- Source-to-sample distance, in m
+[beamline]
+d_StoL = [46.641, 57.4]
+d_Stof = [61.5, 61.5]
+
+
+# Set up crl properties -- these are properties common to the stacks
+# label		- Label/location of CRL (typically the hutch letter); needs to match subs file
+# stacks	- Number of sets of 2-D lenses (ignore 1-d lenses in this count)
+# d_min 	- Minimum thickness at the apex in m
+[crl]
+labels = ['US', 'DS']
+stacks = [6, 4]
+d_min = [0.00003, 0.00003]
+
+# Sample station names
+[sample]
+labels = ['C1','C2']
+      
+# Initial setup block
+# sysType - 1: single, 2: double, 3: single + KB
+# initConfig - which CRLS to use in system at start; first element by default
+#
+# To start with single by default: sysType = '1x', initConfig set to list of CRLs to use, 
+# 'B' -- B-hutch CRL in this case 
+[init]
+sysType = '1x'
+initConfig = ['US']
+initSample = ['C1']
+
+[default_1x]
+sysType = '1x'
+CRLs = 0 
+KBs = None
+Sample = 0
+            
+[default_2x]
+sysType = '2x'
+CRLs = [0,1]
+KBs = None
+Sample = 1

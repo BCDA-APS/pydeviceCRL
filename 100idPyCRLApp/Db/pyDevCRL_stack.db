@@ -52,6 +52,11 @@ record(stringin, "$(P)$(SYSID):$(OE):stack$(M)_Material"){
 	field(VAL, "$(MAT)")
 }
 
+record(stringin, "$(P)$(SYSID):$(OE):stack$(M)_dim"){
+	field(DESC, "Lens Dimensionality")
+	field(VAL, "$(DIM)")
+}
+
 record(ai, "$(P)$(SYSID):$(OE):stack$(M)_ThickErr"){
 	field(DESC, "RMS Thickness Error")
 	field(PREC, "6")

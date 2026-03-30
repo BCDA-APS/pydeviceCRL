@@ -1323,9 +1323,18 @@
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0">
         <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
          <number>6</number>
         </property>
-        <property name="margin">
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
          <number>0</number>
         </property>
         <item>
@@ -1353,7 +1362,7 @@
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>142</width>
+               <width>140</width>
                <height>20</height>
               </size>
              </property>

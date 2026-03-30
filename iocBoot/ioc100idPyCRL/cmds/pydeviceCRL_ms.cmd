@@ -14,7 +14,9 @@ epicsEnvSet("TOML_FILE", "toml/crl_setup_ms.toml")
 # Set CRL numbers
 epicsEnvSet("_STACKS1","10")  # Number of stacks
 epicsEnvSet("_STACKS2","10")  # Number of stacks
-epicsEnvSet("_CONFIGS","1024")  # Possible configurations: 2^(stacks1) 
+epicsEnvSet("_CONFIGS","1024")  # Possible configurations: 2^(stacks1)
+epicsEnvSet("ELEM_1_NAM","B")  # Label of CRL 1 used in subs and toml files
+epicsEnvSet("ELEM_2_NAM","C")  # Label of CRL 2 used in subs and toml files
 epicsEnvSet("ELEM_B","1024")  # Possible configurations: 2^(stacks1)
 epicsEnvSet("ELEM_C","1024")  # Possible configurations: 2^(stacks2)
 
@@ -71,10 +73,10 @@ doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):recalc_enable','0')") # Disable table c
 
 # TODO can 1, 2 be replaced programmatically?
 # Process current slit and energy PV settings
-doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):1:slitSize_H.PROC','1')") # PROC H slit size read and update CRL1 object
-doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):1:slitSize_V.PROC','1')") # PROC V slit size read and update CRL1 object
-doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):2:slitSize_H.PROC','1')") # PROC H slit size read and update CRL1 object
-doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):2:slitSize_V.PROC','1')") # PROC V slit size read and update CRL1 object
+doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):$(ELEM_1_NAM):slitSize_H.PROC','1')") # PROC H slit size read and update CRL1 object
+doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):$(ELEM_1_NAM):slitSize_V.PROC','1')") # PROC V slit size read and update CRL1 object
+doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):$(ELEM_2_NAM):slitSize_H.PROC','1')") # PROC H slit size read and update CRL1 object
+doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):$(ELEM_2_NAM):slitSize_V.PROC','1')") # PROC V slit size read and update CRL1 object
 doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):energy.PROC','1')") # PROC energy read and update CRL1 object
 
 # Check initial energy and slit settings

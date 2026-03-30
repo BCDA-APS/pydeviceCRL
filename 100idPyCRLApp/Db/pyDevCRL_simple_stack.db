@@ -1,0 +1,60 @@
+record(bo, "$(P)$(SYSID):$(OE):stack$(M)"){
+	field(DESC, "$(NUMLENS), $(RADIUS), $(LOC), $(MAT), $(THICKERR)")
+	field(ZNAM, "Out")
+	field(ONAM, "In")
+	field(DISV, "1")
+}
+
+record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_calc"){
+	field(INPA, "$(P)$(SYSID):$(OE):stack$(M) CP")
+	field(B, "$(INVAL)")
+	field(C, "$(OUTVAL)")
+	field(CALC, "A==B?5:3")
+	field(OUT, "$(P)$(SYSID):$(OE):stack$(M)_move.SELN")
+	field(FLNK, "$(P)$(SYSID):$(OE):stack$(M)_move.PROC CA")
+}
+
+record(mbbi, "$(P)$(SYSID):$(OE):stack$(M)_RBV"){
+	field(INP, "$(P)$(SYSID):$(OE):stack$(M)_RBV_calc.VAL CP")
+	field(DESC, "Position of stack")
+	field(ZRST, "Out")
+	field(ONST, "In")
+	field(TWST, "Both out")
+	field(THST, "Both in")
+}
+
+record(ai, "$(P)$(SYSID):$(OE):stack$(M)_NumLens"){
+	field(DESC, "Number of lens in stack")
+	field(VAL, "$(NUMLENS)")
+}
+
+record(ai, "$(P)$(SYSID):$(OE):stack$(M)_LensRadius"){
+	field(DESC, "Lens radii")
+	field(PREC, "6")
+	field(VAL, "$(RADIUS)")
+}
+
+record(ai, "$(P)$(SYSID):$(OE):stack$(M)_Location"){
+	field(DESC, "Stack Location, + US, - DS from center")
+	field(EGU, "m")
+	field(PREC, "3")
+	field(VAL, "$(LOC)")
+}
+
+record(stringin, "$(P)$(SYSID):$(OE):stack$(M)_Material"){
+	field(DESC, "Lens Material")
+	field(VAL, "$(MAT)")
+}
+
+record(stringin, "$(P)$(SYSID):$(OE):stack$(M)_dim"){
+	field(DESC, "Lens Dimensionality")
+	field(VAL, "$(DIM)")
+}
+
+record(ai, "$(P)$(SYSID):$(OE):stack$(M)_ThickErr"){
+	field(DESC, "RMS Thickness Error")
+	field(PREC, "6")
+	field(VAL, "$(THICKERR)")
+}
+
+

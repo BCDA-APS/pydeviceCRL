@@ -1,0 +1,62 @@
+ # Linux startup script
+
+< envPaths
+
+# Increase size of buffer for error logging from default 1256
+errlogInit(20000)
+
+################################################################################
+
+# PYTHONPATH points to folders where Python modules are.
+# Needs to be done before dbd load, so moved to st.cmd
+epicsEnvSet("PYTHONPATH","$(TOP)/100idPyCRLApp/python")
+
+################################################################################
+# Tell EPICS all about the record types, device-support modules, drivers,
+# etc. in the software we just loaded (100idPy.munch)
+dbLoadDatabase("../../dbd/ioc100idPyCRLLinux.dbd")
+ioc100idPyCRLLinux_registerRecordDeviceDriver(pdbbase)
+
+< settings.iocsh
+< common.iocsh
+
+#- devIocStats
+dbLoadRecords("$(DEVIOCSTATS)/db/iocAdminSoft.db","IOC=$(PREFIX)")
+#- PV aliases change :: into :
+dbLoadRecords("$(TOP)/100idPyCRLApp/Db/iocAdminSoft_aliases.db","P=$(PREFIX)")
+
+###############################################################################
+# PyDevice Transfocator 
+
+# Single transfocator system
+#< cmds/pydeviceCRL_single.cmd
+#< cmds/pydeviceCRL_single_4ID.cmd
+
+# Double transfocator system 
+< cmds/pydeviceCRL_ms_12ID.cmd
+#!< cmds/pydeviceCRL_double_8ID.cmd
+
+# KB + Single transfocator system
+#!< cmds/pydeviceCRL_kb.cmd
+
+###############################################################################
+# Simulated motors
+
+iocshLoad("iocsh/motorSim.iocsh", "PREFIX=$(PREFIX), INSTANCE=motorSim, SUB=substitutions/motorSim.substitutions, NUM_AXES=38, DLLM=0, LOW_LIM=0, DHLM=25, HIGH_LIM=2500")
+
+###############################################################################
+
+
+
+###############################################################################
+iocInit
+###############################################################################
+
+# write all the PV names to a local file
+dbl > dbl-all.txt
+
+# Diagnostic: CA links in all records
+dbcar(0,1)
+
+# print the time our boot was finished
+date

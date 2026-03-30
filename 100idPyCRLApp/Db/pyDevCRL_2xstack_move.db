@@ -1,3 +1,5 @@
+# DB file for stack that is "split" in two, i.e. requires to motor stages
+
 record(ai, "$(P)$(SYSID):$(OE):stack$(M)_dist"){
 	field(VAL, "$(DIST=25)")
 	}

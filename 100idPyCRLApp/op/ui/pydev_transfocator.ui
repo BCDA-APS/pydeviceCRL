@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>938</width>
-    <height>678</height>
+    <width>951</width>
+    <height>832</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="1,12,1">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="2,24,1">
      <property name="spacing">
       <number>2</number>
      </property>
@@ -85,7 +85,7 @@
           <property name="font">
            <font>
             <family>Verdana</family>
-            <pointsize>25</pointsize>
+            <pointsize>33</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -119,7 +119,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="5,4">
+      <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,1">
        <property name="margin">
         <number>0</number>
        </property>
@@ -265,7 +265,7 @@
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="5,13,1">
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="5,13,2">
          <property name="margin">
           <number>0</number>
          </property>

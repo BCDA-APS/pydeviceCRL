@@ -47,6 +47,6 @@ record(bi, "$(P)$(SYSID):$(OE):stack$(M)_match"){
 record(calcout, "$(P)$(SYSID):$(OE):stack$(M)_DMOV") {
 	field(INPA, "$(MOT).DMOV CP")
 	field(CALC, "!A")
-	field(OUT, "$(P)$(SYSID):$(OE):crlBusyCalc.$(MASK)")
-	field(FLNK, "$(P)$(SYSID):$(OE):crlBusyCalc.PROC CA")
+	field(OUT, "$(P)$(SYSID):$(OE):$(DIM)BusyCalc.$(MASK)")
+	field(FLNK, "$(P)$(SYSID):$(OE):$(DIM)BusyCalc.PROC CA")
 }

@@ -75,3 +75,4 @@ KBV_p_limit = 1.0
 [init]
 sysType = '1x'
 initConfig = ['B']
+initSample = ['C']

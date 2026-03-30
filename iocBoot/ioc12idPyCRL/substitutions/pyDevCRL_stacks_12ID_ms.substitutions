@@ -1,0 +1,120 @@
+#	OE			= CRL #
+#	M			= cassette #
+#	NUMLENS		= number of lenses in cassette
+#	RADIUS		= lens radius in m
+#	MAT			= Lens material
+#	LOC			= cassette location relative to CRL center in m; + further downstream, - upstream
+#	DIM			= Type of lens: 2D or 1D_V
+#   THICKERR	= Thickness error in m
+#   INVAL 		= control value for inserting lens
+#	OUTVAL 		= control value for removing lens
+
+file "$(TOP)/db/pyDevCRL_stack.db" {
+  pattern
+  {OE, M,		NUMLENS,	RADIUS,		MAT,	LOC,		DIM, 	THICKERR,	INVAL,	OUTVAL,	ENCODE,	MASK  }
+  {"US", "1",   1, 			0.0005,		"Be",	0.1242, 	"2D",		1e-6,		    1,		0,		"A", 	"A"	}	
+  {"US", "2",   1, 			0.0002,		"Be",	0.1009,	    "2D",		1e-6,		   	1,		0,			"B", 	"B"	}	
+  {"US", "3",   2, 			0.0002,		"Be",	0.0782,	    "2D",		1e-6,		   	1,		0,			"C", 	"C"	}	
+  {"US", "4",   4, 			0.0002,		"Be",	0.0549,	    "2D",		1e-6,		   	1,		0,			"D", 	"D"	}	
+  {"US", "5",   8, 			0.0002,		"Be",	0.0295,	    "2D",		1e-6,		   	1,		0,			"E", 	"E"	}	
+  {"US", "6",   8, 			0.0002,		"Be",	-0.0347,    "2D",		1.4e-6,		   	1,		0,			"F", 	"F"	}	
+  {"DS", "1",   1, 			0.0002,		"Be",	-0.0625, 	"2D",		1e-6,		    1,		0,		"A", 	"A"	}	
+  {"DS", "2",   2, 			0.0002,		"Be",	-0.0125,	"2D",		1e-6,		   	1,		0,			"B", 	"B"	}	
+  {"DS", "3",   4, 			0.0002,		"Be",	0.0125,		"2D",		1e-6,		   	1,		0,			"C", 	"C"	}	
+  {"DS", "4",   8, 			0.0002,		"Be",	0.0625,		"2D",		1e-6,		   	1,		0,			"D", 	"D"	}	
+}
+
+# 1-D lenses aren't part of optics calculation, but are included for individually
+# control of the stacks
+file "$(TOP)/db/pyDevCRL_simple_stack.db" {
+  pattern
+  {OE, M,		NUMLENS,	RADIUS,		MAT,	LOC,		DIM, 	THICKERR,	INVAL,	OUTVAL}
+  {"US", "7",   1, 	    0.0005,		"Be",	-0.0704,	"1D_V",		2.0e-6,		1,		0}	
+  {"US", "8",   1, 		0.0002,		"Be",	-0.0985,	"1D_V",		2.8e-6,		1,		0}	
+  {"US", "9",   2,			0.0002,		"Be",	-0.1263,	"1D_V",		4e-6,		1,		0}	
+  {"US", "10",   4, 		0.0002,		"Be",	-0.1544,	"1D_V",		2.8e-6,		1,		0}	
+  {"US", "11",   8,			0.0002,		"Be",	-0.1823,	"1D_V",		4e-6,		1,		0}	
+
+}
+  
+
+### For simulated motors, need to be able to move from limit to limit
+#! comment out when using real motors
+file "$(TOP)/db/stackMoveTestTools.db" {
+  pattern
+  {MOT			  }
+  {"12idPyCRL:m1"}	
+  {"12idPyCRL:m2"}	
+  {"12idPyCRL:m3"}	
+  {"12idPyCRL:m4"}	
+  {"12idPyCRL:m5"}	
+  {"12idPyCRL:m6"}	
+  {"12idPyCRL:m7"}	
+  {"12idPyCRL:m8"}	
+  {"12idPyCRL:m9"}	
+  {"12idPyCRL:m10"}	
+  {"12idPyCRL:m11"}	
+  {"12idPyCRL:m12"}	
+  {"12idPyCRL:m13"}	
+  {"12idPyCRL:m14"}	
+  {"12idPyCRL:m15"}	
+  {"12idPyCRL:m16"}	
+  {"12idPyCRL:m17"}	
+  {"12idPyCRL:m18"}	
+  {"12idPyCRL:m19"}	
+  {"12idPyCRL:m20"}	
+}
+
+# For ACS controlled motors, using tweak with dist slightly greater than the 
+# limit-limit distance (specific to CRL)
+#	M			= cassette #
+#	INLM		= Limit switch associated with IN position
+#	DIST		= tweak distance to use (should be greater than limit-limit distance)
+
+#! commented out for testing (using simulated motors for testing
+#file "$(TOP)/db/pyDevCRL_stack_move.db" {
+#  pattern
+#  {OE, M,	MOT,				DIST,	INLM,	MASK, DIM  }
+#  {"US", "1", "12idcJJcrl:m16",  "15",	"LO",	"A", "2D"	}	
+#  {"US", "2", "12idcJJcrl:m15",  "15",	"LO",	"B", "2D"	}	
+#  {"US", "3", "12idcJJcrl:m14",  "15",	"LO",	"C", "2D"	}	
+#  {"US", "4", "12idcJJcrl:m13",  "15",	"LO",	"D", "2D"	}	
+#  {"US", "5", "12idcJJcrl:m12",  "15",	"LO",	"E", "2D"	}	
+#  {"US", "6", "12idcJJcrl:m11",  "15",	"LO",	"F", "2D"	}	
+##  {"US", "07", "12idcJJcrl:m12", "15",	"LO",	"G", "2D"	}	
+#  {"US", "7", "12idcJJcrl:m9",   "15",	"LO",	"A", "1D"	}	
+#  {"US", "8", "12idcJJcrl:m8",   "15",	"LO",	"B", "1D"	}	
+#  {"US", "9", "12idcJJcrl:m7",   "15",	"LO",	"C", "1D"	}	
+#  {"US", "10", "12idcJJcrl:m6",   "15",	"LO",	"D", "1D"	}	
+#  {"US", "11", "12idcJJcrl:m5",   "15",	"LO",   "E", "1D"	}	
+#  {"DS", "1", "12idcCRL:m1", "15", 	"LO",	"A", "2D"	}	
+#  {"DS", "2", "12idcCRL:m2", "15", 	"LO",	"B", "2D"	}	
+#  {"DS", "3", "12idcCRL:m3", "15", 	"LO",	"C", "2D"	}	
+#  {"DS", "4", "12idcCRL:m4", "15", 	"LO",	"D", "2D"	}	
+#
+#}
+  
+## For simulated motors, need to use Goto(Neg/Pos)Lim for INMOVE, OUTMOVE as simulated 
+## motor homing only stops when at home position -- can't alter after boot up 
+#! comment out when using real motors
+file "$(TOP)/db/pyDevCRL_stack_move.db" {
+  pattern
+  {OE, M,	MOT,				DIST,		INLM,	MASK, DIM  }
+  {"US", "1", "12idPyCRL:m1",   	25,			"LO",	"A", "2D"	}		
+  {"US", "2", "12idPyCRL:m2",   	25,			"LO",	"B", "2D"	}		
+  {"US", "3", "12idPyCRL:m3",   	25,			"LO",	"C", "2D"	}		
+  {"US", "4", "12idPyCRL:m4",   	25,			"LO",	"D", "2D"	}		
+  {"US", "5", "12idPyCRL:m5",   	25,			"LO",	"E", "2D"	}		
+  {"US", "6", "12idPyCRL:m6",   	25,			"LO",	"F", "2D"	}		
+  {"US", "7", "12idPyCRL:m7",   	25,			"LO",	"A", "1D"	}		
+  {"US", "8", "12idPyCRL:m8",   	25,			"LO",	"B", "1D"	}		
+  {"US", "9", "12idPyCRL:m9",   	25,			"LO",	"C", "1D"	}		
+  {"US", "10", "12idPyCRL:m10",   	25,			"LO",	"D", "1D"	}		
+  {"US", "11", "12idPyCRL:m11",   	25,			"LO",	"E", "1D"	}		
+  {"DS", "1", "12idPyCRL:m12",  	25,			"LO",	"A", "2D"	}		
+  {"DS", "2", "12idPyCRL:m13",  	25,			"LO",	"B", "2D"	}		
+  {"DS", "3", "12idPyCRL:m14",  	25,			"LO",	"C", "2D"	}		
+  {"DS", "4", "12idPyCRL:m15",  	25,			"LO",	"D", "2D"	}		
+}  
+
+

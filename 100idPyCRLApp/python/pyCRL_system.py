@@ -154,6 +154,13 @@ class focusingSystem():
             sample = sam_config
             init = init_config
             self.toml_file = 'DEFAULT'
+            
+            # Create default configs 
+            self.single_config = copy.deepcopy(DEFAULT_1X_CONFIG)
+            if len(crl) > 1:
+                self.double_config = copy.deepcopy(DEFAULT_2X_CONFIG)
+            if kb is not None:
+                self.crlkb_config = copy.deepcopy(DEFAULT_1XKB_CONFIG)
         else:
             self.toml_file = crl_setup
             with open(crl_setup, "rb") as f:
@@ -178,14 +185,26 @@ class focusingSystem():
                 sample = config['sample']
                  
             init = config['init']
+            
+            # Read in default configs 1x, 2x, 1xKB
+            # Need to convert strings/indices to enums/labels
+            if "default_1x" in config:
+                self.single_config["sysType"]   = config["default_1x"]["sysType"]   # TODO convert string to enum
+                self.single_config["CRLs"]      = config["default_1x"]["CRLs"]      # TODO convert index to label
+                self.single_config["KBs"]       = None      
+                self.single_config["Sample"]    = config["default_1x"]["Sample"]    # TODO convert index to label
+            if "default_2x" in config:
+                self.double_config["sysType"]   = config["default_2x"]["sysType"]   # TODO convert string to enum
+                self.double_config["CRLs"]      = config["default_2x"]["CRLs"]      # TODO convert index list to label list
+                self.double_config["KBs"]       = None                           
+                self.double_config["Sample"]    = config["default_2x"]["Sample"]    # TODO convert index to label
+            if "default_1xkb" in config:
+                self.crlkb_config["sysType"]    = config["default_1xkb"]["sysType"]     # TODO convert string to enum   
+                self.crlkb_config["CRLs"]       = config["default_1xkb"]["CRLs"]        # TODO convert index to label   
+                self.crlkb_config["KBs"]        = config["default_1xkb"]["KBs"]         
+                self.crlkb_config["Sample"]     = config["default_1xkb"]["Sample"]  # TODO convert index to label
 
 
-        # Create default configs
-        self.single_config = copy.deepcopy(DEFAULT_1X_CONFIG)
-        if len(crl) > 1:
-            self.double_config = copy.deepcopy(DEFAULT_2X_CONFIG)
-        if kb is not None:
-            self.crlkb_config = copy.deepcopy(DEFAULT_1XKB_CONFIG)
         
         # Setup beam properties
         self.mode = modes[0]
@@ -231,7 +250,9 @@ class focusingSystem():
                 self.curr_config = copy.deepcopy(self.double_config)
             case SYSTEM_TYPE.CRLandKB.value:
                 self.curr_config = copy.deepcopy(self.crlkb_config)
+
         self.curr_config['CRLs'] = init['initConfig']
+        self.curr_config['Sample'] = init['initSample']
         
         self.updateElements()
          #<----------------------------------------------------------------------          
@@ -591,7 +612,7 @@ class focusingSystem():
             case SYSTEM_TYPE.singleCRL:
                 if self.verbose: print(f"Single crl lookup table calc commencing")
                 crl = self.curr_config['CRLs'][0]
-                sam = self.curr_config['Sample']
+                sam = self.curr_config['Sample'][0]
                 
                 bl_subset = {'d_StoL1': self.bl['d_StoL'][crl],
                              'L1_offset': self.bl['L_offset'][crl],
