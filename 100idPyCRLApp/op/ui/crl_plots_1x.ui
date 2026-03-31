@@ -1,0 +1,250 @@
+<ui version="4.0">
+  <class>Form</class>
+  <widget class="QMainWindow" name="Form">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>411</width>
+        <height>746</height>
+      </rect>
+    </property>
+    <property name="background">
+      <color alpha="0">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+      </color>
+    </property>
+    <property name="styleSheet">
+      <string>QWidget#centralwidget {background: rgba(117,118,135,255);}
+QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
+    </property>
+    <property name="windowTitle">
+      <string>Optical Distances</string>
+    </property>
+    <widget class="QWidget" name="centralwidget">
+      <property name="geometry">
+        <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>0</width>
+          <height>0</height>
+        </rect>
+      </property>
+      <property name="background">
+        <color alpha="0">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+        </color>
+      </property>
+      <widget class="caFrame" name="content">
+        <property name="geometry">
+          <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>411</width>
+            <height>746</height>
+          </rect>
+        </property>
+        <widget class="caLabel" name="caLabel1">
+          <property name="text">
+            <string>$(P)$(CRL)</string>
+          </property>
+          <property name="text-height">
+            <number>24</number>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>53</green>
+              <blue>132</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>12</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>6</x>
+              <y>5</y>
+              <width>400</width>
+              <height>16</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>196</red>
+              <green>196</green>
+              <blue>196</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caCartesianPlot" name="caCartesianPlot1">
+          <property name="TitleX">
+            <string>Config Index</string>
+          </property>
+          <property name="TitleY">
+            <string>Focal Size (m)</string>
+          </property>
+          <property name="channels_1">
+            <string>;$(P)$(CRL):fSizes</string>
+          </property>
+          <property name="color_1">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>255</blue>
+            </color>
+          </property>
+          <property name="YAxisType">
+            <string>log10</string>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>5</x>
+              <y>26</y>
+              <width>400</width>
+              <height>175</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+        </widget>
+        <widget class="caCartesianPlot" name="caCartesianPlot2">
+          <property name="TitleX">
+            <string>Config Index</string>
+          </property>
+          <property name="TitleY">
+            <string>Inv Focal Length (1/m)</string>
+          </property>
+          <property name="channels_1">
+            <string>;$(P)$(CRL):$(OE1):invF</string>
+          </property>
+          <property name="color_1">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>255</blue>
+            </color>
+          </property>
+          <property name="YAxisType">
+            <string>log10</string>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>5</x>
+              <y>206</y>
+              <width>400</width>
+              <height>175</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+        </widget>
+        <widget class="caCartesianPlot" name="caCartesianPlot3">
+          <property name="TitleX">
+            <string>Config Index</string>
+          </property>
+          <property name="TitleY">
+            <string>Abs. image distance (m)</string>
+          </property>
+          <property name="channels_1">
+            <string>;$(P)$(CRL):q_list</string>
+          </property>
+          <property name="color_1">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>255</blue>
+            </color>
+          </property>
+          <property name="YAxisType">
+            <string>linear</string>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>5</x>
+              <y>386</y>
+              <width>400</width>
+              <height>175</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+        </widget>
+        <widget class="caCartesianPlot" name="caCartesianPlot4">
+          <property name="TitleX">
+            <string>Config Index</string>
+          </property>
+          <property name="TitleY">
+            <string>Rel. image distance (m)</string>
+          </property>
+          <property name="channels_1">
+            <string>;$(P)$(CRL):dq_list</string>
+          </property>
+          <property name="color_1">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>255</blue>
+            </color>
+          </property>
+          <property name="YAxisType">
+            <string>linear</string>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>5</x>
+              <y>566</y>
+              <width>400</width>
+              <height>175</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+        </widget>
+      </widget>
+    </widget>
+  </widget>
+</ui>

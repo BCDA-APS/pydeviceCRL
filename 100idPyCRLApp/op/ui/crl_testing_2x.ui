@@ -1,0 +1,1994 @@
+<ui version="4.0">
+  <class>Form</class>
+  <widget class="QMainWindow" name="Form">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>490</width>
+        <height>265</height>
+      </rect>
+    </property>
+    <property name="background">
+      <color alpha="0">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+      </color>
+    </property>
+    <property name="styleSheet">
+      <string>QWidget#centralwidget {background: rgba(0,0,0,0);}
+QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
+    </property>
+    <property name="windowTitle">
+      <string>CRL Testing</string>
+    </property>
+    <widget class="QWidget" name="centralwidget">
+      <property name="geometry">
+        <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>0</width>
+          <height>0</height>
+        </rect>
+      </property>
+      <property name="background">
+        <color alpha="0">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+        </color>
+      </property>
+      <widget class="caFrame" name="content">
+        <property name="geometry">
+          <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>490</width>
+            <height>265</height>
+          </rect>
+        </property>
+        <widget class="caLabel" name="caLabel1">
+          <property name="text">
+            <string>CRL $(OE1) Hor Slit Size</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>65</y>
+              <width>150</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caTextEntry" name="caTextEntry1">
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>185</x>
+              <y>65</y>
+              <width>90</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>87</red>
+              <green>202</green>
+              <blue>228</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSSH1.VAL</string>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit1">
+          <property name="foreground">
+            <color alpha="255">
+              <red>10</red>
+              <green>0</green>
+              <blue>184</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>290</x>
+              <y>65</y>
+              <width>120</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSSH1.VAL</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit2">
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>425</x>
+              <y>65</y>
+              <width>60</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSSH1.EGU</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel2">
+          <property name="text">
+            <string>CRL $(OE1) Vert Slit Size</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>85</y>
+              <width>150</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caTextEntry" name="caTextEntry2">
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>185</x>
+              <y>85</y>
+              <width>90</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>87</red>
+              <green>202</green>
+              <blue>228</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSSV1.VAL</string>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit3">
+          <property name="foreground">
+            <color alpha="255">
+              <red>10</red>
+              <green>0</green>
+              <blue>184</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>290</x>
+              <y>85</y>
+              <width>120</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSSV1.VAL</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit4">
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>425</x>
+              <y>85</y>
+              <width>60</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSSV1.EGU</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel3">
+          <property name="text">
+            <string>CRL $(OE2) Hor Slit Size</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>105</y>
+              <width>150</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caTextEntry" name="caTextEntry3">
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>185</x>
+              <y>105</y>
+              <width>90</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>87</red>
+              <green>202</green>
+              <blue>228</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSSH2.VAL</string>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit5">
+          <property name="foreground">
+            <color alpha="255">
+              <red>10</red>
+              <green>0</green>
+              <blue>184</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>290</x>
+              <y>105</y>
+              <width>120</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSSH2.VAL</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit6">
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>425</x>
+              <y>105</y>
+              <width>60</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSSH2.EGU</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel4">
+          <property name="text">
+            <string>CRL $(OE2) Vert Slit Size</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>125</y>
+              <width>150</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caTextEntry" name="caTextEntry4">
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>185</x>
+              <y>125</y>
+              <width>90</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>87</red>
+              <green>202</green>
+              <blue>228</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSSV2.VAL</string>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit7">
+          <property name="foreground">
+            <color alpha="255">
+              <red>10</red>
+              <green>0</green>
+              <blue>184</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>290</x>
+              <y>125</y>
+              <width>120</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSSV2.VAL</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit8">
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>425</x>
+              <y>125</y>
+              <width>60</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSSV2.EGU</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel5">
+          <property name="text">
+            <string>CRL $(OE1) z offset</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>150</y>
+              <width>150</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caTextEntry" name="caTextEntry5">
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>185</x>
+              <y>150</y>
+              <width>90</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>87</red>
+              <green>202</green>
+              <blue>228</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testCRL1z.VAL</string>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit9">
+          <property name="foreground">
+            <color alpha="255">
+              <red>10</red>
+              <green>0</green>
+              <blue>184</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>290</x>
+              <y>150</y>
+              <width>120</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testCRL1z.VAL</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit10">
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>425</x>
+              <y>150</y>
+              <width>60</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testCRL1z.EGU</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel6">
+          <property name="text">
+            <string>CRL $(OE2) z offset</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>170</y>
+              <width>150</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caTextEntry" name="caTextEntry6">
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>185</x>
+              <y>170</y>
+              <width>90</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>87</red>
+              <green>202</green>
+              <blue>228</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testCRL2z.VAL</string>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit11">
+          <property name="foreground">
+            <color alpha="255">
+              <red>10</red>
+              <green>0</green>
+              <blue>184</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>290</x>
+              <y>170</y>
+              <width>120</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testCRL2z.VAL</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit12">
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>425</x>
+              <y>170</y>
+              <width>60</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testCRL2z.EGU</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel7">
+          <property name="text">
+            <string>Sample $(SAM1) offset</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>195</y>
+              <width>150</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caTextEntry" name="caTextEntry7">
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>185</x>
+              <y>195</y>
+              <width>90</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>87</red>
+              <green>202</green>
+              <blue>228</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSAMz1.VAL</string>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit13">
+          <property name="foreground">
+            <color alpha="255">
+              <red>10</red>
+              <green>0</green>
+              <blue>184</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>290</x>
+              <y>195</y>
+              <width>120</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSAMz1.VAL</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit14">
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>425</x>
+              <y>195</y>
+              <width>60</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSAMz1.EGU</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel8">
+          <property name="text">
+            <string>Sample $(SAM2) offset</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>215</y>
+              <width>150</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caTextEntry" name="caTextEntry8">
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>185</x>
+              <y>215</y>
+              <width>90</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>87</red>
+              <green>202</green>
+              <blue>228</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSAMz2.VAL</string>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit15">
+          <property name="foreground">
+            <color alpha="255">
+              <red>10</red>
+              <green>0</green>
+              <blue>184</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>290</x>
+              <y>215</y>
+              <width>120</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSAMz2.VAL</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit16">
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>425</x>
+              <y>215</y>
+              <width>60</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testSAMz2.EGU</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel9">
+          <property name="text">
+            <string>Mono Energy</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>240</y>
+              <width>150</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caTextEntry" name="caTextEntry9">
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>185</x>
+              <y>240</y>
+              <width>90</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>87</red>
+              <green>202</green>
+              <blue>228</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testMonoE.VAL</string>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit17">
+          <property name="foreground">
+            <color alpha="255">
+              <red>10</red>
+              <green>0</green>
+              <blue>184</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>290</x>
+              <y>240</y>
+              <width>120</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testMonoE.VAL</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit18">
+          <property name="foreground">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="border-style">
+            <string>Solid</string>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>10</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>425</x>
+              <y>240</y>
+              <width>60</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="channel">
+            <string>$(P)testMonoE.EGU</string>
+          </property>
+          <property name="frameColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="frameLineWidth">
+            <number>0</number>
+          </property>
+          <property name="formatType">
+            <enum>caLineEdit::string</enum>
+          </property>
+          <property name="colorMode">
+            <enum>caLineEdit::Static</enum>
+          </property>
+          <property name="fontScaleMode">
+            <enum>caLineEdit::Height</enum>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel10">
+          <property name="text">
+            <string>$(P)$(CRL) Testing</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>228</red>
+              <green>228</green>
+              <blue>228</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>16</pointsize>
+              <bold>true</bold>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>5</x>
+              <y>5</y>
+              <width>480</width>
+              <height>45</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>0</red>
+              <green>53</green>
+              <blue>132</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>3</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+      </widget>
+    </widget>
+  </widget>
+</ui>
