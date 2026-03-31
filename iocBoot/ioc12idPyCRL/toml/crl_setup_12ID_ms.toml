@@ -48,11 +48,9 @@ d_min = [0.00003, 0.00003]
 labels = ['C1','C2']
       
 # Initial setup block
-# sysType - 1: single, 2: double, 3: single + KB
 # initConfig - which CRLS to use in system at start; first element by default
 #
-# To start with single by default: sysType = '1x', initConfig set to list of CRLs to use, 
-# 'B' -- B-hutch CRL in this case 
+# default configs use indices for above defined lists of CRLs and sample stations.
 [init]
 sysType = '1x'
 initConfig = ['US']
@@ -61,11 +59,9 @@ initSample = ['C1']
 [default_1x]
 sysType = '1x'
 CRLs = 0 
-KBs = None
 Sample = 0
             
 [default_2x]
 sysType = '2x'
 CRLs = [0,1]
-KBs = None
 Sample = 1

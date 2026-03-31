@@ -181,28 +181,34 @@ class focusingSystem():
                 kb = None
             
             # Add sample stations if listed in toml
-            if "sample" in config:
+            try:
                 sample = config['sample']
+            except:
+                raise RuntimeError(f"TOML file ({crl_setup}) is missing sample station(s).")
+           
                  
             init = config['init']
             
             # Read in default configs 1x, 2x, 1xKB
             # Need to convert strings/indices to enums/labels
             if "default_1x" in config:
-                self.single_config["sysType"]   = config["default_1x"]["sysType"]   # TODO convert string to enum
-                self.single_config["CRLs"]      = config["default_1x"]["CRLs"]      # TODO convert index to label
-                self.single_config["KBs"]       = None      
-                self.single_config["Sample"]    = config["default_1x"]["Sample"]    # TODO convert index to label
-            if "default_2x" in config:
-                self.double_config["sysType"]   = config["default_2x"]["sysType"]   # TODO convert string to enum
-                self.double_config["CRLs"]      = config["default_2x"]["CRLs"]      # TODO convert index list to label list
-                self.double_config["KBs"]       = None                           
-                self.double_config["Sample"]    = config["default_2x"]["Sample"]    # TODO convert index to label
-            if "default_1xkb" in config:
-                self.crlkb_config["sysType"]    = config["default_1xkb"]["sysType"]     # TODO convert string to enum   
-                self.crlkb_config["CRLs"]       = config["default_1xkb"]["CRLs"]        # TODO convert index to label   
-                self.crlkb_config["KBs"]        = config["default_1xkb"]["KBs"]         
-                self.crlkb_config["Sample"]     = config["default_1xkb"]["Sample"]  # TODO convert index to label
+                self.single_config = {}
+                self.single_config["sysType"]   = sysType_dict[config["default_1x"]["sysType"]]             # convert string to enum
+                self.single_config["CRLs"]      = crls['labels'][config["default_1x"]["CRLs"]]              # convert index to label
+                self.single_config["KBs"]       = [None]              
+                self.single_config["Sample"]    = sample['labels'][config["default_1x"]["Sample"]]          # convert index to label
+            if "default_2x" in config:      
+                self.double_config = {}
+                self.double_config["sysType"]   = sysType_dict[config["default_2x"]["sysType"]]             # convert string to enum
+                self.double_config["CRLs"]      = [crls['labels'][i] for i in config["default_2x"]["CRLs"]] # convert index list to label list
+                self.double_config["KBs"]       = [None]                           
+                self.double_config["Sample"]    = sample['labels'][config["default_2x"]["Sample"]]          # convert index to label
+            if "default_1xkb" in config:        
+                self.crlkb_config = {}
+                self.crlkb_config["sysType"]    = sysType_dict[config["default_1xkb"]["sysType"]]           # convert string to enum   
+                self.crlkb_config["CRLs"]       = crls['labels'][config["default_1xkb"]["CRLs"]]            # convert index to label   
+                self.crlkb_config["KBs"]        = kb['labels'][config["default_1xkb"]["KBs"]]               # convert index to label       
+                self.crlkb_config["Sample"]     = sample['labels'][config["default_1xkb"]["Sample"]]        # convert index to label
 
 
         

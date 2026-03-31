@@ -67,12 +67,20 @@ KBH_p_limit = 1.0
 KBV_p_limit = 1.0       
 
 # Initial setup block
-# sysType - 1: single, 2: double, 3: single + KB
 # initConfig - which CRLS to use in system at start; first element by default
 #
-# To start with single by default: sysType = '1x', initConfig set to list of CRLs to use, 
-# 'B' -- B-hutch CRL in this case 
+# default configs use indices for above defined lists of CRLs and sample stations.
 [init]
 sysType = '1x'
 initConfig = ['B']
 initSample = ['C']
+
+[default_1x]
+sysType = '1x'
+CRLs = 0 
+Sample = 0
+            
+[default_2x]
+sysType = '2x'
+CRLs = [0,1]
+Sample = 1

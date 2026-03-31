@@ -3,3 +3,4 @@ $(P)$(SYSID):EnergySelect.VAL
 $(P)$(SYSID):thickerr_flag
 $(P)$(SYSID):verbosity
 $(P)$(SYSID):beamMode
+$(P)$(SYSID):sysType
