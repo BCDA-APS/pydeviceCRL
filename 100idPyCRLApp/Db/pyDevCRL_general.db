@@ -136,6 +136,12 @@ record(ai, "$(P)$(SYSID):fSize_actual"){
   field(PREC, "5")
 }
 
+record(dfanout, "$(P)$(SYSID):fSize_actual_dfo") {
+	field(OMSL, "closed_loop")
+	field(DOL, "$(P)$(SYSID):fSize_actual CP")
+	field(OUTA, "$(P)$(SYSID):focalSize NPP")
+}
+
 record(longout, "$(P)$(SYSID):previewIndex") {
   field(DTYP, "pydev")
   field(OUT, "@$(OBJ).getPreviewFocalSize(VAL)")

@@ -153,3 +153,9 @@ record(calcout, "$(P)$(SYSID):fPower:sortedIndex_RBV_calc"){
 
 record(longin, "$(P)$(SYSID):fPower:sortedIndex_RBV") {
 }
+
+record(dfanout, "$(P)$(SYSID):fPower:sortedIndex_RBV_dfo") {
+	field(OMSL, "closed_loop")
+	field(DOL, "$(P)$(SYSID):fPower:sortedIndex_RBV CP")
+	field(OUTA, "$(P)$(SYSID):fPower:sortedIndex NPP")
+}

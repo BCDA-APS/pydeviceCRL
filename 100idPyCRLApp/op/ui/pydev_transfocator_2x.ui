@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>938</width>
+    <height>678</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_4">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="1,12,1">
+     <property name="spacing">
+      <number>2</number>
+     </property>
+     <property name="margin">
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="caFrame" name="caframe_8">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>1611</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="lineWidth">
+        <number>0</number>
+       </property>
+       <property name="background">
+        <color>
+         <red>0</red>
+         <green>53</green>
+         <blue>132</blue>
+        </color>
+       </property>
+       <property name="backgroundMode">
+        <enum>caFrame::Filled</enum>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>5</number>
+        </property>
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <property name="topMargin">
+         <number>2</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="caLabel" name="calabel">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>1611</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Verdana</family>
+            <pointsize>25</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Transfocator $(P)$(CRL)</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="fontScaleMode">
+           <enum>ESimpleLabel::Height</enum>
+          </property>
+          <property name="foreground">
+           <color>
+            <red>228</red>
+            <green>228</green>
+            <blue>228</blue>
+           </color>
+          </property>
+          <property name="background">
+           <color alpha="0">
+            <red>160</red>
+            <green>160</green>
+            <blue>164</blue>
+           </color>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="5,4">
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3" stretch="7,1,3,1,3,2">
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="caInclude" name="cainclude_2">
+           <property name="macro">
+            <string>P=$(P),CRL=$(CRL)</string>
+           </property>
+           <property name="filename" stdset="0">
+            <string notr="true">pydev_transfocator_inset_2x.ui</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,3,1">
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="bottomMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <spacer name="horizontalSpacer_7">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="caLabel" name="calabel_2">
+             <property name="text">
+              <string>Transfocator #1</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_8">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="caInclude" name="cainclude">
+           <property name="macro">
+            <string>P=$(P),CRL=$(CRL):1,M=01;P=$(P),CRL=$(CRL):1,M=02;P=$(P),CRL=$(CRL):1,M=03;P=$(P),CRL=$(CRL):1,M=04;P=$(P),CRL=$(CRL):1,M=05;P=$(P),CRL=$(CRL):1,M=06;P=$(P),CRL=$(CRL):1,M=07;P=$(P),CRL=$(CRL):1,M=08;P=$(P),CRL=$(CRL):1,M=09;P=$(P),CRL=$(CRL):1,M=10</string>
+           </property>
+           <property name="filename" stdset="0">
+            <string notr="true">pydev_transfocator_lens_readback.ui</string>
+           </property>
+           <property name="stacking">
+            <enum>caInclude::Column</enum>
+           </property>
+           <property name="numberOfItems" stdset="0">
+            <number>10</number>
+           </property>
+           <property name="adjustSizeToContents" stdset="0">
+            <bool>false</bool>
+           </property>
+           <property name="frameColor">
+            <color alpha="0">
+             <red>200</red>
+             <green>200</green>
+             <blue>200</blue>
+            </color>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="1,3,1">
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="bottomMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <spacer name="horizontalSpacer_10">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="caLabel" name="calabel_5">
+             <property name="text">
+              <string>Transfocator #2</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_12">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="caInclude" name="cainclude_3">
+           <property name="macro">
+            <string>P=$(P),CRL=$(CRL):2,M=01;P=$(P),CRL=$(CRL):2,M=02;P=$(P),CRL=$(CRL):2,M=03;P=$(P),CRL=$(CRL):2,M=04;P=$(P),CRL=$(CRL):2,M=05;P=$(P),CRL=$(CRL):2,M=06;P=$(P),CRL=$(CRL):2,M=07;P=$(P),CRL=$(CRL):2,M=08;P=$(P),CRL=$(CRL):2,M=09;P=$(P),CRL=$(CRL):2,M=10</string>
+           </property>
+           <property name="filename" stdset="0">
+            <string notr="true">pydev_transfocator_lens_readback.ui</string>
+           </property>
+           <property name="stacking">
+            <enum>caInclude::Column</enum>
+           </property>
+           <property name="numberOfItems" stdset="0">
+            <number>10</number>
+           </property>
+           <property name="adjustSizeToContents" stdset="0">
+            <bool>false</bool>
+           </property>
+           <property name="frameColor">
+            <color alpha="0">
+             <red>200</red>
+             <green>200</green>
+             <blue>200</blue>
+            </color>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,1">
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QGridLayout" name="gridLayout_4" rowstretch="1,1" columnstretch="0,2,3">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <item row="1" column="1">
+              <widget class="caLabel" name="calabel_27">
+               <property name="text">
+                <string>Focal Size Preview</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="caTextEntry" name="catextentry_14">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="channel" stdset="0">
+                <string notr="true">$(P)$(CRL):previewIndex</string>
+               </property>
+               <property name="background">
+                <color>
+                 <red>115</red>
+                 <green>223</green>
+                 <blue>255</blue>
+                </color>
+               </property>
+               <property name="colorMode">
+                <enum>caLineEdit::Static</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="caLineEdit" name="caLineEdit_17">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>13</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="channel" stdset="0">
+                <string notr="true">$(P)$(CRL):fSize_preview</string>
+               </property>
+               <property name="foreground">
+                <color>
+                 <red>10</red>
+                 <green>0</green>
+                 <blue>184</blue>
+                </color>
+               </property>
+               <property name="background">
+                <color>
+                 <red>200</red>
+                 <green>200</green>
+                 <blue>200</blue>
+                </color>
+               </property>
+               <property name="colorMode">
+                <enum>caLineEdit::Static</enum>
+               </property>
+               <property name="precision">
+                <number>3</number>
+               </property>
+               <property name="precisionMode">
+                <enum>caLineEdit::User</enum>
+               </property>
+               <property name="fontScaleMode" stdset="0">
+                <enum>caLineEdit::None</enum>
+               </property>
+               <property name="formatType">
+                <enum>caLineEdit::compact</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="caLabel" name="calabel_24">
+               <property name="text">
+                <string>Preview Index</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,2">
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="caInclude" name="cainclude_4">
+           <property name="macro">
+            <string>P=$(P),CRL=$(CRL)</string>
+           </property>
+           <property name="filename" stdset="0">
+            <string notr="true">pydev_transfocator_inset_slits_2x.ui</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="caInclude" name="cainclude_6">
+           <property name="macro">
+            <string>P=$(P),CRL=$(CRL)</string>
+           </property>
+           <property name="filename" stdset="0">
+            <string notr="true">pydev_transfocator_inset_2x_offset_readbacks.ui</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="2,1,2,1,2,4,2,2">
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_52">
+         <property name="label">
+          <string notr="true">- Help</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>53</red>
+           <green>132</green>
+           <blue>0</blue>
+          </color>
+         </property>
+         <property name="labels">
+          <string>Alternate UI</string>
+         </property>
+         <property name="files">
+          <string>pydev_transfocator_1x_help.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P),F=$(F),N=$(N)</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+         <property name="removeParent" stdset="0">
+          <string>false</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_49">
+         <property name="label">
+          <string notr="true">- Stacks Info</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>53</red>
+           <green>132</green>
+           <blue>0</blue>
+          </color>
+         </property>
+         <property name="labels">
+          <string>CRL 1;CRL 2</string>
+         </property>
+         <property name="files">
+          <string>pydev_transfocator_stack_summary_10.ui;pydev_transfocator_stack_summary_10.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P),CRL=$(CRL):1;P=$(P),CRL=$(CRL):2</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+         <property name="removeParent" stdset="0">
+          <string>false</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_51">
+         <property name="label">
+          <string notr="true">-Plots</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>53</red>
+           <green>132</green>
+           <blue>0</blue>
+          </color>
+         </property>
+         <property name="labels">
+          <string>Alternate UI</string>
+         </property>
+         <property name="files">
+          <string>pydev_transfocator_2x_plots.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P),CRL=$(CRL)</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+         <property name="removeParent" stdset="0">
+          <string>false</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_48">
+         <property name="label">
+          <string notr="true">-less</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>53</red>
+           <green>132</green>
+           <blue>0</blue>
+          </color>
+         </property>
+         <property name="labels">
+          <string>Alternate UI</string>
+         </property>
+         <property name="files">
+          <string>pydev_transfocator_2x_less.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P),CRL=$(CRL)</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+         <property name="removeParent" stdset="0">
+          <string>true</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_53">
+         <property name="label">
+          <string notr="true">-more</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>53</red>
+           <green>132</green>
+           <blue>0</blue>
+          </color>
+         </property>
+         <property name="labels">
+          <string>Alternate UI</string>
+         </property>
+         <property name="files">
+          <string>pydev_transfocator_2x_more.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P),CRL=$(CRL)</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+         <property name="removeParent" stdset="0">
+          <string>true</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>caRelatedDisplay</class>
+   <extends>QWidget</extends>
+   <header>caRelatedDisplay</header>
+  </customwidget>
+  <customwidget>
+   <class>caTextEntry</class>
+   <extends>caLineEdit</extends>
+   <header>caTextEntry</header>
+  </customwidget>
+  <customwidget>
+   <class>caFrame</class>
+   <extends>QFrame</extends>
+   <header>caFrame</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>caLabel</class>
+   <extends>QLabel</extends>
+   <header>caLabel</header>
+  </customwidget>
+  <customwidget>
+   <class>caInclude</class>
+   <extends>QWidget</extends>
+   <header>caInclude</header>
+  </customwidget>
+  <customwidget>
+   <class>caLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>caLineEdit</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

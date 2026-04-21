@@ -8353,7 +8353,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>Help</string>
             </property>
             <property name="files">
-              <string>crl_100ID_help.ui</string>
+              <string>crl_2x_help.ui</string>
             </property>
             <property name="args">
               <string></string>

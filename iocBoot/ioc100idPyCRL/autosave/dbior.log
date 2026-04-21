@@ -1,0 +1,95 @@
+Driver: drvAsyn
+motorSim0 multiDevice:Yes canBlock:Yes autoConnect:Yes
+Port: motorSim0
+Driver: drvEMC18011
+    No EMC18011 controllers configured.
+Driver: drvESP300
+    No ESP300 controllers configured.
+Driver: drvEtherIP
+Driver: drvIM483PL
+    No IM483PL controllers configured.
+Driver: drvIM483SM
+    No IM483SM controllers configured.
+Driver: drvIpac
+Driver: drvMCB4B
+    NO MCB4B controllers found
+Driver: drvMCDC2805
+    No MCDC2805 controllers configured.
+Driver: drvMDT695
+    No MDT695 controllers configured.
+Driver: drvMDrive
+    No MDrive controllers configured.
+Driver: drvMM3000
+    No MM3000 controllers configured.
+Driver: drvMM4000
+    No MM4000 controllers configured.
+Driver: drvMVP2001
+    No MVP2001 CHAINS configured.
+Driver: drvMW100
+Driver: drvMicos
+    NO Micos controllers found
+Driver: drvPC6K
+    No PC6K controllers configured.
+Driver: drvPIC630
+    No PIC630 controllers configured.
+Driver: drvPIC662
+    No PIC662 controllers configured.
+Driver: drvPIC663
+    No PIC663 controllers configured.
+Driver: drvPIC844
+    No PIC844 controllers configured.
+Driver: drvPIC848
+    No PIC848 controllers configured.
+Driver: drvPIC862
+    No PIC862 controllers configured.
+Driver: drvPIE516
+    No PIE516 controllers configured.
+Driver: drvPIE517
+    No PIE517 controllers configured.
+Driver: drvPIE710
+    No PIE710 controllers configured.
+Driver: drvPIE816
+    No PIE816 controllers configured.
+Driver: drvPIJEDS
+    No PIJEDS controllers configured.
+Driver: drvPM304
+    NO PM304 controllers found
+Driver: drvPM500
+    No PM500 controllers configured.
+Driver: drvPMNC87xx
+    No PMNC87xx controllers configured.
+Driver: drvSC800
+    No SC800 controllers configured.
+Driver: drvSPiiPlus
+    No SPiiPlus controllers configured.
+Driver: drvSmartMotor
+    No SmartMotor controllers configured.
+Driver: drvSoloist
+    No Soloist controllers configured.
+Driver: motorA3200
+Driver: motorANC150
+Driver: motorEnsemble
+Driver: motorMM4000
+Driver: motorSim
+Driver: motorXPS
+Driver: stream
+  StreamDevice 2.8.24-dirty 2022-11-21 17:34:20 +0100
+  commit: 211f689cdf8acaf45a53fe035a1b1d0fac8a40d7
+  (C) 1999 Dirk Zimoch (dirk.zimoch@psi.ch)
+  Use interest level 100 for license information
+  registered bus interfaces:
+    DebugInterface
+    DummyInterface
+    AsynDriverInterface
+Device Support: devGpib
+Device Support: asynSoftGlue
+portName ''
+using 0 signals
+portName ''
+using 0 signals
+portName ''
+using 0 signals
+portName ''
+using 0 signals
+portName ''
+using 0 signals

@@ -2779,9 +2779,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caFrame" name="caFrame74">
           <property name="geometry">
             <rect>
-              <x>67</x>
+              <x>79</x>
               <y>490</y>
-              <width>321</width>
+              <width>296</width>
               <height>114</height>
             </rect>
           </property>
@@ -2804,9 +2804,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <widget class="caInclude" name="caInclude1">
             <property name="geometry">
               <rect>
-                <x>0</x>
+                <x>1</x>
                 <y>34</y>
-                <width>320</width>
+                <width>295</width>
                 <height>80</height>
               </rect>
             </property>
@@ -2843,7 +2843,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
             <property name="geometry">
               <rect>
-                <x>105</x>
+                <x>93</x>
                 <y>1</y>
                 <width>110</width>
                 <height>22</height>
@@ -2877,9 +2877,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="QFrame" name="QFrame9">
           <property name="geometry">
             <rect>
-              <x>67</x>
+              <x>79</x>
               <y>490</y>
-              <width>321</width>
+              <width>296</width>
               <height>114</height>
             </rect>
           </property>
@@ -2940,7 +2940,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>321</width>
+                <width>296</width>
                 <height>114</height>
               </rect>
             </property>
@@ -3200,7 +3200,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>Help</string>
             </property>
             <property name="files">
-              <string>crl_12ID_help.ui</string>
+              <string>crl_2x_help.ui</string>
             </property>
             <property name="args">
               <string></string>
