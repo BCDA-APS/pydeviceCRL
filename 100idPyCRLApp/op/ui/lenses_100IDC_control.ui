@@ -402,9 +402,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <blue>0</blue>
               </color>
             </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
             <property name="channel">
               <string>$(P)$(OE):stack1_RBV</string>
             </property>
@@ -473,9 +470,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <green>0</green>
                 <blue>0</blue>
               </color>
-            </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
             </property>
             <property name="channel">
               <string>$(P)$(OE):stack1_RBV</string>
@@ -969,9 +963,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <blue>0</blue>
               </color>
             </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
             <property name="channel">
               <string>$(P)$(OE):stack2_RBV</string>
             </property>
@@ -1040,9 +1031,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <green>0</green>
                 <blue>0</blue>
               </color>
-            </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
             </property>
             <property name="channel">
               <string>$(P)$(OE):stack2_RBV</string>
@@ -1536,9 +1524,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <blue>0</blue>
               </color>
             </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
             <property name="channel">
               <string>$(P)$(OE):stack3_RBV</string>
             </property>
@@ -1607,9 +1592,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <green>0</green>
                 <blue>0</blue>
               </color>
-            </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
             </property>
             <property name="channel">
               <string>$(P)$(OE):stack3_RBV</string>
@@ -2103,9 +2085,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <blue>0</blue>
               </color>
             </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
             <property name="channel">
               <string>$(P)$(OE):stack4_RBV</string>
             </property>
@@ -2174,9 +2153,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <green>0</green>
                 <blue>0</blue>
               </color>
-            </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
             </property>
             <property name="channel">
               <string>$(P)$(OE):stack4_RBV</string>
@@ -2670,9 +2646,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <blue>0</blue>
               </color>
             </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
             <property name="channel">
               <string>$(P)$(OE):stack5_RBV</string>
             </property>
@@ -2741,9 +2714,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <green>0</green>
                 <blue>0</blue>
               </color>
-            </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
             </property>
             <property name="channel">
               <string>$(P)$(OE):stack5_RBV</string>
@@ -3237,9 +3207,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <blue>0</blue>
               </color>
             </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
             <property name="channel">
               <string>$(P)$(OE):stack6_RBV</string>
             </property>
@@ -3308,9 +3275,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <green>0</green>
                 <blue>0</blue>
               </color>
-            </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
             </property>
             <property name="channel">
               <string>$(P)$(OE):stack6_RBV</string>
@@ -3804,9 +3768,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <blue>0</blue>
               </color>
             </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
             <property name="channel">
               <string>$(P)$(OE):stack7_RBV</string>
             </property>
@@ -3875,9 +3836,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <green>0</green>
                 <blue>0</blue>
               </color>
-            </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
             </property>
             <property name="channel">
               <string>$(P)$(OE):stack7_RBV</string>
@@ -4371,9 +4329,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <blue>0</blue>
               </color>
             </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
             <property name="channel">
               <string>$(P)$(OE):stack8_RBV</string>
             </property>
@@ -4442,9 +4397,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <green>0</green>
                 <blue>0</blue>
               </color>
-            </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
             </property>
             <property name="channel">
               <string>$(P)$(OE):stack8_RBV</string>
@@ -4938,9 +4890,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <blue>0</blue>
               </color>
             </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
-            </property>
             <property name="channel">
               <string>$(P)$(OE):stack9_RBV</string>
             </property>
@@ -5009,9 +4958,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
                 <green>0</green>
                 <blue>0</blue>
               </color>
-            </property>
-            <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
             </property>
             <property name="channel">
               <string>$(P)$(OE):stack9_RBV</string>

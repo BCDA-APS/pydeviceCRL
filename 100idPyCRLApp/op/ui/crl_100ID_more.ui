@@ -1507,7 +1507,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -1774,7 +1774,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -1840,7 +1840,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -2018,7 +2018,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -2084,7 +2084,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -2346,7 +2346,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -2519,7 +2519,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -2692,7 +2692,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -2895,7 +2895,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -2916,7 +2916,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               </color>
             </property>
             <property name="labels">
-              <string></string>
+              <string> </string>
             </property>
             <property name="files">
               <string>lenses_100IDB_control.ui</string>
@@ -3065,7 +3065,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -3086,7 +3086,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               </color>
             </property>
             <property name="labels">
-              <string></string>
+              <string> </string>
             </property>
             <property name="files">
               <string>lenses_100IDC_control.ui</string>
@@ -8329,7 +8329,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -8401,7 +8401,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -8473,7 +8473,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -8545,7 +8545,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>
@@ -8617,7 +8617,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 {
     font-family: Liberation Sans;
     font: ;
-	
+
     text-align: center;
 }
 </string>

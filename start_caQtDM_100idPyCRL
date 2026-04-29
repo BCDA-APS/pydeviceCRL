@@ -2,9 +2,9 @@
 
 export EPICS_APP=`dirname ${BASH_SOURCE:-$0}`
 export EPICS_APP_UI_DIR=${EPICS_APP}/100idPyCRLApp/op/ui
-export DEFAULT_UI_FILE=${1:-${DEFAULT_UI_FILE:-pydev_transfocator_1x.ui}}
+export DEFAULT_UI_FILE=${1:-${DEFAULT_UI_FILE:-crl_100ID_less.ui}}
 #export UI_FILE_MACROS=${2:-"P=100idPyCRL:,TF=CRL1,N=1"}
-export UI_FILE_MACROS=${2:-"P=100idPyCRL:,CRL=CRL"}
+export UI_FILE_MACROS=${2:-"P=100idPyCRL:,CRL=MS"}
 
 source ${EPICS_APP}/setup_epics_common caqtdm
 
