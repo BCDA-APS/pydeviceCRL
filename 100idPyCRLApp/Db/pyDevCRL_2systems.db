@@ -10,6 +10,15 @@ record(longin, "$(P)$(SYSID):system1_RBV_long"){
     field(DTYP, "pydev")
     field(INP,  "@pydev.iointr('updated_system1')")
     field(SCAN, "I/O Intr")
+    field(FLNK, "$(P)$(SYSID):resizeMinFxn.PROC CA")
+}
+
+record(calcout, "$(P)$(SYSID):resizeMinFxn"){
+	field(INPA, "$(P)$(SYSID):system1_RBV_long")
+	field(INPB, "$(ELEMA)")
+	field(INPC, "$(ELEMB)")
+	field(CALC, "A?C:B")
+	field(OUT, "$(P)$(SYSID):minimizeFsize.NUSE")
 }
 
 record(dfanout, "$(P)$(SYSID):system1_RBV_fo"){

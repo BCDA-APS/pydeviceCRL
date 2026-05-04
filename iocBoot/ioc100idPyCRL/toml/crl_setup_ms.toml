@@ -40,7 +40,7 @@ d_Stof = [55.0, 66.2]
 # d_min 	- Minimum thickness at the apex in m
 [crl]
 labels = ['B', 'C']
-stacks = [10, 10]
+stacks = [9, 10]
 d_min = [0.00003, 0.00003]
 
 
@@ -73,7 +73,7 @@ KBV_p_limit = 1.0
 [init]
 sysType = '1x'
 initConfig = ['B']
-initSample = ['C']
+initSample = 'C'
 
 [default_1x]
 sysType = '1x'

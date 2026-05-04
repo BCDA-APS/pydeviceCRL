@@ -54,9 +54,9 @@ file "$(TOP)/db/posTestTools.db" {
 # adjustments 
 file "$(TOP)/db/pyDevCRL_elem.db" {
   pattern
-  {OE, 		OEL, 	OEPOS}
-  {"B", 	"A",	"$(P)testCRL1z"	}	
-  {"C", 	"B",	"$(P)testCRL2z"	}	
+  {OE, 		OEL, 	OEPOS, 				ELEM}
+  {"B", 	"A",	"$(P)testCRL1z", 	"$(ELEMA)" }	
+  {"C", 	"B",	"$(P)testCRL2z", 	"$(ELEMB)"	}	
 }  
 
 ################################################################################

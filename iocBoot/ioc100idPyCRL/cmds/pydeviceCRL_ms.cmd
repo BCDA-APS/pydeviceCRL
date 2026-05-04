@@ -12,13 +12,17 @@ epicsEnvSet("SYSTEM_SUBS_FILE", "substitutions/pyDevCRL_system_ms.substitutions"
 epicsEnvSet("TOML_FILE", "toml/crl_setup_ms.toml")
 
 # Set CRL numbers
-epicsEnvSet("_STACKS1","10")  # Number of stacks
+epicsEnvSet("_STACKS1","9")  # Number of stacks
 epicsEnvSet("_STACKS2","10")  # Number of stacks
 epicsEnvSet("_CONFIGS","1024")  # Possible configurations: 2^(stacks1)
 epicsEnvSet("ELEM_1_NAM","B")  # Label of CRL 1 used in subs and toml files
 epicsEnvSet("ELEM_2_NAM","C")  # Label of CRL 2 used in subs and toml files
-epicsEnvSet("ELEM_B","1024")  # Possible configurations: 2^(stacks1)
-epicsEnvSet("ELEM_C","1024")  # Possible configurations: 2^(stacks2)
+epicsEnvSet("ELEM_1","512")  # Possible configurations: 2^(stacks1)
+epicsEnvSet("ELEM_2","1024")  # Possible configurations: 2^(stacks2)
+
+# Set Sample station labels
+epicsEnvSet("SAM_1_NAM","C")  # Label of Sample STN 1 used in subs and toml files
+epicsEnvSet("SAM_2_NAM","D")  # Label of Sample STN 2 used in subs and toml files
 
 # Creating beam energy PVs for testing
 epicsEnvSet("MONOE","testMonoE") # for testing -- replace with real mono energy PV 
@@ -39,7 +43,7 @@ dbLoadTemplate("$(STACK_SUBS_FILE)","P=$(PREFIX),SYSID=$(SYS_ID)")
 pydev("stack_subFile = '$(STACK_SUBS_FILE)'")
 
 # Add elements (including simulated/real motors for z-position)
-dbLoadTemplate("$(SYSTEM_SUBS_FILE)","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(PY_OBJECT), ELEM=$(_CONFIGS)")
+dbLoadTemplate("$(SYSTEM_SUBS_FILE)","P=$(PREFIX),SYSID=$(SYS_ID),OBJ=$(PY_OBJECT), ELEMA=$(ELEM_1), ELEMB=$(ELEM_2)")
 
 # Import Transfocator class
 pydev("from pyCRL_system import focusingSystem")
@@ -47,10 +51,11 @@ pydev("from pyCRL_system import focusingSystem")
 # Create Transfocator object
 pydev("$(PY_OBJECT) = focusingSystem(crl_setup = '$(TOML_FILE)')")
 
-# DB file for system controls and sample position(s)
-dbLoadRecords("${TOP}/db/pyDevCRL_general.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), KEV=$(BLE), ELEM=$(_CONFIGS)")
-dbLoadRecords("${TOP}/db/pyDevCRL_2systems.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SYSA=B, SYSB=C, ELEMA=$(ELEM_B), ELEMB=$(ELEM_C)")
-dbLoadRecords("${TOP}/db/pyDevCRL_2sampleSTN.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SAMA=C, SAMB=D")
+# DB file for system controls and sample position(s); for the general file,
+# need maximum number of configs
+dbLoadRecords("${TOP}/db/pyDevCRL_general.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), KEV=$(BLE), ELEM=$(ELEM_2)")
+dbLoadRecords("${TOP}/db/pyDevCRL_2systems.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SYSA=$(ELEM_1_NAM), SYSB=$(ELEM_2_NAM), ELEMA=$(ELEM_1), ELEMB=$(ELEM_2)")
+dbLoadRecords("${TOP}/db/pyDevCRL_2sampleSTN.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SAMA=$(SAM_1_NAM), SAMB=$(SAM_2_NAM)")
 
 # For 28 (3 CRLs):
 # dbLoadRecords("${TOP}/db/pyDevCRL_3systems.db","P=$(PREFIX), SYSID=$(SYS_ID), OBJ=$(PY_OBJECT), SYSA=B, SYSB=C, SYSC=D")

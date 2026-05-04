@@ -618,7 +618,7 @@ class focusingSystem():
             case SYSTEM_TYPE.singleCRL:
                 if self.verbose: print(f"Single crl lookup table calc commencing")
                 crl = self.curr_config['CRLs'][0]
-                sam = self.curr_config['Sample'][0]
+                sam = self.curr_config['Sample']
                 
                 bl_subset = {'d_StoL1': self.bl['d_StoL'][crl],
                              'L1_offset': self.bl['L_offset'][crl],
