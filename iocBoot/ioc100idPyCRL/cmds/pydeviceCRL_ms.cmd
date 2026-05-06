@@ -76,6 +76,14 @@ doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):verbosity','1')")
 # Disable calc of lookup table
 doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):recalc_enable','0')") # Disable table calc
 
+# Can set MDEL of some of the intermediary calcs in order to reduce excessive
+# lookup table recalculations
+# Mono energy is a bit noisy (at least 0.1 eV level)
+doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):EnergyCalc.MDEL','0.0005')")
+# D CRL z-position encoder a bit noisy (copied from 9id, only useful as example
+#doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):D:oePosOffsetConv.MDEL','0.000001')") 
+
+
 # TODO can 1, 2 be replaced programmatically?
 # Process current slit and energy PV settings
 doAfterIocInit("dbpf('$(PREFIX)$(SYS_ID):$(ELEM_1_NAM):slitSize_H.PROC','1')") # PROC H slit size read and update CRL1 object

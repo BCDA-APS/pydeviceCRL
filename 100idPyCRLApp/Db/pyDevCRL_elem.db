@@ -67,7 +67,7 @@ record(dfanout, "$(P)$(SYSID):$(OE):crlBusyFO"){
 }
 
 record(transform, "$(P)$(SYSID):$(OE):lens_decode"){
-	field(INPA, "$(P)$(SYSID):$(OE):lenses CP")
+#	field(INPA, "$(P)$(SYSID):$(OE):lenses CP")
 	field(CLCB, "A % 2")
 	field(CLCC, "(A >> 1) % 2")
 	field(CLCD, "(A >> 2) % 2")
@@ -78,8 +78,8 @@ record(transform, "$(P)$(SYSID):$(OE):lens_decode"){
 	field(CLCI, "(A >> 7) % 2")
 	field(CLCJ, "(A >> 8) % 2")
 	field(CLCK, "(A >> 9) % 2")
-#	field(CLCL, "(A >> 10) % 2")
-#	field(CLCM, "(A >> 11) % 2")
+	field(CLCL, "(A >> 10) % 2")
+	field(CLCM, "(A >> 11) % 2")
 	field(FLNK, "$(P)$(SYSID):$(OE):lensSetSeq.PROC PP")
 }
 
@@ -107,6 +107,8 @@ record(dfanout, "$(P)$(SYSID):$(OE):delayFanout02"){
 	field(DOL, "$(P)$(SYSID):$(OE):interLensDelay")
 	field(OUTA, "$(P)$(SYSID):$(OE):lensSetSeq.DLY8")
 	field(OUTB, "$(P)$(SYSID):$(OE):lensSetSeq.DLY9")
+	field(OUTC, "$(P)$(SYSID):$(OE):lensSetSeq.DLYA")
+	field(OUTD, "$(P)$(SYSID):$(OE):lensSetSeq.DLYB")
 }
 
 
@@ -121,7 +123,8 @@ record(seq, "$(P)$(SYSID):$(OE):lensSetSeq"){
 	field(DOL7, "$(P)$(SYSID):$(OE):lens_decode.I")
 	field(DOL8, "$(P)$(SYSID):$(OE):lens_decode.J")
 	field(DOL9, "$(P)$(SYSID):$(OE):lens_decode.K")
-#	field(DOA, "0")
+	field(DOLA, "$(P)$(SYSID):$(OE):lens_decode.L")
+	field(DOLB, "$(P)$(SYSID):$(OE):lens_decode.M")
 	field(LNK0, "$(P)$(SYSID):$(OE):stack1 PP")
 	field(LNK1, "$(P)$(SYSID):$(OE):stack2 PP")
 	field(LNK2, "$(P)$(SYSID):$(OE):stack3 PP")
@@ -132,12 +135,13 @@ record(seq, "$(P)$(SYSID):$(OE):lensSetSeq"){
 	field(LNK7, "$(P)$(SYSID):$(OE):stack8 PP")
 	field(LNK8, "$(P)$(SYSID):$(OE):stack9 PP")
 	field(LNK9, "$(P)$(SYSID):$(OE):stack10 PP")
-#	field(LNKA, "$(P)$(SYSID):$(OE):crlBusy PP")
+	field(LNKA, "$(P)$(SYSID):$(OE):stack11 PP")
+	field(LNKB, "$(P)$(SYSID):$(OE):stack12 PP")
 }
 
 record(calcout, "$(P)$(SYSID):$(OE):lens_encode"){
 	field(OUT, "$(P)$(SYSID):$(OE):lensConfig_BW PP")
-	field(CALC, "A+B*2+C*4+D*8+E*16+F*32+G*64+H*128+I*256+J*512")
+	field(CALC, "A+B*2+C*4+D*8+E*16+F*32+G*64+H*128+I*256+J*512+K*1024+L*2048")
 } 
 
 #record(dfanout, "$(P)$(SYSID):$(OE):lens_encode_sync") {
@@ -153,7 +157,7 @@ record(longout, "$(P)$(SYSID):$(OE):lensConfig_BW") {
 
 record(calcout, "$(P)$(SYSID):$(OE):lens_RBV_encode"){
 	field(OUT, "$(P)$(SYSID):$(OE):lensConfig_RBV NPP")
-	field(CALC, "A+B*2+C*4+D*8+E*16+F*32+G*64+H*128+I*256+J*512")
+	field(CALC, "A+B*2+C*4+D*8+E*16+F*32+G*64+H*128+I*256+J*512+K*1024+L*2048")
 } 
 
 record(longout, "$(P)$(SYSID):$(OE):lensConfig_RBV") {
