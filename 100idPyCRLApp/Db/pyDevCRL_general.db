@@ -74,6 +74,23 @@ record(bi, "$(P)$(SYSID):beamMode_RBV"){
   field(SCAN, "I/O Intr")
 }
 
+record(bo, "$(P)$(SYSID):focusMode"){
+	field(ZNAM, "Under")
+	field(ONAM, "Over")
+	field(DTYP, "pydev")
+	field(OUT, "@$(OBJ).updateFocusMode(VAL)")
+	field(DISV, "1")
+	field(SDIS, "$(P)$(SYSID):sysType")
+}
+
+record(bi, "$(P)$(SYSID):focusMode_RBV"){
+  field(ZNAM, "Under")
+  field(ONAM, "Over")
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('updated_focus_mode')")
+  field(SCAN, "I/O Intr")
+}
+
 record(ao, "$(P)$(SYSID):focalSize"){
 	field(EGU, "m")
     field(FLNK, "$(P)$(SYSID):focalSizeSeq.PROC CA")

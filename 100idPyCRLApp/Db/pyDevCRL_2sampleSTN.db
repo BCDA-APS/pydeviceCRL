@@ -26,3 +26,22 @@ record(mbbi, "$(P)$(SYSID):sample_RBV"){
 #    field(SCAN, "I/O Intr")
 	field(FLNK, "$(P)$(SYSID):recalc_table.PROC CA")
 }
+
+# F, G outputs used by Bluesky transfocator class to store sample position
+record(transform, "$(P)$(SYSID):SamPosCalc"){
+  field(DESC, "Sample position select calc")
+  field(SCAN, "Passive")
+  field(INPA, "$(P)$(SYSID):sample_RBV.RVAL CP")
+  field(INPB, "$(P)$(SYSID):$(SAMA):samplePosition_RBV CP")
+  field(INPC, "$(P)$(SYSID):$(SAMB):samplePosition_RBV CP")
+  field(INPD, "$(P)$(SYSID):$(SAMA):samplePositionOffset_RBV CP")
+  field(INPE, "$(P)$(SYSID):$(SAMB):samplePositionOffset_RBV CP")
+  field(CMTF, "Sample position")
+  field(CLCF, "(A==0)?B:C")
+#  field(OUTF, "")
+  field(CMTG, "Sample position")
+  field(CLCG, "(A==0)?D:E")
+#  field(OUTG, "")
+  field(PREC, "4")
+  field(SCAN, "Passive")
+}

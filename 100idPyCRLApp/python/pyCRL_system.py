@@ -20,6 +20,8 @@ DIM_MACRO = 'DIM'
 
 modes = ['flat','round']
 
+focusModes = ['Under', 'Over']
+
 '''
 Config variables
 
@@ -210,7 +212,8 @@ class focusingSystem():
                 self.crlkb_config["KBs"]        = kb['labels'][config["default_1xkb"]["KBs"]]               # convert index to label       
                 self.crlkb_config["Sample"]     = sample['labels'][config["default_1xkb"]["Sample"]]        # convert index to label
 
-
+        # Initialize to under-focus
+        self.focusMode = focusModes[0]
         
         # Setup beam properties
         self.mode = modes[0]
@@ -742,6 +745,8 @@ class focusingSystem():
             case SYSTEM_TYPE.doubleCRL.value:
                 self.curr_config = copy.deepcopy(self.double_config)
                 if self.verbose: print('Set to double CRL system')
+                self.focusMode = focusModes[0]
+                self.updateFocusModeRBV()
             case SYSTEM_TYPE.CRLandKB.value:
                 self.curr_config = copy.deepcopy(self.crlkb_config)
                 if self.verbose: print('Set to KB + CRL system')
@@ -825,6 +830,15 @@ class focusingSystem():
         '''
         retval = (self.mode == modes[1])
         pydev.iointr('updated_mode', float(retval))
+
+    def updateFocusModeRBV(self):
+        '''
+        Description
+            Updates focus mode readback PV.  To be called after focus mode changed
+        '''
+        retval = (self.focusMode == focusModes[1])
+        pydev.iointr('updated_focus_mode', float(retval))
+
 
     def updateEnergyRBV(self):
         '''
@@ -985,9 +999,14 @@ class focusingSystem():
         # simple approach
         # self.indexSorted = np.argmin(np.abs(self.lookupTable - self.focalSize))
 
+        if self.focusMode == 'Over':
+            find_levels_direction = 'forward2'
+        else:
+            find_levels_direction = 'forward'
+        
         # XS approach -- can handle nan but in pydev application don't have a good
         # way to "transmit" errors (i.e. no solution found) to user.
-        indices, _ = find_levels(self.lookupTable, self.focalSize, direction='forward')
+        indices, _ = find_levels(self.lookupTable, self.focalSize, direction=find_levels_direction)
         self.indexSorted['1'] = indices[0]
         if self.verbose: print(f"1/f-sorted config index found at {self.indexSorted['1']}")
 
@@ -1165,6 +1184,16 @@ class focusingSystem():
         if self.verbose: print(f'Updating beam mode from {self.mode} to {modes[mode]}')
         self.mode = modes[mode]
         self.setupSourceEnergyDependent(mode=self.mode)
+
+    def updateFocusMode(self, mode):
+        '''
+        Description
+        
+        '''
+        
+        if self.verbose: print(f'Updating focus mode from {self.focusMode} to {focusModes[mode]}')
+        self.focusMode = focusModes[mode]
+        self.updateFocusModeRBV()
         
     def updateE(self, energy):
         '''

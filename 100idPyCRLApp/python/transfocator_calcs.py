@@ -262,13 +262,46 @@ def find_levels(array, levels, direction='forward'):
 
         crossings = []
 
-        if direction == 'forward':
-            for i in range(1, len(array)):
+		# Added forward2 option so that search begins after global minimum (over-focused)
+        if direction == 'forward' or direction == 'forward2':
+            if direction == 'forward':
+                start_search = 1
+            else:
+                imin = np.nanargmin(array)   # first occurrence of global minimum
+                start_search = imin + 1
+            for i in range(start_search, len(array)):
                 if np.isnan(array[i - 1]) or np.isnan(array[i]):
                     continue
                 if (array[i - 1] < level <= array[i]) or (array[i - 1] > level >= array[i]):
                     crossings.append(i - 1)
                     break
+        
+        
+#        if direction == 'forward':
+#            for i in range(1, len(array)):
+#                if np.isnan(array[i - 1]) or np.isnan(array[i]):
+#                    continue
+#                if (array[i - 1] < level <= array[i]) or (array[i - 1] > level >= array[i]):
+#                    crossings.append(i - 1)
+#                    break
+#        elif direction == 'forward2':
+#            imin = np.nanargmin(array)   # first occurrence of global minimum
+#            if imin != len(array) - 1:
+#                # Scan rightward from the minimum.
+#                # Intervals are (i-1, i), with i increasing from imin+1 upward.
+#                for i in range(imin + 1, len(array)):
+#                   if np.isnan(array[i - 1]) or np.isnan(array[i]):
+#                       continue
+#                   if (array[i - 1] < level <= array[i]) or (array[i - 1] > level >= array[i]):
+#                       crossings.append(i - 1)
+#                       break
+
+#            for i in range(1, len(array)):
+#                if np.isnan(array[i - 1]) or np.isnan(array[i]):
+#                    continue
+#                if (array[i - 1] < level <= array[i]) or (array[i - 1] > level >= array[i]):
+#                    crossings.append(i - 1)
+#                    break
         elif direction == 'backward':
             for i in range(len(array) - 2, -1, -1):
                 if np.isnan(array[i + 1]) or np.isnan(array[i]):

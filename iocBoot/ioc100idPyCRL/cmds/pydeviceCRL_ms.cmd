@@ -30,7 +30,8 @@ epicsEnvSet("IDENERGY","testIDE") # for testing -- replace with real ID energy P
 
 # Setting Mono energy PV
 #epicsEnvSet("BLE","$(PREFIX)$(MONOE)")	# Beam energy PV at CRL (testing uses MONOE defined earlier)
-epicsEnvSet("BLE","100idPySBL:BraggERdbkAO")
+#epicsEnvSet("BLE","100idPySBL:BraggERdbkAO")
+epicsEnvSet("BLE","100idDCM:MN1:Energy.RBV")
 
 ################################################################################
 # Load DBs and python code
