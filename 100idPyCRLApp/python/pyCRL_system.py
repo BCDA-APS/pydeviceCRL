@@ -1150,6 +1150,30 @@ class focusingSystem():
         fSize_preview = self.lookupTable[int(sortedIndex)]
         if self.verbose: print(f'Preview focal sizes for {sortedIndex} is {fSize_preview}')
         pydev.iointr('new_preview', fSize_preview)
+
+    def getPreviewLens(self, focalSize):
+        '''
+        Description:
+            Finds focal size for desired index
+            
+        Parameters:
+            sortedIndex: string
+                index user would like preview focal size
+        '''
+        if self.focusMode == 'Over':
+            find_levels_direction = 'forward2'
+        else:
+            find_levels_direction = 'forward'
+        
+        # XS approach -- can handle nan but in pydev application don't have a good
+        # way to "transmit" errors (i.e. no solution found) to user.
+        indices, _ = find_levels(self.lookupTable, focalSize, direction=find_levels_direction)
+#        self.indexSorted['1'] = indices[0]
+
+        lens_preview = indices[0]
+        if self.verbose: print(f'Preview lenses for {focalSize} is {lens_preview}')
+        pydev.iointr('new_lens_preview', lens_preview)
+
     
     def setThickerrFlag(self, flag):
         '''
