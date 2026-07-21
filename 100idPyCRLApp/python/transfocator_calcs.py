@@ -28,7 +28,7 @@ Lens_diameter_dict = {int(col1): col2 for col1, col2 in Lens_diameter_table}
 
 #Using local density definitions until package/library found with longer list
 #in g/cm^3 
-DENSITY = {'Si': 2.33, 'TiO2': 4.23,  'InSb': 5.78} 
+DENSITY = {'Si': 2.33, 'TiO2': 4.23,  'InSb': 5.78, 'Diamond' : 3.52} 
 
 #class SYSTEM_TYPE(Enum):
 #    singleCRL = 1
@@ -59,19 +59,18 @@ def get_densities(materials):
     
     densities = dict.fromkeys(materials)
     for material in list(densities):
-        try:
-            matdb = xraylib.CompoundParser(material)
-        except ValueError as err:
-            print(f"{material} not found in xraylib.")
+        if material in list(DENSITY):
+            density = DENSITY[material]
+#            print(f"{material} found in DENSITY keys.")
         else:
-            if matdb['nAtomsAll'] == 1:
-                density = xraylib.ElementDensity(matdb['Elements'][0])
+            try:
+                matdb = xraylib.CompoundParser(material)
+            except ValueError as err:
+                print(f"{material} not found in xraylib or in DENSITY keys.")
             else:
-                if material in list(DENSITY):
-                    density = DENSITY[material]
-                else:
-                    raise ValueError(f"{material} not found in DENSITY keys.")
-            densities[material]=density
+                if matdb['nAtomsAll'] == 1:
+                    density = xraylib.ElementDensity(matdb['Elements'][0])
+        densities[material]=density
         
     return densities
 
@@ -164,10 +163,15 @@ def materials_to_deltas(material_list, energy):
     # Iterate through each material in the input list
     for material in material_list:
         # Compute the delta value for the current material at the given energy
-        Z = xraylib.SymbolToAtomicNumber(material)
-        density = xraylib.ElementDensity(Z)
+        # Fix for diamond:
+        if material == 'Diamond':
+            density = get_densities([material])[material]
+            material = 'C'
+        else:
+            Z = xraylib.SymbolToAtomicNumber(material)
+            density = xraylib.ElementDensity(Z)
         delta = 1.0-xraylib.Refractive_Index_Re(material, energy, density)
-        
+                
         # Add the delta value to the delta list
         delta_list.append(delta)
     
@@ -192,9 +196,15 @@ def materials_to_linear_attenuation(material_list, energy):
 
     # Iterate through each material in the input list
     for material in material_list:
-        # Compute the delta value for the current material at the given energy
-        Z = xraylib.SymbolToAtomicNumber(material)
-        density = xraylib.ElementDensity(Z)
+        # Compute the attenuation for the current material at the given energy
+        # Fix for diamond:
+        if material == 'Diamond':
+            density = get_densities([material])[material]
+            material = 'C'
+            Z = xraylib.SymbolToAtomicNumber(material)
+        else:
+            Z = xraylib.SymbolToAtomicNumber(material)
+            density = xraylib.ElementDensity(Z)
         # Compute the mass attenuation coefficient in cm^2/g
         #mass_attenuation = xraylib.CS_Photo(Z, energy)
         mass_attenuation = xraylib.CS_Total(Z, energy)
@@ -262,7 +272,7 @@ def find_levels(array, levels, direction='forward'):
 
         crossings = []
 
-		# Added forward2 option so that search begins after global minimum (over-focused)
+        # Added forward2 option so that search begins after global minimum (over-focused)
         if direction == 'forward' or direction == 'forward2':
             if direction == 'forward':
                 start_search = 1
