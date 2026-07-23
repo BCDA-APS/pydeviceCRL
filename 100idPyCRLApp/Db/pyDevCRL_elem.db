@@ -7,6 +7,12 @@ record(longin, "$(P)$(SYSID):$(OE):lenses") {
   field(FLNK, "$(P)$(SYSID):$(OE):lenses_comp.PROC CA")
 }
 
+record(longin, "$(P)$(SYSID):$(OE):lens_preview"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_lens_preview_$(OE)')")
+  field(SCAN, "I/O Intr")
+}
+
 #Record to determine if lenses are new
 record(calcout, "$(P)$(SYSID):$(OE):lenses_comp"){
   field(INPA, "$(P)$(SYSID):$(OE):lensConfig_RBV NPP")
@@ -268,3 +274,19 @@ record(ai, "$(P)$(SYSID):$(OE):oePosition_RBV"){
   field(PREC, "6")
 }
 
+record(scalcout, "$(P)$(SYSID):$(OE):inUseCalc"){
+	field(DESC, "Checking if elem is in use")
+	field(AA, "$(OE)")
+	field(BB, "2x")
+	field(INCC, "$(P)$(SYSID):system1_RBV CP")
+	field(INDD, "$(P)$(SYSID):system2_RBV CP")
+	field(INEE, "$(P)$(SYSID):sysType_RBV CP")
+	field(CALC, "AA == CC | (BB == EE & AA == DD)")
+}
+
+record(bi, "$(P)$(SYSID):$(OE):inUse"){
+	field(DESC, "Is element in use")
+	field(INP, "$(P)$(SYSID):$(OE):inUseCalc.VAL CP")
+	field(ZNAM, "Not Used")
+	field(ONAM, "In use")
+}

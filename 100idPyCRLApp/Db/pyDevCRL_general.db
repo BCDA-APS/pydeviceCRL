@@ -171,16 +171,16 @@ record(ai, "$(P)$(SYSID):fSize_preview"){
   field(PREC, "6")
 }
 
-record(longout, "$(P)$(SYSID):previewFocalSize") {
+record(ao, "$(P)$(SYSID):previewFocalSize") {
   field(DTYP, "pydev")
   field(OUT, "@$(OBJ).getPreviewLens(VAL)")
 }
 
-record(ai, "$(P)$(SYSID):lens_preview"){
+record(ai, "$(P)$(SYSID):previewFocalSize_actual"){
   field(DTYP, "pydev")
-  field(INP,  "@pydev.iointr('new_lens_preview')")
+  field(INP,  "@pydev.iointr('new_preview_fSize')")
   field(SCAN, "I/O Intr")
-  field(PREC, "6")
+  field(PREC, "5")
 }
 
 record(bo, "$(P)$(SYSID):verbosity"){

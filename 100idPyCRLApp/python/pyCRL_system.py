@@ -1079,8 +1079,8 @@ class focusingSystem():
             self.focalSize_actual = fsize
             self.q = q2
             self.dq = dq2
-         
-        
+
+                
     def updateLensConfigPV(self):
         '''
         Description:
@@ -1154,10 +1154,10 @@ class focusingSystem():
     def getPreviewLens(self, focalSize):
         '''
         Description:
-            Finds focal size for desired index
+            Preview configuration for desired focal size
             
         Parameters:
-            sortedIndex: string
+            focalSize: float
                 index user would like preview focal size
         '''
         if self.focusMode == 'Over':
@@ -1170,9 +1170,17 @@ class focusingSystem():
         indices, _ = find_levels(self.lookupTable, focalSize, direction=find_levels_direction)
 #        self.indexSorted['1'] = indices[0]
 
-        lens_preview = indices[0]
-        if self.verbose: print(f'Preview lenses for {focalSize} is {lens_preview}')
-        pydev.iointr('new_lens_preview', lens_preview)
+        sortedIndex = indices[0]
+        
+        for i, crl_label in enumerate(self.curr_config['CRLs']):
+            if i > 0:
+                sortedIndex = self.index1to2_sorted[sortedIndex]
+            lens_preview = self.sorted_invF_index[str(i+1)][sortedIndex]
+            if self.verbose: print(f'Preview lenses for {crl_label} with focal size of {focalSize} is {lens_preview}')
+            pydev.iointr('new_lens_preview_'+crl_label, int(lens_preview))            
+        
+        focalSizeActual = self.lookupTable[sortedIndex] 
+        pydev.iointr('new_preview_fSize', focalSizeActual)            
 
     
     def setThickerrFlag(self, flag):
