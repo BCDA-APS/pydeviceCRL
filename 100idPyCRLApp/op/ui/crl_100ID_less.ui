@@ -6,7 +6,7 @@
         <x>0</x>
         <y>0</y>
         <width>440</width>
-        <height>803</height>
+        <height>828</height>
       </rect>
     </property>
     <property name="background">
@@ -45,7 +45,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <x>0</x>
             <y>0</y>
             <width>440</width>
-            <height>803</height>
+            <height>828</height>
           </rect>
         </property>
         <widget class="caChoice" name="caChoice1">
@@ -102,9 +102,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <green>0</green>
               <blue>0</blue>
             </color>
-          </property>
-          <property name="alignment">
-            <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
           </property>
           <property name="channel">
             <string>$(P)$(CRL):EnergySelect</string>
@@ -174,9 +171,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <green>0</green>
               <blue>0</blue>
             </color>
-          </property>
-          <property name="alignment">
-            <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
           </property>
           <property name="channel">
             <string>$(P)$(CRL):EnergySelect</string>
@@ -2179,11 +2173,192 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
           </widget>
         </widget>
+        <widget class="caLabel" name="caLabel12">
+          <property name="text">
+            <string>Remove All Lenses</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>25</x>
+              <y>385</y>
+              <width>150</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="QFrame" name="QFrame6">
+          <property name="geometry">
+            <rect>
+              <x>190</x>
+              <y>385</y>
+              <width>44</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="styleSheet">
+            <string>QPushButton
+{
+    font-family: Liberation Sans;
+    font: ;
+
+    text-align: center;
+}
+</string>
+          </property>
+          <widget class="caMessageButton" name="caMessageButton6">
+            <property name="foreground">
+              <color alpha="255">
+                <red>36</red>
+                <green>36</green>
+                <blue>36</blue>
+              </color>
+            </property>
+            <property name="background">
+              <color alpha="255">
+                <red>87</red>
+                <green>202</green>
+                <blue>228</blue>
+              </color>
+            </property>
+            <property name="label">
+              <string>$(OE1)</string>
+            </property>
+            <property name="channel">
+              <string>$(P)$(CRL):$(OE1):lens_decode.A</string>
+            </property>
+            <property name="pressMessage">
+              <string>0</string>
+            </property>
+            <property name="colorMode">
+              <enum>caMessageButton::Static</enum>
+            </property>
+            <property name="fontScaleMode">
+              <enum>EPushButton::Height</enum>
+            </property>
+            <property name="geometry">
+              <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>44</width>
+                <height>20</height>
+              </rect>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QFrame" name="QFrame7">
+          <property name="geometry">
+            <rect>
+              <x>236</x>
+              <y>385</y>
+              <width>44</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="styleSheet">
+            <string>QPushButton
+{
+    font-family: Liberation Sans;
+    font: ;
+
+    text-align: center;
+}
+</string>
+          </property>
+          <widget class="caMessageButton" name="caMessageButton7">
+            <property name="foreground">
+              <color alpha="255">
+                <red>36</red>
+                <green>36</green>
+                <blue>36</blue>
+              </color>
+            </property>
+            <property name="background">
+              <color alpha="255">
+                <red>87</red>
+                <green>202</green>
+                <blue>228</blue>
+              </color>
+            </property>
+            <property name="label">
+              <string>$(OE2)</string>
+            </property>
+            <property name="channel">
+              <string>$(P)$(CRL):$(OE2):lens_decode.A</string>
+            </property>
+            <property name="pressMessage">
+              <string>0</string>
+            </property>
+            <property name="colorMode">
+              <enum>caMessageButton::Static</enum>
+            </property>
+            <property name="fontScaleMode">
+              <enum>EPushButton::Height</enum>
+            </property>
+            <property name="geometry">
+              <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>44</width>
+                <height>20</height>
+              </rect>
+            </property>
+          </widget>
+        </widget>
         <widget class="caPolyLine" name="caPolyLine3">
           <property name="geometry">
             <rect>
               <x>30</x>
-              <y>385</y>
+              <y>410</y>
               <width>390</width>
               <height>10</height>
             </rect>
@@ -2218,7 +2393,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <string>-5,5;405,5</string>
           </property>
         </widget>
-        <widget class="caLabel" name="caLabel12">
+        <widget class="caLabel" name="caLabel13">
           <property name="text">
             <string>System Status</string>
           </property>
@@ -2238,7 +2413,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <property name="geometry">
             <rect>
               <x>25</x>
-              <y>400</y>
+              <y>425</y>
               <width>150</width>
               <height>20</height>
             </rect>
@@ -2287,7 +2462,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <property name="geometry">
             <rect>
               <x>190</x>
-              <y>400</y>
+              <y>425</y>
               <width>90</width>
               <height>20</height>
             </rect>
@@ -2325,11 +2500,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caLineEdit::Height</enum>
           </property>
         </widget>
-        <widget class="QFrame" name="QFrame6">
+        <widget class="QFrame" name="QFrame8">
           <property name="geometry">
             <rect>
               <x>295</x>
-              <y>400</y>
+              <y>425</y>
               <width>120</width>
               <height>20</height>
             </rect>
@@ -2351,7 +2526,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 }
 </string>
           </property>
-          <widget class="caMessageButton" name="caMessageButton6">
+          <widget class="caMessageButton" name="caMessageButton8">
             <property name="foreground">
               <color alpha="255">
                 <red>36</red>
@@ -2391,7 +2566,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
           </widget>
         </widget>
-        <widget class="caLabel" name="caLabel13">
+        <widget class="caLabel" name="caLabel14">
           <property name="text">
             <string>CRL $(OE1) Status</string>
           </property>
@@ -2411,7 +2586,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <property name="geometry">
             <rect>
               <x>25</x>
-              <y>425</y>
+              <y>450</y>
               <width>150</width>
               <height>20</height>
             </rect>
@@ -2460,7 +2635,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <property name="geometry">
             <rect>
               <x>190</x>
-              <y>425</y>
+              <y>450</y>
               <width>90</width>
               <height>20</height>
             </rect>
@@ -2498,11 +2673,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caLineEdit::Height</enum>
           </property>
         </widget>
-        <widget class="QFrame" name="QFrame7">
+        <widget class="QFrame" name="QFrame9">
           <property name="geometry">
             <rect>
               <x>295</x>
-              <y>425</y>
+              <y>450</y>
               <width>120</width>
               <height>20</height>
             </rect>
@@ -2524,7 +2699,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 }
 </string>
           </property>
-          <widget class="caMessageButton" name="caMessageButton7">
+          <widget class="caMessageButton" name="caMessageButton9">
             <property name="foreground">
               <color alpha="255">
                 <red>36</red>
@@ -2564,7 +2739,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
           </widget>
         </widget>
-        <widget class="caLabel" name="caLabel14">
+        <widget class="caLabel" name="caLabel15">
           <property name="text">
             <string>CRL $(OE2) Status</string>
           </property>
@@ -2584,7 +2759,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <property name="geometry">
             <rect>
               <x>25</x>
-              <y>450</y>
+              <y>475</y>
               <width>150</width>
               <height>20</height>
             </rect>
@@ -2633,7 +2808,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <property name="geometry">
             <rect>
               <x>190</x>
-              <y>450</y>
+              <y>475</y>
               <width>90</width>
               <height>20</height>
             </rect>
@@ -2671,11 +2846,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caLineEdit::Height</enum>
           </property>
         </widget>
-        <widget class="QFrame" name="QFrame8">
+        <widget class="QFrame" name="QFrame10">
           <property name="geometry">
             <rect>
               <x>295</x>
-              <y>450</y>
+              <y>475</y>
               <width>120</width>
               <height>20</height>
             </rect>
@@ -2697,7 +2872,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
 }
 </string>
           </property>
-          <widget class="caMessageButton" name="caMessageButton8">
+          <widget class="caMessageButton" name="caMessageButton10">
             <property name="foreground">
               <color alpha="255">
                 <red>36</red>
@@ -2741,7 +2916,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <property name="geometry">
             <rect>
               <x>32</x>
-              <y>475</y>
+              <y>500</y>
               <width>390</width>
               <height>10</height>
             </rect>
@@ -2776,12 +2951,12 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <string>-5,5;405,5</string>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame74">
+        <widget class="caFrame" name="caFrame81">
           <property name="geometry">
             <rect>
-              <x>91</x>
-              <y>490</y>
-              <width>272</width>
+              <x>92</x>
+              <y>515</y>
+              <width>271</width>
               <height>114</height>
             </rect>
           </property>
@@ -2804,9 +2979,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <widget class="caInclude" name="caInclude1">
             <property name="geometry">
               <rect>
-                <x>1</x>
+                <x>0</x>
                 <y>34</y>
-                <width>271</width>
+                <width>270</width>
                 <height>80</height>
               </rect>
             </property>
@@ -2821,7 +2996,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>lenses_100IDB.ui</string>
             </property>
             <property name="macro">
-              <string>P=$(P)$(CRL):,OE=$(OE1),L1=01,L2=02,L3=03,L4=04,L5=05,L6=06,L7=07,L8=08,L9=09,L10=10</string>
+              <string>P=$(P)$(CRL):,OE=$(OE1)</string>
             </property>
           </widget>
           <widget class="caLabel" name="Header">
@@ -2843,7 +3018,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
             <property name="geometry">
               <rect>
-                <x>81</x>
+                <x>80</x>
                 <y>1</y>
                 <width>110</width>
                 <height>22</height>
@@ -2874,12 +3049,12 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
           </widget>
         </widget>
-        <widget class="QFrame" name="QFrame9">
+        <widget class="QFrame" name="QFrame11">
           <property name="geometry">
             <rect>
-              <x>91</x>
-              <y>490</y>
-              <width>272</width>
+              <x>92</x>
+              <y>515</y>
+              <width>271</width>
               <height>114</height>
             </rect>
           </property>
@@ -2922,7 +3097,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>lenses_100IDB_control.ui</string>
             </property>
             <property name="args">
-              <string>P=$(P)$(CRL):,OE=$(OE1),L1=01,L2=02,L3=03,L4=04,L5=05,L6=06,L7=07,L8=08,L9=09,L10=10</string>
+              <string>P=$(P)$(CRL):,OE=$(OE1)</string>
             </property>
             <property name="removeParent">
               <string>false</string>
@@ -2940,18 +3115,18 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>272</width>
+                <width>271</width>
                 <height>114</height>
               </rect>
             </property>
           </widget>
         </widget>
-        <widget class="caFrame" name="caFrame79">
+        <widget class="caFrame" name="caFrame86">
           <property name="geometry">
             <rect>
-              <x>104</x>
-              <y>609</y>
-              <width>246</width>
+              <x>79</x>
+              <y>634</y>
+              <width>297</width>
               <height>114</height>
             </rect>
           </property>
@@ -2974,9 +3149,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <widget class="caInclude" name="caInclude2">
             <property name="geometry">
               <rect>
-                <x>1</x>
+                <x>0</x>
                 <y>34</y>
-                <width>245</width>
+                <width>296</width>
                 <height>80</height>
               </rect>
             </property>
@@ -2991,7 +3166,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>lenses_100IDC.ui</string>
             </property>
             <property name="macro">
-              <string>P=$(P)$(CRL):,OE=$(OE2),L1=01,L2=02,L3=03,L4=04,L5=05,L6=06,L7=07,L8=08,L9=09</string>
+              <string>P=$(P)$(CRL):,OE=$(OE2)</string>
             </property>
           </widget>
           <widget class="caLabel" name="Header2">
@@ -3013,7 +3188,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
             <property name="geometry">
               <rect>
-                <x>68</x>
+                <x>93</x>
                 <y>1</y>
                 <width>110</width>
                 <height>22</height>
@@ -3044,12 +3219,12 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
           </widget>
         </widget>
-        <widget class="QFrame" name="QFrame10">
+        <widget class="QFrame" name="QFrame12">
           <property name="geometry">
             <rect>
-              <x>104</x>
-              <y>609</y>
-              <width>246</width>
+              <x>79</x>
+              <y>634</y>
+              <width>297</width>
               <height>114</height>
             </rect>
           </property>
@@ -3092,7 +3267,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>lenses_100IDC_control.ui</string>
             </property>
             <property name="args">
-              <string>P=$(P)$(CRL):,OE=$(OE2),L1=01,L2=02,L3=03,L4=04,L5=05,L6=06,L7=07,L8=08,L9=09</string>
+              <string>P=$(P)$(CRL):,OE=$(OE2)</string>
             </property>
             <property name="removeParent">
               <string>false</string>
@@ -3110,7 +3285,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>246</width>
+                <width>297</width>
                 <height>114</height>
               </rect>
             </property>
@@ -3120,7 +3295,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <property name="geometry">
             <rect>
               <x>32</x>
-              <y>728</y>
+              <y>753</y>
               <width>390</width>
               <height>10</height>
             </rect>
@@ -3155,11 +3330,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <string>-5,5;405,5</string>
           </property>
         </widget>
-        <widget class="QFrame" name="QFrame11">
+        <widget class="QFrame" name="QFrame13">
           <property name="geometry">
             <rect>
               <x>37</x>
-              <y>743</y>
+              <y>768</y>
               <width>80</width>
               <height>30</height>
             </rect>
@@ -3227,11 +3402,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
           </widget>
         </widget>
-        <widget class="QFrame" name="QFrame12">
+        <widget class="QFrame" name="QFrame14">
           <property name="geometry">
             <rect>
               <x>137</x>
-              <y>743</y>
+              <y>768</y>
               <width>80</width>
               <height>30</height>
             </rect>
@@ -3299,11 +3474,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
           </widget>
         </widget>
-        <widget class="QFrame" name="QFrame13">
+        <widget class="QFrame" name="QFrame15">
           <property name="geometry">
             <rect>
               <x>237</x>
-              <y>743</y>
+              <y>768</y>
               <width>80</width>
               <height>30</height>
             </rect>
@@ -3371,11 +3546,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
           </widget>
         </widget>
-        <widget class="QFrame" name="QFrame14">
+        <widget class="QFrame" name="QFrame16">
           <property name="geometry">
             <rect>
               <x>337</x>
-              <y>743</y>
+              <y>768</y>
               <width>80</width>
               <height>30</height>
             </rect>
@@ -3443,7 +3618,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
           </widget>
         </widget>
-        <widget class="caLabel" name="caLabel15">
+        <widget class="caLabel" name="caLabel16">
           <property name="text">
             <string>$(P)$(CRL)</string>
           </property>

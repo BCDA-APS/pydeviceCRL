@@ -171,6 +171,18 @@ record(ai, "$(P)$(SYSID):fSize_preview"){
   field(PREC, "6")
 }
 
+record(ao, "$(P)$(SYSID):previewFocalSize") {
+  field(DTYP, "pydev")
+  field(OUT, "@$(OBJ).getPreviewLens(VAL)")
+}
+
+record(ai, "$(P)$(SYSID):previewFocalSize_actual"){
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_preview_fSize')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "5")
+}
+
 record(bo, "$(P)$(SYSID):verbosity"){
 	field(DTYP, "pydev")
 	field(OUT, "@$(OBJ).updateVerbosity(VAL)")
@@ -289,4 +301,22 @@ record(bo, "$(P)$(SYSID):singleCRLbo"){
 	field(DESC, "Flag for single CRL")
 	field(ZNAM, "Double")
 	field(ONAM, "Single")
+}
+
+record(waveform, "$(P)$(SYSID):status_messages") {
+	field(FTVL, "CHAR")
+	field(NORD, "256")
+	field(NELM, "256")
+    field(DTYP, "pydev")
+    field(INP,  "@pydev.iointr('status_messages')")
+    field(SCAN, "I/O Intr")
+}
+
+record(waveform, "$(P)$(SYSID):error_messages") {
+	field(FTVL, "CHAR")
+	field(NORD, "256")
+	field(NELM, "256")
+    field(DTYP, "pydev")
+    field(INP,  "@pydev.iointr('error_messages')")
+    field(SCAN, "I/O Intr")
 }

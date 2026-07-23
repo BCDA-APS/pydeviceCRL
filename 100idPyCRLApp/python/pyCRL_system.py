@@ -1079,8 +1079,8 @@ class focusingSystem():
             self.focalSize_actual = fsize
             self.q = q2
             self.dq = dq2
-         
-        
+
+                
     def updateLensConfigPV(self):
         '''
         Description:
@@ -1150,6 +1150,38 @@ class focusingSystem():
         fSize_preview = self.lookupTable[int(sortedIndex)]
         if self.verbose: print(f'Preview focal sizes for {sortedIndex} is {fSize_preview}')
         pydev.iointr('new_preview', fSize_preview)
+
+    def getPreviewLens(self, focalSize):
+        '''
+        Description:
+            Preview configuration for desired focal size
+            
+        Parameters:
+            focalSize: float
+                index user would like preview focal size
+        '''
+        if self.focusMode == 'Over':
+            find_levels_direction = 'forward2'
+        else:
+            find_levels_direction = 'forward'
+        
+        # XS approach -- can handle nan but in pydev application don't have a good
+        # way to "transmit" errors (i.e. no solution found) to user.
+        indices, _ = find_levels(self.lookupTable, focalSize, direction=find_levels_direction)
+#        self.indexSorted['1'] = indices[0]
+
+        sortedIndex = indices[0]
+        
+        for i, crl_label in enumerate(self.curr_config['CRLs']):
+            if i > 0:
+                sortedIndex = self.index1to2_sorted[sortedIndex]
+            lens_preview = self.sorted_invF_index[str(i+1)][sortedIndex]
+            if self.verbose: print(f'Preview lenses for {crl_label} with focal size of {focalSize} is {lens_preview}')
+            pydev.iointr('new_lens_preview_'+crl_label, int(lens_preview))            
+        
+        focalSizeActual = self.lookupTable[sortedIndex] 
+        pydev.iointr('new_preview_fSize', focalSizeActual)            
+
     
     def setThickerrFlag(self, flag):
         '''
