@@ -5,7 +5,7 @@
       <rect>
         <x>0</x>
         <y>0</y>
-        <width>440</width>
+        <width>464</width>
         <height>828</height>
       </rect>
     </property>
@@ -44,7 +44,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <rect>
             <x>0</x>
             <y>0</y>
-            <width>440</width>
+            <width>464</width>
             <height>828</height>
           </rect>
         </property>
@@ -2954,9 +2954,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caFrame" name="caFrame81">
           <property name="geometry">
             <rect>
-              <x>67</x>
+              <x>54</x>
               <y>515</y>
-              <width>321</width>
+              <width>346</width>
               <height>114</height>
             </rect>
           </property>
@@ -2979,9 +2979,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <widget class="caInclude" name="caInclude1">
             <property name="geometry">
               <rect>
-                <x>0</x>
+                <x>1</x>
                 <y>34</y>
-                <width>320</width>
+                <width>345</width>
                 <height>80</height>
               </rect>
             </property>
@@ -2993,7 +2993,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               </color>
             </property>
             <property name="filename">
-              <string>lenses_12IDUS.ui</string>
+              <string>lenses_28ID1.ui</string>
             </property>
             <property name="macro">
               <string>P=$(P)$(CRL):,OE=$(OE1)</string>
@@ -3018,7 +3018,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
             <property name="geometry">
               <rect>
-                <x>105</x>
+                <x>118</x>
                 <y>1</y>
                 <width>110</width>
                 <height>22</height>
@@ -3052,9 +3052,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="QFrame" name="QFrame11">
           <property name="geometry">
             <rect>
-              <x>67</x>
+              <x>54</x>
               <y>515</y>
-              <width>321</width>
+              <width>346</width>
               <height>114</height>
             </rect>
           </property>
@@ -3094,7 +3094,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string> </string>
             </property>
             <property name="files">
-              <string>lenses_12IDUS_control.ui</string>
+              <string>lenses_28ID1_control.ui</string>
             </property>
             <property name="args">
               <string>P=$(P)$(CRL):,OE=$(OE1)</string>
@@ -3115,7 +3115,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>321</width>
+                <width>346</width>
                 <height>114</height>
               </rect>
             </property>
@@ -3124,9 +3124,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caFrame" name="caFrame86">
           <property name="geometry">
             <rect>
-              <x>105</x>
+              <x>29</x>
               <y>634</y>
-              <width>146</width>
+              <width>421</width>
               <height>114</height>
             </rect>
           </property>
@@ -3149,9 +3149,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <widget class="caInclude" name="caInclude2">
             <property name="geometry">
               <rect>
-                <x>1</x>
+                <x>0</x>
                 <y>34</y>
-                <width>145</width>
+                <width>420</width>
                 <height>80</height>
               </rect>
             </property>
@@ -3163,7 +3163,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               </color>
             </property>
             <property name="filename">
-              <string>lenses_12IDDS.ui</string>
+              <string>lenses_28ID2.ui</string>
             </property>
             <property name="macro">
               <string>P=$(P)$(CRL):,OE=$(OE2)</string>
@@ -3188,7 +3188,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
             <property name="geometry">
               <rect>
-                <x>18</x>
+                <x>155</x>
                 <y>1</y>
                 <width>110</width>
                 <height>22</height>
@@ -3222,9 +3222,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="QFrame" name="QFrame12">
           <property name="geometry">
             <rect>
-              <x>105</x>
+              <x>29</x>
               <y>634</y>
-              <width>245</width>
+              <width>421</width>
               <height>114</height>
             </rect>
           </property>
@@ -3264,7 +3264,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string> </string>
             </property>
             <property name="files">
-              <string>lenses_12IDDS_control.ui</string>
+              <string>lenses_28ID2_control.ui</string>
             </property>
             <property name="args">
               <string>P=$(P)$(CRL):,OE=$(OE2)</string>
@@ -3285,7 +3285,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>245</width>
+                <width>421</width>
                 <height>114</height>
               </rect>
             </property>
@@ -3294,7 +3294,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caPolyLine" name="caPolyLine5">
           <property name="geometry">
             <rect>
-              <x>32</x>
+              <x>44</x>
               <y>753</y>
               <width>390</width>
               <height>10</height>
@@ -3333,7 +3333,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="QFrame" name="QFrame13">
           <property name="geometry">
             <rect>
-              <x>37</x>
+              <x>49</x>
               <y>768</y>
               <width>80</width>
               <height>30</height>
@@ -3405,7 +3405,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="QFrame" name="QFrame14">
           <property name="geometry">
             <rect>
-              <x>137</x>
+              <x>149</x>
               <y>768</y>
               <width>80</width>
               <height>30</height>
@@ -3447,7 +3447,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>$(OE1) Stacks;$(OE2) Stacks</string>
             </property>
             <property name="files">
-              <string>stacks_12IDUS.ui;stacks_12IDDS.ui</string>
+              <string>stacks_28ID1.ui;stacks_28ID2.ui</string>
             </property>
             <property name="args">
               <string>P=$(P),CRL=$(CRL):$(OE1);P=$(P),CRL=$(CRL):$(OE2)</string>
@@ -3477,7 +3477,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="QFrame" name="QFrame15">
           <property name="geometry">
             <rect>
-              <x>237</x>
+              <x>249</x>
               <y>768</y>
               <width>80</width>
               <height>30</height>
@@ -3549,7 +3549,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="QFrame" name="QFrame16">
           <property name="geometry">
             <rect>
-              <x>337</x>
+              <x>349</x>
               <y>768</y>
               <width>80</width>
               <height>30</height>
@@ -3591,7 +3591,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>More</string>
             </property>
             <property name="files">
-              <string>crl_12ID_more.ui</string>
+              <string>crl_28ID_more.ui</string>
             </property>
             <property name="args">
               <string>P=$(P),CRL=$(CRL),OE1=$(OE1),OE2=$(OE2), SAM1=$(SAM1), SAM2=$(SAM2)</string>
@@ -3640,7 +3640,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <rect>
               <x>10</x>
               <y>0</y>
-              <width>420</width>
+              <width>444</width>
               <height>45</height>
             </rect>
           </property>

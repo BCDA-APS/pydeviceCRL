@@ -5,8 +5,8 @@
       <rect>
         <x>0</x>
         <y>0</y>
-        <width>246</width>
-        <height>125</height>
+        <width>296</width>
+        <height>137</height>
       </rect>
     </property>
     <property name="background">
@@ -44,8 +44,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <rect>
             <x>0</x>
             <y>0</y>
-            <width>246</width>
-            <height>125</height>
+            <width>296</width>
+            <height>137</height>
           </rect>
         </property>
         <widget class="caLabel" name="caLabel1">
@@ -72,7 +72,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <rect>
               <x>6</x>
               <y>5</y>
-              <width>235</width>
+              <width>280</width>
               <height>16</height>
             </rect>
           </property>
@@ -103,8 +103,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc1">
           <property name="geometry">
             <rect>
-              <x>6</x>
-              <y>26</y>
+              <x>5</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -148,8 +148,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc2">
           <property name="geometry">
             <rect>
-              <x>6</x>
-              <y>26</y>
+              <x>5</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -190,11 +190,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame4">
+        <widget class="caFrame" name="caFrame5">
           <property name="geometry">
             <rect>
-              <x>6</x>
-              <y>26</y>
+              <x>5</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -215,7 +215,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame5">
+          <widget class="caFrame" name="caFrame6">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -602,7 +602,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame10">
+          <widget class="caFrame" name="caFrame11">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -664,8 +664,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc3">
           <property name="geometry">
             <rect>
-              <x>32</x>
-              <y>26</y>
+              <x>31</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -709,8 +709,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc4">
           <property name="geometry">
             <rect>
-              <x>32</x>
-              <y>26</y>
+              <x>31</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -751,11 +751,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame13">
+        <widget class="caFrame" name="caFrame14">
           <property name="geometry">
             <rect>
-              <x>32</x>
-              <y>26</y>
+              <x>31</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -776,7 +776,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame14">
+          <widget class="caFrame" name="caFrame15">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -1163,7 +1163,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame19">
+          <widget class="caFrame" name="caFrame20">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -1225,8 +1225,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc5">
           <property name="geometry">
             <rect>
-              <x>58</x>
-              <y>26</y>
+              <x>57</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -1270,8 +1270,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc6">
           <property name="geometry">
             <rect>
-              <x>58</x>
-              <y>26</y>
+              <x>57</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -1312,11 +1312,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame22">
+        <widget class="caFrame" name="caFrame23">
           <property name="geometry">
             <rect>
-              <x>58</x>
-              <y>26</y>
+              <x>57</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -1337,7 +1337,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame23">
+          <widget class="caFrame" name="caFrame24">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -1724,7 +1724,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame28">
+          <widget class="caFrame" name="caFrame29">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -1786,8 +1786,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc7">
           <property name="geometry">
             <rect>
-              <x>84</x>
-              <y>26</y>
+              <x>83</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -1831,8 +1831,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc8">
           <property name="geometry">
             <rect>
-              <x>84</x>
-              <y>26</y>
+              <x>83</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -1873,11 +1873,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame31">
+        <widget class="caFrame" name="caFrame32">
           <property name="geometry">
             <rect>
-              <x>84</x>
-              <y>26</y>
+              <x>83</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -1898,7 +1898,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame32">
+          <widget class="caFrame" name="caFrame33">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -2285,7 +2285,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame37">
+          <widget class="caFrame" name="caFrame38">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -2347,8 +2347,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc9">
           <property name="geometry">
             <rect>
-              <x>110</x>
-              <y>26</y>
+              <x>109</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -2392,8 +2392,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc10">
           <property name="geometry">
             <rect>
-              <x>110</x>
-              <y>26</y>
+              <x>109</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -2434,11 +2434,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame40">
+        <widget class="caFrame" name="caFrame41">
           <property name="geometry">
             <rect>
-              <x>110</x>
-              <y>26</y>
+              <x>109</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -2459,7 +2459,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame41">
+          <widget class="caFrame" name="caFrame42">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -2846,7 +2846,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame46">
+          <widget class="caFrame" name="caFrame47">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -2908,8 +2908,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc11">
           <property name="geometry">
             <rect>
-              <x>136</x>
-              <y>26</y>
+              <x>135</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -2953,8 +2953,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc12">
           <property name="geometry">
             <rect>
-              <x>136</x>
-              <y>26</y>
+              <x>135</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -2995,11 +2995,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame49">
+        <widget class="caFrame" name="caFrame50">
           <property name="geometry">
             <rect>
-              <x>136</x>
-              <y>26</y>
+              <x>135</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -3020,7 +3020,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame50">
+          <widget class="caFrame" name="caFrame51">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -3407,7 +3407,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame55">
+          <widget class="caFrame" name="caFrame56">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -3469,8 +3469,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc13">
           <property name="geometry">
             <rect>
-              <x>162</x>
-              <y>26</y>
+              <x>161</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -3514,8 +3514,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc14">
           <property name="geometry">
             <rect>
-              <x>162</x>
-              <y>26</y>
+              <x>161</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -3556,11 +3556,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame58">
+        <widget class="caFrame" name="caFrame59">
           <property name="geometry">
             <rect>
-              <x>162</x>
-              <y>26</y>
+              <x>161</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -3581,7 +3581,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame59">
+          <widget class="caFrame" name="caFrame60">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -3968,7 +3968,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame64">
+          <widget class="caFrame" name="caFrame65">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -4030,8 +4030,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc15">
           <property name="geometry">
             <rect>
-              <x>188</x>
-              <y>26</y>
+              <x>187</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -4075,8 +4075,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc16">
           <property name="geometry">
             <rect>
-              <x>188</x>
-              <y>26</y>
+              <x>187</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -4117,11 +4117,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame67">
+        <widget class="caFrame" name="caFrame68">
           <property name="geometry">
             <rect>
-              <x>188</x>
-              <y>26</y>
+              <x>187</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -4142,7 +4142,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame68">
+          <widget class="caFrame" name="caFrame69">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -4529,7 +4529,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame73">
+          <widget class="caFrame" name="caFrame74">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -4591,8 +4591,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc17">
           <property name="geometry">
             <rect>
-              <x>214</x>
-              <y>26</y>
+              <x>213</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -4636,8 +4636,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc18">
           <property name="geometry">
             <rect>
-              <x>214</x>
-              <y>26</y>
+              <x>213</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -4678,11 +4678,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame76">
+        <widget class="caFrame" name="caFrame77">
           <property name="geometry">
             <rect>
-              <x>214</x>
-              <y>26</y>
+              <x>213</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -4703,7 +4703,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame77">
+          <widget class="caFrame" name="caFrame78">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -5090,7 +5090,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame82">
+          <widget class="caFrame" name="caFrame83">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -5148,6 +5148,606 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               </property>
             </widget>
           </widget>
+        </widget>
+        <widget class="caCalc" name="caCalc19">
+          <property name="geometry">
+            <rect>
+              <x>239</x>
+              <y>38</y>
+              <width>0</width>
+              <height>0</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="variable">
+            <string>$(P)$(OE):stack10:MOVING</string>
+          </property>
+          <property name="channel">
+            <string>$(P)$(OE):stack10_RBV</string>
+          </property>
+          <property name="channelB">
+            <string></string>
+          </property>
+          <property name="channelC">
+            <string></string>
+          </property>
+          <property name="channelD">
+            <string></string>
+          </property>
+          <property name="calc">
+            <string>(A&gt;1)</string>
+          </property>
+          <property name="foreground">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="eventSignal">
+            <enum>caCalc::onAnyChange</enum>
+          </property>
+        </widget>
+        <widget class="caCalc" name="caCalc20">
+          <property name="geometry">
+            <rect>
+              <x>239</x>
+              <y>38</y>
+              <width>0</width>
+              <height>0</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="variable">
+            <string>$(P)$(OE):stack10:ERROR</string>
+          </property>
+          <property name="channel">
+            <string>$(P)$(OE):stack10_match</string>
+          </property>
+          <property name="channelB">
+            <string></string>
+          </property>
+          <property name="channelC">
+            <string></string>
+          </property>
+          <property name="channelD">
+            <string></string>
+          </property>
+          <property name="calc">
+            <string>(A=0)</string>
+          </property>
+          <property name="foreground">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="eventSignal">
+            <enum>caCalc::onAnyChange</enum>
+          </property>
+        </widget>
+        <widget class="caFrame" name="caFrame86">
+          <property name="geometry">
+            <rect>
+              <x>239</x>
+              <y>38</y>
+              <width>26</width>
+              <height>94</height>
+            </rect>
+          </property>
+          <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="backgroundMode">
+            <enum>caFrame::Filled</enum>
+          </property>
+          <property name="visibilityMode">
+            <enum>caFrame::All</enum>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>196</red>
+              <green>196</green>
+              <blue>196</blue>
+            </color>
+          </property>
+          <widget class="caFrame" name="caFrame87">
+            <property name="geometry">
+              <rect>
+                <x>0</x>
+                <y>15</y>
+                <width>26</width>
+                <height>64</height>
+              </rect>
+            </property>
+            <property name="channel">
+              <string>$(P)$(OE):stack10:ERROR</string>
+            </property>
+            <property name="visibility">
+              <enum>caFrame::IfNotZero</enum>
+            </property>
+            <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="backgroundMode">
+              <enum>caFrame::Filled</enum>
+            </property>
+            <property name="visibilityMode">
+              <enum>caFrame::All</enum>
+            </property>
+            <property name="background">
+              <color alpha="0">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <widget class="QFrame" name="QFrame19">
+              <property name="geometry">
+                <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>26</width>
+                  <height>64</height>
+                </rect>
+              </property>
+              <property name="background">
+                <color alpha="0">
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                </color>
+              </property>
+              <property name="styleSheet">
+                <string>QFrame
+{
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgba(228,30,30,255);
+}
+</string>
+              </property>
+            </widget>
+          </widget>
+          <widget class="caLabel" name="caLabel11">
+            <property name="text">
+              <string>10</string>
+            </property>
+            <property name="text-height">
+              <number>12</number>
+            </property>
+            <property name="foreground">
+              <color alpha="255">
+                <red>0</red>
+                <green>53</green>
+                <blue>132</blue>
+              </color>
+            </property>
+            <property name="font">
+              <font>
+                <family>Liberation Sans</family>
+                <pointsize>12</pointsize>
+              </font>
+            </property>
+            <property name="geometry">
+              <rect>
+                <x>3</x>
+                <y>0</y>
+                <width>20</width>
+                <height>12</height>
+              </rect>
+            </property>
+            <property name="background">
+              <color alpha="0">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <property name="alignment">
+              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="borderColor">
+              <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <property name="borderWidth">
+              <number>0</number>
+            </property>
+            <property name="fontScaleMode">
+              <enum>ESimpleLabel::Height</enum>
+            </property>
+          </widget>
+          <widget class="caLineEdit" name="caLineEdit10">
+            <property name="text-height">
+              <number>12</number>
+            </property>
+            <property name="foreground">
+              <color alpha="255">
+                <red>0</red>
+                <green>53</green>
+                <blue>132</blue>
+              </color>
+            </property>
+            <property name="border-style">
+              <string>Solid</string>
+            </property>
+            <property name="font">
+              <font>
+                <family>Liberation Sans</family>
+                <pointsize>12</pointsize>
+              </font>
+            </property>
+            <property name="geometry">
+              <rect>
+                <x>3</x>
+                <y>12</y>
+                <width>20</width>
+                <height>10</height>
+              </rect>
+            </property>
+            <property name="background">
+              <color alpha="0">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <property name="alignment">
+              <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="channel">
+              <string>$(P)$(OE):stack10_dim</string>
+            </property>
+            <property name="frameColor">
+              <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <property name="frameLineWidth">
+              <number>0</number>
+            </property>
+            <property name="formatType">
+              <enum>caLineEdit::string</enum>
+            </property>
+            <property name="colorMode">
+              <enum>caLineEdit::Static</enum>
+            </property>
+            <property name="fontScaleMode">
+              <enum>caLineEdit::Height</enum>
+            </property>
+          </widget>
+          <widget class="caLed" name="caLed19">
+            <property name="geometry">
+              <rect>
+                <x>3</x>
+                <y>24</y>
+                <width>20</width>
+                <height>20</height>
+              </rect>
+            </property>
+            <property name="background">
+              <color alpha="0">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <property name="channel">
+              <string>$(P)$(OE):stack10_RBV</string>
+            </property>
+            <property name="rectangular">
+              <bool>true</bool>
+            </property>
+            <property name="falseColor">
+              <color alpha="255">
+                <red>196</red>
+                <green>196</green>
+                <blue>196</blue>
+              </color>
+            </property>
+            <property name="falseValue">
+              <number>1</number>
+            </property>
+            <property name="trueColor">
+              <color alpha="255">
+                <red>255</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <property name="trueValue">
+              <number>0</number>
+            </property>
+            <property name="undefinedColor">
+              <color alpha="255">
+                <red>160</red>
+                <green>160</green>
+                <blue>164</blue>
+              </color>
+            </property>
+            <property name="borderColor">
+              <color alpha="0">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <property name="gradientEnabled">
+              <bool>false</bool>
+            </property>
+            <property name="scaleContents">
+              <bool>true</bool>
+            </property>
+            <property name="ledWidth">
+              <number>18</number>
+            </property>
+            <property name="ledHeight">
+              <number>18</number>
+            </property>
+          </widget>
+          <widget class="caLed" name="caLed20">
+            <property name="geometry">
+              <rect>
+                <x>3</x>
+                <y>44</y>
+                <width>20</width>
+                <height>20</height>
+              </rect>
+            </property>
+            <property name="background">
+              <color alpha="0">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <property name="channel">
+              <string>$(P)$(OE):stack10_RBV</string>
+            </property>
+            <property name="rectangular">
+              <bool>true</bool>
+            </property>
+            <property name="falseColor">
+              <color alpha="255">
+                <red>196</red>
+                <green>196</green>
+                <blue>196</blue>
+              </color>
+            </property>
+            <property name="falseValue">
+              <number>0</number>
+            </property>
+            <property name="trueColor">
+              <color alpha="255">
+                <red>0</red>
+                <green>128</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <property name="trueValue">
+              <number>1</number>
+            </property>
+            <property name="undefinedColor">
+              <color alpha="255">
+                <red>160</red>
+                <green>160</green>
+                <blue>164</blue>
+              </color>
+            </property>
+            <property name="borderColor">
+              <color alpha="0">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <property name="gradientEnabled">
+              <bool>false</bool>
+            </property>
+            <property name="scaleContents">
+              <bool>true</bool>
+            </property>
+            <property name="ledWidth">
+              <number>18</number>
+            </property>
+            <property name="ledHeight">
+              <number>18</number>
+            </property>
+          </widget>
+          <widget class="caChoice" name="caChoice10">
+            <property name="channel">
+              <string>$(P)$(OE):stack10</string>
+            </property>
+            <property name="stackingMode">
+              <string>Row</string>
+            </property>
+            <property name="startBit">
+              <number>0</number>
+            </property>
+            <property name="endBit">
+              <number>1</number>
+            </property>
+            <property name="colorMode">
+              <string>Static</string>
+            </property>
+            <property name="foreground">
+              <color alpha="255">
+                <red>36</red>
+                <green>36</green>
+                <blue>36</blue>
+              </color>
+            </property>
+            <property name="geometry">
+              <rect>
+                <x>3</x>
+                <y>64</y>
+                <width>20</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="background">
+              <color alpha="255">
+                <red>87</red>
+                <green>202</green>
+                <blue>228</blue>
+              </color>
+            </property>
+          </widget>
+          <widget class="caPolyLine" name="caPolyLine10">
+            <property name="geometry">
+              <rect>
+                <x>0</x>
+                <y>24</y>
+                <width>26</width>
+                <height>40</height>
+              </rect>
+            </property>
+            <property name="background">
+              <color alpha="0">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <property name="lineSize">
+              <number>2</number>
+            </property>
+            <property name="lineColor">
+              <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <property name="linestyle">
+              <enum>caPolyLine::Solid</enum>
+            </property>
+            <property name="polystyle">
+              <enum>caPolyLine::Polyline</enum>
+            </property>
+            <property name="fillstyle">
+              <enum>caPolyLine::Outline</enum>
+            </property>
+            <property name="xyPairs">
+              <string>-5,30;30,30</string>
+            </property>
+          </widget>
+          <widget class="caFrame" name="caFrame92">
+            <property name="geometry">
+              <rect>
+                <x>3</x>
+                <y>40</y>
+                <width>21</width>
+                <height>38</height>
+              </rect>
+            </property>
+            <property name="channel">
+              <string>$(P)$(OE):stack10:MOVING</string>
+            </property>
+            <property name="visibility">
+              <enum>caFrame::IfNotZero</enum>
+            </property>
+            <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="backgroundMode">
+              <enum>caFrame::Filled</enum>
+            </property>
+            <property name="visibilityMode">
+              <enum>caFrame::All</enum>
+            </property>
+            <property name="background">
+              <color alpha="0">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+              </color>
+            </property>
+            <widget class="QFrame" name="QFrame20">
+              <property name="geometry">
+                <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>21</width>
+                  <height>38</height>
+                </rect>
+              </property>
+              <property name="background">
+                <color alpha="0">
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                </color>
+              </property>
+              <property name="styleSheet">
+                <string>QFrame
+{
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(228,228,30,255);
+}
+</string>
+              </property>
+            </widget>
+          </widget>
+        </widget>
+        <widget class="caPolyLine" name="caPolyLine11">
+          <property name="geometry">
+            <rect>
+              <x>265</x>
+              <y>26</y>
+              <width>26</width>
+              <height>84</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="lineSize">
+            <number>2</number>
+          </property>
+          <property name="lineColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="linestyle">
+            <enum>caPolyLine::Solid</enum>
+          </property>
+          <property name="polystyle">
+            <enum>caPolyLine::Polyline</enum>
+          </property>
+          <property name="fillstyle">
+            <enum>caPolyLine::Outline</enum>
+          </property>
+          <property name="xyPairs">
+            <string>-5,66;25,66;15,56;15,76;25,66</string>
+          </property>
         </widget>
       </widget>
     </widget>

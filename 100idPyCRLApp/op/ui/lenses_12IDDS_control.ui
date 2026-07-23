@@ -5,8 +5,8 @@
       <rect>
         <x>0</x>
         <y>0</y>
-        <width>131</width>
-        <height>125</height>
+        <width>151</width>
+        <height>137</height>
       </rect>
     </property>
     <property name="background">
@@ -44,8 +44,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <rect>
             <x>0</x>
             <y>0</y>
-            <width>131</width>
-            <height>125</height>
+            <width>151</width>
+            <height>137</height>
           </rect>
         </property>
         <widget class="caLabel" name="caLabel1">
@@ -72,7 +72,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <rect>
               <x>6</x>
               <y>5</y>
-              <width>120</width>
+              <width>140</width>
               <height>16</height>
             </rect>
           </property>
@@ -103,8 +103,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc1">
           <property name="geometry">
             <rect>
-              <x>6</x>
-              <y>26</y>
+              <x>5</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -148,8 +148,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc2">
           <property name="geometry">
             <rect>
-              <x>6</x>
-              <y>26</y>
+              <x>5</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -190,11 +190,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame4">
+        <widget class="caFrame" name="caFrame5">
           <property name="geometry">
             <rect>
-              <x>6</x>
-              <y>26</y>
+              <x>5</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -215,7 +215,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame5">
+          <widget class="caFrame" name="caFrame6">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -602,7 +602,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame10">
+          <widget class="caFrame" name="caFrame11">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -664,8 +664,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc3">
           <property name="geometry">
             <rect>
-              <x>32</x>
-              <y>26</y>
+              <x>31</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -709,8 +709,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc4">
           <property name="geometry">
             <rect>
-              <x>32</x>
-              <y>26</y>
+              <x>31</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -751,11 +751,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame13">
+        <widget class="caFrame" name="caFrame14">
           <property name="geometry">
             <rect>
-              <x>32</x>
-              <y>26</y>
+              <x>31</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -776,7 +776,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame14">
+          <widget class="caFrame" name="caFrame15">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -1163,7 +1163,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame19">
+          <widget class="caFrame" name="caFrame20">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -1225,8 +1225,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc5">
           <property name="geometry">
             <rect>
-              <x>58</x>
-              <y>26</y>
+              <x>57</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -1270,8 +1270,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc6">
           <property name="geometry">
             <rect>
-              <x>58</x>
-              <y>26</y>
+              <x>57</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -1312,11 +1312,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame22">
+        <widget class="caFrame" name="caFrame23">
           <property name="geometry">
             <rect>
-              <x>58</x>
-              <y>26</y>
+              <x>57</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -1337,7 +1337,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame23">
+          <widget class="caFrame" name="caFrame24">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -1724,7 +1724,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame28">
+          <widget class="caFrame" name="caFrame29">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -1786,8 +1786,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc7">
           <property name="geometry">
             <rect>
-              <x>84</x>
-              <y>26</y>
+              <x>83</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -1831,8 +1831,8 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caCalc" name="caCalc8">
           <property name="geometry">
             <rect>
-              <x>84</x>
-              <y>26</y>
+              <x>83</x>
+              <y>38</y>
               <width>0</width>
               <height>0</height>
             </rect>
@@ -1873,11 +1873,11 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             <enum>caCalc::onAnyChange</enum>
           </property>
         </widget>
-        <widget class="caFrame" name="caFrame31">
+        <widget class="caFrame" name="caFrame32">
           <property name="geometry">
             <rect>
-              <x>84</x>
-              <y>26</y>
+              <x>83</x>
+              <y>38</y>
               <width>26</width>
               <height>94</height>
             </rect>
@@ -1898,7 +1898,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <blue>196</blue>
             </color>
           </property>
-          <widget class="caFrame" name="caFrame32">
+          <widget class="caFrame" name="caFrame33">
             <property name="geometry">
               <rect>
                 <x>0</x>
@@ -2285,7 +2285,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>-5,30;30,30</string>
             </property>
           </widget>
-          <widget class="caFrame" name="caFrame37">
+          <widget class="caFrame" name="caFrame38">
             <property name="geometry">
               <rect>
                 <x>3</x>
@@ -2343,6 +2343,45 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               </property>
             </widget>
           </widget>
+        </widget>
+        <widget class="caPolyLine" name="caPolyLine5">
+          <property name="geometry">
+            <rect>
+              <x>109</x>
+              <y>26</y>
+              <width>26</width>
+              <height>84</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="lineSize">
+            <number>2</number>
+          </property>
+          <property name="lineColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="linestyle">
+            <enum>caPolyLine::Solid</enum>
+          </property>
+          <property name="polystyle">
+            <enum>caPolyLine::Polyline</enum>
+          </property>
+          <property name="fillstyle">
+            <enum>caPolyLine::Outline</enum>
+          </property>
+          <property name="xyPairs">
+            <string>-5,66;25,66;15,56;15,76;25,66</string>
+          </property>
         </widget>
       </widget>
     </widget>

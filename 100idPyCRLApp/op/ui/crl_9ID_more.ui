@@ -3111,9 +3111,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caFrame" name="caFrame82">
           <property name="geometry">
             <rect>
-              <x>67</x>
+              <x>92</x>
               <y>515</y>
-              <width>321</width>
+              <width>271</width>
               <height>114</height>
             </rect>
           </property>
@@ -3138,7 +3138,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <rect>
                 <x>0</x>
                 <y>34</y>
-                <width>320</width>
+                <width>270</width>
                 <height>80</height>
               </rect>
             </property>
@@ -3150,7 +3150,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               </color>
             </property>
             <property name="filename">
-              <string>lenses_12IDUS.ui</string>
+              <string>lenses_9IDMH.ui</string>
             </property>
             <property name="macro">
               <string>P=$(P)$(CRL):,OE=$(OE1)</string>
@@ -3175,7 +3175,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
             <property name="geometry">
               <rect>
-                <x>105</x>
+                <x>80</x>
                 <y>1</y>
                 <width>110</width>
                 <height>22</height>
@@ -3209,9 +3209,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="QFrame" name="QFrame11">
           <property name="geometry">
             <rect>
-              <x>67</x>
+              <x>92</x>
               <y>515</y>
-              <width>321</width>
+              <width>271</width>
               <height>114</height>
             </rect>
           </property>
@@ -3252,7 +3252,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string> </string>
             </property>
             <property name="files">
-              <string>lenses_12IDUS_control.ui</string>
+              <string>lenses_9IDMH_control.ui</string>
             </property>
             <property name="args">
               <string>P=$(P)$(CRL):,OE=$(OE1)</string>
@@ -3273,7 +3273,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>321</width>
+                <width>271</width>
                 <height>114</height>
               </rect>
             </property>
@@ -3282,9 +3282,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="caFrame" name="caFrame87">
           <property name="geometry">
             <rect>
-              <x>105</x>
+              <x>89</x>
               <y>634</y>
-              <width>146</width>
+              <width>277</width>
               <height>114</height>
             </rect>
           </property>
@@ -3307,9 +3307,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
           <widget class="caInclude" name="caInclude2">
             <property name="geometry">
               <rect>
-                <x>1</x>
+                <x>0</x>
                 <y>34</y>
-                <width>145</width>
+                <width>276</width>
                 <height>80</height>
               </rect>
             </property>
@@ -3321,7 +3321,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               </color>
             </property>
             <property name="filename">
-              <string>lenses_12IDDS.ui</string>
+              <string>lenses_9IDD.ui</string>
             </property>
             <property name="macro">
               <string>P=$(P)$(CRL):,OE=$(OE2)</string>
@@ -3346,7 +3346,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
             </property>
             <property name="geometry">
               <rect>
-                <x>18</x>
+                <x>83</x>
                 <y>1</y>
                 <width>110</width>
                 <height>22</height>
@@ -3380,9 +3380,9 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
         <widget class="QFrame" name="QFrame12">
           <property name="geometry">
             <rect>
-              <x>105</x>
+              <x>89</x>
               <y>634</y>
-              <width>245</width>
+              <width>277</width>
               <height>114</height>
             </rect>
           </property>
@@ -3423,7 +3423,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string> </string>
             </property>
             <property name="files">
-              <string>lenses_12IDDS_control.ui</string>
+              <string>lenses_9IDD_control.ui</string>
             </property>
             <property name="args">
               <string>P=$(P)$(CRL):,OE=$(OE2)</string>
@@ -3444,7 +3444,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>245</width>
+                <width>277</width>
                 <height>114</height>
               </rect>
             </property>
@@ -9755,7 +9755,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>$(OE1) Stacks;$(OE2) Stacks</string>
             </property>
             <property name="files">
-              <string>stacks_12IDUS.ui;stacks_12IDDS.ui</string>
+              <string>stacks_9IDMH.ui;stacks_9IDD.ui</string>
             </property>
             <property name="args">
               <string>P=$(P),CRL=$(CRL):$(OE1);P=$(P),CRL=$(CRL):$(OE2)</string>
@@ -9974,7 +9974,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
               <string>Less</string>
             </property>
             <property name="files">
-              <string>crl_12ID_less.ui</string>
+              <string>crl_9ID_less.ui</string>
             </property>
             <property name="args">
               <string>P=$(P),CRL=$(CRL),OE1=$(OE1),OE2=$(OE2), SAM1=$(SAM1), SAM2=$(SAM2)</string>
