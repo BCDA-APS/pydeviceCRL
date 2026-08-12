@@ -1175,12 +1175,21 @@ class focusingSystem():
         indices, _ = find_levels(self.lookupTable, focalSize, direction=find_levels_direction)
 #        self.indexSorted['1'] = indices[0]
 
-        sortedIndex = indices[0]
+        if indices[0] == -1:
+            if self.verbose: print(f"Desired focal size ({focalSize}) not crossed in lookup table, setting to closest value")
+            sortedIndex = np.nanargmin(np.abs(self.lookupTable - focalSize))
+            if self.verbose: print(f"1/f-sorted config index set to {self.indexSorted['1']}")
+        else:   
+            sortedIndex = indices[0]
+            if self.verbose: print(f"1/f-sorted config index found at {self.indexSorted['1']}")
+
         
         for i, crl_label in enumerate(self.curr_config['CRLs']):
             if i > 0:
-                sortedIndex = self.index1to2_sorted[sortedIndex]
-            lens_preview = self.sorted_invF_index[str(i+1)][sortedIndex]
+                si = self.index1to2_sorted[sortedIndex]
+            else:
+                si = sortedIndex
+            lens_preview = self.sorted_invF_index[str(i+1)][si]
             if self.verbose: print(f'Preview lenses for {crl_label} with focal size of {focalSize} is {lens_preview}')
             pydev.iointr('new_lens_preview_'+crl_label, int(lens_preview))            
         

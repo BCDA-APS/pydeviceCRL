@@ -94,6 +94,8 @@ record(bi, "$(P)$(SYSID):focusMode_RBV"){
 record(ao, "$(P)$(SYSID):focalSize"){
 	field(EGU, "m")
     field(FLNK, "$(P)$(SYSID):focalSizeSeq.PROC CA")
+    field(PREC, "6")
+
 }
 
 record(sseq, "$(P)$(SYSID):focalSizeSeq"){
@@ -174,6 +176,7 @@ record(ai, "$(P)$(SYSID):fSize_preview"){
 record(ao, "$(P)$(SYSID):previewFocalSize") {
   field(DTYP, "pydev")
   field(OUT, "@$(OBJ).getPreviewLens(VAL)")
+  field(PREC, "6")
 }
 
 record(ai, "$(P)$(SYSID):previewFocalSize_actual"){
