@@ -1007,8 +1007,13 @@ class focusingSystem():
         # XS approach -- can handle nan but in pydev application don't have a good
         # way to "transmit" errors (i.e. no solution found) to user.
         indices, _ = find_levels(self.lookupTable, self.focalSize, direction=find_levels_direction)
-        self.indexSorted['1'] = indices[0]
-        if self.verbose: print(f"1/f-sorted config index found at {self.indexSorted['1']}")
+        if indices[0] == -1:
+            if self.verbose: print(f"Desired focal size ({self.focalSize}) not crossed in lookup table, setting to closest value")
+            self.indexSorted['1'] = np.nanargmin(np.abs(self.lookupTable - self.focalSize))
+            if self.verbose: print(f"1/f-sorted config index set to {self.indexSorted['1']}")
+        else:   
+            self.indexSorted['1'] = indices[0]
+            if self.verbose: print(f"1/f-sorted config index found at {self.indexSorted['1']}")
 
         self.index['1'] = self.sorted_invF_index['1'][self.indexSorted['1']]
         if self.verbose: print(f"CRL 1 config index found at {self.index['1']}")
