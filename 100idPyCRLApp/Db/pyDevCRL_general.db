@@ -167,8 +167,17 @@ record(longout, "$(P)$(SYSID):previewIndex") {
 }
 
 record(ai, "$(P)$(SYSID):fSize_preview"){
+  field(DESC, "Preview for sorted Index")
   field(DTYP, "pydev")
   field(INP,  "@pydev.iointr('new_preview')")
+  field(SCAN, "I/O Intr")
+  field(PREC, "6")
+}
+
+record(ai, "$(P)$(SYSID):fSize_preview2"){
+  field(DESC, "Preview for lens config")
+  field(DTYP, "pydev")
+  field(INP,  "@pydev.iointr('new_preview2')")
   field(SCAN, "I/O Intr")
   field(PREC, "6")
 }
@@ -306,7 +315,8 @@ record(bo, "$(P)$(SYSID):singleCRLbo"){
 	field(ONAM, "Single")
 }
 
-record(waveform, "$(P)$(SYSID):status_messages") {
+#PyDevice doesn't support lsi (yet? 2026.09.14)
+record(waveform, "$(P)$(SYSID):status_message") {
 	field(FTVL, "CHAR")
 	field(NORD, "256")
 	field(NELM, "256")
@@ -315,11 +325,26 @@ record(waveform, "$(P)$(SYSID):status_messages") {
     field(SCAN, "I/O Intr")
 }
 
-record(waveform, "$(P)$(SYSID):error_messages") {
+record(stringin,"$(P)$(SYSID):status_TS"){
+   field(DESC, "Status timestamp in M/D/Y H:M:S")
+   field(DTYP, "Soft Timestamp")
+   field(TSEL, "$(P)$(SYSID):status_message.TIME CP")
+   field(INP, "@%Y %b %d %H:%M:%S")
+}
+
+#PyDevice doesn't support lsi (yet? 2026.09.14)
+record(waveform, "$(P)$(SYSID):error_message") {
 	field(FTVL, "CHAR")
 	field(NORD, "256")
 	field(NELM, "256")
     field(DTYP, "pydev")
     field(INP,  "@pydev.iointr('error_messages')")
     field(SCAN, "I/O Intr")
+}
+
+record(stringin,"$(P)$(SYSID):error_TS"){
+   field(DESC, "Error timestamp in M/D/Y H:M:S")
+   field(DTYP, "Soft Timestamp")
+   field(TSEL, "$(P)$(SYSID):error_message.TIME CP")
+   field(INP, "@%Y %b %d %H:%M:%S")
 }

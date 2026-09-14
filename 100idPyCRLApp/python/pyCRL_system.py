@@ -1156,6 +1156,25 @@ class focusingSystem():
         if self.verbose: print(f'Preview focal sizes for {sortedIndex} is {fSize_preview}')
         pydev.iointr('new_preview', fSize_preview)
 
+    def getPreviewFocalSize2(self, lens_config, oe):
+        '''
+        Description:
+            Finds focal size for desired lens configuration
+            
+        Parameters:
+            lens_config: string
+                lens_config user would like preview focal size
+        '''
+        # TODO 1x -- need to get sortedIndex for given configuration
+        fSize_preview = self.lookupTable[int(sortedIndex)] #TODO needs updating....
+        
+        # TDOD 2x -- Both configs should be available to user, so will use both
+
+
+        if self.verbose: print(f'Preview focal sizes for {lens_config} is {fSize_preview}')
+        pydev.iointr('new_preview2', fSize_preview)
+
+
     def getPreviewLens(self, focalSize):
         '''
         Description:
@@ -1297,6 +1316,28 @@ class focusingSystem():
                 value to put into PV
         '''
         pydev.iointr(interrupt_str, val)
+
+    def updateStatus(self, status_message):
+        '''
+        Description:
+            Sends string to status message PV
+            
+        Parameters:
+            status_message   : string
+                string message for status (waveform) PV
+        '''
+        pydev.iointr('status_messages', status_message)
+
+    def updateError(self, error_message):
+        '''
+        Description:
+            Sends string to error message PV
+            
+        Parameters:
+            status_message   : string
+                string message for error (waveform) PV
+        '''
+        pydev.iointr('error_messages', error_message)
 
 
     def updateVerbosity(self, verbosity):

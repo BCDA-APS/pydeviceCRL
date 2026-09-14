@@ -13,6 +13,11 @@ record(longin, "$(P)$(SYSID):$(OE):lens_preview"){
   field(SCAN, "I/O Intr")
 }
 
+record(longout, "$(P)$(SYSID):$(OE):previewConfig") {
+  field(DTYP, "pydev")
+  field(OUT, "@$(OBJ).getPreviewFocalSize2(VAL, '$(OE)')")
+}
+
 #Record to determine if lenses are new
 record(calcout, "$(P)$(SYSID):$(OE):lenses_comp"){
   field(INPA, "$(P)$(SYSID):$(OE):lensConfig_RBV NPP")
