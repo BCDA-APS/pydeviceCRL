@@ -402,7 +402,7 @@ class focusingSystem():
         '''
         
         self.slits[oe][slit] = float(size)
-        if self.verbose: print(f"{oe} {slit} slit is set to {self.slits[oe][slit]}")
+        self.updateStatus(f"{oe} {slit} slit is set to {self.slits[oe][slit]}")
                              
     def updateSlitSizeRBV(self, oe, slit):
         '''
@@ -414,7 +414,7 @@ class focusingSystem():
         for element in oes: 
             intr_string = 'updated_slitSize_'+element+'_'+slit
             pydev.iointr(intr_string, float(self.slits[element][slit]))
-            if self.verbose: print(f"{oe} {slit} slit size RBV udpated to {self.slits[element][slit]}")
+            self.updateStatus(f"{oe} {slit} slit size RBV udpated to {self.slits[element][slit]}")
         
     def parseSubsFile(self, subs_file):
         '''
@@ -616,10 +616,10 @@ class focusingSystem():
             Updates IOC waveforms and rBS with output of table constructions
             Should be called after beam energy or slits size changes
         '''
-        if self.verbose: print(f"Constructing lookup table for {self.curr_config['sysType'].value} system")
+        self.updateStatus(f"Constructing lookup table for {self.curr_config['sysType'].value} system")
         match self.curr_config['sysType']:
             case SYSTEM_TYPE.singleCRL:
-                if self.verbose: print(f"Single crl lookup table calc commencing")
+                self.updateStatus(f"Single crl lookup table calc commencing")
                 crl = self.curr_config['CRLs'][0]
                 sam = self.curr_config['Sample']
                 
@@ -634,11 +634,11 @@ class focusingSystem():
                                            self.crl[crl], self.slits[crl]['hor'], 
                                            self.slits[crl]['vert'], self.thickerr[crl], 
                                            flag_HE = self.thickerr_flag, verbose = self.verbose)
-                if self.verbose: print(f"Single crl lookup table calc complete")
+                self.updateStatus(f"Single crl lookup table calc complete")
 
 
             case SYSTEM_TYPE.doubleCRL:
-                if self.verbose: print(f"Double crl lookup table calc commencing")
+                self.updateStatus(f"Double crl lookup table calc commencing")
                 crl1 = self.curr_config['CRLs'][0]
                 crl2 = self.curr_config['CRLs'][1]
                 sam = self.curr_config['Sample']
@@ -661,12 +661,12 @@ class focusingSystem():
                                             self.crl, self.slits, self.thickerr[crl1], 
                                             self.thickerr[crl2], flag_HE = self.thickerr_flag,
                                             verbose = self.verbose)
-                if self.verbose: print(f"Double crl lookup table calc complete")
+                self.updateStatus(f"Double crl lookup table calc complete")
                 
                 
                 self.index1to2_sorted = results_dict['invf2_indices']           
             case SYSTEM_TYPE.CRLandKB:
-                if self.verbose: print(f"Single crl + KB lookup table calc commencing")
+                self.updateStatus(f"Single crl + KB lookup table calc commencing")
                 crl = self.curr_config['CRLs'][0]
                 sam = self.curr_config['Sample']
 
@@ -686,7 +686,7 @@ class focusingSystem():
 
                 self.KB_ol = {'KBH_p_list': results_dict['KBH_p_list'], 
                             'KBV_p_list': results_dict['KBV_p_list']}
-                if self.verbose: print(f"Single crl + KB lookup table calc complete")
+                self.updateStatus(f"Single crl + KB lookup table calc complete")
                             
         self.lookupTable = results_dict['FWHM_atsample_list']
         self.sorted_invF_index = results_dict['invF_list_sort_indices']
@@ -718,45 +718,43 @@ class focusingSystem():
             self.updateKBdistanceRBVs()
 
     def updateSysType(self, sysType):
-        if self.verbose: print(80*'#')
-
         
         # Save current configuration
         match self.curr_config['sysType']:
             case SYSTEM_TYPE.singleCRL:
                 self.single_config = copy.deepcopy(self.curr_config)
-                if self.verbose: print('Saving curr config to single config')
+                self.updateStatus('Saving curr config to single config')
             case SYSTEM_TYPE.doubleCRL:
                 self.double_config = copy.deepcopy(self.curr_config)
-                if self.verbose: print('Saving curr config to double config')
+                self.updateStatus('Saving curr config to double config')
             case SYSTEM_TYPE.CRLandKB,:
                 self.crlkb_config = copy.deepcopy(self.curr_config)
-                if self.verbose: print('Saving curr config to crl + kb config')
+                self.updateStatus('Saving curr config to crl + kb config')
 
         # Update current system type
-        if self.verbose: print(f'Changing to {sysType_list[sysType]} system')
+        self.updateStatus(f'Changing to {sysType_list[sysType]} system')
         self.curr_config['sysType']  = sysType_dict[sysType_list[sysType]]
         
         # Restore configuration for that system type
         match sysType_list[sysType]:
             case SYSTEM_TYPE.singleCRL.value:
                 self.curr_config = copy.deepcopy(self.single_config)
-                if self.verbose: print('Set to single CRL system')
+                self.updateStatus('Set to single CRL system')
             case SYSTEM_TYPE.doubleCRL.value:
                 self.curr_config = copy.deepcopy(self.double_config)
-                if self.verbose: print('Set to double CRL system')
+                self.updateStatus('Set to double CRL system')
                 self.focusMode = focusModes[0]
                 self.updateFocusModeRBV()
             case SYSTEM_TYPE.CRLandKB.value:
                 self.curr_config = copy.deepcopy(self.crlkb_config)
-                if self.verbose: print('Set to KB + CRL system')
+                self.updateStatus('Set to KB + CRL system')
             case _:
-                if self.verbose: print('System type not set -- type not recognized')
+                self.updateStatus('System type not set -- type not recognized')
              
 
-        if self.verbose: print(f'Updating system type: system RBVs')
+        self.updateStatus(f'Updating system type: system RBVs')
         for i, crl in enumerate(self.curr_config['CRLs']):
-            if self.verbose: print(f'Setting {i}th system to CRL {crl}')
+            self.updateStatus(f'Setting {i}th system to CRL {crl}')
             self.updateSystemRBV(i+1)       
         
         # TODO when KB to be fully integrated
@@ -764,23 +762,21 @@ class focusingSystem():
 #           kb_iointr_name = ...
 #           pydev.iointr(kb_iointr_name, self.curr_config['KB'])
 
-        if self.verbose: print(f'Updating system type: elements')
+        self.updateStatus(f'Updating system type: elements')
         self.updateElements()
         
         # update sample
-        if self.verbose: print(f'Updating system type: sample station')
+        self.updateStatus(f'Updating system type: sample station')
         pydev.iointr('updated_sample', self.curr_config['Sample'])
 
         # update system type
         sysType_rbv = self.curr_config['sysType'].value
 #        sysType_rbv = sysType_list.index(self.curr_config['sysType'].value)
-        if self.verbose: 
-            print(f'Updating sysType readback to {sysType_rbv} which has rval of {sysType_list.index(sysType_rbv)}')
-            print(80*'#')
+        self.updateStatus(f'Updating sysType readback to {sysType_rbv} which has rval of {sysType_list.index(sysType_rbv)}')
         pydev.iointr('updated_sysType', sysType_list.index(sysType_rbv))
         
     def assignSystem(self, systemNum, oe):        
-        if self.verbose: print(f'Setting system {systemNum} to oe {oe}')
+        self.updateStatus(f'Setting system {systemNum} to oe {oe}')
         
         # TODO does this need actual label is index ok?
         self.curr_config['CRLs'][int(systemNum)-1] = self.list_of_crls[int(oe)]   
@@ -793,12 +789,12 @@ class focusingSystem():
     def updateSystemRBV(self, systemNum):          
         # Set readback       
         iointr_name = 'updated_system' + str(systemNum)
-        if self.verbose: print(f'Using interrupt {iointr_name} for CRL assignment update')
+        self.updateStatus(f'Using interrupt {iointr_name} for CRL assignment update')
         pydev.iointr(iointr_name, self.list_of_crls.index(self.curr_config['CRLs'][int(systemNum)-1]))
 
 
     def assignSample(self, sampleSTN):
-        if self.verbose: print(f'Setting sample station to {self.sampleSTNs[int(sampleSTN)]}')
+        self.updateStatus(f'Setting sample station to {self.sampleSTNs[int(sampleSTN)]}')
         
 #        if sampleSTN not in self.sampleSTNs:
 #            raise ValueError(f"""
@@ -889,7 +885,7 @@ class focusingSystem():
             oe: string
                 Label of optical element 
         '''
-        if self.verbose: print(f'Setting {oe} to index {sortedIndex}')
+        self.updateStatus(f'Setting {oe} to index {sortedIndex}')
         oe_num = str(self.curr_config['CRLs'].index(oe)+1)
 
         self.indexSorted[oe_num] = int(sortedIndex)
@@ -931,7 +927,7 @@ class focusingSystem():
                 Label of optical element 
         '''
 
-        if self.verbose: print(f'Getting focal size for {oe} set to {config_RBV}')
+        self.updateStatus(f'Getting focal size for {oe} set to {config_RBV}')
         oe_num = str(self.curr_config['CRLs'].index(oe)+1)
 
         self.index[oe_num] = config_RBV
@@ -959,7 +955,7 @@ class focusingSystem():
         '''
         # focalPoint variable sent from IOC as a string
         self.focalSize = float(focalSize)
-        if self.verbose: print(f'Setting focal size to {self.focalSize}')
+        self.updateStatus(f'Setting focal size to {self.focalSize}')
         self.find_config()
 
     def updateZpos(self, zOffset, elem, etype):
@@ -994,7 +990,7 @@ class focusingSystem():
         '''
         # Code to search lookup table for nearest focal size to desired; note the
         # lookup table is already sorted by 1/f
-        if self.verbose: print(f'Searching for config closest to {self.focalSize}')
+        self.updateStatus(f'Searching for config closest to {self.focalSize}')
 
         # simple approach
         # self.indexSorted = np.argmin(np.abs(self.lookupTable - self.focalSize))
@@ -1008,20 +1004,20 @@ class focusingSystem():
         # way to "transmit" errors (i.e. no solution found) to user.
         indices, _ = find_levels(self.lookupTable, self.focalSize, direction=find_levels_direction)
         if indices[0] == -1:
-            if self.verbose: print(f"Desired focal size ({self.focalSize}) not crossed in lookup table, setting to closest value")
+            self.updateError(f"Desired focal size ({self.focalSize}) not crossed in lookup table, setting to closest value")
             self.indexSorted['1'] = np.nanargmin(np.abs(self.lookupTable - self.focalSize))
-            if self.verbose: print(f"1/f-sorted config index set to {self.indexSorted['1']}")
+            self.updateStatus(f"1/f-sorted config index set to {self.indexSorted['1']}")
         else:   
             self.indexSorted['1'] = indices[0]
-            if self.verbose: print(f"1/f-sorted config index found at {self.indexSorted['1']}")
+            self.updateStatus(f"1/f-sorted config index found at {self.indexSorted['1']}")
 
         self.index['1'] = self.sorted_invF_index['1'][self.indexSorted['1']]
-        if self.verbose: print(f"CRL 1 config index found at {self.index['1']}")
+        self.updateStatus(f"CRL 1 config index found at {self.index['1']}")
         
         if self.curr_config['sysType'] == SYSTEM_TYPE.doubleCRL:
             self.indexSorted['2'] = self.index1to2_sorted[self.indexSorted['1']]
             self.index['2'] = self.sorted_invF_index['2'][self.indexSorted['2']]
-            if self.verbose: print(f"CRL 2 config index found at {self.index['2']}")
+            self.updateStatus(f"CRL 2 config index found at {self.index['2']}")
             
 
         # Update PVs
@@ -1050,7 +1046,7 @@ class focusingSystem():
                 CRL 1 index
         '''
 
-        if self.verbose: print(f'Setting actual focal size')
+        self.updateStatus(f'Setting actual focal size')
         if not offTable:
             self.focalSize_actual = self.lookupTable[self.indexSorted['1']] 
             self.q = self.q_list[self.indexSorted['1']]   
@@ -1091,9 +1087,9 @@ class focusingSystem():
         Description:
             Updates optical element config PVs for which stacks need to be in/out
         '''
-#        time.sleep(0.01) 
+ 
         for i, crl_label in enumerate(self.curr_config['CRLs']):
-            if self.verbose: print(f'Setting lens configuration PV for CRL {i+1}')
+            self.updateStatus(f'Setting lens configuration PV for CRL {i+1}')
             self.config[crl_label] = self.index[str(i+1)]
             pydev.iointr('new_lenses_'+crl_label, int(self.config[crl_label]))            
 
@@ -1104,7 +1100,7 @@ class focusingSystem():
         '''
 
         for i, crl_label in enumerate(self.curr_config['CRLs']):
-            if self.verbose: print(f'Setting lens configuration index RBV for CRL {i+1}: {self.indexSorted[str(i+1)]} ')
+            self.updateStatus(f'Setting lens configuration index RBV for CRL {i+1}: {self.indexSorted[str(i+1)]} ')
             pydev.iointr('new_index_'+crl_label, int(self.indexSorted[str(i+1)]))            
                     
     def updateFocalSizeRBVs(self):
@@ -1112,14 +1108,12 @@ class focusingSystem():
         Description:
             Updated focal size readback PV
         '''
-        if self.verbose: print(f'Setting actual focal size to {self.focalSize_actual}')
+        self.updateStatus(f'Setting actual focal size to {self.focalSize_actual}')
         pydev.iointr('new_fSize', self.focalSize_actual)
  
     def updateQdistances(self):
     
-        if self.verbose: 
-            print(f'New image distance for last CRL (measured from source):  {self.q}')
-            print(f'New image distance as measured to sample from last CRL:  {self.dq}')
+        self.updateStatus(f'New image distance for last CRL (measured from source):  {self.q}; New image distance as measured to sample from last CRL:  {self.dq}')
 
         pydev.iointr('new_q', self.q)
         pydev.iointr('new_dq', self.dq)
@@ -1134,9 +1128,7 @@ class focusingSystem():
         kbh_p = self.KB_ol['KBH_p_list'][self.indexSorted['1']]
         kbv_p = self.KB_ol['KBV_p_list'][self.indexSorted['1']]
 
-        if self.verbose: 
-            print(f'New object distance for horizontal KB:  {kbh_p}')
-            print(f'New object distance for vertical KB:  {kbv_p}')
+        self.updateStatus(f'New object distance for horizontal KB:  {kbh_p}; New object distance for vertical KB:  {kbv_p}')
 
         pydev.iointr('KBH_p_list', kbh_p)
         pydev.iointr('KBV_p_list', kbv_p)
@@ -1153,7 +1145,7 @@ class focusingSystem():
                 index user would like preview focal size
         '''
         fSize_preview = self.lookupTable[int(sortedIndex)]
-        if self.verbose: print(f'Preview focal sizes for {sortedIndex} is {fSize_preview}')
+        self.updateStatus(f'Preview focal sizes for {sortedIndex} is {fSize_preview}')
         pydev.iointr('new_preview', fSize_preview)
 
     def getPreviewFocalSize2(self, lens_config, oe):
@@ -1171,7 +1163,7 @@ class focusingSystem():
         # TDOD 2x -- Both configs should be available to user, so will use both
 
 
-        if self.verbose: print(f'Preview focal sizes for {lens_config} is {fSize_preview}')
+        self.updateStatus(f'Preview focal sizes for {lens_config} is {fSize_preview}')
         pydev.iointr('new_preview2', fSize_preview)
 
 
@@ -1195,12 +1187,12 @@ class focusingSystem():
 #        self.indexSorted['1'] = indices[0]
 
         if indices[0] == -1:
-            if self.verbose: print(f"Desired focal size ({focalSize}) not crossed in lookup table, setting to closest value")
+            self.updateError(f"Desired focal size ({focalSize}) not crossed in lookup table, returning closest value")
             sortedIndex = np.nanargmin(np.abs(self.lookupTable - focalSize))
-            if self.verbose: print(f"1/f-sorted config index set to {self.indexSorted['1']}")
+            self.updateStatus(f"1/f-sorted config index set to {self.indexSorted['1']}")
         else:   
             sortedIndex = indices[0]
-            if self.verbose: print(f"1/f-sorted config index found at {self.indexSorted['1']}")
+            self.updateStatus(f"1/f-sorted config index found at {self.indexSorted['1']}")
 
         
         for i, crl_label in enumerate(self.curr_config['CRLs']):
@@ -1209,7 +1201,7 @@ class focusingSystem():
             else:
                 si = sortedIndex
             lens_preview = self.sorted_invF_index[str(i+1)][si]
-            if self.verbose: print(f'Preview lenses for {crl_label} with focal size of {focalSize} is {lens_preview}')
+            self.updateStatus(f'Preview lenses for {crl_label} with focal size of {focalSize} is {lens_preview}')
             pydev.iointr('new_lens_preview_'+crl_label, int(lens_preview))            
         
         focalSizeActual = self.lookupTable[sortedIndex] 
@@ -1228,7 +1220,7 @@ class focusingSystem():
                     False: stack thickness error NOT used in focal size calculation 
         '''
         self.thickerr_flag = int(flag)
-        if self.verbose: print(f'Thickness Error Flag set to {flag}')
+        self.updateStatus(f'Thickness Error Flag set to {flag}')
         self.updateThickerrFlagRBV()
 
     def updateThickerrFlagRBV(self):
@@ -1236,7 +1228,7 @@ class focusingSystem():
         Description:
             Thickness error flag has been updated; readback PV is set
         '''
-        if self.verbose: print(f'Thickness Error Flag RBV set to {self.thickerr_flag}')
+        self.updateStatus(f'Thickness Error Flag RBV set to {self.thickerr_flag}')
         pydev.iointr('updated_thickerr_Flag', self.thickerr_flag)
  
 
@@ -1246,7 +1238,7 @@ class focusingSystem():
         
         '''
         
-        if self.verbose: print(f'Updating beam mode from {self.mode} to {modes[mode]}')
+        self.updateStatus(f'Updating beam mode from {self.mode} to {modes[mode]}')
         self.mode = modes[mode]
         self.setupSourceEnergyDependent(mode=self.mode)
 
@@ -1256,7 +1248,7 @@ class focusingSystem():
         
         '''
         
-        if self.verbose: print(f'Updating focus mode from {self.focusMode} to {focusModes[mode]}')
+        self.updateStatus(f'Updating focus mode from {self.focusMode} to {focusModes[mode]}')
         self.focusMode = focusModes[mode]
         self.updateFocusModeRBV()
         
@@ -1277,7 +1269,7 @@ class focusingSystem():
             # Update beam properties that are dependent on energy
             self.setupSourceEnergyDependent()
         else:
-            if self.verbose: print(f'Invalid energy setting: {energy} kev; staying at {self.energy} keV')
+            self.updateError(f'Invalid energy setting: {energy} kev; staying at {self.energy} keV')
        
  
     def updateLookupWaveform(self):
@@ -1320,23 +1312,26 @@ class focusingSystem():
     def updateStatus(self, status_message):
         '''
         Description:
-            Sends string to status message PV
+            Sends string to status message PV; if verbose, puts to console as well
             
         Parameters:
             status_message   : string
                 string message for status (waveform) PV
         '''
+
+        if self.verbose: print(status_message)
         pydev.iointr('status_messages', status_message)
 
     def updateError(self, error_message):
         '''
         Description:
-            Sends string to error message PV
+            Sends string to error message PV; if verbose, puts to console as well
             
         Parameters:
             status_message   : string
                 string message for error (waveform) PV
         '''
+        if self.verbose: print(error_message)
         pydev.iointr('error_messages', error_message)
 
 
